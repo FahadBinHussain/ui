@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Box, Sparkles, Palette, Layers, MessageSquareQuote, Eye, Zap, MousePointer2 } from "lucide-react";
+import { Box, Sparkles, Palette, Layers, MessageSquareQuote, Eye, Zap, MousePointer2, ImageIcon } from "lucide-react";
 
 export default function Home() {
   const categories = [
@@ -51,6 +51,13 @@ export default function Home() {
       icon: MousePointer2,
       href: "/showcase/custom-cursor",
       color: "from-violet-500 to-fuchsia-500",
+    },
+    {
+      title: "Reveal Text",
+      description: "Text with hover image reveals and gradient effects",
+      icon: ImageIcon,
+      href: "/showcase/reveal-text",
+      color: "from-emerald-500 to-green-500",
     },
     {
       title: "3D Scenes",

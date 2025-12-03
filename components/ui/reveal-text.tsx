@@ -1,26 +1,12 @@
-Install the following dependencies:
-pnpm
-npm
-yarn
-bun
-pnpm add gsap 
-Copy
-Make a file for cn function and match the import afterwards
-import clsx, { ClassValue } from "clsx"
-import { twMerge } from "tailwind-merge"
-export const cn = (...classes: ClassValue[]) => twMerge(clsx(...classes))
-Copy
-Make a file and copy paste this code in a file with name reveal-text.tsx
+"use client";
 
-"use client"
- 
-import React, { useRef, useEffect } from "react"
-import { gsap } from "gsap"
-import { cn } from "@/lib/utils"
-import Link from "next/link"
- 
+import React, { useRef } from "react";
+import { gsap } from "gsap";
+import { cn } from "@/lib/utils";
+import Link from "next/link";
+
 type HoverTextProps = {
-  children: React.ReactNode
+  children: React.ReactNode;
   variant?:
     | "black"
     | "gradient0"
@@ -31,13 +17,13 @@ type HoverTextProps = {
     | "gradient5"
     | "gradient6"
     | "gradient7"
-    | "gradient8"
-  className?: string
-  image?: string
-  hoverImageClass?: string
-  href?: string
-}
- 
+    | "gradient8";
+  className?: string;
+  image?: string;
+  hoverImageClass?: string;
+  href?: string;
+};
+
 const variants = {
   black: "text-black",
   gradient0:
@@ -58,8 +44,8 @@ const variants = {
     "bg-gradient-to-r from-emerald-400 via-green-500 to-lime-500 text-transparent bg-clip-text",
   gradient8:
     "bg-gradient-to-r from-pink-400 via-rose-500 to-red-500 text-transparent bg-clip-text",
-}
- 
+};
+
 const RevealText = ({
   children,
   variant = "black",
@@ -68,51 +54,49 @@ const RevealText = ({
   hoverImageClass,
   href,
 }: HoverTextProps) => {
-  const imageRef = useRef<HTMLImageElement>(null)
-  const quickToX = useRef<any>(null) // for smooth x movement
- 
+  const imageRef = useRef<HTMLImageElement>(null);
+  const quickToX = useRef<any>(null);
+
   const handleMouseEnter = () => {
     if (imageRef.current) {
-      gsap.killTweensOf(imageRef.current)
- 
-      // Create quickToX instance fresh on every hover
+      gsap.killTweensOf(imageRef.current);
+
       quickToX.current = gsap.quickTo(imageRef.current, "x", {
         duration: 0.6,
-        // ease: "power2.out",
-      })
- 
-      const tl = gsap.timeline()
+      });
+
+      const tl = gsap.timeline();
       tl.to(imageRef.current, {
         opacity: 1,
         scale: 1,
         duration: 0.7,
         ease: "elastic.out(1, 0.75)",
-      })
+      });
     }
-  }
- 
+  };
+
   const handleMouseLeave = () => {
     if (imageRef.current) {
-      gsap.killTweensOf(imageRef.current)
+      gsap.killTweensOf(imageRef.current);
       gsap.to(imageRef.current, {
         opacity: 0,
         scale: 0.5,
         x: 0,
         duration: 0.3,
         ease: "power3.in",
-      })
+      });
     }
-  }
- 
+  };
+
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     if (imageRef.current && quickToX.current) {
-      const rect = e.currentTarget.getBoundingClientRect()
-      const x = e.clientX - rect.left
-      const offset = ((x - rect.width / 2) / rect.width) * 80
-      quickToX.current(offset) // real-time smooth move
+      const rect = e.currentTarget.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const offset = ((x - rect.width / 2) / rect.width) * 80;
+      quickToX.current(offset);
     }
-  }
- 
+  };
+
   return (
     <span
       className="relative inline-block group cursor-pointer"
@@ -137,13 +121,13 @@ const RevealText = ({
           target="_blank"
           className={cn(variants[variant], className)}
         >
-          {" "}
-          {children}{" "}
+          {children}
         </Link>
       ) : (
-        <span className={cn(variants[variant], className)}> {children} </span>
+        <span className={cn(variants[variant], className)}>{children}</span>
       )}
     </span>
-  )
-}
-export { RevealText }
+  );
+};
+
+export { RevealText };
