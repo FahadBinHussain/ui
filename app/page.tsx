@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { Box, Sparkles, Palette, Layers, MessageSquareQuote, Eye, Zap, MousePointer2, ImageIcon, ScrollText } from "lucide-react";
+import { Box, Sparkles, Palette, Layers, MessageSquareQuote, Eye, Zap, MousePointer2, ImageIcon, ScrollText, Type } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 
@@ -68,6 +68,13 @@ export default function Home() {
       icon: ScrollText,
       href: "/showcase/scroll-text-flow",
       color: "from-rose-500 to-pink-500",
+    },
+    {
+      title: "TypeWriter Effect",
+      description: "GSAP-powered typewriter with rotating text animation",
+      icon: Type,
+      href: "/showcase/typewriter",
+      color: "from-blue-500 to-green-500",
     },
     {
       title: "3D Scenes",

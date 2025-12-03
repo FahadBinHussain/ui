@@ -41,6 +41,17 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
+
+  @keyframes blink-border {
+    0%, 70%, 100% {
+      border-color: white;
+    }
+    20%, 50% {
+      border-color: black;
+    }
+  }
+
+  --animate-blink-border: blink-border 1s infinite;
 }
 
 :root {

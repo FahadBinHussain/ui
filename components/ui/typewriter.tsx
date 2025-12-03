@@ -1,47 +1,3 @@
-Install the following dependencies:
-pnpm
-npm
-yarn
-bun
-pnpm add gsap @gsap/react
-Copy
-Make a file for cn and mergerRef functions and match the import afterwards
-
-import clsx, { ClassValue } from "clsx"
-import { twMerge } from "tailwind-merge"
-export const cn = (...classes: ClassValue[]) => twMerge(clsx(...classes))
- 
-export function mergeRefs<T>(...refs: (React.Ref<T> | undefined)[]) {
-  return (node: T | null) => {
-    refs.forEach((ref) => {
-      if (typeof ref === "function") {
-        ref(node)
-      } else if (ref && "current" in ref) {
-        ;(ref as React.MutableRefObject<T | null>).current = node
-      }
-    })
-  }
-}
-Copy
-Add this configurations to tailwind.config.js file
- extend:{
-    keyframes:{
-      'blink-border':{
-        '0%,70%,100%': {
-  		    "borderColor": 'white'
-  		  },
-  			'20%,50%': {
-  				"borderColor": 'black'
-  			}
-			}
-    },
-    animation:{
-      'blink-border' : 'blink-border 1s infinite'
-    }
- }
-Copy
-Make a file and copy paste this code in a file with name type-writer.tsx
-
 "use client"
  
 import { forwardRef, useRef, HTMLAttributes, useEffect, useState } from "react"
@@ -212,3 +168,4 @@ const TypeWriter = forwardRef<HTMLDivElement, TypeWriterProps>(
 TypeWriter.displayName = "TypeWriter"
  
 export { TypeWriter }
+export type { TypeWriterProps, TextAndClass }
