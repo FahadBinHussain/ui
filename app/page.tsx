@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { Box, Sparkles, Palette, Layers, MessageSquareQuote, Eye, Zap, MousePointer2, ImageIcon, ScrollText, Type, Users } from "lucide-react";
+import { Box, Sparkles, Palette, Layers, MessageSquareQuote, Eye, Zap, MousePointer2, ImageIcon, ScrollText, Type, Users, Pencil } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 
@@ -82,6 +82,13 @@ export default function Home() {
       icon: Users,
       href: "/showcase/animated-tooltip",
       color: "from-emerald-500 to-sky-500",
+    },
+    {
+      title: "SVG Path Drawing",
+      description: "Animated SVG path drawing with spring-based transitions",
+      icon: Pencil,
+      href: "/showcase/path-drawing",
+      color: "from-pink-500 to-cyan-500",
     },
     {
       title: "3D Scenes",

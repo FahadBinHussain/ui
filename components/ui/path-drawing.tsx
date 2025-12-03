@@ -17,7 +17,7 @@ const draw: Variants = {
     },
 }
 
-export default function PathDrawing() {
+const PathDrawing = () => {
     return (
         <motion.svg
             width="600"
@@ -165,3 +165,5 @@ const shape: React.CSSProperties = {
     strokeLinecap: "round",
     fill: "transparent",
 }
+
+export { PathDrawing }
