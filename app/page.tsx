@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Box, Sparkles, Palette, Layers, MessageSquareQuote, Eye } from "lucide-react";
+import { Box, Sparkles, Palette, Layers, MessageSquareQuote, Eye, Zap } from "lucide-react";
 
 export default function Home() {
   const categories = [
@@ -37,6 +37,13 @@ export default function Home() {
       icon: Eye,
       href: "/showcase/lens",
       color: "from-indigo-500 to-purple-500",
+    },
+    {
+      title: "Electric Border",
+      description: "Animated electric glow border with SVG filters",
+      icon: Zap,
+      href: "/showcase/electric-border",
+      color: "from-yellow-500 to-orange-500",
     },
     {
       title: "3D Scenes",
