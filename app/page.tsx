@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { Box, Sparkles, Palette, Layers, MessageSquareQuote, Eye, Zap, MousePointer2, ImageIcon, ScrollText, Type } from "lucide-react";
+import { Box, Sparkles, Palette, Layers, MessageSquareQuote, Eye, Zap, MousePointer2, ImageIcon, ScrollText, Type, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 
@@ -75,6 +75,13 @@ export default function Home() {
       icon: Type,
       href: "/showcase/typewriter",
       color: "from-blue-500 to-green-500",
+    },
+    {
+      title: "Animated Tooltip",
+      description: "Interactive profile tooltips with elastic GSAP animations",
+      icon: Users,
+      href: "/showcase/animated-tooltip",
+      color: "from-emerald-500 to-sky-500",
     },
     {
       title: "3D Scenes",

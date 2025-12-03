@@ -1,17 +1,3 @@
-Install the following dependencies:
-pnpm
-npm
-yarn
-bun
-pnpm add gsap
-Copy
-Make a file for cn function and match the import afterwards
-import clsx, { ClassValue } from "clsx"
-import { twMerge } from "tailwind-merge"
-export const cn = (...classes: ClassValue[]) => twMerge(clsx(...classes))
-Copy
-Make a file and copy paste this code in a file with name Animated Tooltip
-
 "use client"
 import Image from "next/image"
 import React, { useState, useEffect, useRef } from "react"
@@ -157,36 +143,3 @@ const AnimatedTooltip = ({
   )
 }
 export { AnimatedTooltip }
-Copy
-Collapse
-Provide an array of items with the following properties: id, name, designation, and imgUrl.
-
-const items = [
-    {
-      id: 1,
-      name: "John Doe",
-      designation: "Software Engineer",
-      image:
-        "https://images.unsplash.com/photo-.....",
-    },
-    {
-      id: 2,
-      name: "Robert Johnson",
-      designation: "Product Manager",
-      image:
-        "https://images.unsplash.com/photo-....",
-    },
-    ......
-    ......
-    ]
-Copy
-If Image is not Visible,then modify NextConfig
- 
-const nextConfig: NextConfig = {
-/_ config options here _/
-images: {
-domains: ["images.unsplash.com"], // Add Unsplash domain here
-},
-};
- 
-export default nextConfig;

@@ -1,3 +1,4 @@
+"use client";
 import React from "react"
 import { AnimatedTooltip } from "@/components/ui/animated-tooltip"
 
@@ -46,5 +47,9 @@ export function AnimatedTooltipDemo() {
         "https://images.unsplash.com/photo-1544725176-7c40e5a71c5e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=3534&q=80",
     },
   ]
-  return <AnimatedTooltip items={items} />
+  return (
+    <div className="flex items-center justify-center min-h-[300px] bg-gradient-to-br from-gray-50 to-white dark:from-gray-900 dark:to-black">
+      <AnimatedTooltip items={items} />
+    </div>
+  )
 }
