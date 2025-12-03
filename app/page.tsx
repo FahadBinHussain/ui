@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { Box, Sparkles, Palette, Layers, MessageSquareQuote, Eye, Zap, MousePointer2, ImageIcon, ScrollText, Type, Users, Pencil, Palette as PaletteIcon } from "lucide-react";
+import { Box, Sparkles, Palette, Layers, MessageSquareQuote, Eye, Zap, MousePointer2, ImageIcon, ScrollText, Type, Users, Pencil, Palette as PaletteIcon, ArrowRightLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 
@@ -96,6 +96,13 @@ export default function Home() {
       icon: PaletteIcon,
       href: "/showcase/theme-dropdown",
       color: "from-purple-500 to-pink-500",
+    },
+    {
+      title: "Barba.js Transitions",
+      description: "Smooth page transitions with Barba.js for SPA-like experience",
+      icon: ArrowRightLeft,
+      href: "/showcase/barba",
+      color: "from-blue-600 to-purple-600",
     },
     {
       title: "3D Scenes",
