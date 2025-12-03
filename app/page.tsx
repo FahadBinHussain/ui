@@ -1,5 +1,8 @@
+"use client";
 import Link from "next/link";
 import { Box, Sparkles, Palette, Layers, MessageSquareQuote, Eye, Zap, MousePointer2, ImageIcon, ScrollText } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { motion } from "framer-motion";
 
 export default function Home() {
   const categories = [
@@ -76,84 +79,162 @@ export default function Home() {
   ];
 
   return (
-    <div className="min-h-screen bg-background">
-      <main className="container mx-auto px-4 py-16 sm:px-6 lg:px-8">
-        {/* Header */}
-        <div className="mb-16 text-center">
-          <h1 className="mb-4 text-5xl font-bold tracking-tight sm:text-6xl lg:text-7xl">
-            Design System
-            <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-              {" "}2025
-            </span>
-          </h1>
-          <p className="mx-auto max-w-2xl text-lg text-muted-foreground sm:text-xl">
-            Modern, copy-paste compatible component library built with Next.js 16, 
-            TypeScript, Tailwind CSS, Framer Motion, and React Three Fiber.
-          </p>
-        </div>
+    <>
+      <div className="min-h-screen bg-black text-white overflow-x-hidden">
+        <main className="container mx-auto px-4 py-16 sm:px-6 lg:px-8">
+          {/* Header */}
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="mb-16 text-center"
+          >
+            <div className="relative mx-auto max-w-4xl p-[2px] rounded-3xl bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500">
+              <div className="bg-gradient-to-br from-purple-950/90 via-black to-blue-950/90 backdrop-blur-sm p-12 rounded-3xl">
+                <h1 className="mb-4 text-5xl font-bold tracking-tight sm:text-6xl lg:text-7xl">
+                  Design System
+                  <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+                    {" "}2025
+                  </span>
+                </h1>
+                <p className="mx-auto max-w-2xl text-lg text-gray-300 sm:text-xl mb-8">
+                  Modern, copy-paste compatible component library built with Next.js 16, 
+                  TypeScript, Tailwind CSS, GSAP, and React Three Fiber.
+                </p>
+                <div className="flex gap-4 justify-center flex-wrap">
+                  <Link href="/showcase/buttons">
+                    <Button variant="sunset">
+                      Explore Components
+                    </Button>
+                  </Link>
+                  <Link href="https://github.com" target="_blank">
+                    <Button variant="ocean">
+                      View on GitHub
+                    </Button>
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </motion.div>
 
-        {/* Tech Stack */}
-        <div className="mb-16 rounded-lg border bg-card p-6">
-          <h2 className="mb-4 text-xl font-semibold">God Tier Stack</h2>
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            <TechItem label="Next.js 16" sublabel="App Router" />
-            <TechItem label="TypeScript" sublabel="Type Safety" />
-            <TechItem label="Tailwind CSS" sublabel="+ cn() utility" />
-            <TechItem label="Framer Motion" sublabel="Animations" />
-            <TechItem label="React Three Fiber" sublabel="3D Graphics" />
-            <TechItem label="Lucide React" sublabel="Icons" />
-            <TechItem label="Shadcn UI" sublabel="Architecture" />
-            <TechItem label="Drei" sublabel="3D Helpers" />
-          </div>
-        </div>
-
-        {/* Component Categories */}
-        <div className="mb-16">
-          <h2 className="mb-8 text-3xl font-bold">Component Library</h2>
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-2">
-            {categories.map((category) => {
-              const Icon = category.icon;
-              return (
-                <Link
-                  key={category.title}
-                  href={category.href}
-                  className="group relative overflow-hidden rounded-xl border bg-card p-6 transition-all hover:shadow-lg"
+          {/* Tech Stack */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="mb-16"
+          >
+            <h2 className="mb-8 text-3xl font-bold text-center bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+              God Tier Stack
+            </h2>
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+              {[
+                { label: "Next.js 16", sublabel: "App Router", color: "from-blue-500 to-cyan-500" },
+                { label: "TypeScript", sublabel: "Type Safety", color: "from-purple-500 to-violet-500" },
+                { label: "Tailwind CSS", sublabel: "+ cn() utility", color: "from-pink-500 to-rose-500" },
+                { label: "GSAP", sublabel: "Animations", color: "from-green-500 to-emerald-500" },
+                { label: "React Three Fiber", sublabel: "3D Graphics", color: "from-orange-500 to-red-500" },
+                { label: "Framer Motion", sublabel: "UI Animations", color: "from-violet-500 to-purple-500" },
+                { label: "Shadcn UI", sublabel: "Architecture", color: "from-cyan-500 to-blue-500" },
+                { label: "Drei", sublabel: "3D Helpers", color: "from-amber-500 to-orange-500" },
+              ].map((tech, index) => (
+                <motion.div
+                  key={tech.label}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.5, delay: 0.3 + index * 0.05 }}
+                  className="relative p-[1px] rounded-lg bg-gradient-to-r overflow-hidden group"
+                  style={{
+                    background: `linear-gradient(135deg, var(--tw-gradient-stops))`
+                  }}
                 >
-                  <div className="mb-4 flex items-center gap-3">
-                    <div className={`rounded-lg bg-gradient-to-br ${category.color} p-3`}>
-                      <Icon className="h-6 w-6 text-white" />
-                    </div>
-                    <h3 className="text-xl font-semibold">{category.title}</h3>
+                  <div className={`absolute inset-0 bg-gradient-to-r ${tech.color} opacity-50 group-hover:opacity-100 transition-opacity`} />
+                  <div className="relative bg-gradient-to-br from-gray-900 to-black p-4 rounded-lg h-full">
+                    <div className="font-semibold text-white">{tech.label}</div>
+                    <div className="text-sm text-gray-400">{tech.sublabel}</div>
                   </div>
-                  <p className="text-muted-foreground">{category.description}</p>
-                </Link>
-              );
-            })}
-          </div>
-        </div>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
 
-        {/* Features */}
-        <div className="rounded-lg border bg-card p-6">
-          <h2 className="mb-4 text-xl font-semibold">Features</h2>
-          <ul className="space-y-2 text-muted-foreground">
-            <li>✅ Copy-paste compatible with any Next.js project</li>
-            <li>✅ Full TypeScript support with autocomplete</li>
-            <li>✅ Pre-installed dependencies for Aceternity, Magic UI, Origin UI</li>
-            <li>✅ Shadcn architecture for easy component organization</li>
-            <li>✅ Ready for 3D experiences with Three.js</li>
-            <li>✅ Framer Motion animations built-in</li>
-          </ul>
-        </div>
-      </main>
-    </div>
-  );
-}
+          {/* Component Categories */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="mb-16"
+          >
+            <h2 className="mb-8 text-3xl font-bold text-center bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+              Component Library
+            </h2>
+            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-2">
+              {categories.map((category, index) => {
+                const Icon = category.icon;
+                return (
+                  <motion.div
+                    key={category.title}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 0.5 + index * 0.05 }}
+                  >
+                    <Link href={category.href} className="block group">
+                      <div className="relative p-[2px] rounded-xl bg-gradient-to-r from-purple-500/50 to-pink-500/50 group-hover:from-purple-500 group-hover:to-pink-500 transition-all">
+                        <div className="bg-gradient-to-br from-gray-900 via-black to-gray-900 p-6 rounded-xl h-full group-hover:from-gray-800 group-hover:via-gray-900 group-hover:to-gray-800 transition-all">
+                          <div className="mb-4 flex items-center gap-3">
+                            <div className={`rounded-lg bg-gradient-to-br ${category.color} p-3 group-hover:scale-110 transition-transform`}>
+                              <Icon className="h-6 w-6 text-white" />
+                            </div>
+                            <h3 className="text-xl font-semibold text-white">{category.title}</h3>
+                          </div>
+                          <p className="text-gray-400 group-hover:text-gray-300 transition-colors">
+                            {category.description}
+                          </p>
+                        </div>
+                      </div>
+                    </Link>
+                  </motion.div>
+                );
+              })}
+            </div>
+          </motion.div>
 
-function TechItem({ label, sublabel }: { label: string; sublabel: string }) {
-  return (
-    <div className="rounded-md border bg-background p-3">
-      <div className="font-medium">{label}</div>
-      <div className="text-xs text-muted-foreground">{sublabel}</div>
-    </div>
+          {/* Features */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+            className="relative p-[2px] rounded-2xl bg-gradient-to-r from-green-500 to-blue-500"
+          >
+            <div className="bg-gradient-to-br from-gray-900 to-black p-8 rounded-2xl">
+              <h2 className="mb-6 text-2xl font-bold bg-gradient-to-r from-green-400 to-blue-400 bg-clip-text text-transparent">
+                Features
+              </h2>
+              <ul className="grid md:grid-cols-2 gap-4 text-gray-300">
+                {[
+                  "Copy-paste compatible with any Next.js project",
+                  "Full TypeScript support with autocomplete",
+                  "Pre-installed dependencies for modern UI libraries",
+                  "Shadcn architecture for easy component organization",
+                  "Ready for 3D experiences with Three.js",
+                  "GSAP & Framer Motion animations built-in",
+                ].map((feature, index) => (
+                  <motion.li
+                    key={index}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.5, delay: 0.7 + index * 0.1 }}
+                    className="flex items-center gap-2"
+                  >
+                    <span className="text-green-400 text-xl">✓</span>
+                    <span>{feature}</span>
+                  </motion.li>
+                ))}
+              </ul>
+            </div>
+          </motion.div>
+        </main>
+      </div>
+    </>
   );
 }
