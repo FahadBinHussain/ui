@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Box, Sparkles, Palette, Layers } from "lucide-react";
+import { Box, Sparkles, Palette, Layers, MessageSquareQuote } from "lucide-react";
 
 export default function Home() {
   const categories = [
@@ -23,6 +23,13 @@ export default function Home() {
       icon: Palette,
       href: "/showcase/text-animations",
       color: "from-green-500 to-teal-500",
+    },
+    {
+      title: "Animated Testimonials",
+      description: "Beautiful testimonial carousel with 3D stacking",
+      icon: MessageSquareQuote,
+      href: "/showcase/testimonials",
+      color: "from-pink-500 to-rose-500",
     },
     {
       title: "3D Scenes",
