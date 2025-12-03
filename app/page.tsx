@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Box, Sparkles, Palette, Layers, MessageSquareQuote } from "lucide-react";
+import { Box, Sparkles, Palette, Layers, MessageSquareQuote, Eye } from "lucide-react";
 
 export default function Home() {
   const categories = [
@@ -30,6 +30,13 @@ export default function Home() {
       icon: MessageSquareQuote,
       href: "/showcase/testimonials",
       color: "from-pink-500 to-rose-500",
+    },
+    {
+      title: "Lens Effect",
+      description: "Magnifying glass lens effect with smooth zoom",
+      icon: Eye,
+      href: "/showcase/lens",
+      color: "from-indigo-500 to-purple-500",
     },
     {
       title: "3D Scenes",
