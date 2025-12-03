@@ -12,8 +12,10 @@ export default function TextAnimationsShowcase() {
         {/* Live Demo */}
         <div className="mb-16">
           <h2 className="text-2xl font-semibold mb-6">Live Demo</h2>
-          <div className="flex items-center justify-center min-h-[300px] bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800 rounded-lg">
-            <ContainerTextFlipDemo />
+          <div className="flex items-center justify-center p-8 bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800 rounded-lg">
+            <div className="flex items-center justify-center min-h-[300px]">
+              <ContainerTextFlipDemo />
+            </div>
           </div>
         </div>
 
