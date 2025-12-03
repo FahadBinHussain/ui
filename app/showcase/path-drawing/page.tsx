@@ -178,7 +178,7 @@ export default function PathDrawingShowcase() {
             <div className="bg-gray-50 border border-gray-200 rounded-lg p-6">
               <p className="text-gray-700 mb-2">Component adapted from:</p>
               <a
-                href="https://motion.dev/docs/react-path-drawing"
+                href="https://motion.dev/examples/react-path-drawing"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-pink-500 hover:text-pink-600 underline transition-colors"
