@@ -286,9 +286,9 @@ export default function ThemeDropdownShowcase() {
         <section>
           <h2 className={`text-3xl font-bold mb-6 ${theme.text}`}>Source</h2>
           <div className={`${theme.cardBg} border ${theme.border} rounded-lg p-6 transition-colors duration-500`}>
-            <p className={`${theme.text} opacity-70 mb-2`}>Component inspired by DaisyUI theme switcher pattern</p>
+            <p className={`${theme.text} opacity-70 mb-2`}>Component inspired by DaisyUI theme controller</p>
             <a
-              href="https://daisyui.com/components/dropdown/"
+              href="https://daisyui.com/components/theme-controller/"
               target="_blank"
               rel="noopener noreferrer"
               className={`bg-gradient-to-r ${theme.gradient} bg-clip-text text-transparent hover:opacity-80 underline transition-opacity`}
