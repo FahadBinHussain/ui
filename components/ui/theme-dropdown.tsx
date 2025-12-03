@@ -15,14 +15,44 @@ interface ThemeDropdownProps {
 
 export function ThemeDropdown({ 
   themes = [
-    { label: "Default", value: "default" },
+    { label: "Light", value: "light" },
+    { label: "Dark", value: "dark" },
+    { label: "Cupcake", value: "cupcake" },
+    { label: "Bumblebee", value: "bumblebee" },
+    { label: "Emerald", value: "emerald" },
+    { label: "Corporate", value: "corporate" },
+    { label: "Synthwave", value: "synthwave" },
     { label: "Retro", value: "retro" },
     { label: "Cyberpunk", value: "cyberpunk" },
     { label: "Valentine", value: "valentine" },
+    { label: "Halloween", value: "halloween" },
+    { label: "Garden", value: "garden" },
+    { label: "Forest", value: "forest" },
     { label: "Aqua", value: "aqua" },
+    { label: "Lofi", value: "lofi" },
+    { label: "Pastel", value: "pastel" },
+    { label: "Fantasy", value: "fantasy" },
+    { label: "Wireframe", value: "wireframe" },
+    { label: "Black", value: "black" },
+    { label: "Luxury", value: "luxury" },
+    { label: "Dracula", value: "dracula" },
+    { label: "CMYK", value: "cmyk" },
+    { label: "Autumn", value: "autumn" },
+    { label: "Business", value: "business" },
+    { label: "Acid", value: "acid" },
+    { label: "Lemonade", value: "lemonade" },
+    { label: "Night", value: "night" },
+    { label: "Coffee", value: "coffee" },
+    { label: "Winter", value: "winter" },
+    { label: "Dim", value: "dim" },
+    { label: "Nord", value: "nord" },
+    { label: "Sunset", value: "sunset" },
+    { label: "Caramel Latte", value: "caramellatte" },
+    { label: "Abyss", value: "abyss" },
+    { label: "Silk", value: "silk" },
   ],
   onThemeChange,
-  defaultTheme = "default"
+  defaultTheme = "light"
 }: ThemeDropdownProps) {
   const [selectedTheme, setSelectedTheme] = useState(defaultTheme);
   const [isOpen, setIsOpen] = useState(false);
@@ -57,7 +87,7 @@ export function ThemeDropdown({
             className="fixed inset-0 z-10" 
             onClick={() => setIsOpen(false)}
           />
-          <ul className="absolute left-0 top-full mt-2 w-52 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-2xl z-20 p-2">
+          <ul className="absolute left-0 top-full mt-2 w-52 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-2xl z-20 p-2 max-h-[400px] overflow-y-auto">
             {themes.map((theme) => (
               <li key={theme.value}>
                 <label className="flex items-center gap-2 px-3 py-2 rounded hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer transition-colors">
