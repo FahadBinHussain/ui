@@ -42,7 +42,7 @@ const buttonVariants = cva(
           "border-green-500 border-t-emerald-400 border-r-lime-500 border-b-green-600 border-l-teal-500",
         galaxy:
           "border-purple-500 border-t-indigo-400 border-r-violet-500 border-b-purple-600 border-l-fuchsia-500",
-        neon: "border-lime-400 border-opacity-90 shadow-sm shadow-lime-400",
+        neon: "border-lime-400 shadow-sm shadow-lime-400",
         ember:
           "border-red-500 border-t-orange-400 border-r-amber-500 border-b-red-600 border-l-rose-500",
         arctic:
@@ -84,7 +84,7 @@ const variantToColorClass = {
   ocean: "bg-gradient-to-br from-cyan-400 via-blue-500 to-indigo-600",
   forest: "bg-gradient-to-br from-emerald-400 via-green-500 to-teal-600",
   galaxy: "bg-gradient-to-br from-indigo-400 via-purple-500 to-fuchsia-600",
-  neon: "bg-lime-400 bg-opacity-90 shadow-md shadow-lime-400",
+  neon: "bg-lime-400 shadow-md shadow-lime-400",
   ember: "bg-gradient-to-br from-orange-400 via-red-500 to-rose-600",
   arctic: "bg-gradient-to-br from-sky-300 via-cyan-400 to-blue-500",
   candy: "bg-gradient-to-br from-fuchsia-400 via-pink-500 to-rose-500",
