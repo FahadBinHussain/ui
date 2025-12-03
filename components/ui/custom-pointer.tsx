@@ -1,47 +1,34 @@
-Install the following dependencies:
-pnpm
-npm
-yarn
-bun
-pnpm add gsap
-Copy
-Make a file for cn function and match the import afterwards
-import clsx, { ClassValue } from "clsx"
-import { twMerge } from "tailwind-merge"
-export const cn = (...classes: ClassValue[]) => twMerge(clsx(...classes))
-Copy
-Make a file and copy paste this code in a file with name CustomCursor
+"use client";
+import * as React from "react";
+import gsap from "gsap";
+import { cn } from "@/lib/utils";
+import { useGSAP } from "@gsap/react";
 
-"use client"
-import * as React from "react"
-import gsap from "gsap"
-import { cn } from "@/lib/utils"
-import { useGSAP } from "@gsap/react"
 const colorPairs = [
   { primary: "#FF6B6B", secondary: "#4ECDC4" },
   { primary: "#A17FB0", secondary: "#5D5FEF" },
   { primary: "#FF9F43", secondary: "#FF5E7D" },
   { primary: "#00D2FF", secondary: "#3A7BD5" },
   { primary: "#08AEEA", secondary: "#2AF598" },
-]
- 
+];
+
 const getRandomColorPair = () => {
-  return colorPairs[Math.floor(Math.random() * colorPairs.length)]
-}
- 
+  return colorPairs[Math.floor(Math.random() * colorPairs.length)];
+};
+
 interface CursorIconProps extends React.HTMLAttributes<HTMLDivElement> {}
- 
+
 const CursorIcon = ({ className, children, ...props }: CursorIconProps) => (
   <div className={cn("mb-4", className)} {...props}>
     {children}
   </div>
-)
- 
+);
+
 interface NameTagProps extends React.HTMLAttributes<HTMLDivElement> {
-  name?: string
-  src?: string
+  name?: string;
+  src?: string;
 }
- 
+
 function NameTag({ name, src, className, children, ...props }: NameTagProps) {
   if (name || src) {
     return (
@@ -61,82 +48,77 @@ function NameTag({ name, src, className, children, ...props }: NameTagProps) {
         )}
         {name && <p className="font-semibold">{name}</p>}
       </div>
-    )
+    );
   }
-  return <div {...props}>{children}</div>
+  return <div {...props}>{children}</div>;
 }
- 
+
 interface CustomCursorProps extends React.HTMLAttributes<HTMLDivElement> {
-  children?: React.ReactNode
+  children?: React.ReactNode;
 }
- 
+
 const CustomCursor = ({ children, className, ...props }: CustomCursorProps) => {
-  const [colors, setColors] = React.useState(getRandomColorPair)
-  const [hasCursorIcon, setHasCursorIcon] = React.useState(false)
-  const localRef = React.useRef<HTMLDivElement>(null)
- 
+  const [colors, setColors] = React.useState(getRandomColorPair);
+  const [hasCursorIcon, setHasCursorIcon] = React.useState(false);
+  const localRef = React.useRef<HTMLDivElement>(null);
+
   useGSAP(() => {
     const prefersDark = window.matchMedia(
       "(prefers-color-scheme: dark)"
-    ).matches
-    let parent = localRef.current?.parentElement
-    if (!parent || !localRef.current) return
- 
+    ).matches;
+    let parent = localRef.current?.parentElement;
+    if (!parent || !localRef.current) return;
+
     const mouseEnter = () => {
-      gsap.to(localRef.current, { opacity: 1, duration: 0.1 })
-      gsap.to("[data-nametag]", { scale: 1, duration: 0.3 })
-      parent.style.border = `1px solid ${colors.secondary}`
-    }
- 
+      gsap.to(localRef.current, { opacity: 1, duration: 0.1 });
+      gsap.to("[data-nametag]", { scale: 1, duration: 0.3 });
+      parent.style.border = `1px solid ${colors.secondary}`;
+    };
+
     const mouseLeave = () => {
-      gsap.to(localRef.current, { opacity: 0, duration: 0.1 })
-      gsap.to("[data-nametag]", { scale: 0, duration: 0.1 })
-      setColors(getRandomColorPair())
-      parent.style.border = `0.5px solid ${prefersDark ? "#E9E9E8" : "#262626"}`
-      // parent.classList.add("border");
-    }
- 
+      gsap.to(localRef.current, { opacity: 0, duration: 0.1 });
+      gsap.to("[data-nametag]", { scale: 0, duration: 0.1 });
+      setColors(getRandomColorPair());
+      parent.style.border = `0.5px solid ${prefersDark ? "#E9E9E8" : "#262626"}`;
+    };
+
     const mouseMove = (e: MouseEvent) => {
-      const rect = parent.getBoundingClientRect()
-      const x = e.clientX - rect.left
-      const y = e.clientY - rect.top
-      gsap.to(localRef.current, { x, y, duration: 0.1 })
-    }
- 
-    parent.addEventListener("mouseenter", mouseEnter)
-    parent.addEventListener("mouseleave", mouseLeave)
-    parent.addEventListener("mousemove", mouseMove)
- 
+      const rect = parent.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      gsap.to(localRef.current, { x, y, duration: 0.1 });
+    };
+
+    parent.addEventListener("mouseenter", mouseEnter);
+    parent.addEventListener("mouseleave", mouseLeave);
+    parent.addEventListener("mousemove", mouseMove);
+
     return () => {
-      parent.removeEventListener("mouseenter", mouseEnter)
-      parent.removeEventListener("mouseleave", mouseLeave)
-      parent.removeEventListener("mousemove", mouseMove)
-      parent.style.cursor = ""
-    }
-  }, [colors])
- 
-  // Improved detection of CursorIcon component
+      parent.removeEventListener("mouseenter", mouseEnter);
+      parent.removeEventListener("mouseleave", mouseLeave);
+      parent.removeEventListener("mousemove", mouseMove);
+      parent.style.cursor = "";
+    };
+  }, [colors]);
+
   React.useEffect(() => {
-    // Initialize with false
-    let foundCursorIcon = false
- 
-    // Enhanced check for CursorIcon components
+    let foundCursorIcon = false;
+
     React.Children.forEach(children, (child) => {
       if (child && React.isValidElement(child)) {
-        // Check if the component is CursorIcon
         if (
           (child.type as any).name === "CursorIcon" ||
           (child.type as any).displayName === "CursorIcon" ||
           (child.type as any)._payload?.value?.displayName == "CursorIcon"
         ) {
-          foundCursorIcon = true
+          foundCursorIcon = true;
         }
       }
-    })
- 
-    setHasCursorIcon(foundCursorIcon)
-  }, [children])
- 
+    });
+
+    setHasCursorIcon(foundCursorIcon);
+  }, [children]);
+
   return (
     <div
       ref={localRef}
@@ -146,7 +128,6 @@ const CustomCursor = ({ children, className, ...props }: CustomCursorProps) => {
       )}
       {...props}
     >
-      {/* Only show default cursor when no CursorIcon is found */}
       {!hasCursorIcon && (
         <CursorIcon style={{ color: colors.secondary }}>
           <svg
@@ -180,11 +161,10 @@ const CustomCursor = ({ children, className, ...props }: CustomCursorProps) => {
             : child
         )}
     </div>
-  )
-}
- 
-// Add displayName for better component identification
-CursorIcon.displayName = "CursorIcon"
-NameTag.displayName = "NameTag"
- 
-export { CustomCursor, CursorIcon, NameTag }
+  );
+};
+
+CursorIcon.displayName = "CursorIcon";
+NameTag.displayName = "NameTag";
+
+export { CustomCursor, CursorIcon, NameTag };

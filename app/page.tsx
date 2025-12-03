@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Box, Sparkles, Palette, Layers, MessageSquareQuote, Eye, Zap } from "lucide-react";
+import { Box, Sparkles, Palette, Layers, MessageSquareQuote, Eye, Zap, MousePointer2 } from "lucide-react";
 
 export default function Home() {
   const categories = [
@@ -44,6 +44,13 @@ export default function Home() {
       icon: Zap,
       href: "/showcase/electric-border",
       color: "from-yellow-500 to-orange-500",
+    },
+    {
+      title: "Custom Cursor",
+      description: "Interactive custom cursor with name tags and colors",
+      icon: MousePointer2,
+      href: "/showcase/custom-cursor",
+      color: "from-violet-500 to-fuchsia-500",
     },
     {
       title: "3D Scenes",
