@@ -1,45 +1,31 @@
-Install the following dependencies:
-pnpm
-npm
-yarn
-bun
-pnpm add gsap @gsap/react
-Copy
-Make a file for cn function and match the import afterwards
-import clsx, { ClassValue } from "clsx"
-import { twMerge } from "tailwind-merge"
-export const cn = (...classes: ClassValue[]) => twMerge(clsx(...classes))
-Copy
-Make a file and copy paste this code in a file with name scroll-text-flow.tsx
+"use client";
+import React, { useEffect, useRef, useState } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { cn } from "@/lib/utils";
+import { useGSAP } from "@gsap/react";
 
-"use client"
-import React, { useEffect, useRef, useState } from "react"
-import { gsap } from "gsap"
-import { ScrollTrigger } from "gsap/ScrollTrigger"
-import { cn } from "@/lib/utils"
-import { useGSAP } from "@gsap/react"
- 
-gsap.registerPlugin(ScrollTrigger)
- 
+gsap.registerPlugin(ScrollTrigger);
+
 interface SlideItem {
-  name: string
-  style: string
+  name: string;
+  style: string;
 }
- 
+
 interface ScrollTextFlowProps {
-  heading: string
-  subheading: string
-  slideGroups: SlideItem[][] // 2D array: each inner array is a row of slides
-  topGroupCount?: number // number of groups rendered above the text container, default is 2
-  wrapperClassName?: string // extra classes for the main container
-  textWrapperClassName?: string
-  groupClassName?: string // extra classes for each slide group row
-  scrollTriggerStart?: string // scrollTrigger start value, default: "top 20%"
-  scrollTriggerEnd?: string // scrollTrigger end value, default: "+=1500"
-  useMarkers?: boolean // whether to show markers, default: false
-  scrollerRef?: React.RefObject<HTMLDivElement> // Allow custom scroller
+  heading: string;
+  subheading: string;
+  slideGroups: SlideItem[][];
+  topGroupCount?: number;
+  wrapperClassName?: string;
+  textWrapperClassName?: string;
+  groupClassName?: string;
+  scrollTriggerStart?: string;
+  scrollTriggerEnd?: string;
+  useMarkers?: boolean;
+  scrollerRef?: React.RefObject<HTMLDivElement>;
 }
- 
+
 const ScrollTextFlow: React.FC<ScrollTextFlowProps> = ({
   heading,
   subheading,
@@ -53,40 +39,38 @@ const ScrollTextFlow: React.FC<ScrollTextFlowProps> = ({
   useMarkers = false,
   scrollerRef,
 }) => {
-  const containerRef = useRef<HTMLDivElement | null>(null)
-  const wordsContainerRef = useRef<HTMLDivElement | null>(null)
-  // Array to store refs for each slide group row
-  const groupRefs = useRef<(HTMLDivElement | null)[]>([])
+  const containerRef = useRef<HTMLDivElement | null>(null);
+  const wordsContainerRef = useRef<HTMLDivElement | null>(null);
+  const groupRefs = useRef<(HTMLDivElement | null)[]>([]);
   const instanceIdRef = useRef<string>(
     `rotating-text-${Math.random().toString(36).substring(2, 11)}`
-  )
-  const [forceUpdate, setForceUpdate] = useState(false)
- 
+  );
+  const [forceUpdate, setForceUpdate] = useState(false);
+
   useEffect(() => {
-    console.log("from useEffext")
- 
     if (scrollerRef?.current) {
-      setForceUpdate(!forceUpdate)
+      setForceUpdate(!forceUpdate);
     }
-  }, [scrollerRef?.current])
-  // Helper to add each group ref dynamically
+  }, [scrollerRef?.current]);
+
   const addToGroupRefs = (el: HTMLDivElement | null) => {
     if (el && !groupRefs.current.includes(el)) {
-      groupRefs.current.push(el)
+      groupRefs.current.push(el);
     }
-  }
- 
+  };
+
   useGSAP(() => {
-    if (!containerRef.current || !wordsContainerRef.current) return
-    const existingTrigger = ScrollTrigger.getById(instanceIdRef.current)
-    const existingTrigger2 = ScrollTrigger.getById(instanceIdRef.current + "2")
+    if (!containerRef.current || !wordsContainerRef.current) return;
+
+    const existingTrigger = ScrollTrigger.getById(instanceIdRef.current);
+    const existingTrigger2 = ScrollTrigger.getById(instanceIdRef.current + "2");
     if (existingTrigger && existingTrigger2) {
-      existingTrigger.kill()
-      existingTrigger2.kill()
+      existingTrigger.kill();
+      existingTrigger2.kill();
     }
-    // Fade-in animation for the text words
-    const words = wordsContainerRef.current.querySelectorAll(".word")
-    gsap.set(words, { opacity: 0 })
+
+    const words = wordsContainerRef.current.querySelectorAll(".word");
+    gsap.set(words, { opacity: 0 });
     gsap.to(words, {
       opacity: 1,
       ease: "power1.inOut",
@@ -99,18 +83,17 @@ const ScrollTextFlow: React.FC<ScrollTextFlowProps> = ({
         markers: useMarkers,
         pin: true,
         pinSpacing: true,
-        scroller: scrollerRef?.current ?? window,
+        scroller: scrollerRef?.current ?? (typeof window !== 'undefined' ? window : undefined),
         id: instanceIdRef.current,
       },
-    })
- 
-    // Apply animation for each slide group row
+    });
+
     groupRefs.current.forEach((group, index) => {
-      const isEven = index % 2 === 0
-      const fromX = isEven ? 50 : 150
-      const toX = isEven ? -200 - index * 50 : 0 + index * 30
-      const scrubSpeed = isEven ? 0.5 : 0.8
- 
+      const isEven = index % 2 === 0;
+      const fromX = isEven ? 50 : 150;
+      const toX = isEven ? -200 - index * 50 : 0 + index * 30;
+      const scrubSpeed = isEven ? 0.5 : 0.8;
+
       gsap.fromTo(
         group,
         { x: fromX },
@@ -123,12 +106,12 @@ const ScrollTextFlow: React.FC<ScrollTextFlowProps> = ({
             end: scrollTriggerEnd,
             scrub: scrubSpeed,
             markers: useMarkers,
-            scroller: scrollerRef?.current ?? window,
+            scroller: scrollerRef?.current ?? (typeof window !== 'undefined' ? window : undefined),
             id: instanceIdRef.current + "2",
           },
         }
-      )
-    })
+      );
+    });
   }, [
     slideGroups,
     scrollTriggerStart,
@@ -136,8 +119,8 @@ const ScrollTextFlow: React.FC<ScrollTextFlowProps> = ({
     useMarkers,
     scrollerRef,
     forceUpdate,
-  ])
- 
+  ]);
+
   const words1 = heading.split(" ").map((word, index) => (
     <span
       key={index}
@@ -145,7 +128,7 @@ const ScrollTextFlow: React.FC<ScrollTextFlowProps> = ({
     >
       {word}
     </span>
-  ))
+  ));
   const words2 = subheading.split(" ").map((word, index) => (
     <span
       key={index}
@@ -153,15 +136,14 @@ const ScrollTextFlow: React.FC<ScrollTextFlowProps> = ({
     >
       {word}
     </span>
-  ))
- 
+  ));
+
   return (
     <div
       ref={containerRef}
       className={cn("flex justify-center h-screen py-5", wrapperClassName)}
     >
-      <div className={cn(" space-y-3 md:space-y-5 mx-auto text-center w-full")}>
-        {/* Render slide groups above the text container */}
+      <div className={cn("space-y-3 md:space-y-5 mx-auto text-center w-full")}>
         {slideGroups.map((group, idx) =>
           idx < topGroupCount ? (
             <div
@@ -187,8 +169,7 @@ const ScrollTextFlow: React.FC<ScrollTextFlowProps> = ({
             </div>
           ) : null
         )}
- 
-        {/* Words container for fade-in text */}
+
         <div
           ref={wordsContainerRef}
           className={cn(
@@ -200,8 +181,7 @@ const ScrollTextFlow: React.FC<ScrollTextFlowProps> = ({
             {words1} <span className="text-lg md:text-xl">{words2}</span>
           </p>
         </div>
- 
-        {/* Render slide groups below the text container */}
+
         {slideGroups.map((group, idx) =>
           idx >= topGroupCount ? (
             <div
@@ -229,7 +209,7 @@ const ScrollTextFlow: React.FC<ScrollTextFlowProps> = ({
         )}
       </div>
     </div>
-  )
-}
- 
-export { ScrollTextFlow }
+  );
+};
+
+export { ScrollTextFlow };

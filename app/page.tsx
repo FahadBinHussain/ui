@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Box, Sparkles, Palette, Layers, MessageSquareQuote, Eye, Zap, MousePointer2, ImageIcon } from "lucide-react";
+import { Box, Sparkles, Palette, Layers, MessageSquareQuote, Eye, Zap, MousePointer2, ImageIcon, ScrollText } from "lucide-react";
 
 export default function Home() {
   const categories = [
@@ -58,6 +58,13 @@ export default function Home() {
       icon: ImageIcon,
       href: "/showcase/reveal-text",
       color: "from-emerald-500 to-green-500",
+    },
+    {
+      title: "Scroll Text Flow",
+      description: "Scroll-triggered animated text with floating badges",
+      icon: ScrollText,
+      href: "/showcase/scroll-text-flow",
+      color: "from-rose-500 to-pink-500",
     },
     {
       title: "3D Scenes",

@@ -1,5 +1,6 @@
-import React from "react"
-import { ScrollTextFlow } from "@/components/ui/scroll-text-flow"
+"use client";
+import React from "react";
+import { ScrollTextFlow } from "@/components/ui/scroll-text-flow";
 
 export function ScrollTextFlowDemo() {
   const slideItems = [
@@ -37,15 +38,16 @@ export function ScrollTextFlowDemo() {
       { name: "Visual Language", style: "bg-[#F05E23] ml-20" },
       { name: "Development", style: "bg-[#F49FC5] mx-20" },
     ],
-  ]
+  ];
+
   return (
     <div className="w-full">
-      <div className="w-full h-40 flex items-center justify-center  border-b border-black dark:border-white ">
-        Scroll To animate
+      <div className="w-full h-40 flex items-center justify-center border-b border-black dark:border-white">
+        Scroll To Animate
       </div>
       <ScrollTextFlow
-        heading="TFTL©27 — Success Designed Differently."
-        subheading="We Spread the Sexyness."
+        heading="Design System 2025 — Success Designed Differently."
+        subheading="We Spread the Innovation."
         slideGroups={slideItems}
         topGroupCount={2}
         wrapperClassName="bg-transparent text-black h-screen overflow-y-hidden"
@@ -56,5 +58,5 @@ export function ScrollTextFlowDemo() {
         useMarkers={false}
       />
     </div>
-  )
+  );
 }
