@@ -41,7 +41,7 @@ export function ScrollTextFlowDemo() {
   ];
 
   return (
-    <div className="w-full">
+    <div className="w-full overflow-x-hidden">
       <div className="w-full h-40 flex items-center justify-center border-b border-black dark:border-white">
         Scroll To Animate
       </div>
@@ -50,7 +50,7 @@ export function ScrollTextFlowDemo() {
         subheading="We Spread the Innovation."
         slideGroups={slideItems}
         topGroupCount={2}
-        wrapperClassName="bg-transparent text-black h-screen overflow-y-hidden"
+        wrapperClassName="bg-transparent text-black h-screen overflow-hidden"
         groupClassName="py-4 gap-10 flex-nowrap"
         textWrapperClassName="my-5 mb-8 w-full mx-auto"
         scrollTriggerStart="top top"
