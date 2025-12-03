@@ -135,12 +135,26 @@ export function MyComponent() {
         </div>
 
         {/* Files Location */}
-        <div className="bg-blue-50 dark:bg-blue-950 border border-blue-200 dark:border-blue-800 rounded-lg p-6">
+        <div className="bg-blue-50 dark:bg-blue-950 border border-blue-200 dark:border-blue-800 rounded-lg p-6 mb-6">
           <h3 className="text-lg font-semibold mb-2">📁 Files Location</h3>
           <ul className="space-y-2 text-sm">
             <li><code className="bg-blue-100 dark:bg-blue-900 px-2 py-1 rounded">components/ui/container-text-flip.tsx</code> - Base component</li>
             <li><code className="bg-blue-100 dark:bg-blue-900 px-2 py-1 rounded">components/marketing/ContainerTextFlipDemo.tsx</code> - Example usage</li>
           </ul>
+        </div>
+
+        {/* Source */}
+        <div className="bg-green-50 dark:bg-green-950 border border-green-200 dark:border-green-800 rounded-lg p-6">
+          <h3 className="text-lg font-semibold mb-2">🔗 Source</h3>
+          <p className="text-sm text-muted-foreground mb-2">Original component from:</p>
+          <a 
+            href="https://ui.aceternity.com/components/container-text-flip"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-sm font-medium text-green-700 dark:text-green-400 hover:underline"
+          >
+            Aceternity UI - Container Text Flip →
+          </a>
         </div>
       </div>
     </div>
