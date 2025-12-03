@@ -260,7 +260,7 @@ export default function ElectricBorderShowcase() {
             This component is adapted from Framer's Electric Border component
           </p>
           <a
-            href="https://framer.com/m/Electric-Border-PVPJ.js@wz1hEzGSJWxUWV0LZ69n"
+            href="https://www.framer.com/marketplace/components/electric-border-card/"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 text-green-400 hover:text-green-300 transition-colors"
