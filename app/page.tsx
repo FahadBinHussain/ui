@@ -11,10 +11,10 @@ export default function Home() {
       color: "from-blue-500 to-cyan-500",
     },
     {
-      title: "Marketing Components",
-      description: "Hero sections, Grids, Aceternity-style components",
+      title: "3D Card Effects",
+      description: "CSS 3D perspective cards with hover animations",
       icon: Sparkles,
-      href: "#",
+      href: "/showcase/cards",
       color: "from-purple-500 to-pink-500",
     },
     {
