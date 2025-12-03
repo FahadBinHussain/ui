@@ -18,18 +18,18 @@ export default function Home() {
       color: "from-purple-500 to-pink-500",
     },
     {
+      title: "Text Animations",
+      description: "Dynamic text effects with Framer Motion",
+      icon: Palette,
+      href: "/showcase/text-animations",
+      color: "from-green-500 to-teal-500",
+    },
+    {
       title: "3D Scenes",
       description: "React Three Fiber canvases and 3D experiences",
       icon: Box,
       href: "/showcase/3d-scenes",
       color: "from-orange-500 to-red-500",
-    },
-    {
-      title: "Animations",
-      description: "Framer Motion variants and animation utilities",
-      icon: Palette,
-      href: "#",
-      color: "from-green-500 to-teal-500",
     },
   ];
 
