@@ -34,17 +34,17 @@ export function WaveParticleSystem({
   mouseRadius = 150
 }: WaveParticleSystemProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const [particles, setParticles] = useState<Particle[]>([]);
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  const particlesRef = useRef<Particle[]>([]);
+  const mousePosRef = useRef({ x: -1000, y: -1000 });
   const animationRef = useRef<number | undefined>(undefined);
 
-  // Initialize particles
-  useEffect(() => {
+  // Initialize particles once canvas size is known
+  const initParticles = (width: number, height: number) => {
     const newParticles: Particle[] = [];
     for (let i = 0; i < particleCount; i++) {
       newParticles.push({
-        x: Math.random() * window.innerWidth,
-        y: Math.random() * window.innerHeight,
+        x: Math.random() * width,
+        y: Math.random() * height,
         vx: (Math.random() - 0.5) * 2,
         vy: (Math.random() - 0.5) * 2,
         size: Math.random() * 3 + 1,
@@ -53,8 +53,8 @@ export function WaveParticleSystem({
         maxLife: Math.random() * 100 + 50,
       });
     }
-    setParticles(newParticles);
-  }, [particleCount, colors]);
+    particlesRef.current = newParticles;
+  };
 
   // Animation loop
   useEffect(() => {
@@ -66,79 +66,89 @@ export function WaveParticleSystem({
 
     const animate = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
+      const particles = particlesRef.current;
+      const mousePos = mousePosRef.current;
 
-      // Update and draw particles
-      setParticles(prevParticles =>
-        prevParticles.map(particle => {
-          // Mouse interaction
-          const dx = mousePos.x - particle.x;
-          const dy = mousePos.y - particle.y;
-          const distance = Math.sqrt(dx * dx + dy * dy);
+      particles.forEach((particle, index) => {
+        // Mouse interaction
+        const dx = mousePos.x - particle.x;
+        const dy = mousePos.y - particle.y;
+        const distance = Math.sqrt(dx * dx + dy * dy);
 
-          if (distance < mouseRadius) {
-            const force = (mouseRadius - distance) / mouseRadius;
-            const angle = Math.atan2(dy, dx);
+        if (distance < mouseRadius) {
+          const force = (mouseRadius - distance) / mouseRadius;
+          const angle = Math.atan2(dy, dx);
 
-            // Create wave effect
-            const waveOffset = Math.sin(Date.now() * 0.01 + distance * 0.01) * waveIntensity;
-            particle.vx += Math.cos(angle) * force * 0.5 + waveOffset;
-            particle.vy += Math.sin(angle) * force * 0.5 + waveOffset;
+          // Create wave effect
+          const waveOffset = Math.sin(Date.now() * 0.01 + distance * 0.01) * waveIntensity;
+          particle.vx += Math.cos(angle) * force * 0.5 + waveOffset * 0.1;
+          particle.vy += Math.sin(angle) * force * 0.5 + waveOffset * 0.1;
+        }
+
+        // Update position
+        particle.x += particle.vx;
+        particle.y += particle.vy;
+
+        // Boundary check with snapping
+        if (particle.x < 0) {
+          particle.x = 0;
+          particle.vx *= -0.8;
+        } else if (particle.x > canvas.width) {
+          particle.x = canvas.width;
+          particle.vx *= -0.8;
+        }
+
+        if (particle.y < 0) {
+          particle.y = 0;
+          particle.vy *= -0.8;
+        } else if (particle.y > canvas.height) {
+          particle.y = canvas.height;
+          particle.vy *= -0.8;
+        }
+
+        // Friction
+        particle.vx *= 0.99;
+        particle.vy *= 0.99;
+
+        // Draw particle
+        const alpha = particle.life / particle.maxLife;
+        ctx.save();
+        ctx.globalAlpha = alpha;
+        ctx.fillStyle = particle.color;
+        ctx.beginPath();
+        ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
+        ctx.fill();
+
+        // Draw connections to nearby particles
+        for (let j = index + 1; j < particles.length; j++) {
+          const otherParticle = particles[j];
+          const dx_conn = particle.x - otherParticle.x;
+          const dy_conn = particle.y - otherParticle.y;
+          const distance_conn = Math.sqrt(dx_conn * dx_conn + dy_conn * dy_conn);
+
+          if (distance_conn < 100) {
+            ctx.globalAlpha = ((100 - distance_conn) / 100) * alpha * 0.3;
+            ctx.strokeStyle = particle.color;
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.moveTo(particle.x, particle.y);
+            ctx.lineTo(otherParticle.x, otherParticle.y);
+            ctx.stroke();
           }
+        }
+        ctx.restore();
 
-          // Update position
-          particle.x += particle.vx;
-          particle.y += particle.vy;
-
-          // Boundary check
-          if (particle.x < 0 || particle.x > canvas.width) particle.vx *= -0.8;
-          if (particle.y < 0 || particle.y > canvas.height) particle.vy *= -0.8;
-
-          // Friction
-          particle.vx *= 0.99;
-          particle.vy *= 0.99;
-
-          // Draw particle
-          const alpha = particle.life / particle.maxLife;
-          ctx.globalAlpha = alpha;
-          ctx.fillStyle = particle.color;
-          ctx.beginPath();
-          ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
-          ctx.fill();
-
-          // Draw connections to nearby particles
-          prevParticles.forEach(otherParticle => {
-            const dx = particle.x - otherParticle.x;
-            const dy = particle.y - otherParticle.y;
-            const distance = Math.sqrt(dx * dx + dy * dy);
-
-            if (distance < 100) {
-              ctx.globalAlpha = (100 - distance) / 100 * alpha * 0.3;
-              ctx.strokeStyle = particle.color;
-              ctx.lineWidth = 1;
-              ctx.beginPath();
-              ctx.moveTo(particle.x, particle.y);
-              ctx.lineTo(otherParticle.x, otherParticle.y);
-              ctx.stroke();
-            }
-          });
-
-          // Update life
-          particle.life--;
-          if (particle.life <= 0) {
-            // Respawn particle
-            return {
-              ...particle,
-              x: Math.random() * canvas.width,
-              y: Math.random() * canvas.height,
-              vx: (Math.random() - 0.5) * 2,
-              vy: (Math.random() - 0.5) * 2,
-              life: particle.maxLife,
-            };
-          }
-
-          return particle;
-        })
-      );
+        // Update life
+        particle.life--;
+        if (particle.life <= 0) {
+          // Respawn particle
+          particle.x = Math.random() * canvas.width;
+          particle.y = Math.random() * canvas.height;
+          particle.vx = (Math.random() - 0.5) * 2;
+          particle.vy = (Math.random() - 0.5) * 2;
+          particle.life = particle.maxLife;
+        }
+      });
 
       animationRef.current = requestAnimationFrame(animate);
     };
@@ -150,7 +160,7 @@ export function WaveParticleSystem({
         cancelAnimationFrame(animationRef.current);
       }
     };
-  }, [mousePos, mouseRadius, waveIntensity]);
+  }, [mouseRadius, waveIntensity, particleCount, colors]);
 
   // Handle mouse movement
   const handleMouseMove = (e: React.MouseEvent<HTMLCanvasElement>) => {
@@ -158,13 +168,17 @@ export function WaveParticleSystem({
     if (!canvas) return;
 
     const rect = canvas.getBoundingClientRect();
-    setMousePos({
+    mousePosRef.current = {
       x: e.clientX - rect.left,
       y: e.clientY - rect.top,
-    });
+    };
   };
 
-  // Handle canvas resize
+  const handleMouseLeave = () => {
+    mousePosRef.current = { x: -1000, y: -1000 };
+  };
+
+  // Handle canvas resize and particle initialization
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
@@ -172,19 +186,23 @@ export function WaveParticleSystem({
     const resizeCanvas = () => {
       canvas.width = canvas.offsetWidth;
       canvas.height = canvas.offsetHeight;
+      if (particlesRef.current.length === 0) {
+        initParticles(canvas.width, canvas.height);
+      }
     };
 
     resizeCanvas();
     window.addEventListener("resize", resizeCanvas);
 
     return () => window.removeEventListener("resize", resizeCanvas);
-  }, []);
+  }, [particleCount, colors]);
 
   return (
     <canvas
       ref={canvasRef}
-      className={`w-full h-full ${className}`}
+      className={`w-full h-full block ${className}`}
       onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
       style={{ background: "transparent" }}
     />
   );
