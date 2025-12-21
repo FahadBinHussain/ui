@@ -22,11 +22,15 @@ export const TextScramble = ({
     const scramble = useCallback(async (newText: string) => {
         setIsScrambling(true);
         const result = newText.split("");
-        const steps = Math.max(originalText.current.length, newText.length);
+        const maxLength = Math.max(originalText.current.length, newText.length);
 
-        for (let i = 0; i < steps + scrambleCount; i++) {
-            const output = result.map((char, index) => {
-                if (index < i - scrambleCount) return char;
+        for (let i = 0; i < maxLength + scrambleCount; i++) {
+            const output = Array.from({ length: maxLength }, (_, index) => {
+                // If we've passed the scramble phase for this character, show the final character
+                if (index < i - scrambleCount) {
+                    return result[index] || "";
+                }
+                // Otherwise scramble
                 return chars[Math.floor(Math.random() * chars.length)];
             });
             setDisplayText(output.join(""));
