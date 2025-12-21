@@ -22,6 +22,7 @@ export const SpotlightReveal: React.FC<SpotlightRevealProps> = ({
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [mousePosition, setMousePosition] = useState({ x: 50, y: 50 });
+  const [mousePixels, setMousePixels] = useState({ x: 0, y: 0 });
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!containerRef.current) return;
@@ -29,8 +30,9 @@ export const SpotlightReveal: React.FC<SpotlightRevealProps> = ({
     const rect = containerRef.current.getBoundingClientRect();
     const x = ((e.clientX - rect.left) / rect.width) * 100;
     const y = ((e.clientY - rect.top) / rect.height) * 100;
-
+    
     setMousePosition({ x, y });
+    setMousePixels({ x: e.clientX, y: e.clientY });
   };
 
   return (
@@ -77,8 +79,8 @@ export const SpotlightReveal: React.FC<SpotlightRevealProps> = ({
       <div
         className="fixed pointer-events-none z-50"
         style={{
-          left: `${mousePosition.x}%`,
-          top: `${mousePosition.y}%`,
+          left: mousePixels.x,
+          top: mousePixels.y,
           transform: "translate(-50%, -50%)",
         }}
       >
@@ -118,6 +120,7 @@ export const WireframeReveal: React.FC<WireframeRevealProps> = ({
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [mousePosition, setMousePosition] = useState({ x: 50, y: 50 });
+  const [mousePixels, setMousePixels] = useState({ x: 0, y: 0 });
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!containerRef.current) return;
@@ -127,6 +130,7 @@ export const WireframeReveal: React.FC<WireframeRevealProps> = ({
     const y = ((e.clientY - rect.top) / rect.height) * 100;
 
     setMousePosition({ x, y });
+    setMousePixels({ x: e.clientX, y: e.clientY });
   };
 
   return (
@@ -155,8 +159,8 @@ export const WireframeReveal: React.FC<WireframeRevealProps> = ({
       <div
         className="fixed pointer-events-none z-50"
         style={{
-          left: `${mousePosition.x}%`,
-          top: `${mousePosition.y}%`,
+          left: mousePixels.x,
+          top: mousePixels.y,
           transform: "translate(-50%, -50%)",
         }}
       >
@@ -192,6 +196,7 @@ export const TextReveal: React.FC<TextRevealProps> = ({
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [mousePosition, setMousePosition] = useState({ x: 50, y: 50 });
+  const [mousePixels, setMousePixels] = useState({ x: 0, y: 0 });
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!containerRef.current) return;
@@ -201,6 +206,7 @@ export const TextReveal: React.FC<TextRevealProps> = ({
     const y = ((e.clientY - rect.top) / rect.height) * 100;
 
     setMousePosition({ x, y });
+    setMousePixels({ x: e.clientX, y: e.clientY });
   };
 
   return (
@@ -240,8 +246,8 @@ export const TextReveal: React.FC<TextRevealProps> = ({
       <div
         className="fixed pointer-events-none z-50 text-3xl"
         style={{
-          left: `${mousePosition.x}%`,
-          top: `${mousePosition.y}%`,
+          left: mousePixels.x,
+          top: mousePixels.y,
           transform: "translate(-50%, -50%)",
         }}
       >
