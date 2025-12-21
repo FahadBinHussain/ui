@@ -206,6 +206,10 @@ export default function ComponentsListPage() {
           <p className="text-gray-400 text-lg">
             A complete list of all available UI components with their descriptions
           </p>
+          {/* Stats */}
+          <div className="mt-4 text-gray-400">
+            <p>Total Components: <span className="text-white font-semibold">{allComponents.length}</span></p>
+          </div>
         </div>
 
         {/* Markdown Codeblock */}
@@ -229,11 +233,6 @@ export default function ComponentsListPage() {
               </div>
             ))}
           </div>
-        </div>
-
-        {/* Stats */}
-        <div className="mt-8 text-center text-gray-400">
-          <p>Total Components: <span className="text-white font-semibold">{allComponents.length}</span></p>
         </div>
       </div>
     </div>
