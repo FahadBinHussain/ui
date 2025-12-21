@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { Box, Sparkles, Palette, Layers, MessageSquareQuote, Eye, Zap, MousePointer2, ImageIcon, ScrollText, Type, Users, Pencil, Palette as PaletteIcon, ArrowRightLeft, Diamond } from "lucide-react";
+import { Box, Sparkles, Palette, Layers, MessageSquareQuote, Eye, Zap, MousePointer2, ImageIcon, ScrollText, Type, Users, Pencil, Palette as PaletteIcon, ArrowRightLeft, Diamond, Menu, Search, Layout, Activity, Code, Cloud, Cpu, Database, Flag, Globe } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 
@@ -152,6 +152,76 @@ export default function Home() {
       icon: Zap,
       href: "/showcase/spotlight",
       color: "from-blue-400 to-purple-400",
+    },
+    {
+      title: "Interactive Grid",
+      description: "A grid of dots that react and pulsate as the mouse moves over them",
+      icon: Layout,
+      href: "/showcase/grid",
+      color: "from-gray-500 to-gray-800",
+    },
+    {
+      title: "Glitch Effect",
+      description: "Digital artifact glitch animation for text and images",
+      icon: Activity,
+      href: "/showcase/glitch",
+      color: "from-red-500 via-green-500 to-blue-500",
+    },
+    {
+      title: "Infinite Marquee",
+      description: "Seamlessly looping marquee for logos, text, or images",
+      icon: ArrowRightLeft,
+      href: "/showcase/marquee",
+      color: "from-yellow-400 to-orange-500",
+    },
+    {
+      title: "Glass Sidebar",
+      description: "Semi-transparent sidebar with sophisticated backdrop blur",
+      icon: Menu,
+      href: "/showcase/sidebar",
+      color: "from-blue-400 to-cyan-300",
+    },
+    {
+      title: "Expanding Search",
+      description: "Animated search bar that grows and reveals filters on focus",
+      icon: Search,
+      href: "/showcase/search",
+      color: "from-indigo-500 to-purple-500",
+    },
+    {
+      title: "Neumorphic Card",
+      description: "Soft UI design with realistic shadows and highlights",
+      icon: Layers,
+      href: "/showcase/neumorphic",
+      color: "from-gray-300 to-gray-100",
+    },
+    {
+      title: "Fluid Cursor",
+      description: "A cursor that leaves a trail of fluid-like particles",
+      icon: MousePointer2,
+      href: "/showcase/fluid-cursor",
+      color: "from-emerald-400 to-teal-500",
+    },
+    {
+      title: "Retro CRT",
+      description: "Old school monitor effect with scanlines and curvature",
+      icon: Cpu,
+      href: "/showcase/crt",
+      color: "from-green-600 to-green-900",
+    },
+    {
+      title: "Cloud Sync",
+      description: "Animated cloud synchronization state with floating icons",
+      icon: Cloud,
+      href: "/showcase/cloud",
+      color: "from-sky-400 to-blue-500",
+    },
+    {
+      title: "Global Stats",
+      description: "Interactive 3D globe showing real-time data points",
+      icon: Globe,
+      href: "/showcase/globe",
+      color: "from-blue-600 to-indigo-600",
     },
   ].sort((a, b) => a.title.localeCompare(b.title));
 
