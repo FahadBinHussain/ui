@@ -228,6 +228,14 @@ export default function Home() {
       category: "interactive"
     },
     {
+      title: "Magnetic Field Interactions",
+      description: "Elements that behave like magnets, attracting and repelling each other",
+      icon: Zap,
+      href: "/showcase/magnetic-field",
+      color: "from-red-500 to-blue-500",
+      category: "scientific"
+    },
+    {
       title: "Neural Network Visualizer",
       description: "Animated neural networks showing data flow and activations",
       icon: Cpu,

@@ -101,6 +101,10 @@ export default function ComponentsListPage() {
       description: "Tactile, physical 'pull' effect for buttons and objects",
     },
     {
+      title: "Magnetic Field Interactions",
+      description: "Elements that behave like magnets, attracting and repelling each other",
+    },
+    {
       title: "Neural Network Visualizer",
       description: "Animated neural networks showing data flow and activations",
     },
