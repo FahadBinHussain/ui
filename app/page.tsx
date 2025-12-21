@@ -168,6 +168,13 @@ export default function Home() {
       color: "from-indigo-400 to-blue-400",
     },
     {
+      title: "Liquid Morphing Shapes",
+      description: "Organic fluid shapes that morph between different forms",
+      icon: Sparkles,
+      href: "/showcase/liquid-morph",
+      color: "from-cyan-400 to-blue-400",
+    },
+    {
       title: "Holographic Card",
       description: "Futuristic iridescent cards with 3D tilt and light reflections",
       icon: Diamond,
