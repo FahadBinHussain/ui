@@ -122,6 +122,10 @@ export default function ComponentsListPage() {
       description: "Animated SVG path drawing with spring-based transitions",
     },
     {
+      title: "Spotlight Torch Reveal",
+      description: "Flashlight effect that reveals hidden content as you move the mouse",
+    },
+    {
       title: "Scroll Text Flow",
       description: "Scroll-triggered animated text with floating badges",
     },
