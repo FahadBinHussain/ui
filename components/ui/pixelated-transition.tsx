@@ -680,10 +680,10 @@ export const PixelatedCarousel: React.FC<PixelatedCarouselProps> = ({
   }, [autoPlay, currentIndex, interval, images.length]);
 
   return (
-    <div className={`relative ${className}`}>
-      <div ref={containerRef} className="relative w-full h-full" />
+    <div className={`relative w-full h-full ${className}`}>
+      <div ref={containerRef} className="absolute inset-0" />
       {images.length > 1 && (
-        <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-4 z-10">
+        <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-4 z-20">
           <button
             onClick={transitionToPrev}
             disabled={isTransitioning}
@@ -702,7 +702,7 @@ export const PixelatedCarousel: React.FC<PixelatedCarouselProps> = ({
       )}
       {/* Indicator dots */}
       {images.length > 1 && (
-        <div className="absolute top-4 left-1/2 transform -translate-x-1/2 flex gap-2">
+        <div className="absolute top-4 left-1/2 transform -translate-x-1/2 flex gap-2 z-20">
           {images.map((_, index) => (
             <div
               key={index}
