@@ -355,6 +355,14 @@ export default function AllComponentsPage() {
       color: "from-purple-600 via-pink-500 to-orange-500",
       category: "interactive"
     },
+    {
+      title: "Video Text Masking",
+      description: "Bold typography with playing video as the text fill for high-impact hero sections",
+      icon: Play,
+      href: "/showcase/video-text-masking",
+      color: "from-pink-600 via-rose-500 to-red-500",
+      category: "effects"
+    },
   ];
 
   const categories = [

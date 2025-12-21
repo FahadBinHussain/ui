@@ -185,6 +185,10 @@ export default function ComponentsListPage() {
       title: "Sticky Stacking Cards",
       description: "Cards enter from the bottom and stack on top of each other, staying fixed until section ends",
     },
+    {
+      title: "Video Text Masking",
+      description: "Big, bold typography where the ink of the text is actually a playing video for high-impact heroes",
+    },
   ];
 
   const markdownList = allComponents
