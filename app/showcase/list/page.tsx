@@ -189,6 +189,10 @@ export default function ComponentsListPage() {
       title: "Video Text Masking",
       description: "Big, bold typography where the ink of the text is actually a playing video for high-impact heroes",
     },
+    {
+      title: "Pixelated Transition",
+      description: "Retro-futuristic WebGL transitions that pixelate images with chromatic aberration for gaming/tech aesthetics",
+    },
   ];
 
   const markdownList = allComponents

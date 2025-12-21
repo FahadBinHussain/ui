@@ -363,6 +363,14 @@ export default function AllComponentsPage() {
       color: "from-pink-600 via-rose-500 to-red-500",
       category: "effects"
     },
+    {
+      title: "Pixelated Transition",
+      description: "Retro-futuristic WebGL image transitions with chromatic aberration effects",
+      icon: Boxes,
+      href: "/showcase/pixelated-transition",
+      color: "from-indigo-600 via-purple-500 to-pink-500",
+      category: "effects"
+    },
   ];
 
   const categories = [
