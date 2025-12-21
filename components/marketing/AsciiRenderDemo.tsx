@@ -6,11 +6,12 @@ import { useState } from "react";
 export default function AsciiRenderDemo() {
   const [webcamEnabled, setWebcamEnabled] = useState(false);
   
-  const imageUrl1 = "https://images.unsplash.com/photo-1506905925346-21bda4d32df4";
-  const imageUrl2 = "https://images.unsplash.com/photo-1518791841217-8f162f1e1131";
-  const imageUrl3 = "https://images.unsplash.com/photo-1511367461989-f85a21fda167";
-  const imageUrl4 = "https://images.unsplash.com/photo-1415871989174-e0f1b05d88d0";
-  const imageUrl5 = "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c";
+  // Using different image sources
+  const imageUrl1 = "https://picsum.photos/id/1015/800/600";
+  const imageUrl2 = "https://picsum.photos/id/1018/800/600";
+  const imageUrl3 = "https://picsum.photos/id/1025/800/600";
+  const imageUrl4 = "https://picsum.photos/id/237/800/600";
+  const imageUrl5 = "https://picsum.photos/id/1011/800/600";
 
   return (
     <div className="min-h-screen bg-black text-white p-8 space-y-20">
@@ -147,80 +148,108 @@ export default function AsciiRenderDemo() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div className="bg-gray-900 p-6 rounded-lg">
             <h3 className="text-lg font-bold text-green-300 mb-4">Standard</h3>
-            <div className="grid grid-cols-2 gap-2">
-              <img 
-                src={imageUrl4} 
-                alt="Original" 
-                className="w-full h-auto rounded"
-              />
-              <StaticAscii
-                imageUrl={imageUrl4}
-                charSet=" .:-=+*#%@"
-                blockSize={4}
-                width={300}
-                inverted={true}
-                color="#00ff00"
-              />
+            <div className="flex gap-4">
+              <div className="w-1/2">
+                <p className="text-xs text-gray-400 mb-2">Original</p>
+                <img 
+                  src={imageUrl4} 
+                  alt="Original" 
+                  className="w-full h-auto rounded border border-gray-700"
+                  crossOrigin="anonymous"
+                />
+              </div>
+              <div className="w-1/2">
+                <p className="text-xs text-gray-400 mb-2">ASCII</p>
+                <StaticAscii
+                  imageUrl={imageUrl4}
+                  charSet=" .:-=+*#%@"
+                  blockSize={4}
+                  width={300}
+                  inverted={true}
+                  color="#00ff00"
+                />
+              </div>
             </div>
             <p className="text-xs text-gray-500 mt-2">Charset: " .:-=+*#%@"</p>
           </div>
 
           <div className="bg-gray-900 p-6 rounded-lg">
             <h3 className="text-lg font-bold text-cyan-300 mb-4">Dense</h3>
-            <div className="grid grid-cols-2 gap-2">
-              <img 
-                src={imageUrl4} 
-                alt="Original" 
-                className="w-full h-auto rounded"
-              />
-              <StaticAscii
-                imageUrl={imageUrl4}
-                charSet=" ░▒▓█"
-                blockSize={4}
-                width={300}
-                inverted={true}
-                color="#00ffff"
-              />
+            <div className="flex gap-4">
+              <div className="w-1/2">
+                <p className="text-xs text-gray-400 mb-2">Original</p>
+                <img 
+                  src={imageUrl4} 
+                  alt="Original" 
+                  className="w-full h-auto rounded border border-gray-700"
+                  crossOrigin="anonymous"
+                />
+              </div>
+              <div className="w-1/2">
+                <p className="text-xs text-gray-400 mb-2">ASCII</p>
+                <StaticAscii
+                  imageUrl={imageUrl4}
+                  charSet=" ░▒▓█"
+                  blockSize={4}
+                  width={300}
+                  inverted={true}
+                  color="#00ffff"
+                />
+              </div>
             </div>
             <p className="text-xs text-gray-500 mt-2">Charset: " ░▒▓█"</p>
           </div>
 
           <div className="bg-gray-900 p-6 rounded-lg">
             <h3 className="text-lg font-bold text-purple-300 mb-4">Minimal</h3>
-            <div className="grid grid-cols-2 gap-2">
-              <img 
-                src={imageUrl4} 
-                alt="Original" 
-                className="w-full h-auto rounded"
-              />
-              <StaticAscii
-                imageUrl={imageUrl4}
-                charSet=" .*"
-                blockSize={4}
-                width={300}
-                inverted={true}
-                color="#a855f7"
-              />
+            <div className="flex gap-4">
+              <div className="w-1/2">
+                <p className="text-xs text-gray-400 mb-2">Original</p>
+                <img 
+                  src={imageUrl4} 
+                  alt="Original" 
+                  className="w-full h-auto rounded border border-gray-700"
+                  crossOrigin="anonymous"
+                />
+              </div>
+              <div className="w-1/2">
+                <p className="text-xs text-gray-400 mb-2">ASCII</p>
+                <StaticAscii
+                  imageUrl={imageUrl4}
+                  charSet=" .*"
+                  blockSize={4}
+                  width={300}
+                  inverted={true}
+                  color="#a855f7"
+                />
+              </div>
             </div>
             <p className="text-xs text-gray-500 mt-2">Charset: " .*"</p>
           </div>
 
           <div className="bg-gray-900 p-6 rounded-lg">
             <h3 className="text-lg font-bold text-yellow-300 mb-4">Extended</h3>
-            <div className="grid grid-cols-2 gap-2">
-              <img 
-                src={imageUrl4} 
-                alt="Original" 
-                className="w-full h-auto rounded"
-              />
-              <StaticAscii
-                imageUrl={imageUrl4}
-                charSet=" .'`^,:;Il!i><~+_-?][}{1)(|/tfjrxnuvczXYUJCLQ0OZmwqpdbkhao*#MW&8%B@$"
-                blockSize={3}
-                width={300}
-                inverted={true}
-                color="#fbbf24"
-              />
+            <div className="flex gap-4">
+              <div className="w-1/2">
+                <p className="text-xs text-gray-400 mb-2">Original</p>
+                <img 
+                  src={imageUrl4} 
+                  alt="Original" 
+                  className="w-full h-auto rounded border border-gray-700"
+                  crossOrigin="anonymous"
+                />
+              </div>
+              <div className="w-1/2">
+                <p className="text-xs text-gray-400 mb-2">ASCII</p>
+                <StaticAscii
+                  imageUrl={imageUrl4}
+                  charSet=" .'`^,:;Il!i><~+_-?][}{1)(|/tfjrxnuvczXYUJCLQ0OZmwqpdbkhao*#MW&8%B@$"
+                  blockSize={3}
+                  width={300}
+                  inverted={true}
+                  color="#fbbf24"
+                />
+              </div>
             </div>
             <p className="text-xs text-gray-500 mt-2">Extended 70-char set</p>
           </div>
