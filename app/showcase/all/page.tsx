@@ -300,12 +300,12 @@ export default function AllComponentsPage() {
       category: "animation"
     },
     {
-      title: "Theme Dropdown",
-      description: "Elegant theme selector with smooth transitions and radio inputs",
-      icon: PaletteIcon,
-      href: "/showcase/theme-dropdown",
-      color: "from-purple-500 to-pink-500",
-      category: "ui"
+      title: "Time Warp Transitions",
+      description: "Page transitions with time dilation effects, speed lines, and color shifts",
+      icon: Zap,
+      href: "/showcase/time-warp",
+      color: "from-cyan-400 via-purple-400 to-pink-400",
+      category: "animation"
     },
     {
       title: "TypeWriter Effect",

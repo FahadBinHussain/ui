@@ -153,8 +153,8 @@ export default function ComponentsListPage() {
       description: "High-energy text transition with scrambling characters",
     },
     {
-      title: "Theme Dropdown",
-      description: "Elegant theme selector with smooth transitions and radio inputs",
+      title: "Time Warp Transitions",
+      description: "Page transitions with time dilation effects, speed lines, and color shifts",
     },
     {
       title: "TypeWriter Effect",
