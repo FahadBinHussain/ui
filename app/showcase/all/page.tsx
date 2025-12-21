@@ -364,6 +364,12 @@ export default function AllComponentsPage() {
               <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
                 All Components
               </h1>
+              <Link
+                href="/showcase/list"
+                className="text-sm text-gray-400 hover:text-blue-400 transition-colors"
+              >
+                View as List
+              </Link>
             </div>
 
             <div className="flex items-center gap-4">
