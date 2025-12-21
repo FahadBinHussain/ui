@@ -196,6 +196,14 @@ export default function AllComponentsPage() {
       category: "interactive"
     },
     {
+      title: "Prismatic Dispersion Glass",
+      description: "Glassmorphism with chromatic aberration and RGB channel separation effects",
+      icon: Diamond,
+      href: "/showcase/prismatic-glass",
+      color: "from-pink-400 via-purple-400 to-cyan-400",
+      category: "effects"
+    },
+    {
       title: "Quantum Loading States",
       description: "Electron orbital animations with quantum physics-inspired loading spinners",
       icon: Atom,

@@ -102,6 +102,10 @@ export default function ComponentsListPage() {
       description: "UI elements that fall, stack, and bounce with realistic 2D physics",
     },
     {
+      title: "Prismatic Dispersion Glass",
+      description: "Glassmorphism with chromatic aberration and RGB channel separation effects",
+    },
+    {
       title: "Quantum Loading States",
       description: "Electron orbital animations with quantum physics-inspired loading spinners",
     },
