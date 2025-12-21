@@ -49,6 +49,13 @@ export default function Home() {
       color: "from-yellow-500 to-orange-500",
     },
     {
+      title: "Cloud Background",
+      description: "Floating animated clouds with backdrop blur effects",
+      icon: Cloud,
+      href: "/showcase/cloud",
+      color: "from-sky-400 to-blue-500",
+    },
+    {
       title: "Custom Cursor",
       description: "Interactive custom cursor with name tags and colors",
       icon: MousePointer2,

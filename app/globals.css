@@ -93,11 +93,27 @@
     }
   }
 
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px) translateX(0px) scale(1);
+    }
+    25% {
+      transform: translateY(-10px) translateX(5px) scale(1.02);
+    }
+    50% {
+      transform: translateY(-5px) translateX(-5px) scale(0.98);
+    }
+    75% {
+      transform: translateY(-15px) translateX(3px) scale(1.01);
+    }
+  }
+
   --animate-blink-border: blink-border 1s infinite;
   --animate-aurora: aurora 60s linear infinite;
   --animate-aurora-1: aurora-1 20s ease-in-out infinite;
   --animate-aurora-2: aurora-2 25s ease-in-out infinite reverse;
   --animate-aurora-3: aurora-3 30s ease-in-out infinite;
+  --animate-float: float 20s ease-in-out infinite;
 
   --blue-300: #93c5fd;
   --blue-400: #60a5fa;
