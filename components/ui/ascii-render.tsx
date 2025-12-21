@@ -215,6 +215,7 @@ export const AsciiTextRenderer: React.FC<AsciiTextRendererProps> = ({
 }) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
+  const imageRef = useRef<HTMLImageElement | null>(null);
   const [asciiText, setAsciiText] = useState<string>("");
   const [isReady, setIsReady] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -241,7 +242,16 @@ export const AsciiTextRenderer: React.FC<AsciiTextRendererProps> = ({
         videoRef.current.play();
         setIsReady(true);
       } else if (source === "image" && imageUrl) {
-        setIsReady(true);
+        const img = new Image();
+        img.crossOrigin = "anonymous";
+        img.onload = () => {
+          imageRef.current = img;
+          setIsReady(true);
+        };
+        img.onerror = () => {
+          setError("Failed to load image");
+        };
+        img.src = imageUrl;
       }
     };
 
@@ -272,40 +282,47 @@ export const AsciiTextRenderer: React.FC<AsciiTextRendererProps> = ({
 
       if (source === "webcam" || source === "video") {
         sourceElement = videoRef.current;
-      } else if (source === "image" && imageUrl) {
-        const img = new Image();
-        img.src = imageUrl;
-        img.crossOrigin = "anonymous";
-        sourceElement = img;
+      } else if (source === "image") {
+        sourceElement = imageRef.current;
       }
 
-      if (sourceElement && (sourceElement as HTMLVideoElement).readyState >= 2) {
-        ctx.drawImage(sourceElement, 0, 0, width, height);
-        const imageData = ctx.getImageData(0, 0, width, height);
-        const pixels = imageData.data;
-
-        let ascii = "";
-        for (let y = 0; y < height; y += blockSize) {
-          for (let x = 0; x < width; x += blockSize) {
-            const pixelIndex = (y * width + x) * 4;
-            const r = pixels[pixelIndex];
-            const g = pixels[pixelIndex + 1];
-            const b = pixels[pixelIndex + 2];
-
-            const brightness = (r + g + b) / 3;
-            const normalizedBrightness = inverted
-              ? 1 - brightness / 255
-              : brightness / 255;
-
-            const charIndex = Math.floor(
-              normalizedBrightness * (charSet.length - 1)
-            );
-            ascii += charSet[charIndex];
-          }
-          ascii += "\n";
+      if (sourceElement) {
+        // Check if video is ready
+        if (sourceElement instanceof HTMLVideoElement && sourceElement.readyState < 2) {
+          animationFrameRef.current = requestAnimationFrame(render);
+          return;
         }
 
-        setAsciiText(ascii);
+        try {
+          ctx.drawImage(sourceElement, 0, 0, width, height);
+          const imageData = ctx.getImageData(0, 0, width, height);
+          const pixels = imageData.data;
+
+          let ascii = "";
+          for (let y = 0; y < height; y += blockSize) {
+            for (let x = 0; x < width; x += blockSize) {
+              const pixelIndex = (y * width + x) * 4;
+              const r = pixels[pixelIndex];
+              const g = pixels[pixelIndex + 1];
+              const b = pixels[pixelIndex + 2];
+
+              const brightness = (r + g + b) / 3;
+              const normalizedBrightness = inverted
+                ? 1 - brightness / 255
+                : brightness / 255;
+
+              const charIndex = Math.floor(
+                normalizedBrightness * (charSet.length - 1)
+              );
+              ascii += charSet[charIndex];
+            }
+            ascii += "\n";
+          }
+
+          setAsciiText(ascii);
+        } catch (err) {
+          console.error("Rendering error:", err);
+        }
       }
 
       animationFrameRef.current = requestAnimationFrame(render);
