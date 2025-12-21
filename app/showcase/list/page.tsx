@@ -69,10 +69,6 @@ export default function ComponentsListPage() {
       description: "Magnifying glass lens effect with smooth zoom",
     },
     {
-      title: "Liquid Morphing Shapes",
-      description: "Organic fluid shapes that morph between different forms",
-    },
-    {
       title: "Magnetic Elements",
       description: "Tactile, physical 'pull' effect for buttons and objects",
     },

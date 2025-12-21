@@ -132,14 +132,6 @@ export default function AllComponentsPage() {
       category: "interactive"
     },
     {
-      title: "Liquid Morphing Shapes",
-      description: "Organic fluid shapes that morph between different forms",
-      icon: Sparkles,
-      href: "/showcase/liquid-morph",
-      color: "from-cyan-400 to-blue-400",
-      category: "animation"
-    },
-    {
       title: "Magnetic Elements",
       description: "Tactile, physical 'pull' effect for buttons and objects",
       icon: MousePointer2,
