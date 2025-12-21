@@ -30,6 +30,7 @@ export const AsciiRenderer: React.FC<AsciiRendererProps> = ({
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const hiddenCanvasRef = useRef<HTMLCanvasElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
+  const imageRef = useRef<HTMLImageElement | null>(null);
   const [isReady, setIsReady] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const animationFrameRef = useRef<number | undefined>(undefined);
@@ -55,7 +56,16 @@ export const AsciiRenderer: React.FC<AsciiRendererProps> = ({
         videoRef.current.play();
         setIsReady(true);
       } else if (source === "image" && imageUrl) {
-        setIsReady(true);
+        const img = new Image();
+        img.crossOrigin = "anonymous";
+        img.onload = () => {
+          imageRef.current = img;
+          setIsReady(true);
+        };
+        img.onerror = () => {
+          setError("Failed to load image");
+        };
+        img.src = imageUrl;
       }
     };
 
@@ -88,48 +98,56 @@ export const AsciiRenderer: React.FC<AsciiRendererProps> = ({
       ctx.fillStyle = "black";
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-      // Draw source to hidden canvas
+      // Get source element
       let sourceElement: HTMLImageElement | HTMLVideoElement | null = null;
 
       if (source === "webcam" || source === "video") {
         sourceElement = videoRef.current;
-      } else if (source === "image" && imageUrl) {
-        const img = new Image();
-        img.src = imageUrl;
-        sourceElement = img;
+      } else if (source === "image") {
+        sourceElement = imageRef.current;
       }
 
-      if (sourceElement && (sourceElement as HTMLVideoElement).readyState >= 2) {
-        hiddenCtx.drawImage(sourceElement, 0, 0, width, height);
-        const imageData = hiddenCtx.getImageData(0, 0, width, height);
-        const pixels = imageData.data;
+      if (sourceElement) {
+        // Check if video is ready
+        if (sourceElement instanceof HTMLVideoElement && sourceElement.readyState < 2) {
+          animationFrameRef.current = requestAnimationFrame(render);
+          return;
+        }
 
-        // ASCII rendering
-        ctx.fillStyle = "lime";
-        ctx.font = `${fontSize}px monospace`;
+        try {
+          hiddenCtx.drawImage(sourceElement, 0, 0, width, height);
+          const imageData = hiddenCtx.getImageData(0, 0, width, height);
+          const pixels = imageData.data;
 
-        for (let y = 0; y < height; y += blockSize) {
-          for (let x = 0; x < width; x += blockSize) {
-            const pixelIndex = (y * width + x) * 4;
-            const r = pixels[pixelIndex];
-            const g = pixels[pixelIndex + 1];
-            const b = pixels[pixelIndex + 2];
+          // ASCII rendering
+          ctx.fillStyle = "lime";
+          ctx.font = `${fontSize}px monospace`;
 
-            // Calculate brightness
-            const brightness = (r + g + b) / 3;
-            const normalizedBrightness = inverted
-              ? 1 - brightness / 255
-              : brightness / 255;
+          for (let y = 0; y < height; y += blockSize) {
+            for (let x = 0; x < width; x += blockSize) {
+              const pixelIndex = (y * width + x) * 4;
+              const r = pixels[pixelIndex];
+              const g = pixels[pixelIndex + 1];
+              const b = pixels[pixelIndex + 2];
 
-            // Map to character
-            const charIndex = Math.floor(
-              normalizedBrightness * (charSet.length - 1)
-            );
-            const char = charSet[charIndex];
+              // Calculate brightness
+              const brightness = (r + g + b) / 3;
+              const normalizedBrightness = inverted
+                ? 1 - brightness / 255
+                : brightness / 255;
 
-            // Draw character
-            ctx.fillText(char, x, y);
+              // Map to character
+              const charIndex = Math.floor(
+                normalizedBrightness * (charSet.length - 1)
+              );
+              const char = charSet[charIndex];
+
+              // Draw character
+              ctx.fillText(char, x, y + fontSize);
+            }
           }
+        } catch (err) {
+          console.error("Rendering error:", err);
         }
       }
 
@@ -154,7 +172,7 @@ export const AsciiRenderer: React.FC<AsciiRendererProps> = ({
         ref={canvasRef}
         width={width}
         height={height}
-        className="border border-green-500"
+        className="border border-green-500 bg-black"
       />
       <canvas
         ref={hiddenCanvasRef}
