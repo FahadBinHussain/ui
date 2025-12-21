@@ -23,6 +23,7 @@ export const SpotlightReveal: React.FC<SpotlightRevealProps> = ({
   const containerRef = useRef<HTMLDivElement>(null);
   const [mousePosition, setMousePosition] = useState({ x: 50, y: 50 });
   const [mousePixels, setMousePixels] = useState({ x: 0, y: 0 });
+  const [isHovering, setIsHovering] = useState(false);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!containerRef.current) return;
@@ -33,6 +34,11 @@ export const SpotlightReveal: React.FC<SpotlightRevealProps> = ({
     
     setMousePosition({ x, y });
     setMousePixels({ x: e.clientX, y: e.clientY });
+    setIsHovering(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovering(false);
   };
 
   return (
@@ -40,6 +46,7 @@ export const SpotlightReveal: React.FC<SpotlightRevealProps> = ({
       ref={containerRef}
       className={`relative overflow-hidden ${className}`}
       onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
       style={{ cursor: "none" }}
     >
       {/* Full Color Bottom Layer */}
@@ -76,28 +83,30 @@ export const SpotlightReveal: React.FC<SpotlightRevealProps> = ({
       )}
 
       {/* Custom Cursor - Flashlight */}
-      <div
-        className="fixed pointer-events-none z-50"
-        style={{
-          left: mousePixels.x,
-          top: mousePixels.y,
-          transform: "translate(-50%, -50%)",
-        }}
-      >
-        <div className="relative">
-          <div
-            className="absolute rounded-full border-4 border-yellow-400/50"
-            style={{
-              width: spotlightSize * 2,
-              height: spotlightSize * 2,
-              transform: "translate(-50%, -50%)",
-              left: "50%",
-              top: "50%",
-            }}
-          />
-          <div className="text-4xl">🔦</div>
+      {isHovering && (
+        <div
+          className="fixed pointer-events-none z-50"
+          style={{
+            left: mousePixels.x,
+            top: mousePixels.y,
+            transform: "translate(-50%, -50%)",
+          }}
+        >
+          <div className="relative">
+            <div
+              className="absolute rounded-full border-4 border-yellow-400/50"
+              style={{
+                width: spotlightSize * 2,
+                height: spotlightSize * 2,
+                transform: "translate(-50%, -50%)",
+                left: "50%",
+                top: "50%",
+              }}
+            />
+            <div className="text-4xl">🔦</div>
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 };
@@ -121,6 +130,7 @@ export const WireframeReveal: React.FC<WireframeRevealProps> = ({
   const containerRef = useRef<HTMLDivElement>(null);
   const [mousePosition, setMousePosition] = useState({ x: 50, y: 50 });
   const [mousePixels, setMousePixels] = useState({ x: 0, y: 0 });
+  const [isHovering, setIsHovering] = useState(false);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!containerRef.current) return;
@@ -131,6 +141,11 @@ export const WireframeReveal: React.FC<WireframeRevealProps> = ({
 
     setMousePosition({ x, y });
     setMousePixels({ x: e.clientX, y: e.clientY });
+    setIsHovering(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovering(false);
   };
 
   return (
@@ -138,6 +153,7 @@ export const WireframeReveal: React.FC<WireframeRevealProps> = ({
       ref={containerRef}
       className={`relative overflow-hidden bg-black ${className}`}
       onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
       style={{ cursor: "none" }}
     >
       {/* Full Color Bottom Layer */}
@@ -156,24 +172,26 @@ export const WireframeReveal: React.FC<WireframeRevealProps> = ({
       />
 
       {/* Flashlight Cursor */}
-      <div
-        className="fixed pointer-events-none z-50"
-        style={{
-          left: mousePixels.x,
-          top: mousePixels.y,
-          transform: "translate(-50%, -50%)",
-        }}
-      >
+      {isHovering && (
         <div
-          className="rounded-full border-2"
+          className="fixed pointer-events-none z-50"
           style={{
-            width: spotlightSize * 2,
-            height: spotlightSize * 2,
-            borderColor: wireframeColor,
-            boxShadow: `0 0 20px ${wireframeColor}`,
+            left: mousePixels.x,
+            top: mousePixels.y,
+            transform: "translate(-50%, -50%)",
           }}
-        />
-      </div>
+        >
+          <div
+            className="rounded-full border-2"
+            style={{
+              width: spotlightSize * 2,
+              height: spotlightSize * 2,
+              borderColor: wireframeColor,
+              boxShadow: `0 0 20px ${wireframeColor}`,
+            }}
+          />
+        </div>
+      )}
     </div>
   );
 };
@@ -197,6 +215,7 @@ export const TextReveal: React.FC<TextRevealProps> = ({
   const containerRef = useRef<HTMLDivElement>(null);
   const [mousePosition, setMousePosition] = useState({ x: 50, y: 50 });
   const [mousePixels, setMousePixels] = useState({ x: 0, y: 0 });
+  const [isHovering, setIsHovering] = useState(false);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!containerRef.current) return;
@@ -207,6 +226,11 @@ export const TextReveal: React.FC<TextRevealProps> = ({
 
     setMousePosition({ x, y });
     setMousePixels({ x: e.clientX, y: e.clientY });
+    setIsHovering(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovering(false);
   };
 
   return (
@@ -214,6 +238,7 @@ export const TextReveal: React.FC<TextRevealProps> = ({
       ref={containerRef}
       className={`relative overflow-hidden ${className}`}
       onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
       style={{ cursor: "none" }}
     >
       {/* Hidden/Dark Text */}
@@ -243,16 +268,18 @@ export const TextReveal: React.FC<TextRevealProps> = ({
       </div>
 
       {/* Torch Cursor */}
-      <div
-        className="fixed pointer-events-none z-50 text-3xl"
-        style={{
-          left: mousePixels.x,
-          top: mousePixels.y,
-          transform: "translate(-50%, -50%)",
-        }}
-      >
-        🔦
-      </div>
+      {isHovering && (
+        <div
+          className="fixed pointer-events-none z-50 text-3xl"
+          style={{
+            left: mousePixels.x,
+            top: mousePixels.y,
+            transform: "translate(-50%, -50%)",
+          }}
+        >
+          🔦
+        </div>
+      )}
     </div>
   );
 };
