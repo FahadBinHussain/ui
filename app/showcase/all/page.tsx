@@ -244,6 +244,14 @@ export default function AllComponentsPage() {
       category: "scientific"
     },
     {
+      title: "Bio-Organic Growth Loaders",
+      description: "SVG-based organic shapes growing like vines using differential growth algorithms",
+      icon: Activity,
+      href: "/showcase/bio-organic-growth-loader",
+      color: "from-emerald-400 to-cyan-400",
+      category: "scientific"
+    },
+    {
       title: "Retro CRT",
       description: "Old school monitor effect with scanlines and curvature",
       icon: Cpu,
