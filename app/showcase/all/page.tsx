@@ -340,11 +340,19 @@ export default function AllComponentsPage() {
       category: "interactive"
     },
     {
-      title: "Scroll-Driven Effects",
-      description: "Apple-style image sequence scrolling and sticky stacking cards for premium storytelling",
+      title: "Image Sequence Scroll",
+      description: "Apple-style 3D product rotation controlled through scroll with canvas rendering",
       icon: ScrollText,
       href: "/showcase/scroll-effects",
       color: "from-cyan-600 via-blue-500 to-purple-500",
+      category: "interactive"
+    },
+    {
+      title: "Sticky Stacking Cards",
+      description: "Cards enter from bottom and stack on top, staying fixed until section ends",
+      icon: Layers,
+      href: "/showcase/sticky-stacking-cards",
+      color: "from-purple-600 via-pink-500 to-orange-500",
       category: "interactive"
     },
   ];

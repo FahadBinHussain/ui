@@ -178,8 +178,12 @@ export default function ComponentsListPage() {
       description: "Realistic fabric physics using Verlet integration for draggable silk flags and curtains",
     },
     {
-      title: "Scroll-Driven Effects",
-      description: "Apple-style image sequence scrolling and sticky stacking cards for premium storytelling",
+      title: "Image Sequence Scroll",
+      description: "Apple-style 3D product rotation controlled strictly through scroll progress with canvas rendering",
+    },
+    {
+      title: "Sticky Stacking Cards",
+      description: "Cards enter from the bottom and stack on top of each other, staying fixed until section ends",
     },
   ];
 
