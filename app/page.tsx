@@ -70,6 +70,13 @@ export default function Home() {
       color: "from-cyan-500 to-blue-500",
     },
     {
+      title: "Smart Sidebar",
+      description: "Collapsible sidebar with smooth animations and glass effects",
+      icon: Layout,
+      href: "/showcase/sidebar",
+      color: "from-slate-500 to-gray-600",
+    },
+    {
       title: "Custom Cursor",
       description: "Interactive custom cursor with name tags and colors",
       icon: MousePointer2,
