@@ -100,14 +100,6 @@ export default function AllComponentsPage() {
       category: "3d"
     },
     {
-      title: "Holographic Card",
-      description: "Futuristic iridescent cards with 3D tilt and light reflections",
-      icon: Diamond,
-      href: "/showcase/holo",
-      color: "from-cyan-400 via-white to-purple-400",
-      category: "3d"
-    },
-    {
       title: "Holographic Text",
       description: "3D text that appears to float in space with holographic color shifting",
       icon: Sparkles,

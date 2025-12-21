@@ -57,10 +57,6 @@ export default function ComponentsListPage() {
       description: "Interactive 3D globe showing real-time data points",
     },
     {
-      title: "Holographic Card",
-      description: "Futuristic iridescent cards with 3D tilt and light reflections",
-    },
-    {
       title: "Holographic Text",
       description: "3D text that appears to float in space with holographic color shifting",
     },

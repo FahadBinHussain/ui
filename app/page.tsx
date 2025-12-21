@@ -132,14 +132,6 @@ export default function Home() {
       category: "3d"
     },
     {
-      title: "Holographic Card",
-      description: "Futuristic iridescent cards with 3D tilt and light reflections",
-      icon: Diamond,
-      href: "/showcase/holo",
-      color: "from-cyan-400 via-white to-purple-400",
-      category: "3d"
-    },
-    {
       title: "Crystal Fractal Backgrounds",
       description: "Geometric crystal formations that grow and refract light dynamically",
       icon: Sparkles,
