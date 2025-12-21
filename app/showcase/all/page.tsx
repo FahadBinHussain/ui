@@ -346,12 +346,14 @@ export default function AllComponentsPage() {
   ];
 
   const filteredComponents = useMemo(() => {
-    return allComponents.filter(component => {
-      const matchesSearch = component.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                           component.description.toLowerCase().includes(searchTerm.toLowerCase());
-      const matchesCategory = selectedCategory === 'all' || component.category === selectedCategory;
-      return matchesSearch && matchesCategory;
-    });
+    return allComponents
+      .filter(component => {
+        const matchesSearch = component.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                             component.description.toLowerCase().includes(searchTerm.toLowerCase());
+        const matchesCategory = selectedCategory === 'all' || component.category === selectedCategory;
+        return matchesSearch && matchesCategory;
+      })
+      .sort((a, b) => a.title.localeCompare(b.title));
   }, [allComponents, searchTerm, selectedCategory]);
 
   return (
