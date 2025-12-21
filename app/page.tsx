@@ -124,14 +124,6 @@ export default function Home() {
       category: "interactive"
     },
     {
-      title: "Glitch Effect",
-      description: "Digital artifact glitch animation for text and images",
-      icon: Activity,
-      href: "/showcase/glitch",
-      color: "from-red-500 via-green-500 to-blue-500",
-      category: "effects"
-    },
-    {
       title: "Global Stats",
       description: "Interactive 3D globe showing real-time data points",
       icon: Globe,

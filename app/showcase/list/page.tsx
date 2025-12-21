@@ -53,10 +53,6 @@ export default function ComponentsListPage() {
       description: "Smooth spring-based cursor with trailing effects",
     },
     {
-      title: "Glitch Effect",
-      description: "Digital artifact glitch animation for text and images",
-    },
-    {
       title: "Global Stats",
       description: "Interactive 3D globe showing real-time data points",
     },
