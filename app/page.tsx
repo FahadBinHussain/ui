@@ -139,6 +139,13 @@ export default function Home() {
       href: "/showcase/text-scramble",
       color: "from-indigo-400 to-blue-400",
     },
+    {
+      title: "Spotlight Card",
+      description: "Interactive cards with a smooth, mouse-following radial glow",
+      icon: Zap,
+      href: "/showcase/spotlight",
+      color: "from-blue-400 to-purple-400",
+    },
   ].sort((a, b) => a.title.localeCompare(b.title));
 
   return (
