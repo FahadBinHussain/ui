@@ -156,6 +156,14 @@ export default function AllComponentsPage() {
       category: "3d"
     },
     {
+      title: "Holographic Depth-Map Parallax",
+      description: "Realistic depth-based parallax effect using static images and depth maps",
+      icon: Eye,
+      href: "/showcase/holographic-depth-parallax",
+      color: "from-cyan-500 via-blue-500 to-purple-500",
+      category: "3d"
+    },
+    {
       title: "Infinite Marquee",
       description: "Seamlessly looping marquee for logos, text, or images",
       icon: ArrowRightLeft,
