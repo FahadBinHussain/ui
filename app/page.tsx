@@ -241,7 +241,7 @@ export default function Home() {
                 <h1 className="mb-4 text-5xl font-bold tracking-tight sm:text-6xl lg:text-7xl">
                   Design System
                   <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
-                    {" "}2025
+                    {" "}2026
                   </span>
                 </h1>
                 <p className="mx-auto max-w-2xl text-lg text-gray-300 sm:text-xl mb-8">

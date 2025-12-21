@@ -1,6 +1,6 @@
-# Design System 2025 🚀
+# Design System 2026 🚀
 
-A modern, **copy-paste compatible** design system and component library built with the God Tier Stack for 2025.
+A modern, **copy-paste compatible** design system and component library built with the God Tier Stack for 2026.
 
 ## 🎯 Purpose
 
@@ -183,4 +183,4 @@ Or check out the [Next.js deployment documentation](https://nextjs.org/docs/app/
 
 ---
 
-**Built with ❤️ using the God Tier Stack 2025**
+**Built with ❤️ using the God Tier Stack 2026**

@@ -70,7 +70,7 @@ const slideGroups = [
 ];
 
 <ScrollTextFlow
-  heading="Design System 2025 — Success Designed Differently."
+  heading="Design System 2026 — Success Designed Differently."
   subheading="We Spread the Innovation."
   slideGroups={slideGroups}
   topGroupCount={2}
