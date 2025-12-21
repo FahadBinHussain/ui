@@ -291,6 +291,14 @@ export default function AllComponentsPage() {
       color: "from-blue-500 to-cyan-500",
       category: "ui"
     },
+    {
+      title: "Variable Font Interaction",
+      description: "Typography that changes weight, width dynamically based on mouse proximity or scroll speed",
+      icon: Type,
+      href: "/showcase/variable-font",
+      color: "from-purple-600 via-pink-500 to-orange-500",
+      category: "interactive"
+    },
   ];
 
   const categories = [

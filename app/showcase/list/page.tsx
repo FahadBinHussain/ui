@@ -149,6 +149,14 @@ export default function ComponentsListPage() {
       title: "UI Components",
       description: "Basic building blocks - Buttons, Inputs, Cards, etc.",
     },
+    {
+      title: "Variable Font Interaction",
+      description: "Typography that changes weight, width dynamically based on mouse proximity or scroll speed",
+    },
+    {
+      title: "Voice Waveform Visualizers",
+      description: "Real-time audio visualization with Web Audio API for voice and music interfaces",
+    },
   ];
 
   const markdownList = allComponents
