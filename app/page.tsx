@@ -63,6 +63,13 @@ export default function Home() {
       color: "from-slate-500 to-gray-600",
     },
     {
+      title: "Fluid Cursor",
+      description: "Smooth spring-based cursor with trailing effects",
+      icon: MousePointer2,
+      href: "/showcase/fluid-cursor",
+      color: "from-cyan-500 to-blue-500",
+    },
+    {
       title: "Custom Cursor",
       description: "Interactive custom cursor with name tags and colors",
       icon: MousePointer2,
