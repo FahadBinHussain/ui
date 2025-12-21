@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { Box, Sparkles, Palette, Layers, MessageSquareQuote, Eye, Zap, MousePointer2, ImageIcon, ScrollText, Type, Users, Pencil, Palette as PaletteIcon, ArrowRightLeft, Diamond, Menu, Search, Layout, Activity, Code, Cloud, Cpu, Database, Flag, Globe } from "lucide-react";
+import { Box, Sparkles, Palette, Layers, MessageSquareQuote, Eye, Zap, MousePointer2, ImageIcon, ScrollText, Type, Users, Pencil, Palette as PaletteIcon, ArrowRightLeft, Diamond, Menu, Search, Layout, Activity, Code, Cloud, Cpu, Database, Flag, Globe, Atom } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 
@@ -187,6 +187,13 @@ export default function Home() {
       icon: Cpu,
       href: "/showcase/neural-network",
       color: "from-purple-400 to-pink-400",
+    },
+    {
+      title: "Quantum Loading States",
+      description: "Electron orbital animations with quantum physics-inspired loading spinners",
+      icon: Atom,
+      href: "/showcase/quantum-loading",
+      color: "from-cyan-400 to-blue-400",
     },
     {
       title: "Holographic Card",
