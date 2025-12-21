@@ -2,6 +2,8 @@
 
 import { motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
+import { ThreeScene } from "@/components/three/ThreeScene";
+import { Brain3D } from "@/components/three/Brain3D";
 
 interface Node {
   id: number;
@@ -233,57 +235,11 @@ export function BrainVisualizer({
   className = "",
   complexity = "medium"
 }: BrainVisualizerProps) {
-  const complexitySettings = {
-    simple: { layers: 3, nodes: 6 },
-    medium: { layers: 4, nodes: 8 },
-    complex: { layers: 5, nodes: 10 },
-  };
-
-  const settings = complexitySettings[complexity];
-
   return (
-    <div className={`relative ${className}`}>
-      {/* Multiple network layers for depth */}
-      <div className="absolute inset-0">
-        <NeuralNetworkVisualizer
-          layers={settings.layers}
-          nodeCount={settings.nodes}
-          animationSpeed={0.5}
-          colors={{
-            node: "#8b5cf6",
-            connection: "#a78bfa",
-            active: "#10b981",
-          }}
-        />
-      </div>
-
-      {/* Overlay with different opacity for depth */}
-      <div className="absolute inset-0 opacity-60">
-        <NeuralNetworkVisualizer
-          layers={settings.layers}
-          nodeCount={settings.nodes}
-          animationSpeed={0.3}
-          colors={{
-            node: "#06b6d4",
-            connection: "#67e8f9",
-            active: "#f59e0b",
-          }}
-        />
-      </div>
-
-      {/* Active layer */}
-      <div className="absolute inset-0 opacity-80">
-        <NeuralNetworkVisualizer
-          layers={settings.layers}
-          nodeCount={settings.nodes}
-          animationSpeed={1}
-          colors={{
-            node: "#3b82f6",
-            connection: "#64748b",
-            active: "#ef4444",
-          }}
-        />
-      </div>
+    <div className={`w-full h-full ${className}`}>
+      <ThreeScene camera={{ position: [0, 0, 6], fov: 60 }}>
+        <Brain3D complexity={complexity} />
+      </ThreeScene>
     </div>
   );
 }
