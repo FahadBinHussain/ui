@@ -180,6 +180,14 @@ export default function AllComponentsPage() {
       category: "interactive"
     },
     {
+      title: "Physics Gravity Sandbox",
+      description: "UI elements that fall, stack, and bounce with realistic 2D physics",
+      icon: Box,
+      href: "/showcase/physics-sandbox",
+      color: "from-indigo-500 to-purple-500",
+      category: "interactive"
+    },
+    {
       title: "Quantum Loading States",
       description: "Electron orbital animations with quantum physics-inspired loading spinners",
       icon: Atom,

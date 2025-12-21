@@ -94,6 +94,10 @@ export default function ComponentsListPage() {
       description: "Interactive particle systems with wave-like mouse responses",
     },
     {
+      title: "Physics Gravity Sandbox",
+      description: "UI elements that fall, stack, and bounce with realistic 2D physics",
+    },
+    {
       title: "Quantum Loading States",
       description: "Electron orbital animations with quantum physics-inspired loading spinners",
     },
