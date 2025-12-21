@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { Box, Sparkles, Palette, Layers, MessageSquareQuote, Eye, Zap, MousePointer2, ImageIcon, ScrollText, Type, Users, Pencil, Palette as PaletteIcon, ArrowRightLeft, Diamond, Menu, Search, Layout, Activity, Code, Cloud, Cpu, Database, Flag, Globe, Atom, Star, Rocket, Wand2, Target, Play, ChevronRight, Github, ExternalLink, ArrowLeft, Filter, Grid3X3, List } from "lucide-react";
+import { Box, Sparkles, Palette, Layers, MessageSquareQuote, Eye, Zap, MousePointer2, ImageIcon, ScrollText, Type, Users, Pencil, Palette as PaletteIcon, ArrowRightLeft, Diamond, Menu, Search, Layout, Activity, Code, Cloud, Cpu, Database, Flag, Globe, Atom, Star, Rocket, Wand2, Target, Play, ChevronRight, Github, ExternalLink, ArrowLeft, Filter, Grid3X3, List, Droplets } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { useState, useMemo } from "react";
@@ -129,6 +129,14 @@ export default function AllComponentsPage() {
       icon: Eye,
       href: "/showcase/lens",
       color: "from-indigo-500 to-purple-500",
+      category: "interactive"
+    },
+    {
+      title: "Liquid Image Distortion",
+      description: "Images that liquefy and ripple like water on hover with WebGL shaders",
+      icon: Droplets,
+      href: "/showcase/liquid-image",
+      color: "from-cyan-400 to-blue-500",
       category: "interactive"
     },
     {

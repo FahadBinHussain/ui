@@ -70,6 +70,10 @@ export default function ComponentsListPage() {
       description: "Magnifying glass lens effect with smooth zoom",
     },
     {
+      title: "Liquid Image Distortion",
+      description: "Images that liquefy and ripple like water on hover with WebGL shaders",
+    },
+    {
       title: "Magnetic Elements",
       description: "Tactile, physical 'pull' effect for buttons and objects",
     },
