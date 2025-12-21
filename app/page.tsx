@@ -252,14 +252,6 @@ export default function Home() {
       category: "animation"
     },
     {
-      title: "Search Interface",
-      description: "Modern search with suggestions, trends, and animations",
-      icon: Search,
-      href: "/showcase/search",
-      color: "from-slate-500 to-gray-600",
-      category: "ui"
-    },
-    {
       title: "Spotlight Card",
       description: "Interactive cards with a smooth, mouse-following radial glow",
       icon: Zap,

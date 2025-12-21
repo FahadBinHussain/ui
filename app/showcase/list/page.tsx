@@ -113,10 +113,6 @@ export default function ComponentsListPage() {
       description: "Scroll-triggered animated text with floating badges",
     },
     {
-      title: "Search Interface",
-      description: "Modern search with suggestions, trends, and animations",
-    },
-    {
       title: "Spotlight Card",
       description: "Interactive cards with a smooth, mouse-following radial glow",
     },
