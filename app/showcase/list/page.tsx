@@ -45,8 +45,8 @@ export default function ComponentsListPage() {
       description: "Animated cloud synchronization state with floating icons",
     },
     {
-      title: "Custom Cursor",
-      description: "Interactive custom cursor with name tags and colors",
+      title: "Crystal Fractal Backgrounds",
+      description: "Geometric crystal formations that grow and refract light dynamically",
     },
     {
       title: "Electric Border",

@@ -159,12 +159,12 @@ export default function Home() {
       category: "3d"
     },
     {
-      title: "Holographic Text",
-      description: "3D text that appears to float in space with holographic color shifting",
+      title: "Crystal Fractal Backgrounds",
+      description: "Geometric crystal formations that grow and refract light dynamically",
       icon: Sparkles,
-      href: "/showcase/holographic-text",
-      color: "from-purple-400 via-cyan-400 to-blue-400",
-      category: "3d"
+      href: "/showcase/crystal-fractal",
+      color: "from-cyan-400 via-blue-400 to-purple-400",
+      category: "scientific"
     },
     {
       title: "Infinite Marquee",

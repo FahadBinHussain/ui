@@ -84,12 +84,12 @@ export default function AllComponentsPage() {
       category: "animation"
     },
     {
-      title: "Custom Cursor",
-      description: "Interactive custom cursor with name tags and colors",
-      icon: MousePointer2,
-      href: "/showcase/custom-cursor",
-      color: "from-violet-500 to-fuchsia-500",
-      category: "interactive"
+      title: "Crystal Fractal Backgrounds",
+      description: "Geometric crystal formations that grow and refract light dynamically",
+      icon: Sparkles,
+      href: "/showcase/crystal-fractal",
+      color: "from-cyan-400 via-blue-400 to-purple-400",
+      category: "scientific"
     },
     {
       title: "Electric Border",
