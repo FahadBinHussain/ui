@@ -124,14 +124,6 @@ export default function Home() {
       category: "interactive"
     },
     {
-      title: "Glass Sidebar",
-      description: "Semi-transparent sidebar with sophisticated backdrop blur",
-      icon: Menu,
-      href: "/showcase/sidebar",
-      color: "from-blue-400 to-cyan-300",
-      category: "ui"
-    },
-    {
       title: "Glitch Effect",
       description: "Digital artifact glitch animation for text and images",
       icon: Activity,
@@ -288,14 +280,6 @@ export default function Home() {
       description: "Modern search with suggestions, trends, and animations",
       icon: Search,
       href: "/showcase/search",
-      color: "from-slate-500 to-gray-600",
-      category: "ui"
-    },
-    {
-      title: "Smart Sidebar",
-      description: "Collapsible sidebar with smooth animations and glass effects",
-      icon: Layout,
-      href: "/showcase/sidebar",
       color: "from-slate-500 to-gray-600",
       category: "ui"
     },

@@ -53,10 +53,6 @@ export default function ComponentsListPage() {
       description: "Smooth spring-based cursor with trailing effects",
     },
     {
-      title: "Glass Sidebar",
-      description: "Semi-transparent sidebar with sophisticated backdrop blur",
-    },
-    {
       title: "Glitch Effect",
       description: "Digital artifact glitch animation for text and images",
     },
@@ -135,10 +131,6 @@ export default function ComponentsListPage() {
     {
       title: "Search Interface",
       description: "Modern search with suggestions, trends, and animations",
-    },
-    {
-      title: "Smart Sidebar",
-      description: "Collapsible sidebar with smooth animations and glass effects",
     },
     {
       title: "Spotlight Card",
