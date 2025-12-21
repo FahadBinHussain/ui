@@ -22,6 +22,10 @@ export default function ComponentsListPage() {
       description: "Interactive profile tooltips with elastic GSAP animations",
     },
     {
+      title: "ASCII Live Render",
+      description: "Real-time video, image, or webcam feed rendered entirely out of text characters",
+    },
+    {
       title: "Barba.js Transitions",
       description: "Smooth page transitions with Barba.js for SPA-like experience",
     },

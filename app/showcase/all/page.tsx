@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { Box, Sparkles, Palette, Layers, MessageSquareQuote, Eye, Zap, MousePointer2, ImageIcon, ScrollText, Type, Users, Pencil, Palette as PaletteIcon, ArrowRightLeft, Diamond, Menu, Search, Layout, Activity, Code, Cloud, Cpu, Database, Flag, Globe, Atom, Star, Rocket, Wand2, Target, Play, ChevronRight, Github, ExternalLink, ArrowLeft, Filter, Grid3X3, List, Droplets } from "lucide-react";
+import { Box, Sparkles, Palette, Layers, MessageSquareQuote, Eye, Zap, MousePointer2, ImageIcon, ScrollText, Type, Users, Pencil, Palette as PaletteIcon, ArrowRightLeft, Diamond, Menu, Search, Layout, Activity, Code, Cloud, Cpu, Database, Flag, Globe, Atom, Star, Rocket, Wand2, Target, Play, ChevronRight, Github, ExternalLink, ArrowLeft, Filter, Grid3X3, List, Droplets, Terminal } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { useState, useMemo } from "react";
@@ -34,6 +34,14 @@ export default function AllComponentsPage() {
       href: "/showcase/animated-tooltip",
       color: "from-emerald-500 to-sky-500",
       category: "ui"
+    },
+    {
+      title: "ASCII Live Render",
+      description: "Real-time video, image, or webcam feed rendered entirely out of text characters",
+      icon: Terminal,
+      href: "/showcase/ascii-render",
+      color: "from-green-500 to-emerald-500",
+      category: "effects"
     },
     {
       title: "Barba.js Transitions",
