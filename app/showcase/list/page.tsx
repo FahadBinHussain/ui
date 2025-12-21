@@ -173,6 +173,10 @@ export default function ComponentsListPage() {
       title: "Kinetic Typography",
       description: "Interactive text where letters are connected by elastic physics strings with chain reaction drag",
     },
+    {
+      title: "Cloth Simulation",
+      description: "Realistic fabric physics using Verlet integration for draggable silk flags and curtains",
+    },
   ];
 
   const markdownList = allComponents

@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { Box, Sparkles, Palette, Layers, MessageSquareQuote, Eye, Zap, MousePointer2, ImageIcon, ScrollText, Type, Users, Pencil, Palette as PaletteIcon, ArrowRightLeft, Diamond, Menu, Search, Layout, Activity, Code, Cloud, Cpu, Database, Flag, Globe, Atom, Star, Rocket, Wand2, Target, Play, ChevronRight, Github, ExternalLink, ArrowLeft, Filter, Grid3X3, List, Droplets, Terminal, Boxes, Move } from "lucide-react";
+import { Box, Sparkles, Palette, Layers, MessageSquareQuote, Eye, Zap, MousePointer2, ImageIcon, ScrollText, Type, Users, Pencil, Palette as PaletteIcon, ArrowRightLeft, Diamond, Menu, Search, Layout, Activity, Code, Cloud, Cpu, Database, Flag, Globe, Atom, Star, Rocket, Wand2, Target, Play, ChevronRight, Github, ExternalLink, ArrowLeft, Filter, Grid3X3, List, Droplets, Terminal, Boxes, Move, Shirt } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { useState, useMemo } from "react";
@@ -329,6 +329,14 @@ export default function AllComponentsPage() {
       icon: Move,
       href: "/showcase/kinetic-typography",
       color: "from-purple-600 via-fuchsia-500 to-pink-500",
+      category: "interactive"
+    },
+    {
+      title: "Cloth Simulation",
+      description: "Realistic fabric physics using Verlet integration for draggable silk flags and curtains",
+      icon: Shirt,
+      href: "/showcase/cloth-simulation",
+      color: "from-teal-600 via-cyan-500 to-blue-500",
       category: "interactive"
     },
   ];
