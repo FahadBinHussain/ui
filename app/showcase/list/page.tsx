@@ -121,6 +121,10 @@ export default function ComponentsListPage() {
       description: "Old school monitor effect with scanlines and curvature",
     },
     {
+      title: "Bio-Luminescent Glow",
+      description: "Organic pulsing glow effects mimicking deep-sea bioluminescence",
+    },
+    {
       title: "Reveal Text",
       description: "Text with hover image reveals and gradient effects",
     },

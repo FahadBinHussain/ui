@@ -236,6 +236,14 @@ export default function AllComponentsPage() {
       category: "effects"
     },
     {
+      title: "Bio-Luminescent Glow",
+      description: "Organic pulsing glow effects mimicking deep-sea bioluminescence",
+      icon: Sparkles,
+      href: "/showcase/bio-luminescent",
+      color: "from-cyan-400 to-blue-400",
+      category: "effects"
+    },
+    {
       title: "Reveal Text",
       description: "Text with hover image reveals and gradient effects",
       icon: ImageIcon,

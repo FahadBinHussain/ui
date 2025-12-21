@@ -8,6 +8,14 @@ import { useEffect, useState } from "react";
 export default function Home() {
   const { scrollYProgress } = useScroll();
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [particles, setParticles] = useState<Array<{
+    x: number;
+    y: number;
+    duration: number;
+    delay: number;
+    left: string;
+    top: string;
+  }>>([]);
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -19,6 +27,19 @@ export default function Home() {
 
     window.addEventListener('mousemove', handleMouseMove);
     return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, []);
+
+  // Generate particles only on client side to avoid hydration mismatch
+  useEffect(() => {
+    const generatedParticles = Array.from({ length: 50 }).map(() => ({
+      x: Math.random() * 100 - 50,
+      y: Math.random() * 100 - 50,
+      duration: 8 + Math.random() * 4,
+      delay: Math.random() * 5,
+      left: `${Math.random() * 100}%`,
+      top: `${Math.random() * 100}%`,
+    }));
+    setParticles(generatedParticles);
   }, []);
 
   const categories = [
@@ -247,6 +268,14 @@ export default function Home() {
       category: "effects"
     },
     {
+      title: "Bio-Luminescent Glow",
+      description: "Organic pulsing glow effects mimicking deep-sea bioluminescence",
+      icon: Sparkles,
+      href: "/showcase/bio-luminescent",
+      color: "from-cyan-400 to-blue-400",
+      category: "effects"
+    },
+    {
       title: "Reveal Text",
       description: "Text with hover image reveals and gradient effects",
       icon: ImageIcon,
@@ -352,24 +381,24 @@ export default function Home() {
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,rgba(255,119,198,0.05),transparent_50%)]" />
 
           {/* Floating particles */}
-          {Array.from({ length: 50 }).map((_, i) => (
+          {particles.map((particle, i) => (
             <motion.div
               key={i}
               className="absolute w-1 h-1 bg-white/10 rounded-full"
               animate={{
-                x: [0, Math.random() * 100 - 50],
-                y: [0, Math.random() * 100 - 50],
+                x: [0, particle.x],
+                y: [0, particle.y],
                 opacity: [0.1, 0.3, 0.1],
               }}
               transition={{
-                duration: 8 + Math.random() * 4,
+                duration: particle.duration,
                 repeat: Infinity,
                 ease: "linear",
-                delay: Math.random() * 5,
+                delay: particle.delay,
               }}
               style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
+                left: particle.left,
+                top: particle.top,
               }}
             />
           ))}
