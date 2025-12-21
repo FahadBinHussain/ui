@@ -175,6 +175,20 @@ export default function Home() {
       color: "from-cyan-400 to-blue-400",
     },
     {
+      title: "Particle Wave Interactions",
+      description: "Interactive particle systems with wave-like mouse responses",
+      icon: Zap,
+      href: "/showcase/wave-particles",
+      color: "from-blue-400 to-purple-400",
+    },
+    {
+      title: "Neural Network Visualizer",
+      description: "Animated neural networks showing data flow and activations",
+      icon: Cpu,
+      href: "/showcase/neural-network",
+      color: "from-purple-400 to-pink-400",
+    },
+    {
       title: "Holographic Card",
       description: "Futuristic iridescent cards with 3D tilt and light reflections",
       icon: Diamond,
@@ -229,13 +243,6 @@ export default function Home() {
       icon: Layers,
       href: "/showcase/neumorphic",
       color: "from-gray-300 to-gray-100",
-    },
-    {
-      title: "Fluid Cursor",
-      description: "A cursor that leaves a trail of fluid-like particles",
-      icon: MousePointer2,
-      href: "/showcase/fluid-cursor",
-      color: "from-emerald-400 to-teal-500",
     },
     {
       title: "Retro CRT",
