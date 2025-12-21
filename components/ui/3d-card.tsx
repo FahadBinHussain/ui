@@ -113,6 +113,7 @@ export const CardItem = ({
   rotateX?: number | string;
   rotateY?: number | string;
   rotateZ?: number | string;
+  [key: string]: any;
 }) => {
   const ref = useRef<any>(null);
   const [isMouseEntered] = useMouseEnter();
