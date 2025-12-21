@@ -25,10 +25,6 @@ export default function ComponentsListPage() {
       description: "Interactive profile tooltips with elastic GSAP animations",
     },
     {
-      title: "Aurora Background",
-      description: "Silky, animated gradient background for premium feel",
-    },
-    {
       title: "Barba.js Transitions",
       description: "Smooth page transitions with Barba.js for SPA-like experience",
     },

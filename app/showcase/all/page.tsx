@@ -36,14 +36,6 @@ export default function AllComponentsPage() {
       category: "ui"
     },
     {
-      title: "Aurora Background",
-      description: "Silky, animated gradient background for premium feel",
-      icon: Sparkles,
-      href: "/showcase/aurora",
-      color: "from-indigo-600 to-purple-600",
-      category: "background"
-    },
-    {
       title: "Barba.js Transitions",
       description: "Smooth page transitions with Barba.js for SPA-like experience",
       icon: ArrowRightLeft,

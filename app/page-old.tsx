@@ -140,13 +140,6 @@ export default function Home() {
       color: "from-blue-600 to-indigo-600",
     },
     {
-      title: "Aurora Background",
-      description: "Silky, animated gradient background for premium feel",
-      icon: Sparkles,
-      href: "/showcase/aurora",
-      color: "from-indigo-600 to-purple-600",
-    },
-    {
       title: "Magnetic Elements",
       description: "Tactile, physical 'pull' effect for buttons and objects",
       icon: MousePointer2,
