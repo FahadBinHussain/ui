@@ -52,14 +52,6 @@ export default function Home() {
       category: "3d"
     },
     {
-      title: "3D Scenes",
-      description: "React Three Fiber canvases and 3D experiences",
-      icon: Box,
-      href: "/showcase/3d-scenes",
-      color: "from-orange-500 to-red-500",
-      category: "3d"
-    },
-    {
       title: "Animated Testimonials",
       description: "Beautiful testimonial carousel with 3D stacking",
       icon: MessageSquareQuote,

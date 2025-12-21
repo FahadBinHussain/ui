@@ -30,7 +30,6 @@ This repo is designed for **maximum copy-paste compatibility** with future proje
 /app
   /showcase          # Visual testing/browsing pages
     /buttons/page.tsx
-    /3d-scenes/page.tsx
   page.tsx           # Landing directory page
 
 /components

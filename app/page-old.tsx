@@ -133,13 +133,6 @@ export default function Home() {
       color: "from-blue-600 to-purple-600",
     },
     {
-      title: "3D Scenes",
-      description: "React Three Fiber canvases and 3D experiences",
-      icon: Box,
-      href: "/showcase/3d-scenes",
-      color: "from-orange-500 to-red-500",
-    },
-    {
       title: "Bento Grid",
       description: "Modern, versatile grid layout for feature showcases",
       icon: Layers,
