@@ -177,6 +177,10 @@ export default function ComponentsListPage() {
       title: "Cloth Simulation",
       description: "Realistic fabric physics using Verlet integration for draggable silk flags and curtains",
     },
+    {
+      title: "Scroll-Driven Effects",
+      description: "Apple-style image sequence scrolling and sticky stacking cards for premium storytelling",
+    },
   ];
 
   const markdownList = allComponents

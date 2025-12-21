@@ -339,6 +339,14 @@ export default function AllComponentsPage() {
       color: "from-teal-600 via-cyan-500 to-blue-500",
       category: "interactive"
     },
+    {
+      title: "Scroll-Driven Effects",
+      description: "Apple-style image sequence scrolling and sticky stacking cards for premium storytelling",
+      icon: ScrollText,
+      href: "/showcase/scroll-effects",
+      color: "from-cyan-600 via-blue-500 to-purple-500",
+      category: "interactive"
+    },
   ];
 
   const categories = [
