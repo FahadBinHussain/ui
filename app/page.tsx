@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { Box, Sparkles, Palette, Layers, MessageSquareQuote, Eye, Zap, MousePointer2, ImageIcon, ScrollText, Type, Users, Pencil, Palette as PaletteIcon, ArrowRightLeft } from "lucide-react";
+import { Box, Sparkles, Palette, Layers, MessageSquareQuote, Eye, Zap, MousePointer2, ImageIcon, ScrollText, Type, Users, Pencil, Palette as PaletteIcon, ArrowRightLeft, Diamond } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 
@@ -138,6 +138,13 @@ export default function Home() {
       icon: Type,
       href: "/showcase/text-scramble",
       color: "from-indigo-400 to-blue-400",
+    },
+    {
+      title: "Holographic Card",
+      description: "Futuristic iridescent cards with 3D tilt and light reflections",
+      icon: Diamond,
+      href: "/showcase/holo",
+      color: "from-cyan-400 via-white to-purple-400",
     },
     {
       title: "Spotlight Card",
