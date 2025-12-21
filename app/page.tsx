@@ -56,6 +56,13 @@ export default function Home() {
       color: "from-sky-400 to-blue-500",
     },
     {
+      title: "Search Interface",
+      description: "Modern search with suggestions, trends, and animations",
+      icon: Search,
+      href: "/showcase/search",
+      color: "from-slate-500 to-gray-600",
+    },
+    {
       title: "Custom Cursor",
       description: "Interactive custom cursor with name tags and colors",
       icon: MousePointer2,
