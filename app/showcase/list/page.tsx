@@ -169,6 +169,10 @@ export default function ComponentsListPage() {
       title: "Voxel Terrain",
       description: "Isometric 3D landscape made of cubes with Perlin noise and wave propagation effects",
     },
+    {
+      title: "Kinetic Typography",
+      description: "Interactive text where letters are connected by elastic physics strings with chain reaction drag",
+    },
   ];
 
   const markdownList = allComponents
