@@ -100,14 +100,6 @@ export default function AllComponentsPage() {
       category: "3d"
     },
     {
-      title: "Holographic Text",
-      description: "3D text that appears to float in space with holographic color shifting",
-      icon: Sparkles,
-      href: "/showcase/holographic-text",
-      color: "from-purple-400 via-cyan-400 to-blue-400",
-      category: "3d"
-    },
-    {
       title: "Holographic Depth-Map Parallax",
       description: "Realistic depth-based parallax effect using static images and depth maps",
       icon: Eye,
