@@ -66,6 +66,7 @@ const DepthParallaxMaterial = shaderMaterial(
   `
 );
 
+// Extend Three.js with our custom material
 extend({ DepthParallaxMaterial });
 
 interface HolographicDepthParallaxProps {
@@ -109,18 +110,15 @@ export function HolographicDepthParallax({
       );
       materialRef.current.time = state.clock.elapsedTime;
       materialRef.current.strength = strength;
+      materialRef.current.colorTexture = colorTexture;
+      materialRef.current.depthTexture = depthTexture;
     }
   });
 
   return (
     <mesh>
       <planeGeometry args={[viewport.width, viewport.height]} />
-      <depthParallaxMaterial
-        ref={materialRef}
-        colorTexture={colorTexture}
-        depthTexture={depthTexture}
-        transparent
-      />
+      <primitive object={new DepthParallaxMaterial()} ref={materialRef} attach="material" />
     </mesh>
   );
 }
