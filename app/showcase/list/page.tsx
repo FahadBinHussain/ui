@@ -165,6 +165,10 @@ export default function ComponentsListPage() {
       title: "Voice Waveform Visualizers",
       description: "Real-time audio visualization with Web Audio API for voice and music interfaces",
     },
+    {
+      title: "Voxel Terrain",
+      description: "Isometric 3D landscape made of cubes with Perlin noise and wave propagation effects",
+    },
   ];
 
   const markdownList = allComponents
