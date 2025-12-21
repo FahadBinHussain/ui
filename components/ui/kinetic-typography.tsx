@@ -64,6 +64,9 @@ export const KineticTypography: React.FC<KineticTypographyProps> = ({
         frictionAir: 0.08,
         restitution: 0.2,
         density: 0.04,
+        collisionFilter: {
+          group: -1, // Negative group means they won't collide with each other
+        },
       });
 
       // Create HTML element for letter
@@ -104,7 +107,7 @@ export const KineticTypography: React.FC<KineticTypographyProps> = ({
         bodyB: bodies[i + 1],
         stiffness: stiffness,
         damping: 0.15,
-        length: letterSpacing * 0.8,
+        length: letterSpacing * 1.2, // Increased from 0.8 to prevent tangling
       });
       springConstraints.push(constraint);
     }
@@ -125,6 +128,12 @@ export const KineticTypography: React.FC<KineticTypographyProps> = ({
         },
       },
     });
+    
+    // Clear mouse constraint when not clicking
+    Matter.Events.on(mouseConstraint, 'mouseup', () => {
+      mouseConstraint.constraint.bodyB = null as any;
+    });
+    
     mouseConstraintRef.current = mouseConstraint;
     Matter.World.add(engine.world, mouseConstraint);
 
@@ -242,6 +251,9 @@ export const ElasticHeadline: React.FC<ElasticHeadlineProps> = ({
         frictionAir: 0.1,
         restitution: 0.6,
         density: 0.02,
+        collisionFilter: {
+          group: -1,
+        },
       });
 
       const div = document.createElement("div");
@@ -298,6 +310,11 @@ export const ElasticHeadline: React.FC<ElasticHeadlineProps> = ({
         render: { visible: false },
       },
     });
+    
+    Matter.Events.on(mouseConstraint, 'mouseup', () => {
+      mouseConstraint.constraint.bodyB = null as any;
+    });
+    
     Matter.World.add(engine.world, mouseConstraint);
 
     const runner = Matter.Runner.create();
@@ -374,6 +391,9 @@ export const ChainReactionText: React.FC<ChainReactionTextProps> = ({
         restitution: 0.4,
         density: 0.03,
         chamfer: { radius: 5 },
+        collisionFilter: {
+          group: -1,
+        },
       });
 
       const span = document.createElement("span");
@@ -421,6 +441,11 @@ export const ChainReactionText: React.FC<ChainReactionTextProps> = ({
       mouse,
       constraint: { stiffness: 1, render: { visible: false } },
     });
+    
+    Matter.Events.on(mouseConstraint, 'mouseup', () => {
+      mouseConstraint.constraint.bodyB = null as any;
+    });
+    
     Matter.World.add(engine.world, mouseConstraint);
 
     const runner = Matter.Runner.create();
