@@ -139,7 +139,7 @@ export default function Home() {
       href: "/showcase/text-scramble",
       color: "from-indigo-400 to-blue-400",
     },
-  ];
+  ].sort((a, b) => a.title.localeCompare(b.title));
 
   return (
     <>
