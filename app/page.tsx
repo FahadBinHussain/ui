@@ -111,6 +111,34 @@ export default function Home() {
       href: "/showcase/3d-scenes",
       color: "from-orange-500 to-red-500",
     },
+    {
+      title: "Bento Grid",
+      description: "Modern, versatile grid layout for feature showcases",
+      icon: Layers,
+      href: "/showcase/bento-grid",
+      color: "from-blue-600 to-indigo-600",
+    },
+    {
+      title: "Aurora Background",
+      description: "Silky, animated gradient background for premium feel",
+      icon: Sparkles,
+      href: "/showcase/aurora",
+      color: "from-indigo-600 to-purple-600",
+    },
+    {
+      title: "Magnetic Elements",
+      description: "Tactile, physical 'pull' effect for buttons and objects",
+      icon: MousePointer2,
+      href: "/showcase/magnetic",
+      color: "from-amber-500 to-yellow-500",
+    },
+    {
+      title: "Text Scramble",
+      description: "High-energy text transition with scrambling characters",
+      icon: Type,
+      href: "/showcase/text-scramble",
+      color: "from-indigo-400 to-blue-400",
+    },
   ];
 
   return (
@@ -118,7 +146,7 @@ export default function Home() {
       <div className="min-h-screen bg-black text-white overflow-x-hidden">
         <main className="container mx-auto px-4 py-16 sm:px-6 lg:px-8">
           {/* Header */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
@@ -133,7 +161,7 @@ export default function Home() {
                   </span>
                 </h1>
                 <p className="mx-auto max-w-2xl text-lg text-gray-300 sm:text-xl mb-8">
-                  Modern, copy-paste compatible component library built with Next.js 16, 
+                  Modern, copy-paste compatible component library built with Next.js 16,
                   TypeScript, Tailwind CSS, GSAP, and React Three Fiber.
                 </p>
                 <div className="flex gap-4 justify-center flex-wrap">

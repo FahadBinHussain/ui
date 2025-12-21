@@ -51,7 +51,17 @@
     }
   }
 
+  @keyframes aurora {
+    from {
+      background-position: 50% 50%, 50% 50%;
+    }
+    to {
+      background-position: 350% 50%, 350% 50%;
+    }
+  }
+
   --animate-blink-border: blink-border 1s infinite;
+  --animate-aurora: aurora 60s linear infinite;
 }
 
 :root {
