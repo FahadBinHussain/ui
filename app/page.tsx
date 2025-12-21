@@ -196,6 +196,13 @@ export default function Home() {
       color: "from-cyan-400 to-blue-400",
     },
     {
+      title: "Holographic Text",
+      description: "3D text that appears to float in space with holographic color shifting",
+      icon: Sparkles,
+      href: "/showcase/holographic-text",
+      color: "from-purple-400 via-cyan-400 to-blue-400",
+    },
+    {
       title: "Holographic Card",
       description: "Futuristic iridescent cards with 3D tilt and light reflections",
       icon: Diamond,
