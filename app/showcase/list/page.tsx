@@ -37,10 +37,6 @@ export default function ComponentsListPage() {
       description: "Floating animated clouds with backdrop blur effects",
     },
     {
-      title: "Cloud Sync",
-      description: "Animated cloud synchronization state with floating icons",
-    },
-    {
       title: "Crystal Fractal Backgrounds",
       description: "Geometric crystal formations that grow and refract light dynamically",
     },

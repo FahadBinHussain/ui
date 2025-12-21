@@ -92,14 +92,6 @@ export default function Home() {
       category: "background"
     },
     {
-      title: "Cloud Sync",
-      description: "Animated cloud synchronization state with floating icons",
-      icon: Cloud,
-      href: "/showcase/cloud",
-      color: "from-sky-400 to-blue-500",
-      category: "animation"
-    },
-    {
       title: "Custom Cursor",
       description: "Interactive custom cursor with name tags and colors",
       icon: MousePointer2,

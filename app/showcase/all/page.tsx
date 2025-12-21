@@ -60,14 +60,6 @@ export default function AllComponentsPage() {
       category: "background"
     },
     {
-      title: "Cloud Sync",
-      description: "Animated cloud synchronization state with floating icons",
-      icon: Cloud,
-      href: "/showcase/cloud",
-      color: "from-sky-400 to-blue-500",
-      category: "animation"
-    },
-    {
       title: "Crystal Fractal Backgrounds",
       description: "Geometric crystal formations that grow and refract light dynamically",
       icon: Sparkles,
