@@ -113,10 +113,6 @@ export default function ComponentsListPage() {
       description: "Scroll-triggered animated text with floating badges",
     },
     {
-      title: "Spotlight Card",
-      description: "Interactive cards with a smooth, mouse-following radial glow",
-    },
-    {
       title: "Text Animations",
       description: "Dynamic text effects with Framer Motion",
     },

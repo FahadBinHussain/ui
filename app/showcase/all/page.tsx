@@ -228,14 +228,6 @@ export default function AllComponentsPage() {
       category: "animation"
     },
     {
-      title: "Spotlight Card",
-      description: "Interactive cards with a smooth, mouse-following radial glow",
-      icon: Zap,
-      href: "/showcase/spotlight",
-      color: "from-blue-400 to-purple-400",
-      category: "interactive"
-    },
-    {
       title: "Text Animations",
       description: "Dynamic text effects with Framer Motion",
       icon: Palette,
