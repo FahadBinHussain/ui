@@ -12,6 +12,7 @@ interface PixelatedTransitionProps {
   onTransitionComplete?: () => void;
   className?: string;
   enableChromaticAberration?: boolean;
+  startPixelated?: boolean; // Start with image pixelated for reveal effect
 }
 
 export const PixelatedTransition: React.FC<PixelatedTransitionProps> = ({
@@ -22,6 +23,7 @@ export const PixelatedTransition: React.FC<PixelatedTransitionProps> = ({
   onTransitionComplete,
   className = "",
   enableChromaticAberration = true,
+  startPixelated = false,
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const sceneRef = useRef<THREE.Scene | null>(null);
@@ -35,8 +37,14 @@ export const PixelatedTransition: React.FC<PixelatedTransitionProps> = ({
     if (!containerRef.current) return;
 
     const container = containerRef.current;
-    const width = container.clientWidth;
-    const height = container.clientHeight;
+    const width = container.clientWidth || 800;
+    const height = container.clientHeight || 600;
+
+    // Don't initialize if container has no size
+    if (width === 0 || height === 0) {
+      console.warn("Container has no dimensions");
+      return;
+    }
 
     // Scene setup
     const scene = new THREE.Scene();
@@ -58,6 +66,10 @@ export const PixelatedTransition: React.FC<PixelatedTransitionProps> = ({
     const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
     renderer.setSize(width, height);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.domElement.style.position = "absolute";
+    renderer.domElement.style.top = "0";
+    renderer.domElement.style.left = "0";
+    renderer.domElement.style.zIndex = "1";
     container.appendChild(renderer.domElement);
     rendererRef.current = renderer;
 
@@ -129,6 +141,7 @@ export const PixelatedTransition: React.FC<PixelatedTransitionProps> = ({
 
     // Load textures
     const textureLoader = new THREE.TextureLoader();
+    textureLoader.crossOrigin = 'anonymous';
     const texture = textureLoader.load(imageSrc);
     const nextTexture = nextImageSrc ? textureLoader.load(nextImageSrc) : texture;
 
@@ -139,7 +152,7 @@ export const PixelatedTransition: React.FC<PixelatedTransitionProps> = ({
       uniforms: {
         uTexture: { value: texture },
         uNextTexture: { value: nextTexture },
-        uPixelSize: { value: 1.0 },
+        uPixelSize: { value: startPixelated ? pixelSize : 1.0 },
         uProgress: { value: 0.0 },
         uChromaticAberration: { value: enableChromaticAberration ? 1.0 : 0.0 },
         uResolution: { value: new THREE.Vector2(width, height) },
@@ -192,15 +205,34 @@ export const PixelatedTransition: React.FC<PixelatedTransitionProps> = ({
       renderer.dispose();
       container.removeChild(renderer.domElement);
     };
-  }, [imageSrc, nextImageSrc, enableChromaticAberration]);
+  }, [imageSrc, nextImageSrc, enableChromaticAberration, startPixelated, pixelSize]);
 
   const startTransition = (targetPixelSize: number = pixelSize) => {
+    console.log("startTransition called", { materialRef: !!materialRef.current, isTransitioning });
+    
     if (!materialRef.current || isTransitioning) return;
 
     setIsTransitioning(true);
 
     const material = materialRef.current;
+    console.log("Starting transition", { startPixelated, currentPixelSize: material.uniforms.uPixelSize.value });
 
+    // If starting pixelated, just resolve to sharp
+    if (startPixelated) {
+      gsap.to(material.uniforms.uPixelSize, {
+        value: 1.0,
+        duration: duration,
+        ease: "power2.out",
+        onComplete: () => {
+          console.log("Reveal complete");
+          setIsTransitioning(false);
+          onTransitionComplete?.();
+        },
+      });
+      return;
+    }
+
+    // Otherwise, do the pixelate → resolve animation
     // Animate pixelation in (high pixel size = blocky)
     gsap.to(material.uniforms.uPixelSize, {
       value: targetPixelSize,
@@ -243,16 +275,17 @@ export const PixelatedTransition: React.FC<PixelatedTransitionProps> = ({
   };
 
   return (
-    <div className={`relative ${className}`}>
-      <div ref={containerRef} className="w-full h-full" />
-      {!isTransitioning && (
-        <button
-          onClick={() => startTransition()}
-          className="absolute bottom-4 right-4 bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors"
-        >
-          Pixelate
-        </button>
-      )}
+    <div className={`relative w-full h-full ${className}`}>
+      <div ref={containerRef} className="absolute inset-0" />
+      <button
+        onClick={() => {
+          console.log("Button clicked!", {isTransitioning, hasMaterial: !!materialRef.current});
+          startTransition();
+        }}
+        className="absolute bottom-4 right-4 bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors z-20"
+      >
+        {startPixelated ? "Reveal" : "Pixelate"} {isTransitioning ? "(busy)" : ""}
+      </button>
     </div>
   );
 };
@@ -281,8 +314,10 @@ export const PixelatedHover: React.FC<PixelatedHoverProps> = ({
     if (!containerRef.current) return;
 
     const container = containerRef.current;
-    const width = container.clientWidth;
-    const height = container.clientHeight;
+    const width = container.clientWidth || 800;
+    const height = container.clientHeight || 600;
+
+    if (width === 0 || height === 0) return;
 
     // Scene setup
     const scene = new THREE.Scene();
@@ -301,6 +336,10 @@ export const PixelatedHover: React.FC<PixelatedHoverProps> = ({
     const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
     renderer.setSize(width, height);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.domElement.style.position = "absolute";
+    renderer.domElement.style.top = "0";
+    renderer.domElement.style.left = "0";
+    renderer.domElement.style.zIndex = "1";
     container.appendChild(renderer.domElement);
     rendererRef.current = renderer;
 
@@ -339,6 +378,7 @@ export const PixelatedHover: React.FC<PixelatedHoverProps> = ({
     `;
 
     const textureLoader = new THREE.TextureLoader();
+    textureLoader.crossOrigin = 'anonymous';
     const texture = textureLoader.load(imageSrc);
 
     const material = new THREE.ShaderMaterial({
@@ -397,7 +437,7 @@ export const PixelatedHover: React.FC<PixelatedHoverProps> = ({
   return (
     <div
       ref={containerRef}
-      className={`w-full h-full ${className}`}
+      className={`relative w-full h-full ${className}`}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     />
@@ -436,8 +476,10 @@ export const PixelatedCarousel: React.FC<PixelatedCarouselProps> = ({
     if (!containerRef.current || images.length === 0) return;
 
     const container = containerRef.current;
-    const width = container.clientWidth;
-    const height = container.clientHeight;
+    const width = container.clientWidth || 800;
+    const height = container.clientHeight || 600;
+
+    if (width === 0 || height === 0) return;
 
     const scene = new THREE.Scene();
     const camera = new THREE.OrthographicCamera(
@@ -453,6 +495,10 @@ export const PixelatedCarousel: React.FC<PixelatedCarouselProps> = ({
     const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
     renderer.setSize(width, height);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.domElement.style.position = "absolute";
+    renderer.domElement.style.top = "0";
+    renderer.domElement.style.left = "0";
+    renderer.domElement.style.zIndex = "1";
     container.appendChild(renderer.domElement);
 
     const vertexShader = `
@@ -500,6 +546,7 @@ export const PixelatedCarousel: React.FC<PixelatedCarouselProps> = ({
     `;
 
     const textureLoader = new THREE.TextureLoader();
+    textureLoader.crossOrigin = 'anonymous';
     const textures = images.map((img) => textureLoader.load(img));
     texturesRef.current = textures;
 
@@ -634,9 +681,9 @@ export const PixelatedCarousel: React.FC<PixelatedCarouselProps> = ({
 
   return (
     <div className={`relative ${className}`}>
-      <div ref={containerRef} className="w-full h-full" />
+      <div ref={containerRef} className="relative w-full h-full" />
       {images.length > 1 && (
-        <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-4">
+        <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex gap-4 z-10">
           <button
             onClick={transitionToPrev}
             disabled={isTransitioning}

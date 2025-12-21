@@ -155,9 +155,85 @@ float b = texture2D(tex, uv - offset).b;`}</code>
       <section className="py-20 px-6">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
-            <h3 className="text-4xl font-bold mb-4">Click-to-Pixelate Transition</h3>
+            <h3 className="text-4xl font-bold mb-4">Pixelation Effects</h3>
             <p className="text-slate-400 text-lg">
-              Click the button to pixelate → resolve. Perfect for image reveals.
+              Two modes: Pixelate effect or Reveal from pixelated
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8">
+            {/* Pixelate Mode */}
+            <div className="bg-slate-900/80 backdrop-blur rounded-3xl border border-slate-700/50 p-8">
+              <h4 className="text-2xl font-bold mb-4 text-purple-400">Click to Pixelate</h4>
+              <p className="text-slate-400 mb-6">
+                Image starts sharp, click to pixelate → resolve
+              </p>
+              <div className="w-full h-[400px] rounded-xl overflow-hidden border border-slate-700">
+                <PixelatedTransition
+                  imageSrc={demoImages[0]}
+                  pixelSize={100}
+                  duration={2}
+                  enableChromaticAberration={true}
+                  startPixelated={false}
+                />
+              </div>
+            </div>
+
+            {/* Reveal Mode */}
+            <div className="bg-slate-900/80 backdrop-blur rounded-3xl border border-slate-700/50 p-8">
+              <h4 className="text-2xl font-bold mb-4 text-pink-400">Click to Reveal</h4>
+              <p className="text-slate-400 mb-6">
+                Image starts pixelated, click to reveal sharp details
+              </p>
+              <div className="w-full h-[400px] rounded-xl overflow-hidden border border-slate-700">
+                <PixelatedTransition
+                  imageSrc={demoImages[1]}
+                  pixelSize={120}
+                  duration={2}
+                  enableChromaticAberration={true}
+                  startPixelated={true}
+                />
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-12 bg-slate-950 rounded-xl p-6 max-w-5xl mx-auto">
+            <h4 className="text-lg font-semibold mb-4 text-purple-400">Usage</h4>
+            <div className="grid md:grid-cols-2 gap-6">
+              <div>
+                <p className="text-sm text-slate-400 mb-2">Pixelate Effect:</p>
+                <pre className="text-xs text-slate-300 overflow-x-auto bg-slate-900 p-4 rounded">
+                  <code>{`<PixelatedTransition
+  imageSrc="/image.jpg"
+  pixelSize={100}
+  duration={2}
+  startPixelated={false}
+/>`}</code>
+                </pre>
+              </div>
+              <div>
+                <p className="text-sm text-slate-400 mb-2">Reveal Effect:</p>
+                <pre className="text-xs text-slate-300 overflow-x-auto bg-slate-900 p-4 rounded">
+                  <code>{`<PixelatedTransition
+  imageSrc="/image.jpg"
+  pixelSize={120}
+  duration={2}
+  startPixelated={true}
+/>`}</code>
+                </pre>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Demo: Image Transition */}
+      <section className="py-20 px-6 bg-slate-900/30">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-12">
+            <h3 className="text-4xl font-bold mb-4">Image Transition</h3>
+            <p className="text-slate-400 text-lg">
+              Transition between two images with pixelation
             </p>
           </div>
 
@@ -169,6 +245,7 @@ float b = texture2D(tex, uv - offset).b;`}</code>
                 pixelSize={100}
                 duration={2}
                 enableChromaticAberration={true}
+                startPixelated={false}
               />
             </div>
 
@@ -398,6 +475,10 @@ const animate = () => {
                   <li className="flex items-start gap-2">
                     <span className="text-purple-400 font-mono">enableChromaticAberration</span>
                     <span className="text-slate-400">- RGB split (default: true)</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-purple-400 font-mono">startPixelated</span>
+                    <span className="text-slate-400">- Start pixelated for reveal (default: false)</span>
                   </li>
                 </ul>
               </div>
