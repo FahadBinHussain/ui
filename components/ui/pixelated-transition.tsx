@@ -208,14 +208,11 @@ export const PixelatedTransition: React.FC<PixelatedTransitionProps> = ({
   }, [imageSrc, nextImageSrc, enableChromaticAberration, startPixelated, pixelSize]);
 
   const startTransition = (targetPixelSize: number = pixelSize) => {
-    console.log("startTransition called", { materialRef: !!materialRef.current, isTransitioning });
-    
     if (!materialRef.current || isTransitioning) return;
 
     setIsTransitioning(true);
 
     const material = materialRef.current;
-    console.log("Starting transition", { startPixelated, currentPixelSize: material.uniforms.uPixelSize.value });
 
     // If starting pixelated, just resolve to sharp
     if (startPixelated) {
@@ -224,7 +221,6 @@ export const PixelatedTransition: React.FC<PixelatedTransitionProps> = ({
         duration: duration,
         ease: "power2.out",
         onComplete: () => {
-          console.log("Reveal complete");
           setIsTransitioning(false);
           onTransitionComplete?.();
         },
@@ -278,13 +274,10 @@ export const PixelatedTransition: React.FC<PixelatedTransitionProps> = ({
     <div className={`relative w-full h-full ${className}`}>
       <div ref={containerRef} className="absolute inset-0" />
       <button
-        onClick={() => {
-          console.log("Button clicked!", {isTransitioning, hasMaterial: !!materialRef.current});
-          startTransition();
-        }}
+        onClick={() => startTransition()}
         className="absolute bottom-4 right-4 bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-lg font-semibold transition-colors z-20"
       >
-        {startPixelated ? "Reveal" : "Pixelate"} {isTransitioning ? "(busy)" : ""}
+        {startPixelated ? "Reveal" : "Pixelate"}
       </button>
     </div>
   );
