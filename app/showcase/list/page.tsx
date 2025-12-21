@@ -5,7 +5,8 @@ import { Button } from "@/components/ui/button";
 import { useState } from "react";
 
 export default function ComponentsListPage() {
-  const [copied, setCopied] = useState(false);
+  const [copiedIndex, setCopiedIndex] = useState<number | null>(null);
+  const [copiedAll, setCopiedAll] = useState(false);
 
   const allComponents = [
     {
@@ -145,8 +146,19 @@ export default function ComponentsListPage() {
   const copyToClipboard = async () => {
     try {
       await navigator.clipboard.writeText(markdownList);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
+      setCopiedAll(true);
+      setTimeout(() => setCopiedAll(false), 2000);
+    } catch (err) {
+      console.error('Failed to copy text: ', err);
+    }
+  };
+
+  const copyComponentToClipboard = async (component: typeof allComponents[0], index: number) => {
+    try {
+      const componentText = `- **${component.title}**: ${component.description}`;
+      await navigator.clipboard.writeText(componentText);
+      setCopiedIndex(index);
+      setTimeout(() => setCopiedIndex(null), 2000);
     } catch (err) {
       console.error('Failed to copy text: ', err);
     }
@@ -168,7 +180,7 @@ export default function ComponentsListPage() {
             variant="purple"
             className="border-gray-700 text-gray-300 hover:bg-gray-800"
           >
-            {copied ? (
+            {copiedAll ? (
               <>
                 <Check className="w-4 h-4 mr-2" />
                 Copied!
@@ -176,7 +188,7 @@ export default function ComponentsListPage() {
             ) : (
               <>
                 <Copy className="w-4 h-4 mr-2" />
-                Copy Markdown
+                Copy All
               </>
             )}
           </Button>
@@ -194,9 +206,25 @@ export default function ComponentsListPage() {
 
         {/* Markdown Codeblock */}
         <div className="bg-gray-900 rounded-lg border border-gray-700 p-6">
-          <pre className="text-gray-300 text-sm leading-relaxed overflow-x-auto">
-            <code>{markdownList}</code>
-          </pre>
+          <div className="space-y-2">
+            {allComponents.map((component, index) => (
+              <div key={index} className="flex items-center justify-between group">
+                <pre className="text-gray-300 text-sm leading-relaxed flex-1">
+                  <code>- **{component.title}**: {component.description}</code>
+                </pre>
+                <Button
+                  onClick={() => copyComponentToClipboard(component, index)}
+                  className="ml-4 bg-transparent border border-gray-600 text-gray-400 hover:text-white hover:bg-gray-800 p-2 opacity-0 group-hover:opacity-100 transition-opacity"
+                >
+                  {copiedIndex === index ? (
+                    <Check className="w-4 h-4" />
+                  ) : (
+                    <Copy className="w-4 h-4" />
+                  )}
+                </Button>
+              </div>
+            ))}
+          </div>
         </div>
 
         {/* Stats */}
