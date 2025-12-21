@@ -13,10 +13,6 @@ export default function ComponentsListPage() {
       description: "CSS 3D perspective cards with hover animations",
     },
     {
-      title: "3D Scenes",
-      description: "React Three Fiber canvases and 3D experiences",
-    },
-    {
       title: "Animated Testimonials",
       description: "Beautiful testimonial carousel with 3D stacking",
     },
@@ -57,6 +53,10 @@ export default function ComponentsListPage() {
       description: "Interactive 3D globe showing real-time data points",
     },
     {
+      title: "Holographic Depth-Map Parallax",
+      description: "Realistic depth-based parallax effect using static images and depth maps",
+    },
+    {
       title: "Infinite Marquee",
       description: "Seamlessly looping marquee for logos, text, or images",
     },
@@ -91,6 +91,10 @@ export default function ComponentsListPage() {
     {
       title: "Quantum Loading States",
       description: "Electron orbital animations with quantum physics-inspired loading spinners",
+    },
+    {
+      title: "Bio-Organic Growth Loaders",
+      description: "SVG-based organic shapes growing like vines using differential growth algorithms",
     },
     {
       title: "Retro CRT",
