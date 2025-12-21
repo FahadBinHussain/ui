@@ -60,60 +60,50 @@
     }
   }
 
+  @keyframes aurora-1 {
+    0%, 100% {
+      transform: translateX(-100%) translateY(-50%) rotate(0deg);
+      opacity: 0.3;
+    }
+    50% {
+      transform: translateX(100%) translateY(-30%) rotate(180deg);
+      opacity: 0.8;
+    }
+  }
+
+  @keyframes aurora-2 {
+    0%, 100% {
+      transform: translateX(-80%) translateY(-60%) rotate(0deg);
+      opacity: 0.2;
+    }
+    50% {
+      transform: translateX(80%) translateY(-40%) rotate(120deg);
+      opacity: 0.6;
+    }
+  }
+
+  @keyframes aurora-3 {
+    0%, 100% {
+      transform: translateX(-120%) translateY(-70%) rotate(0deg);
+      opacity: 0.1;
+    }
+    50% {
+      transform: translateX(120%) translateY(-20%) rotate(240deg);
+      opacity: 0.4;
+    }
+  }
+
   --animate-blink-border: blink-border 1s infinite;
   --animate-aurora: aurora 60s linear infinite;
+  --animate-aurora-1: aurora-1 20s ease-in-out infinite;
+  --animate-aurora-2: aurora-2 25s ease-in-out infinite reverse;
+  --animate-aurora-3: aurora-3 30s ease-in-out infinite;
 
   --blue-300: #93c5fd;
   --blue-400: #60a5fa;
   --blue-500: #3b82f6;
   --indigo-300: #a5b4fc;
   --violet-200: #ddd6fe;
-}
-
-.aurora-container {
-  position: relative;
-  overflow: hidden;
-}
-
-.aurora-bg {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background:
-    linear-gradient(to bottom, white, transparent),
-    repeating-linear-gradient(100deg, var(--blue-500) 10%, var(--indigo-300) 15%, var(--blue-300) 20%, var(--violet-200) 25%, var(--blue-400) 30%);
-  background-size: 300% 200%;
-  background-position: 50% 50%;
-  filter: blur(10px) invert(0);
-  opacity: 0.5;
-  will-change: transform;
-  animation: aurora 60s linear infinite;
-}
-
-.dark .aurora-bg {
-  background:
-    linear-gradient(to bottom, black, transparent),
-    repeating-linear-gradient(100deg, var(--blue-500) 10%, var(--indigo-300) 15%, var(--blue-300) 20%, var(--violet-200) 25%, var(--blue-400) 30%);
-  filter: blur(10px) invert(0);
-}
-
-.aurora-bg::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background:
-    linear-gradient(to bottom, white, transparent),
-    repeating-linear-gradient(100deg, var(--blue-500) 10%, var(--indigo-300) 15%, var(--blue-300) 20%, var(--violet-200) 25%, var(--blue-400) 30%);
-  background-size: 200% 100%;
-  background-attachment: fixed;
-  mix-blend-mode: difference;
-  animation: aurora 60s linear infinite;
-}
-
-.dark .aurora-bg::after {
-  background:
-    linear-gradient(to bottom, black, transparent),
-    repeating-linear-gradient(100deg, var(--blue-500) 10%, var(--indigo-300) 15%, var(--blue-300) 20%, var(--violet-200) 25%, var(--blue-400) 30%);
 }
 
 :root {
