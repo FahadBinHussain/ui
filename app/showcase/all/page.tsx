@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { Box, Sparkles, Palette, Layers, MessageSquareQuote, Eye, Zap, MousePointer2, ImageIcon, ScrollText, Type, Users, Pencil, Palette as PaletteIcon, ArrowRightLeft, Diamond, Menu, Search, Layout, Activity, Code, Cloud, Cpu, Database, Flag, Globe, Atom, Star, Rocket, Wand2, Target, Play, ChevronRight, Github, ExternalLink, ArrowLeft, Filter, Grid3X3, List, Droplets, Terminal, Boxes, Move, Shirt } from "lucide-react";
+import { Box, Sparkles, Palette, Layers, MessageSquareQuote, Eye, Zap, MousePointer2, ImageIcon, ScrollText, Type, Users, Pencil, Palette as PaletteIcon, ArrowRightLeft, Diamond, Menu, Search, Layout, Activity, Code, Cloud, Cpu, Database, Flag, Globe, Atom, Star, Rocket, Wand2, Target, Play, ChevronRight, Github, ExternalLink, ArrowLeft, Filter, Grid3X3, List, Droplets, Terminal, Boxes, Move, Shirt, Compass } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { useState, useMemo } from "react";
@@ -393,6 +393,14 @@ export default function AllComponentsPage() {
       icon: ImageIcon,
       href: "/showcase/displacement-hover",
       color: "from-purple-600 via-blue-500 to-indigo-600",
+      category: "effects"
+    },
+    {
+      title: "Direction-Aware Hover",
+      description: "Overlays that enter from the edge where mouse approached",
+      icon: Compass,
+      href: "/showcase/direction-aware-hover",
+      color: "from-purple-500 via-pink-500 to-rose-500",
       category: "effects"
     },
   ];

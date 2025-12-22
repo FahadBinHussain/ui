@@ -205,6 +205,10 @@ export default function ComponentsListPage() {
       title: "Displacement Map Hover",
       description: "Awwwards-standard image hover with texture-driven warping using Three.js shaders and displacement maps",
     },
+    {
+      title: "Direction-Aware Hover",
+      description: "Card overlays that intelligently enter from the exact edge where mouse approached using Math.atan2() angle detection",
+    },
   ];
 
   const markdownList = allComponents
