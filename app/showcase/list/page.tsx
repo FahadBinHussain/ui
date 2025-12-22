@@ -151,6 +151,10 @@ export default function ComponentsListPage() {
       description: "Electron orbital animations with quantum physics-inspired loading spinners",
     },
     {
+      title: "Raymarching / Signed Distance Functions",
+      description: "Pure mathematical rendering with infinite resolution—no polygons, just raymarching through SDF equations for liquid morphing shapes",
+    },
+    {
       title: "Retro CRT",
       description: "Old school monitor effect with scanlines and curvature",
     },
