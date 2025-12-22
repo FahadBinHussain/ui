@@ -1,8 +1,46 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { GlassmorphismRefraction, glassPresets } from "@/components/ui/glassmorphism-refraction";
+import { useFrame } from "@react-three/fiber";
 import * as THREE from "three";
+
+// Animated background components
+function AnimatedBox({ position, color }: { position: [number, number, number]; color: string }) {
+  const meshRef = useRef<THREE.Mesh>(null);
+  
+  useFrame((state) => {
+    if (meshRef.current) {
+      meshRef.current.rotation.x = state.clock.elapsedTime;
+      meshRef.current.rotation.y = state.clock.elapsedTime * 0.7;
+    }
+  });
+  
+  return (
+    <mesh ref={meshRef} position={position}>
+      <boxGeometry args={[1, 1, 1]} />
+      <meshStandardMaterial color={color} metalness={0.7} roughness={0.2} />
+    </mesh>
+  );
+}
+
+function AnimatedTorus() {
+  const meshRef = useRef<THREE.Mesh>(null);
+  
+  useFrame((state) => {
+    if (meshRef.current) {
+      meshRef.current.rotation.x = state.clock.elapsedTime * 0.5;
+      meshRef.current.rotation.z = state.clock.elapsedTime * 0.3;
+    }
+  });
+  
+  return (
+    <mesh ref={meshRef} position={[0, 0, -3]}>
+      <torusGeometry args={[1, 0.3, 16, 100]} />
+      <meshStandardMaterial color="#ffe66d" metalness={0.8} roughness={0.1} />
+    </mesh>
+  );
+}
 
 export default function GlassmorphismRefractionDemo() {
   const [preset, setPreset] = useState<keyof typeof glassPresets>("window");
@@ -18,14 +56,20 @@ export default function GlassmorphismRefractionDemo() {
       <pointLight position={[-10, -10, -10]} intensity={1} color="#ff00ff" />
       
       {/* Animated rotating boxes */}
-      {animateBackground && (
+      {animateBackground ? (
         <>
-          <mesh position={[-2, 1, -2]} rotation={[0, Date.now() * 0.001, 0]}>
+          <AnimatedBox position={[-2, 1, -2]} color="#ff6b6b" />
+          <AnimatedBox position={[2, -1, -2]} color="#4ecdc4" />
+          <AnimatedTorus />
+        </>
+      ) : (
+        <>
+          <mesh position={[-2, 1, -2]}>
             <boxGeometry args={[1, 1, 1]} />
             <meshStandardMaterial color="#ff6b6b" metalness={0.7} roughness={0.2} />
           </mesh>
           
-          <mesh position={[2, -1, -2]} rotation={[Date.now() * 0.001, 0, 0]}>
+          <mesh position={[2, -1, -2]}>
             <boxGeometry args={[1, 1, 1]} />
             <meshStandardMaterial color="#4ecdc4" metalness={0.7} roughness={0.2} />
           </mesh>
@@ -53,6 +97,19 @@ export default function GlassmorphismRefractionDemo() {
     </>
   );
 
+  // Animated glass layer wrapper
+  function AnimatedGlassLayer({ glassProps, index }: { glassProps: any; index: number }) {
+    const meshRef = useRef<THREE.Group>(null);
+    
+    useFrame((state) => {
+      if (meshRef.current && glassGeometry !== "plane") {
+        meshRef.current.rotation.y = state.clock.elapsedTime * 0.3 * (index + 1);
+      }
+    });
+    
+    return <group ref={meshRef}>{glassProps}</group>;
+  }
+
   // Generate glass layers based on count
   const generateGlassLayers = () => {
     const layers = [];
@@ -61,7 +118,7 @@ export default function GlassmorphismRefractionDemo() {
     for (let i = 0; i < layerCount; i++) {
       layers.push({
         position: [0, 0, i * spacing] as [number, number, number],
-        rotation: glassGeometry === "plane" ? [0, 0, 0] as [number, number, number] : [0, Date.now() * 0.0005 * (i + 1), 0] as [number, number, number],
+        rotation: [0, 0, 0] as [number, number, number],
         scale: [2, 2, 2] as [number, number, number],
         geometry: glassGeometry,
         ...glassPresets[preset],

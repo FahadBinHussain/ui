@@ -164,10 +164,16 @@ function GlassLayerWithRef({
     onRef(meshRef.current, index);
   }, [onRef, index]);
   
-  // Update resolution on resize
-  useFrame(() => {
+  // Update resolution on resize and add rotation animation
+  useFrame((state) => {
     if (materialRef.current) {
       materialRef.current.uniforms.uResolution.value.set(size.width, size.height);
+    }
+    
+    // Auto-rotate glass if not plane geometry
+    if (meshRef.current && geometry !== "plane") {
+      meshRef.current.rotation.y = state.clock.elapsedTime * 0.3 * (index + 1);
+      meshRef.current.rotation.x = Math.sin(state.clock.elapsedTime * 0.2) * 0.1;
     }
   });
   
