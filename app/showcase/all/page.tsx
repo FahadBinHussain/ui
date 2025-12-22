@@ -204,6 +204,14 @@ export default function AllComponentsPage() {
       category: "interactive"
     },
     {
+      title: "Chromatic Aberration",
+      description: "Bad TV look with aggressive RGB channel splitting triggered by scroll or mouse speed",
+      icon: Zap,
+      href: "/showcase/chromatic-aberration",
+      color: "from-red-500 via-purple-500 to-cyan-500",
+      category: "effects"
+    },
+    {
       title: "Prismatic Dispersion Glass",
       description: "Glassmorphism with chromatic aberration and RGB channel separation effects",
       icon: Diamond,
