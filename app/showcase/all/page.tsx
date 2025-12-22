@@ -292,6 +292,14 @@ export default function AllComponentsPage() {
       category: "3d"
     },
     {
+      title: "Ferrofluid Typography",
+      description: "Magnetic liquid text with spikes that follow your cursor using GPGPU simulations",
+      icon: Droplets,
+      href: "/showcase/ferrofluid-typography",
+      color: "from-blue-500 via-purple-600 to-pink-600",
+      category: "text"
+    },
+    {
       title: "Bio-Luminescent Glow",
       description: "Organic pulsing glow effects mimicking deep-sea bioluminescence",
       icon: Sparkles,
