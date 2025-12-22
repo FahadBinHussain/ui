@@ -371,6 +371,14 @@ export default function AllComponentsPage() {
       color: "from-indigo-600 via-purple-500 to-pink-500",
       category: "effects"
     },
+    {
+      title: "Metaballs / Goop",
+      description: "Organic liquid mercury blobs that merge together using CSS or SVG filters",
+      icon: Droplets,
+      href: "/showcase/metaballs",
+      color: "from-purple-600 via-pink-500 to-purple-600",
+      category: "effects"
+    },
   ];
 
   const categories = [

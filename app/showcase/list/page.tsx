@@ -193,6 +193,10 @@ export default function ComponentsListPage() {
       title: "Pixelated Transition",
       description: "Retro-futuristic WebGL transitions that pixelate images with chromatic aberration for gaming/tech aesthetics",
     },
+    {
+      title: "Metaballs / Goop Effect",
+      description: "Organic liquid mercury blobs that snap together when close, using CSS blur+contrast or SVG filters",
+    },
   ];
 
   const markdownList = allComponents
