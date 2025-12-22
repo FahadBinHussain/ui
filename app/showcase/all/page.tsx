@@ -364,6 +364,14 @@ export default function AllComponentsPage() {
       category: "interactive"
     },
     {
+      title: "Cloth-Simulated Typography",
+      description: "Text that acts like a hanging flag or cloth, reacting to wind and cursor with physics",
+      icon: Type,
+      href: "/showcase/cloth-typography",
+      color: "from-cyan-600 via-blue-500 to-purple-600",
+      category: "interactive"
+    },
+    {
       title: "Cloth Simulation",
       description: "Realistic fabric physics using Verlet integration for draggable silk flags and curtains",
       icon: Shirt,
