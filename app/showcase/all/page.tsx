@@ -276,6 +276,14 @@ export default function AllComponentsPage() {
       category: "effects"
     },
     {
+      title: "Glassmorphism Refraction",
+      description: "Real-time refraction with FBO rendering that actually magnifies and distorts content",
+      icon: Boxes,
+      href: "/showcase/glassmorphism-refraction",
+      color: "from-cyan-400 via-blue-500 to-purple-500",
+      category: "3d"
+    },
+    {
       title: "Bio-Luminescent Glow",
       description: "Organic pulsing glow effects mimicking deep-sea bioluminescence",
       icon: Sparkles,
