@@ -17,7 +17,9 @@ export default function AllComponentsPage() {
       icon: Sparkles,
       href: "/showcase/cards",
       color: "from-purple-500 to-pink-500",
-      category: "3d"
+      category: "3d",
+      componentFile: "ThreeDCardDemo.tsx",
+      showcaseFile: "page.tsx"
     },
     {
       title: "Animated Testimonials",
@@ -25,7 +27,9 @@ export default function AllComponentsPage() {
       icon: MessageSquareQuote,
       href: "/showcase/testimonials",
       color: "from-pink-500 to-rose-500",
-      category: "animation"
+      category: "animation",
+      componentFile: "AnimatedTestimonialsDemo.tsx",
+      showcaseFile: "page.tsx"
     },
     {
       title: "Animated Tooltip",
@@ -33,7 +37,9 @@ export default function AllComponentsPage() {
       icon: Users,
       href: "/showcase/animated-tooltip",
       color: "from-emerald-500 to-sky-500",
-      category: "ui"
+      category: "ui",
+      componentFile: "AnimatedTooltipDemo.tsx",
+      showcaseFile: "page.tsx"
     },
     {
       title: "ASCII Live Render",
@@ -41,7 +47,9 @@ export default function AllComponentsPage() {
       icon: Terminal,
       href: "/showcase/ascii-render",
       color: "from-green-500 to-emerald-500",
-      category: "effects"
+      category: "effects",
+      componentFile: "AsciiRenderDemo.tsx",
+      showcaseFile: "page.tsx"
     },
     {
       title: "Barba.js Transitions",
@@ -49,7 +57,9 @@ export default function AllComponentsPage() {
       icon: ArrowRightLeft,
       href: "/showcase/barba",
       color: "from-blue-600 to-purple-600",
-      category: "animation"
+      category: "animation",
+      componentFile: "BarbaDemo.tsx",
+      showcaseFile: "page.tsx"
     },
     {
       title: "Bento Grid",
@@ -57,7 +67,9 @@ export default function AllComponentsPage() {
       icon: Layers,
       href: "/showcase/bento-grid",
       color: "from-blue-600 to-indigo-600",
-      category: "layout"
+      category: "layout",
+      componentFile: "BentoGridDemo.tsx",
+      showcaseFile: "page.tsx"
     },
     {
       title: "Cloud Background",
@@ -65,7 +77,9 @@ export default function AllComponentsPage() {
       icon: Cloud,
       href: "/showcase/cloud",
       color: "from-sky-400 to-blue-500",
-      category: "background"
+      category: "background",
+      componentFile: "cloud-background.tsx",
+      showcaseFile: "page.tsx"
     },
     {
       title: "Crystal Fractal Backgrounds",
@@ -73,7 +87,9 @@ export default function AllComponentsPage() {
       icon: Sparkles,
       href: "/showcase/crystal-fractal",
       color: "from-cyan-400 via-blue-400 to-purple-400",
-      category: "scientific"
+      category: "scientific",
+      componentFile: "CrystalFractalDemo.tsx",
+      showcaseFile: "page.tsx"
     },
     {
       title: "Electric Border",
@@ -81,7 +97,9 @@ export default function AllComponentsPage() {
       icon: Zap,
       href: "/showcase/electric-border",
       color: "from-yellow-500 to-orange-500",
-      category: "effects"
+      category: "effects",
+      componentFile: "ElectricBorderDemo.tsx",
+      showcaseFile: "page.tsx"
     },
     {
       title: "Expanding Search",
@@ -89,7 +107,9 @@ export default function AllComponentsPage() {
       icon: Search,
       href: "/showcase/search",
       color: "from-indigo-500 to-purple-500",
-      category: "ui"
+      category: "ui",
+      componentFile: "search-interface.tsx",
+      showcaseFile: "page.tsx"
     },
     {
       title: "Film Grain Overlay",
@@ -97,7 +117,9 @@ export default function AllComponentsPage() {
       icon: Film,
       href: "/showcase/film-grain",
       color: "from-gray-600 via-gray-500 to-gray-400",
-      category: "effects"
+      category: "effects",
+      componentFile: "FilmGrainDemo.tsx",
+      showcaseFile: "page.tsx"
     },
     {
       title: "Fluid Cursor",
@@ -105,7 +127,9 @@ export default function AllComponentsPage() {
       icon: MousePointer2,
       href: "/showcase/fluid-cursor",
       color: "from-cyan-500 to-blue-500",
-      category: "interactive"
+      category: "interactive",
+      componentFile: "fluid-cursor.tsx",
+      showcaseFile: "page.tsx"
     },
     {
       title: "Global Stats",
@@ -113,7 +137,9 @@ export default function AllComponentsPage() {
       icon: Globe,
       href: "/showcase/globe",
       color: "from-blue-600 to-indigo-600",
-      category: "3d"
+      category: "3d",
+      componentFile: "ThreeScene.tsx",
+      showcaseFile: "page.tsx"
     },
     {
       title: "Holographic Depth-Map Parallax",
@@ -121,7 +147,9 @@ export default function AllComponentsPage() {
       icon: Eye,
       href: "/showcase/holographic-depth-parallax",
       color: "from-cyan-500 via-blue-500 to-purple-500",
-      category: "3d"
+      category: "3d",
+      componentFile: "HolographicDepthParallaxDemo.tsx",
+      showcaseFile: "page.tsx"
     },
     {
       title: "Infinite Marquee",
@@ -129,7 +157,9 @@ export default function AllComponentsPage() {
       icon: ArrowRightLeft,
       href: "/showcase/marquee",
       color: "from-yellow-400 to-orange-500",
-      category: "animation"
+      category: "animation",
+      componentFile: "marquee.tsx",
+      showcaseFile: "page.tsx"
     },
     {
       title: "Interactive Grid",
@@ -137,7 +167,9 @@ export default function AllComponentsPage() {
       icon: Layout,
       href: "/showcase/grid",
       color: "from-gray-500 to-gray-800",
-      category: "interactive"
+      category: "interactive",
+      componentFile: "interactive-grid.tsx",
+      showcaseFile: "page.tsx"
     },
     {
       title: "Lens Effect",
@@ -145,7 +177,9 @@ export default function AllComponentsPage() {
       icon: Eye,
       href: "/showcase/lens",
       color: "from-indigo-500 to-purple-500",
-      category: "interactive"
+      category: "interactive",
+      componentFile: "LensDemo.tsx",
+      showcaseFile: "page.tsx"
     },
     {
       title: "Liquid Image Distortion",
@@ -153,7 +187,9 @@ export default function AllComponentsPage() {
       icon: Droplets,
       href: "/showcase/liquid-image",
       color: "from-cyan-400 to-blue-500",
-      category: "interactive"
+      category: "interactive",
+      componentFile: "LiquidImageDemo.tsx",
+      showcaseFile: "page.tsx"
     },
     {
       title: "Magnetic Elements",
@@ -161,7 +197,9 @@ export default function AllComponentsPage() {
       icon: MousePointer2,
       href: "/showcase/magnetic",
       color: "from-amber-500 to-yellow-500",
-      category: "interactive"
+      category: "interactive",
+      componentFile: "MagneticDemo.tsx",
+      showcaseFile: "page.tsx"
     },
     {
       title: "Magnetic Field Interactions",
@@ -169,7 +207,9 @@ export default function AllComponentsPage() {
       icon: Zap,
       href: "/showcase/magnetic-field",
       color: "from-red-500 to-blue-500",
-      category: "scientific"
+      category: "scientific",
+      componentFile: "MagneticFieldDemo.tsx",
+      showcaseFile: "page.tsx"
     },
     {
       title: "Neural Network Visualizer",
@@ -177,7 +217,9 @@ export default function AllComponentsPage() {
       icon: Cpu,
       href: "/showcase/neural-network",
       color: "from-purple-400 to-pink-400",
-      category: "scientific"
+      category: "scientific",
+      componentFile: "NeuralNetworkDemo.tsx",
+      showcaseFile: "page.tsx"
     },
     {
       title: "Neumorphic Card",
@@ -185,7 +227,9 @@ export default function AllComponentsPage() {
       icon: Layers,
       href: "/showcase/neumorphic",
       color: "from-gray-300 to-gray-100",
-      category: "ui"
+      category: "ui",
+      componentFile: "neumorphic.tsx",
+      showcaseFile: "page.tsx"
     },
     {
       title: "Particle Wave Interactions",
@@ -193,7 +237,9 @@ export default function AllComponentsPage() {
       icon: Zap,
       href: "/showcase/wave-particles",
       color: "from-blue-400 to-purple-400",
-      category: "interactive"
+      category: "interactive",
+      componentFile: "WaveParticlesDemo.tsx",
+      showcaseFile: "page.tsx"
     },
     {
       title: "Physics Gravity Sandbox",
@@ -201,7 +247,9 @@ export default function AllComponentsPage() {
       icon: Box,
       href: "/showcase/physics-sandbox",
       color: "from-indigo-500 to-purple-500",
-      category: "interactive"
+      category: "interactive",
+      componentFile: "PhysicsSandboxDemo.tsx",
+      showcaseFile: "page.tsx"
     },
     {
       title: "Chromatic Aberration",
@@ -209,7 +257,9 @@ export default function AllComponentsPage() {
       icon: Zap,
       href: "/showcase/chromatic-aberration",
       color: "from-red-500 via-purple-500 to-cyan-500",
-      category: "effects"
+      category: "effects",
+      componentFile: "ChromaticAberrationDemo.tsx",
+      showcaseFile: "page.tsx"
     },
     {
       title: "Prismatic Dispersion Glass",
@@ -217,7 +267,9 @@ export default function AllComponentsPage() {
       icon: Diamond,
       href: "/showcase/prismatic-glass",
       color: "from-pink-400 via-purple-400 to-cyan-400",
-      category: "effects"
+      category: "effects",
+      componentFile: "PrismaticGlassDemo.tsx",
+      showcaseFile: "page.tsx"
     },
     {
       title: "Quantum Loading States",
@@ -225,7 +277,9 @@ export default function AllComponentsPage() {
       icon: Atom,
       href: "/showcase/quantum-loading",
       color: "from-cyan-400 to-blue-400",
-      category: "scientific"
+      category: "scientific",
+      componentFile: "QuantumLoadingDemo.tsx",
+      showcaseFile: "page.tsx"
     },
     {
       title: "Reaction-Diffusion Patterns",
@@ -233,7 +287,9 @@ export default function AllComponentsPage() {
       icon: Activity,
       href: "/showcase/reaction-diffusion",
       color: "from-cyan-400 via-purple-400 to-pink-400",
-      category: "scientific"
+      category: "scientific",
+      componentFile: "ReactionDiffusionDemo.tsx",
+      showcaseFile: "page.tsx"
     },
     {
       title: "Raymarching / SDF",
@@ -241,7 +297,9 @@ export default function AllComponentsPage() {
       icon: Infinity,
       href: "/showcase/raymarch-sdf",
       color: "from-purple-500 via-pink-500 to-blue-500",
-      category: "3d"
+      category: "3d",
+      componentFile: "RaymarchSDFDemo.tsx",
+      showcaseFile: "page.tsx"
     },
     {
       title: "Rutt-Etra Video Synthesis",
@@ -249,7 +307,9 @@ export default function AllComponentsPage() {
       icon: Activity,
       href: "/showcase/rutt-etra",
       color: "from-cyan-500 via-pink-500 to-purple-500",
-      category: "3d"
+      category: "3d",
+      componentFile: "RuttEtraDemo.tsx",
+      showcaseFile: "page.tsx"
     },
     {
       title: "Bio-Organic Growth Loaders",
@@ -257,7 +317,9 @@ export default function AllComponentsPage() {
       icon: Activity,
       href: "/showcase/bio-organic-growth-loader",
       color: "from-emerald-400 to-cyan-400",
-      category: "scientific"
+      category: "scientific",
+      componentFile: "BioOrganicGrowthLoaderDemo.tsx",
+      showcaseFile: "page.tsx"
     },
     {
       title: "Retro CRT",
@@ -265,7 +327,9 @@ export default function AllComponentsPage() {
       icon: Cpu,
       href: "/showcase/crt",
       color: "from-green-600 to-green-900",
-      category: "effects"
+      category: "effects",
+      componentFile: "crt.tsx",
+      showcaseFile: "page.tsx"
     },
     {
       title: "Dithering & Halftone",
@@ -273,7 +337,9 @@ export default function AllComponentsPage() {
       icon: Grid3X3,
       href: "/showcase/dithering",
       color: "from-green-500 via-cyan-500 to-blue-500",
-      category: "effects"
+      category: "effects",
+      componentFile: "DitheringDemo.tsx",
+      showcaseFile: "page.tsx"
     },
     {
       title: "Glassmorphism Refraction",
@@ -281,7 +347,9 @@ export default function AllComponentsPage() {
       icon: Boxes,
       href: "/showcase/glassmorphism-refraction",
       color: "from-cyan-400 via-blue-500 to-purple-500",
-      category: "3d"
+      category: "3d",
+      componentFile: "GlassmorphismRefractionDemo.tsx",
+      showcaseFile: "page.tsx"
     },
     {
       title: "Gaussian Splatting",
@@ -289,7 +357,9 @@ export default function AllComponentsPage() {
       icon: Atom,
       href: "/showcase/gaussian-splatting",
       color: "from-cyan-400 via-indigo-500 to-purple-600",
-      category: "3d"
+      category: "3d",
+      componentFile: "GaussianSplattingDemo.tsx",
+      showcaseFile: "page.tsx"
     },
     {
       title: "Ferrofluid Typography",
@@ -297,7 +367,9 @@ export default function AllComponentsPage() {
       icon: Droplets,
       href: "/showcase/ferrofluid-typography",
       color: "from-blue-500 via-purple-600 to-pink-600",
-      category: "text"
+      category: "text",
+      componentFile: "FerrofluidTypographyDemo.tsx",
+      showcaseFile: "page.tsx"
     },
     {
       title: "Bio-Luminescent Glow",
@@ -305,7 +377,9 @@ export default function AllComponentsPage() {
       icon: Sparkles,
       href: "/showcase/bio-luminescent",
       color: "from-cyan-400 to-blue-400",
-      category: "effects"
+      category: "effects",
+      componentFile: "BioLuminescentDemo.tsx",
+      showcaseFile: "page.tsx"
     },
     {
       title: "Reveal Text",
@@ -313,7 +387,9 @@ export default function AllComponentsPage() {
       icon: ImageIcon,
       href: "/showcase/reveal-text",
       color: "from-emerald-500 to-green-500",
-      category: "animation"
+      category: "animation",
+      componentFile: "RevealTextDemo.tsx",
+      showcaseFile: "page.tsx"
     },
     {
       title: "SVG Path Drawing",
@@ -321,7 +397,9 @@ export default function AllComponentsPage() {
       icon: Pencil,
       href: "/showcase/path-drawing",
       color: "from-pink-500 to-cyan-500",
-      category: "animation"
+      category: "animation",
+      componentFile: "PathDrawingDemo.tsx",
+      showcaseFile: "page.tsx"
     },
     {
       title: "Spotlight Torch Reveal",
@@ -329,7 +407,9 @@ export default function AllComponentsPage() {
       icon: Wand2,
       href: "/showcase/spotlight-reveal",
       color: "from-yellow-400 to-orange-500",
-      category: "interactive"
+      category: "interactive",
+      componentFile: "SpotlightRevealDemo.tsx",
+      showcaseFile: "page.tsx"
     },
     {
       title: "Scroll Text Flow",
@@ -337,7 +417,9 @@ export default function AllComponentsPage() {
       icon: ScrollText,
       href: "/showcase/scroll-text-flow",
       color: "from-rose-500 to-pink-500",
-      category: "animation"
+      category: "animation",
+      componentFile: "ScrollTextFlowDemo.tsx",
+      showcaseFile: "page.tsx"
     },
     {
       title: "Scrollytelling / Sticky Pinning",
@@ -345,7 +427,9 @@ export default function AllComponentsPage() {
       icon: BookOpen,
       href: "/showcase/scrollytelling",
       color: "from-purple-500 via-pink-500 to-blue-500",
-      category: "animation"
+      category: "animation",
+      componentFile: "ScrollytellingDemo.tsx",
+      showcaseFile: "page.tsx"
     },
     {
       title: "Text Animations",
@@ -353,7 +437,9 @@ export default function AllComponentsPage() {
       icon: Palette,
       href: "/showcase/text-animations",
       color: "from-green-500 to-teal-500",
-      category: "animation"
+      category: "animation",
+      componentFile: "ContainerTextFlipDemo.tsx",
+      showcaseFile: "page.tsx"
     },
     {
       title: "Text Scramble",
@@ -361,7 +447,9 @@ export default function AllComponentsPage() {
       icon: Type,
       href: "/showcase/text-scramble",
       color: "from-indigo-400 to-blue-400",
-      category: "animation"
+      category: "animation",
+      componentFile: "TextScrambleDemo.tsx",
+      showcaseFile: "page.tsx"
     },
     {
       title: "Time Warp Transitions",
@@ -369,7 +457,9 @@ export default function AllComponentsPage() {
       icon: Zap,
       href: "/showcase/time-warp",
       color: "from-cyan-400 via-purple-400 to-pink-400",
-      category: "animation"
+      category: "animation",
+      componentFile: "TimeWarpDemo.tsx",
+      showcaseFile: "page.tsx"
     },
     {
       title: "TypeWriter Effect",
@@ -377,7 +467,9 @@ export default function AllComponentsPage() {
       icon: Type,
       href: "/showcase/typewriter",
       color: "from-blue-500 to-green-500",
-      category: "animation"
+      category: "animation",
+      componentFile: "TypeWriterDemo.tsx",
+      showcaseFile: "page.tsx"
     },
     {
       title: "UI Components",
@@ -385,7 +477,9 @@ export default function AllComponentsPage() {
       icon: Layers,
       href: "/showcase/buttons",
       color: "from-blue-500 to-cyan-500",
-      category: "ui"
+      category: "ui",
+      componentFile: "ButtonDemo.tsx",
+      showcaseFile: "page.tsx"
     },
     {
       title: "Variable Font Interaction",
@@ -393,7 +487,9 @@ export default function AllComponentsPage() {
       icon: Type,
       href: "/showcase/variable-font",
       color: "from-purple-600 via-pink-500 to-orange-500",
-      category: "interactive"
+      category: "interactive",
+      componentFile: "VariableFontDemo.tsx",
+      showcaseFile: "page.tsx"
     },
     {
       title: "Voxel Terrain",
@@ -401,7 +497,9 @@ export default function AllComponentsPage() {
       icon: Boxes,
       href: "/showcase/voxel-terrain",
       color: "from-green-600 via-teal-500 to-cyan-500",
-      category: "3d"
+      category: "3d",
+      componentFile: "VoxelTerrainDemo.tsx",
+      showcaseFile: "page.tsx"
     },
     {
       title: "Kinetic Typography",
@@ -409,7 +507,9 @@ export default function AllComponentsPage() {
       icon: Move,
       href: "/showcase/kinetic-typography",
       color: "from-purple-600 via-fuchsia-500 to-pink-500",
-      category: "interactive"
+      category: "interactive",
+      componentFile: "KineticTypographyDemo.tsx",
+      showcaseFile: "page.tsx"
     },
     {
       title: "Cloth-Simulated Typography",
@@ -417,7 +517,9 @@ export default function AllComponentsPage() {
       icon: Type,
       href: "/showcase/cloth-typography",
       color: "from-cyan-600 via-blue-500 to-purple-600",
-      category: "interactive"
+      category: "interactive",
+      componentFile: "ClothTypographyDemo.tsx",
+      showcaseFile: "page.tsx"
     },
     {
       title: "Cloth Simulation",
@@ -425,7 +527,9 @@ export default function AllComponentsPage() {
       icon: Shirt,
       href: "/showcase/cloth-simulation",
       color: "from-teal-600 via-cyan-500 to-blue-500",
-      category: "interactive"
+      category: "interactive",
+      componentFile: "ClothSimulationDemo.tsx",
+      showcaseFile: "page.tsx"
     },
     {
       title: "Soft Body UI (Jelly Physics)",
@@ -433,7 +537,9 @@ export default function AllComponentsPage() {
       icon: Droplets,
       href: "/showcase/soft-body-ui",
       color: "from-cyan-400 via-blue-500 to-purple-500",
-      category: "interactive"
+      category: "interactive",
+      componentFile: "SoftBodyUIDemo.tsx",
+      showcaseFile: "page.tsx"
     },
     {
       title: "Image Sequence Scroll",
@@ -441,7 +547,9 @@ export default function AllComponentsPage() {
       icon: ScrollText,
       href: "/showcase/scroll-effects",
       color: "from-cyan-600 via-blue-500 to-purple-500",
-      category: "interactive"
+      category: "interactive",
+      componentFile: "image-sequence-scroll.tsx",
+      showcaseFile: "page.tsx"
     },
     {
       title: "Sticky Stacking Cards",
@@ -449,7 +557,9 @@ export default function AllComponentsPage() {
       icon: Layers,
       href: "/showcase/sticky-stacking-cards",
       color: "from-purple-600 via-pink-500 to-orange-500",
-      category: "interactive"
+      category: "interactive",
+      componentFile: "StickyStackingCardsDemo.tsx",
+      showcaseFile: "page.tsx"
     },
     {
       title: "Video Text Masking",
@@ -457,7 +567,9 @@ export default function AllComponentsPage() {
       icon: Play,
       href: "/showcase/video-text-masking",
       color: "from-pink-600 via-rose-500 to-red-500",
-      category: "effects"
+      category: "effects",
+      componentFile: "VideoTextMaskingDemo.tsx",
+      showcaseFile: "page.tsx"
     },
     {
       title: "Velocity-Based Scroll Skew",
@@ -465,7 +577,9 @@ export default function AllComponentsPage() {
       icon: Activity,
       href: "/showcase/velocity-scroll-skew",
       color: "from-cyan-500 via-blue-500 to-purple-500",
-      category: "effects"
+      category: "effects",
+      componentFile: "VelocityScrollSkewDemo.tsx",
+      showcaseFile: "page.tsx"
     },
     {
       title: "Pixelated Transition",
@@ -473,7 +587,9 @@ export default function AllComponentsPage() {
       icon: Boxes,
       href: "/showcase/pixelated-transition",
       color: "from-indigo-600 via-purple-500 to-pink-500",
-      category: "effects"
+      category: "effects",
+      componentFile: "PixelatedTransitionDemo.tsx",
+      showcaseFile: "page.tsx"
     },
     {
       title: "Metaballs / Goop",
@@ -481,7 +597,9 @@ export default function AllComponentsPage() {
       icon: Droplets,
       href: "/showcase/metaballs",
       color: "from-purple-600 via-pink-500 to-purple-600",
-      category: "effects"
+      category: "effects",
+      componentFile: "MetaballsDemo.tsx",
+      showcaseFile: "page.tsx"
     },
     {
       title: "RGB / Cyberpunk Glitch",
@@ -489,7 +607,9 @@ export default function AllComponentsPage() {
       icon: Zap,
       href: "/showcase/glitch-effects",
       color: "from-cyan-500 via-purple-500 to-magenta-500",
-      category: "effects"
+      category: "effects",
+      componentFile: "GlitchEffectsDemo.tsx",
+      showcaseFile: "page.tsx"
     },
     {
       title: "Displacement Hover",
@@ -497,7 +617,9 @@ export default function AllComponentsPage() {
       icon: ImageIcon,
       href: "/showcase/displacement-hover",
       color: "from-purple-600 via-blue-500 to-indigo-600",
-      category: "effects"
+      category: "effects",
+      componentFile: "DisplacementHoverDemo.tsx",
+      showcaseFile: "page.tsx"
     },
     {
       title: "Direction-Aware Hover",
@@ -505,7 +627,9 @@ export default function AllComponentsPage() {
       icon: Compass,
       href: "/showcase/direction-aware-hover",
       color: "from-purple-500 via-pink-500 to-rose-500",
-      category: "effects"
+      category: "effects",
+      componentFile: "DirectionAwareHoverDemo.tsx",
+      showcaseFile: "page.tsx"
     },
   ];
 
@@ -666,10 +790,16 @@ export default function AllComponentsPage() {
                         <h3 className="text-lg font-semibold text-white mb-2 group-hover:text-blue-300 transition-colors">
                           {component.title}
                         </h3>
-                        <p className="text-gray-400 group-hover:text-gray-300 transition-colors text-sm leading-relaxed">
+                        <p className="text-gray-400 group-hover:text-gray-300 transition-colors text-sm leading-relaxed mb-3">
                           {component.description}
                         </p>
-                        <div className="mt-3">
+                        {component.componentFile && component.showcaseFile && (
+                          <div className="text-xs text-gray-500 space-y-1 mb-3">
+                            <div>Component: <code className="bg-gray-800 px-1 py-0.5 rounded text-gray-400">{component.componentFile}</code></div>
+                            <div>Showcase: <code className="bg-gray-800 px-1 py-0.5 rounded text-gray-400">{component.showcaseFile}</code></div>
+                          </div>
+                        )}
+                        <div>
                           <span className="inline-block px-2 py-1 text-xs bg-gray-800 text-gray-300 rounded-full capitalize">
                             {component.category}
                           </span>
@@ -702,10 +832,16 @@ export default function AllComponentsPage() {
                           <h3 className="text-lg font-semibold text-white mb-1 group-hover:text-blue-300 transition-colors">
                             {component.title}
                           </h3>
-                          <p className="text-gray-400 group-hover:text-gray-300 transition-colors text-sm">
+                          <p className="text-gray-400 group-hover:text-gray-300 transition-colors text-sm mb-2">
                             {component.description}
                           </p>
-                          <div className="mt-2">
+                          {component.componentFile && component.showcaseFile && (
+                            <div className="text-xs text-gray-500 space-y-1 mb-2">
+                              <div>Component: <code className="bg-gray-800 px-1 py-0.5 rounded text-gray-400">{component.componentFile}</code></div>
+                              <div>Showcase: <code className="bg-gray-800 px-1 py-0.5 rounded text-gray-400">{component.showcaseFile}</code></div>
+                            </div>
+                          )}
+                          <div>
                             <span className="inline-block px-2 py-1 text-xs bg-gray-700 text-gray-300 rounded-full capitalize">
                               {component.category}
                             </span>

@@ -49,7 +49,9 @@ export default function Home() {
       icon: Sparkles,
       href: "/showcase/cards",
       color: "from-purple-500 to-pink-500",
-      category: "3d"
+      category: "3d",
+      componentFile: "ThreeDCardDemo.tsx",
+      showcaseFile: "page.tsx"
     },
     {
       title: "Animated Testimonials",
@@ -57,7 +59,9 @@ export default function Home() {
       icon: MessageSquareQuote,
       href: "/showcase/testimonials",
       color: "from-pink-500 to-rose-500",
-      category: "animation"
+      category: "animation",
+      componentFile: "AnimatedTestimonialsDemo.tsx",
+      showcaseFile: "page.tsx"
     },
     {
       title: "Animated Tooltip",
@@ -65,7 +69,9 @@ export default function Home() {
       icon: Users,
       href: "/showcase/animated-tooltip",
       color: "from-emerald-500 to-sky-500",
-      category: "ui"
+      category: "ui",
+      componentFile: "AnimatedTooltipDemo.tsx",
+      showcaseFile: "page.tsx"
     },
     {
       title: "Barba.js Transitions",
@@ -73,7 +79,9 @@ export default function Home() {
       icon: ArrowRightLeft,
       href: "/showcase/barba",
       color: "from-blue-600 to-purple-600",
-      category: "animation"
+      category: "animation",
+      componentFile: "BarbaDemo.tsx",
+      showcaseFile: "page.tsx"
     },
     {
       title: "Bento Grid",
@@ -81,7 +89,9 @@ export default function Home() {
       icon: Layers,
       href: "/showcase/bento-grid",
       color: "from-blue-600 to-indigo-600",
-      category: "layout"
+      category: "layout",
+      componentFile: "BentoGridDemo.tsx",
+      showcaseFile: "page.tsx"
     },
     {
       title: "Cloud Background",
@@ -89,7 +99,9 @@ export default function Home() {
       icon: Cloud,
       href: "/showcase/cloud",
       color: "from-sky-400 to-blue-500",
-      category: "background"
+      category: "background",
+      componentFile: "cloud-background.tsx",
+      showcaseFile: "page.tsx"
     },
     {
       title: "Custom Cursor",
@@ -97,7 +109,9 @@ export default function Home() {
       icon: MousePointer2,
       href: "/showcase/custom-cursor",
       color: "from-violet-500 to-fuchsia-500",
-      category: "interactive"
+      category: "interactive",
+      componentFile: "CustomCursorDemo.tsx",
+      showcaseFile: "page.tsx"
     },
     {
       title: "Electric Border",
@@ -105,7 +119,9 @@ export default function Home() {
       icon: Zap,
       href: "/showcase/electric-border",
       color: "from-yellow-500 to-orange-500",
-      category: "effects"
+      category: "effects",
+      componentFile: "ElectricBorderDemo.tsx",
+      showcaseFile: "page.tsx"
     },
     {
       title: "Expanding Search",
@@ -113,7 +129,9 @@ export default function Home() {
       icon: Search,
       href: "/showcase/search",
       color: "from-indigo-500 to-purple-500",
-      category: "ui"
+      category: "ui",
+      componentFile: "search-interface.tsx",
+      showcaseFile: "page.tsx"
     },
     {
       title: "Fluid Cursor",
@@ -121,7 +139,9 @@ export default function Home() {
       icon: MousePointer2,
       href: "/showcase/fluid-cursor",
       color: "from-cyan-500 to-blue-500",
-      category: "interactive"
+      category: "interactive",
+      componentFile: "fluid-cursor.tsx",
+      showcaseFile: "page.tsx"
     },
     {
       title: "Global Stats",
@@ -129,7 +149,9 @@ export default function Home() {
       icon: Globe,
       href: "/showcase/globe",
       color: "from-blue-600 to-indigo-600",
-      category: "3d"
+      category: "3d",
+      componentFile: "ThreeScene.tsx",
+      showcaseFile: "page.tsx"
     },
     {
       title: "Crystal Fractal Backgrounds",
@@ -137,7 +159,9 @@ export default function Home() {
       icon: Sparkles,
       href: "/showcase/crystal-fractal",
       color: "from-cyan-400 via-blue-400 to-purple-400",
-      category: "scientific"
+      category: "scientific",
+      componentFile: "CrystalFractalDemo.tsx",
+      showcaseFile: "page.tsx"
     },
     {
       title: "Infinite Marquee",
@@ -145,7 +169,9 @@ export default function Home() {
       icon: ArrowRightLeft,
       href: "/showcase/marquee",
       color: "from-yellow-400 to-orange-500",
-      category: "animation"
+      category: "animation",
+      componentFile: "marquee.tsx",
+      showcaseFile: "page.tsx"
     },
     {
       title: "Interactive Grid",
@@ -153,7 +179,9 @@ export default function Home() {
       icon: Layout,
       href: "/showcase/grid",
       color: "from-gray-500 to-gray-800",
-      category: "interactive"
+      category: "interactive",
+      componentFile: "interactive-grid.tsx",
+      showcaseFile: "page.tsx"
     },
     {
       title: "Lens Effect",
@@ -161,7 +189,9 @@ export default function Home() {
       icon: Eye,
       href: "/showcase/lens",
       color: "from-indigo-500 to-purple-500",
-      category: "interactive"
+      category: "interactive",
+      componentFile: "LensDemo.tsx",
+      showcaseFile: "page.tsx"
     },
     {
       title: "Magnetic Elements",
@@ -169,7 +199,9 @@ export default function Home() {
       icon: MousePointer2,
       href: "/showcase/magnetic",
       color: "from-amber-500 to-yellow-500",
-      category: "interactive"
+      category: "interactive",
+      componentFile: "MagneticDemo.tsx",
+      showcaseFile: "page.tsx"
     },
     {
       title: "Magnetic Field Interactions",
@@ -177,7 +209,9 @@ export default function Home() {
       icon: Zap,
       href: "/showcase/magnetic-field",
       color: "from-red-500 to-blue-500",
-      category: "scientific"
+      category: "scientific",
+      componentFile: "MagneticFieldDemo.tsx",
+      showcaseFile: "page.tsx"
     },
     {
       title: "Neural Network Visualizer",
@@ -185,7 +219,9 @@ export default function Home() {
       icon: Cpu,
       href: "/showcase/neural-network",
       color: "from-purple-400 to-pink-400",
-      category: "scientific"
+      category: "scientific",
+      componentFile: "NeuralNetworkDemo.tsx",
+      showcaseFile: "page.tsx"
     },
     {
       title: "Neumorphic Card",
@@ -193,7 +229,9 @@ export default function Home() {
       icon: Layers,
       href: "/showcase/neumorphic",
       color: "from-gray-300 to-gray-100",
-      category: "ui"
+      category: "ui",
+      componentFile: "neumorphic.tsx",
+      showcaseFile: "page.tsx"
     },
     {
       title: "Particle Wave Interactions",
@@ -201,7 +239,9 @@ export default function Home() {
       icon: Zap,
       href: "/showcase/wave-particles",
       color: "from-blue-400 to-purple-400",
-      category: "interactive"
+      category: "interactive",
+      componentFile: "WaveParticlesDemo.tsx",
+      showcaseFile: "page.tsx"
     },
     {
       title: "Quantum Loading States",
@@ -209,7 +249,9 @@ export default function Home() {
       icon: Atom,
       href: "/showcase/quantum-loading",
       color: "from-cyan-400 to-blue-400",
-      category: "scientific"
+      category: "scientific",
+      componentFile: "QuantumLoadingDemo.tsx",
+      showcaseFile: "page.tsx"
     },
     {
       title: "Retro CRT",
@@ -217,7 +259,9 @@ export default function Home() {
       icon: Cpu,
       href: "/showcase/crt",
       color: "from-green-600 to-green-900",
-      category: "effects"
+      category: "effects",
+      componentFile: "crt.tsx",
+      showcaseFile: "page.tsx"
     },
     {
       title: "Bio-Luminescent Glow",
@@ -225,7 +269,9 @@ export default function Home() {
       icon: Sparkles,
       href: "/showcase/bio-luminescent",
       color: "from-cyan-400 to-blue-400",
-      category: "effects"
+      category: "effects",
+      componentFile: "BioLuminescentDemo.tsx",
+      showcaseFile: "page.tsx"
     },
     {
       title: "Reveal Text",
@@ -233,7 +279,9 @@ export default function Home() {
       icon: ImageIcon,
       href: "/showcase/reveal-text",
       color: "from-emerald-500 to-green-500",
-      category: "animation"
+      category: "animation",
+      componentFile: "RevealTextDemo.tsx",
+      showcaseFile: "page.tsx"
     },
     {
       title: "SVG Path Drawing",
@@ -241,7 +289,9 @@ export default function Home() {
       icon: Pencil,
       href: "/showcase/path-drawing",
       color: "from-pink-500 to-cyan-500",
-      category: "animation"
+      category: "animation",
+      componentFile: "PathDrawingDemo.tsx",
+      showcaseFile: "page.tsx"
     },
     {
       title: "Scroll Text Flow",
@@ -249,7 +299,9 @@ export default function Home() {
       icon: ScrollText,
       href: "/showcase/scroll-text-flow",
       color: "from-rose-500 to-pink-500",
-      category: "animation"
+      category: "animation",
+      componentFile: "ScrollTextFlowDemo.tsx",
+      showcaseFile: "page.tsx"
     },
     {
       title: "Text Animations",
@@ -257,7 +309,9 @@ export default function Home() {
       icon: Palette,
       href: "/showcase/text-animations",
       color: "from-green-500 to-teal-500",
-      category: "animation"
+      category: "animation",
+      componentFile: "ContainerTextFlipDemo.tsx",
+      showcaseFile: "page.tsx"
     },
     {
       title: "Text Scramble",
@@ -265,7 +319,9 @@ export default function Home() {
       icon: Type,
       href: "/showcase/text-scramble",
       color: "from-indigo-400 to-blue-400",
-      category: "animation"
+      category: "animation",
+      componentFile: "TextScrambleDemo.tsx",
+      showcaseFile: "page.tsx"
     },
     {
       title: "Theme Dropdown",
@@ -273,7 +329,9 @@ export default function Home() {
       icon: PaletteIcon,
       href: "/showcase/theme-dropdown",
       color: "from-purple-500 to-pink-500",
-      category: "ui"
+      category: "ui",
+      componentFile: "theme-dropdown.tsx",
+      showcaseFile: "page.tsx"
     },
     {
       title: "Time Warp Transitions",
@@ -281,7 +339,9 @@ export default function Home() {
       icon: Zap,
       href: "/showcase/time-warp",
       color: "from-cyan-400 via-purple-400 to-pink-400",
-      category: "animation"
+      category: "animation",
+      componentFile: "TimeWarpDemo.tsx",
+      showcaseFile: "page.tsx"
     },
     {
       title: "UI Components",
@@ -289,7 +349,9 @@ export default function Home() {
       icon: Layers,
       href: "/showcase/buttons",
       color: "from-blue-500 to-cyan-500",
-      category: "ui"
+      category: "ui",
+      componentFile: "ButtonDemo.tsx",
+      showcaseFile: "page.tsx"
     },
   ];
 
@@ -459,9 +521,13 @@ export default function Home() {
                             <h3 className="text-xl font-semibold text-white mb-2 group-hover:text-blue-300 transition-colors">
                               {category.title}
                             </h3>
-                            <p className="text-gray-400 group-hover:text-gray-300 transition-colors text-sm leading-relaxed">
+                            <p className="text-gray-400 group-hover:text-gray-300 transition-colors text-sm leading-relaxed mb-3">
                               {category.description}
                             </p>
+                            <div className="text-xs text-gray-500 space-y-1">
+                              <div>Component: <code className="bg-gray-800 px-1 py-0.5 rounded text-gray-400">{category.componentFile}</code></div>
+                              <div>Showcase: <code className="bg-gray-800 px-1 py-0.5 rounded text-gray-400">{category.showcaseFile}</code></div>
+                            </div>
                           </div>
                         </div>
                       </Link>
