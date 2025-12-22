@@ -364,6 +364,14 @@ export default function AllComponentsPage() {
       category: "effects"
     },
     {
+      title: "Velocity-Based Scroll Skew",
+      description: "Content skews based on scroll speed for feeling of weight and momentum",
+      icon: Activity,
+      href: "/showcase/velocity-scroll-skew",
+      color: "from-cyan-500 via-blue-500 to-purple-500",
+      category: "effects"
+    },
+    {
       title: "Pixelated Transition",
       description: "Retro-futuristic WebGL image transitions with chromatic aberration effects",
       icon: Boxes,

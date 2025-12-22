@@ -199,6 +199,10 @@ export default function ComponentsListPage() {
       description: "Typography that changes weight, width dynamically based on mouse proximity or scroll speed",
     },
     {
+      title: "Velocity-Based Scroll Skew",
+      description: "Content skews diagonally based on scroll speed for feeling of weight and momentum using Lenis smooth scroll",
+    },
+    {
       title: "Video Text Masking",
       description: "Big, bold typography where the ink of the text is actually a playing video for high-impact heroes",
     },
