@@ -364,6 +364,14 @@ export default function AllComponentsPage() {
       category: "interactive"
     },
     {
+      title: "Soft Body UI (Jelly Physics)",
+      description: "UI elements that squish, stretch, and deform like jelly with spring physics",
+      icon: Droplets,
+      href: "/showcase/soft-body-ui",
+      color: "from-cyan-400 via-blue-500 to-purple-500",
+      category: "interactive"
+    },
+    {
       title: "Image Sequence Scroll",
       description: "Apple-style 3D product rotation controlled through scroll with canvas rendering",
       icon: ScrollText,
