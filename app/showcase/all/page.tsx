@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { Box, Sparkles, Palette, Layers, MessageSquareQuote, Eye, Zap, MousePointer2, ImageIcon, ScrollText, Type, Users, Pencil, Palette as PaletteIcon, ArrowRightLeft, Diamond, Menu, Search, Layout, Activity, Code, Cloud, Cpu, Database, Flag, Globe, Atom, Star, Rocket, Wand2, Target, Play, ChevronRight, Github, ExternalLink, ArrowLeft, Filter, Grid3X3, List, Droplets, Terminal, Boxes, Move, Shirt, Compass } from "lucide-react";
+import { Box, Sparkles, Palette, Layers, MessageSquareQuote, Eye, Zap, MousePointer2, ImageIcon, ScrollText, Type, Users, Pencil, Palette as PaletteIcon, ArrowRightLeft, Diamond, Menu, Search, Layout, Activity, Code, Cloud, Cpu, Database, Flag, Globe, Atom, Star, Rocket, Wand2, Target, Play, ChevronRight, Github, ExternalLink, ArrowLeft, Filter, Grid3X3, List, Droplets, Terminal, Boxes, Move, Shirt, Compass, Film } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { useState, useMemo } from "react";
@@ -90,6 +90,14 @@ export default function AllComponentsPage() {
       href: "/showcase/search",
       color: "from-indigo-500 to-purple-500",
       category: "ui"
+    },
+    {
+      title: "Film Grain Overlay",
+      description: "Subtle static grain texture that kills flat digital look for cinematic feel",
+      icon: Film,
+      href: "/showcase/film-grain",
+      color: "from-gray-600 via-gray-500 to-gray-400",
+      category: "effects"
     },
     {
       title: "Fluid Cursor",
