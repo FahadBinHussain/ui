@@ -59,7 +59,7 @@ export default function ComponentsListPage() {
       description: "Card overlays that intelligently enter from the exact edge where mouse approached using Math.atan2() angle detection",
     },
     {
-      title: "Displacement Map Hover",
+      title: "Displacement Hover",
       description: "Awwwards-standard image hover with texture-driven warping using Three.js shaders and displacement maps",
     },
     {
@@ -119,7 +119,7 @@ export default function ComponentsListPage() {
       description: "Elements that behave like magnets, attracting and repelling each other",
     },
     {
-      title: "Metaballs / Goop Effect",
+      title: "Metaballs / Goop",
       description: "Organic liquid mercury blobs that snap together when close, using CSS blur+contrast or SVG filters",
     },
     {
@@ -213,10 +213,6 @@ export default function ComponentsListPage() {
     {
       title: "Video Text Masking",
       description: "Big, bold typography where the ink of the text is actually a playing video for high-impact heroes",
-    },
-    {
-      title: "Voice Waveform Visualizers",
-      description: "Real-time audio visualization with Web Audio API for voice and music interfaces",
     },
     {
       title: "Voxel Terrain",
