@@ -379,6 +379,14 @@ export default function AllComponentsPage() {
       color: "from-purple-600 via-pink-500 to-purple-600",
       category: "effects"
     },
+    {
+      title: "RGB / Cyberpunk Glitch",
+      description: "Digital chaos with RGB channel splitting and horizontal slicing",
+      icon: Zap,
+      href: "/showcase/glitch-effects",
+      color: "from-cyan-500 via-purple-500 to-magenta-500",
+      category: "effects"
+    },
   ];
 
   const categories = [

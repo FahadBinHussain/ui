@@ -197,6 +197,10 @@ export default function ComponentsListPage() {
       title: "Metaballs / Goop Effect",
       description: "Organic liquid mercury blobs that snap together when close, using CSS blur+contrast or SVG filters",
     },
+    {
+      title: "RGB / Cyberpunk Glitch",
+      description: "Digital chaos with RGB channel splitting, horizontal slicing, and data corruption for cyberpunk aesthetic",
+    },
   ];
 
   const markdownList = allComponents
