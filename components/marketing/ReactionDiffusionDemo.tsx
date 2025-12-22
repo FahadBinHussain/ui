@@ -10,7 +10,7 @@ export default function ReactionDiffusionDemo() {
   const presets = {
     coral: { feed: 0.055, kill: 0.062, dA: 1.0, dB: 0.5 },
     spots: { feed: 0.039, kill: 0.058, dA: 1.0, dB: 0.5 },
-    waves: { feed: 0.014, kill: 0.054, dA: 1.0, dB: 0.5 },
+    waves: { feed: 0.018, kill: 0.051, dA: 1.0, dB: 0.5 },
     maze: { feed: 0.029, kill: 0.057, dA: 1.0, dB: 0.5 },
   };
 
@@ -90,7 +90,7 @@ export default function ReactionDiffusionDemo() {
                   }`}
                 >
                   <Zap className="inline-block mr-2 w-5 h-5" />
-                  Waves (f=0.014, k=0.054)
+                  Waves (f=0.018, k=0.051)
                 </button>
                 <button
                   onClick={() => setPreset("maze")}
@@ -258,12 +258,12 @@ export default function ReactionDiffusionDemo() {
                 </div>
                 <div>
                   <h3 className="text-xl font-bold text-purple-400">Wave Patterns</h3>
-                  <p className="text-sm text-slate-400">f=0.014, k=0.054</p>
+                  <p className="text-sm text-slate-400">f=0.018, k=0.051</p>
                 </div>
               </div>
               <p className="text-slate-300">
-                Produces traveling waves and spiral formations. Very low feed rate creates 
-                dynamic, ever-changing patterns that never settle.
+                Produces traveling waves and spiral formations. Low feed rate creates 
+                dynamic patterns that propagate outward and interact with each other.
               </p>
             </div>
 

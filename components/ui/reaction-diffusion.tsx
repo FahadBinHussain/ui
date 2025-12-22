@@ -224,16 +224,36 @@ export const ReactionDiffusion: React.FC<ReactionDiffusionProps> = ({
 
       // Initialize with pattern
       const data = new Float32Array(width * height * 4);
+      
+      // Create multiple seed points
+      const seedPoints = [
+        { x: width / 2, y: height / 2 },
+        { x: width / 3, y: height / 3 },
+        { x: (2 * width) / 3, y: height / 3 },
+        { x: width / 3, y: (2 * height) / 3 },
+        { x: (2 * width) / 3, y: (2 * height) / 3 },
+      ];
+
       for (let i = 0; i < width * height; i++) {
         const x = i % width;
         const y = Math.floor(i / width);
-        const centerX = width / 2;
-        const centerY = height / 2;
-        const dist = Math.sqrt((x - centerX) ** 2 + (y - centerY) ** 2);
         
-        // Initialize A to 1, B to small random values near center
+        // Initialize A to 1, B based on distance to nearest seed
         data[i * 4] = 1.0; // A
-        data[i * 4 + 1] = dist < 50 ? Math.random() * 0.5 : 0.0; // B
+        
+        let minDist = Infinity;
+        for (const seed of seedPoints) {
+          const dist = Math.sqrt((x - seed.x) ** 2 + (y - seed.y) ** 2);
+          minDist = Math.min(minDist, dist);
+        }
+        
+        // Add B chemical near seed points with some randomness
+        if (minDist < 40) {
+          data[i * 4 + 1] = Math.random() * 0.8 * (1.0 - minDist / 40);
+        } else {
+          data[i * 4 + 1] = 0.0;
+        }
+        
         data[i * 4 + 2] = 0.0;
         data[i * 4 + 3] = 1.0;
       }
