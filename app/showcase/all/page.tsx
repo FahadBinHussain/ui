@@ -244,6 +244,14 @@ export default function AllComponentsPage() {
       category: "3d"
     },
     {
+      title: "Rutt-Etra Video Synthesis",
+      description: "Retro 70s video art where brightness becomes 3D height in scanline topology",
+      icon: Activity,
+      href: "/showcase/rutt-etra",
+      color: "from-cyan-500 via-pink-500 to-purple-500",
+      category: "3d"
+    },
+    {
       title: "Bio-Organic Growth Loaders",
       description: "SVG-based organic shapes growing like vines using differential growth algorithms",
       icon: Activity,
