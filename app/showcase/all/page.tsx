@@ -643,6 +643,7 @@ export default function AllComponentsPage() {
     { id: 'scientific', name: 'Scientific', count: allComponents.filter(c => c.category === 'scientific').length },
     { id: 'background', name: 'Backgrounds', count: allComponents.filter(c => c.category === 'background').length },
     { id: 'layout', name: 'Layout', count: allComponents.filter(c => c.category === 'layout').length },
+    { id: 'text', name: 'Text Effects', count: allComponents.filter(c => c.category === 'text').length },
   ];
 
   const filteredComponents = useMemo(() => {

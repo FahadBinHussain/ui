@@ -151,7 +151,7 @@ export default function ComponentsListPage() {
       description: "Electron orbital animations with quantum physics-inspired loading spinners",
     },
     {
-      title: "Raymarching / Signed Distance Functions",
+      title: "Raymarching / SDF",
       description: "Pure mathematical rendering with infinite resolution—no polygons, just raymarching through SDF equations for liquid morphing shapes",
     },
     {
@@ -221,6 +221,42 @@ export default function ComponentsListPage() {
     {
       title: "Voxel Terrain",
       description: "Isometric 3D landscape made of cubes with Perlin noise and wave propagation effects",
+    },
+    {
+      title: "Chromatic Aberration",
+      description: "Bad TV look with aggressive RGB channel splitting triggered by scroll or mouse speed",
+    },
+    {
+      title: "Cloth-Simulated Typography",
+      description: "Text that acts like a hanging flag or cloth, reacting to wind and cursor with physics",
+    },
+    {
+      title: "Dithering & Halftone",
+      description: "Bayer matrix dithering on 3D objects for Game Boy Camera or magazine print look",
+    },
+    {
+      title: "Ferrofluid Typography",
+      description: "Magnetic liquid text with spikes that follow your cursor using GPGPU simulations",
+    },
+    {
+      title: "Gaussian Splatting",
+      description: "Photorealistic 3D rendering using real-world scans with hologram-like interaction",
+    },
+    {
+      title: "Glassmorphism Refraction",
+      description: "Real-time refraction with FBO rendering that actually magnifies and distorts content",
+    },
+    {
+      title: "Reaction-Diffusion Patterns",
+      description: "Biological growth patterns like zebra stripes and coral that evolve in real-time",
+    },
+    {
+      title: "Rutt-Etra Video Synthesis",
+      description: "Retro 70s video art where brightness becomes 3D height in scanline topology",
+    },
+    {
+      title: "Soft Body UI (Jelly Physics)",
+      description: "UI elements that squish, stretch, and deform like jelly with spring physics",
     },
   ].sort((a, b) => a.title.localeCompare(b.title));
 
