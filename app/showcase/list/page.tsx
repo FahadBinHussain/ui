@@ -167,6 +167,10 @@ export default function ComponentsListPage() {
       description: "Scroll-triggered animated text with floating badges",
     },
     {
+      title: "Scrollytelling / Sticky Pinning",
+      description: "Immersive narratives with sticky visuals that stay pinned while text scrolls alongside, triggering animations (Apple-style product pages)",
+    },
+    {
       title: "Spotlight Torch Reveal",
       description: "Flashlight effect that reveals hidden content as you move the mouse",
     },
