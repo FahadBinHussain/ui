@@ -284,6 +284,14 @@ export default function AllComponentsPage() {
       category: "3d"
     },
     {
+      title: "Gaussian Splatting",
+      description: "Photorealistic 3D rendering using real-world scans with hologram-like interaction",
+      icon: Atom,
+      href: "/showcase/gaussian-splatting",
+      color: "from-cyan-400 via-indigo-500 to-purple-600",
+      category: "3d"
+    },
+    {
       title: "Bio-Luminescent Glow",
       description: "Organic pulsing glow effects mimicking deep-sea bioluminescence",
       icon: Sparkles,
