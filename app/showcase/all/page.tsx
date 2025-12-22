@@ -387,6 +387,14 @@ export default function AllComponentsPage() {
       color: "from-cyan-500 via-purple-500 to-magenta-500",
       category: "effects"
     },
+    {
+      title: "Displacement Hover",
+      description: "Awwwards-standard image warping with displacement maps",
+      icon: ImageIcon,
+      href: "/showcase/displacement-hover",
+      color: "from-purple-600 via-blue-500 to-indigo-600",
+      category: "effects"
+    },
   ];
 
   const categories = [

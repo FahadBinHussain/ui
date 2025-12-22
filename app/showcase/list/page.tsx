@@ -201,6 +201,10 @@ export default function ComponentsListPage() {
       title: "RGB / Cyberpunk Glitch",
       description: "Digital chaos with RGB channel splitting, horizontal slicing, and data corruption for cyberpunk aesthetic",
     },
+    {
+      title: "Displacement Map Hover",
+      description: "Awwwards-standard image hover with texture-driven warping using Three.js shaders and displacement maps",
+    },
   ];
 
   const markdownList = allComponents
