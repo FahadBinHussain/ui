@@ -268,6 +268,14 @@ export default function AllComponentsPage() {
       category: "effects"
     },
     {
+      title: "Dithering & Halftone",
+      description: "Bayer matrix dithering on 3D objects for Game Boy Camera or magazine print look",
+      icon: Grid3X3,
+      href: "/showcase/dithering",
+      color: "from-green-500 via-cyan-500 to-blue-500",
+      category: "effects"
+    },
+    {
       title: "Bio-Luminescent Glow",
       description: "Organic pulsing glow effects mimicking deep-sea bioluminescence",
       icon: Sparkles,
