@@ -220,6 +220,14 @@ export default function AllComponentsPage() {
       category: "scientific"
     },
     {
+      title: "Reaction-Diffusion Patterns",
+      description: "Biological growth patterns like zebra stripes and coral that evolve in real-time",
+      icon: Activity,
+      href: "/showcase/reaction-diffusion",
+      color: "from-cyan-400 via-purple-400 to-pink-400",
+      category: "scientific"
+    },
+    {
       title: "Raymarching / SDF",
       description: "Pure mathematical rendering with infinite resolution and liquid morphing",
       icon: Infinity,
