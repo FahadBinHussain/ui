@@ -4,8 +4,8 @@ import React, { useState } from "react";
 import { GaussianSplatting } from "@/components/ui/gaussian-splatting";
 
 export default function GaussianSplattingDemo() {
-  const [scale, setScale] = useState(1);
-  const [cameraDistance, setCameraDistance] = useState(5);
+  const [scale, setScale] = useState(3);
+  const [cameraDistance, setCameraDistance] = useState(2);
   const [cameraSensitivity, setCameraSensitivity] = useState(2);
   const [enableMouseControl, setEnableMouseControl] = useState(true);
   const [enableOrbitControls, setEnableOrbitControls] = useState(false);
@@ -36,8 +36,8 @@ export default function GaussianSplattingDemo() {
               <label className="text-sm text-gray-400 block">Scale: {scale.toFixed(2)}</label>
               <input
                 type="range"
-                min="0.5"
-                max="3"
+                min="0.1"
+                max="10"
                 step="0.1"
                 value={scale}
                 onChange={(e) => setScale(parseFloat(e.target.value))}
@@ -49,8 +49,8 @@ export default function GaussianSplattingDemo() {
               <label className="text-sm text-gray-400 block">Camera Distance: {cameraDistance}</label>
               <input
                 type="range"
-                min="2"
-                max="10"
+                min="0.5"
+                max="20"
                 step="0.5"
                 value={cameraDistance}
                 onChange={(e) => setCameraDistance(parseFloat(e.target.value))}

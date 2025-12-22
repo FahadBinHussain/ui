@@ -281,7 +281,7 @@ export function GaussianSplatting({
   
   return (
     <div className={`w-full h-full ${className}`} style={{ backgroundColor }}>
-      <Canvas camera={{ position: [0, 0, cameraDistance], fov: 75 }}>
+      <Canvas camera={{ position: [0, 0, cameraDistance], fov: 75, near: 0.01, far: 1000 }}>
         <Suspense fallback={null}>
           {enableMouseControl && !enableOrbitControls && (
             <MouseControlledCamera 
@@ -307,8 +307,10 @@ export function GaussianSplatting({
               <OrbitControls 
                 enableDamping
                 dampingFactor={0.05}
-                minDistance={2}
-                maxDistance={10}
+                minDistance={0.1}
+                maxDistance={50}
+                enablePan={true}
+                enableZoom={true}
               />
               
               <ambientLight intensity={0.5} />
