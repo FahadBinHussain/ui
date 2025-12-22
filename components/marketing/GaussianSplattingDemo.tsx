@@ -9,6 +9,8 @@ export default function GaussianSplattingDemo() {
   const [cameraSensitivity, setCameraSensitivity] = useState(2);
   const [enableMouseControl, setEnableMouseControl] = useState(true);
   const [enableOrbitControls, setEnableOrbitControls] = useState(false);
+  const [autoRotate, setAutoRotate] = useState(false);
+  const [rotationSpeed, setRotationSpeed] = useState(1);
   const [showGrid, setShowGrid] = useState(false);
   const [backgroundColor, setBackgroundColor] = useState("#000000");
 
@@ -71,6 +73,21 @@ export default function GaussianSplattingDemo() {
               />
             </div>
 
+            {autoRotate && (
+              <div className="space-y-2">
+                <label className="text-sm text-gray-400 block">Rotation Speed: {rotationSpeed.toFixed(1)}</label>
+                <input
+                  type="range"
+                  min="0.1"
+                  max="3"
+                  step="0.1"
+                  value={rotationSpeed}
+                  onChange={(e) => setRotationSpeed(parseFloat(e.target.value))}
+                  className="w-32"
+                />
+              </div>
+            )}
+
             <div className="space-y-2">
               <label className="text-sm text-gray-400 block">Background Color</label>
               <input
@@ -83,6 +100,17 @@ export default function GaussianSplattingDemo() {
           </div>
 
           <div className="flex flex-wrap gap-4 justify-center">
+            <button
+              onClick={() => setAutoRotate(!autoRotate)}
+              className={`px-6 py-2 rounded-lg font-medium transition-all ${
+                autoRotate
+                  ? "bg-gradient-to-r from-orange-500 to-red-600 text-white"
+                  : "bg-white/10 text-gray-400"
+              }`}
+            >
+              {autoRotate ? "Stop" : "Auto"} Rotate
+            </button>
+
             <button
               onClick={() => {
                 setEnableMouseControl(!enableMouseControl);
@@ -130,11 +158,13 @@ export default function GaussianSplattingDemo() {
               cameraSensitivity={cameraSensitivity}
               enableMouseControl={enableMouseControl}
               enableOrbitControls={enableOrbitControls}
+              autoRotate={autoRotate}
+              rotationSpeed={rotationSpeed}
               backgroundColor={backgroundColor}
               showGrid={showGrid}
             />
             
-            {enableMouseControl && !enableOrbitControls && (
+            {enableMouseControl && !enableOrbitControls && !autoRotate && (
               <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-black/50 backdrop-blur-sm px-4 py-2 rounded-full text-white text-sm">
                 Move your mouse to rotate the camera
               </div>

@@ -164,9 +164,11 @@ interface GaussianSplatMeshProps {
   url: string;
   scale?: number;
   onLoad?: () => void;
+  autoRotate?: boolean;
+  rotationSpeed?: number;
 }
 
-function GaussianSplatMesh({ url, scale = 1, onLoad }: GaussianSplatMeshProps) {
+function GaussianSplatMesh({ url, scale = 1, onLoad, autoRotate = false, rotationSpeed = 0.5 }: GaussianSplatMeshProps) {
   const meshRef = useRef<THREE.Points>(null);
   const [geometry, setGeometry] = useState<THREE.BufferGeometry | null>(null);
   const [loading, setLoading] = useState(true);
@@ -190,6 +192,12 @@ function GaussianSplatMesh({ url, scale = 1, onLoad }: GaussianSplatMeshProps) {
       }
     );
   }, [url, onLoad]);
+  
+  useFrame((state) => {
+    if (meshRef.current && autoRotate) {
+      meshRef.current.rotation.y += 0.01 * rotationSpeed;
+    }
+  });
   
   const material = new THREE.ShaderMaterial({
     vertexShader: GaussianSplatMaterial.vertexShader,
@@ -261,6 +269,8 @@ interface GaussianSplattingProps {
   cameraSensitivity?: number;
   enableMouseControl?: boolean;
   enableOrbitControls?: boolean;
+  autoRotate?: boolean;
+  rotationSpeed?: number;
   backgroundColor?: string;
   showGrid?: boolean;
   className?: string;
@@ -273,6 +283,8 @@ export function GaussianSplatting({
   cameraSensitivity = 2,
   enableMouseControl = true,
   enableOrbitControls = false,
+  autoRotate = false,
+  rotationSpeed = 0.5,
   backgroundColor = "#000000",
   showGrid = false,
   className = "",
@@ -297,6 +309,8 @@ export function GaussianSplatting({
               <GaussianSplatMesh 
                 url={splatUrl} 
                 scale={scale}
+                autoRotate={autoRotate}
+                rotationSpeed={rotationSpeed}
                 onLoad={() => setLoaded(true)}
               />
             </MouseControlledCamera>
@@ -311,6 +325,8 @@ export function GaussianSplatting({
                 maxDistance={50}
                 enablePan={true}
                 enableZoom={true}
+                autoRotate={autoRotate}
+                autoRotateSpeed={rotationSpeed}
               />
               
               <ambientLight intensity={0.5} />
