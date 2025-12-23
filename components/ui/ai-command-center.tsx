@@ -304,8 +304,8 @@ export function AICommandCenter({ className, showLauncher = true }: AICommandCen
         currentHighlighted,
         currentHighlighted.label
       );
-      setMessages((prev) => {
-        const updated = [
+      setMessages((prev: Message[]) => {
+        const updated: Message[] = [
           ...prev,
           { role: "user", text: currentHighlighted.label },
           { role: "assistant", text: "" },
@@ -324,8 +324,12 @@ export function AICommandCenter({ className, showLauncher = true }: AICommandCen
     setQuery("");
     setSelectedIndex(0);
 
-    setMessages((prev) => {
-      const updated = [...prev, { role: "user", text: trimmed }, { role: "assistant", text: "" }];
+    setMessages((prev: Message[]) => {
+      const updated: Message[] = [
+        ...prev,
+        { role: "user", text: trimmed },
+        { role: "assistant", text: "" },
+      ];
       const assistantIndex = updated.length - 1;
       setStreaming({ messageIndex: assistantIndex, fullText: response });
       return updated;
