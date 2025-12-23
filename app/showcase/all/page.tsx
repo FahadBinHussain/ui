@@ -112,6 +112,16 @@ export default function AllComponentsPage() {
       showcaseFile: "page.tsx"
     },
     {
+      title: "3D Flip-Card Omnibar",
+      description: "Isometric prism search bar that flips to reveal input and stacks results in Z-depth",
+      icon: Box,
+      href: "/showcase/3d-flip-omnibar",
+      color: "from-sky-500 to-indigo-500",
+      category: "ui",
+      componentFile: "FlipOmnibar3DDemo.tsx",
+      showcaseFile: "page.tsx"
+    },
+    {
       title: "Semantic AI Command Center",
       description: "Command+K AI assistant with bio-luminescent glow, intent-aware borders, and streaming responses",
       icon: Zap,
