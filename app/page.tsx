@@ -134,6 +134,16 @@ export default function Home() {
       showcaseFile: "page.tsx"
     },
     {
+      title: "Liquid Lens Search",
+      description: "Orb-based liquid search that morphs into a glassmorphism bar",
+      icon: Eye,
+      href: "/showcase/liquid-lens",
+      color: "from-cyan-500 to-indigo-500",
+      category: "ui",
+      componentFile: "LiquidLensDemo.tsx",
+      showcaseFile: "page.tsx"
+    },
+    {
       title: "Fluid Cursor",
       description: "Smooth spring-based cursor with trailing effects",
       icon: MousePointer2,
