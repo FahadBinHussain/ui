@@ -71,6 +71,10 @@ export default function ComponentsListPage() {
       description: "Animated search bar that grows and reveals filters on focus",
     },
     {
+      title: "Liquid Lens Search",
+      description: "Orb-based liquid search that morphs into a glassmorphism bar",
+    },
+    {
       title: "Film Grain Overlay",
       description: "Subtle static grain texture using SVG feTurbulence that kills flat digital look for cinematic, retro feel",
     },
@@ -301,7 +305,7 @@ export default function ComponentsListPage() {
         {/* Header */}
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 mb-12">
           <Link href="/showcase/all">
-            <Button 
+            <Button
               className="bg-white/5 backdrop-blur-sm border border-white/10 text-gray-300 hover:bg-white/10 hover:border-white/20 transition-all"
             >
               <ArrowLeft className="w-4 h-4 mr-2" />
@@ -336,7 +340,7 @@ export default function ComponentsListPage() {
           <p className="text-gray-400 text-lg md:text-xl max-w-2xl">
             Explore our collection of advanced UI components and effects
           </p>
-          
+
           {/* Stats Bar */}
           <div className="mt-6 flex items-center gap-6 text-sm">
             <div className="flex items-center gap-2">
@@ -370,8 +374,8 @@ export default function ComponentsListPage() {
         <div className="bg-gradient-to-br from-white/5 to-white/[0.02] backdrop-blur-sm rounded-2xl border border-white/10 overflow-hidden shadow-2xl">
           <div className="divide-y divide-white/5">
             {filteredComponents.map((component, index) => (
-              <div 
-                key={index} 
+              <div
+                key={index}
                 className="group hover:bg-white/5 transition-all duration-200"
               >
                 <div className="flex items-start gap-4 p-5 md:p-6">
@@ -379,7 +383,7 @@ export default function ComponentsListPage() {
                   <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-gradient-to-br from-blue-600/20 to-purple-600/20 border border-blue-500/20 flex items-center justify-center text-blue-300 text-sm font-semibold group-hover:border-blue-400/40 transition-all">
                     {index + 1}
                   </div>
-                  
+
                   {/* Content */}
                   <div className="flex-1 min-w-0">
                     <h3 className="text-white font-semibold text-lg mb-1 group-hover:text-blue-300 transition-colors">
