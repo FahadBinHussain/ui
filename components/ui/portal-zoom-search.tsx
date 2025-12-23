@@ -188,101 +188,94 @@ export function PortalZoomSearch({ className }: PortalZoomSearchProps) {
       <AnimatePresence>
         {portalOpen && submittedQuery && (
           <motion.div
-            className="pointer-events-none fixed inset-0 z-30 flex items-center justify-center"
-            initial={{ opacity: 1 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0, transition: { duration: 0.4 } }}
+            className="pointer-events-none fixed inset-0 z-30 overflow-hidden"
+            initial={{ clipPath: "circle(4rem at 50% 50%)" }}
+            animate={{ clipPath: "circle(150% at 50% 50%)" }}
+            exit={{ clipPath: "circle(0rem at 50% 50%)", opacity: 0 }}
+            transition={{ duration: 0.9, ease: [0.22, 0.61, 0.36, 1] }}
           >
-            <motion.div
-              className="relative flex items-center justify-center rounded-full bg-slate-950 overflow-hidden shadow-[0_0_60px_rgba(8,47,73,1)]"
-              initial={{ scale: 0.2 }}
-              animate={{ scale: 20 }}
-              exit={{ scale: 0.2 }}
-              transition={{ duration: 0.9, ease: [0.22, 0.61, 0.36, 1] }}
-            >
-              {/* Time warp distortion + “results page” content */}
-              <TimeWarpTransition isActive={warpActive} duration={1.6}>
-                <div className="pointer-events-auto flex h-screen w-screen flex-col items-center justify-center bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-white">
-                  {(() => {
-                    const normalized = submittedQuery.toLowerCase();
-                    const matches = PORTAL_DESTINATIONS.filter((dest) => {
-                      const haystack = (
-                        dest.title +
-                        " " +
-                        dest.description +
-                        " " +
-                        dest.badge
-                      ).toLowerCase();
-                      return haystack.includes(normalized);
-                    });
-                    const results = matches.length > 0 ? matches : PORTAL_DESTINATIONS;
+            {/* Time warp distortion + “results page” content */}
+            <TimeWarpTransition isActive={warpActive} duration={1.6}>
+              <div className="pointer-events-auto flex h-full w-full flex-col items-center justify-center bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-white">
+                {(() => {
+                  const normalized = submittedQuery.toLowerCase();
+                  const matches = PORTAL_DESTINATIONS.filter((dest) => {
+                    const haystack = (
+                      dest.title +
+                      " " +
+                      dest.description +
+                      " " +
+                      dest.badge
+                    ).toLowerCase();
+                    return haystack.includes(normalized);
+                  });
+                  const results = matches.length > 0 ? matches : PORTAL_DESTINATIONS;
 
-                    return (
-                      <>
-                        <div className="max-w-3xl px-6 text-center space-y-4">
-                          <p className="text-xs uppercase tracking-[0.3em] text-cyan-300/80">
-                            Wormhole established
-                          </p>
-                          <h3 className="text-3xl md:text-4xl font-semibold">
-                            Components for{" "}
-                            <span className="bg-gradient-to-r from-cyan-400 via-sky-400 to-indigo-400 bg-clip-text text-transparent">
-                              {submittedQuery}
-                            </span>
-                          </h3>
-                          <p className="text-sm md:text-base text-slate-300">
-                            You’ve tunneled into the search experiences library. Choose a destination
-                            and the portal will land on the corresponding showcase page.
-                          </p>
-                          <p className="text-[11px] uppercase tracking-[0.25em] text-cyan-300/70">
-                            Showing {results.length} portal-compatible surfaces
-                          </p>
-                        </div>
+                  return (
+                    <>
+                      <div className="max-w-3xl px-6 text-center space-y-4">
+                        <p className="text-xs uppercase tracking-[0.3em] text-cyan-300/80">
+                          Wormhole established
+                        </p>
+                        <h3 className="text-3xl md:text-4xl font-semibold">
+                          Components for{" "}
+                          <span className="bg-gradient-to-r from-cyan-400 via-sky-400 to-indigo-400 bg-clip-text text-transparent">
+                            {submittedQuery}
+                          </span>
+                        </h3>
+                        <p className="text-sm md:text-base text-slate-300">
+                          You’ve tunneled into the search experiences library. Choose a destination
+                          and the portal will land on the corresponding showcase page.
+                        </p>
+                        <p className="text-[11px] uppercase tracking-[0.25em] text-cyan-300/70">
+                          Showing {results.length} portal-compatible surfaces
+                        </p>
+                      </div>
 
-                        <div className="mt-10 grid w-full max-w-4xl gap-4 px-6 md:grid-cols-2 lg:grid-cols-3">
-                          {results.map((dest) => (
-                            <Link
-                              key={dest.id}
-                              href={dest.href}
-                              className="group block rounded-2xl border border-cyan-500/30 bg-slate-900/80 px-4 py-4 text-left text-xs text-slate-200 hover:border-cyan-400 hover:bg-slate-900 transition-colors"
-                            >
-                              <div className="mb-3 flex items-center justify-between gap-2">
-                                <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-cyan-300">
-                                  {dest.badge}
-                                </p>
-                                <span
-                                  className={cn(
-                                    "inline-flex items-center gap-1 rounded-full bg-gradient-to-r px-2 py-0.5 text-[10px] text-black",
-                                    dest.accent
-                                  )}
-                                >
-                                  <Zap className="h-3 w-3" />
-                                  <span>Open</span>
-                                </span>
-                              </div>
-                              <p className="mb-1 text-[13px] font-medium text-slate-50">
-                                {dest.title}
+                      <div className="mt-10 grid w-full max-w-4xl gap-4 px-6 md:grid-cols-2 lg:grid-cols-3">
+                        {results.map((dest) => (
+                          <Link
+                            key={dest.id}
+                            href={dest.href}
+                            className="group block rounded-2xl border border-cyan-500/30 bg-slate-900/80 px-4 py-4 text-left text-xs text-slate-200 hover:border-cyan-400 hover:bg-slate-900 transition-colors"
+                          >
+                            <div className="mb-3 flex items-center justify-between gap-2">
+                              <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-cyan-300">
+                                {dest.badge}
                               </p>
-                              <p className="text-[11px] leading-relaxed text-slate-300/90">
-                                {dest.description}
-                              </p>
-                            </Link>
-                          ))}
-                        </div>
+                              <span
+                                className={cn(
+                                  "inline-flex items-center gap-1 rounded-full bg-gradient-to-r px-2 py-0.5 text-[10px] text-black",
+                                  dest.accent
+                                )}
+                              >
+                                <Zap className="h-3 w-3" />
+                                <span>Open</span>
+                              </span>
+                            </div>
+                            <p className="mb-1 text-[13px] font-medium text-slate-50">
+                              {dest.title}
+                            </p>
+                            <p className="text-[11px] leading-relaxed text-slate-300/90">
+                              {dest.description}
+                            </p>
+                          </Link>
+                        ))}
+                      </div>
 
-                        <button
-                          type="button"
-                          onClick={handleReset}
-                          className="mt-10 inline-flex items-center gap-2 rounded-full border border-slate-600/80 bg-black/40 px-4 py-1.5 text-[11px] text-slate-200 hover:bg-black/70"
-                        >
-                          <ArrowLeft className="h-3 w-3" />
-                          Return to origin page
-                        </button>
-                      </>
-                    );
-                  })()}
-                </div>
-              </TimeWarpTransition>
-            </motion.div>
+                      <button
+                        type="button"
+                        onClick={handleReset}
+                        className="mt-10 inline-flex items-center gap-2 rounded-full border border-slate-600/80 bg-black/40 px-4 py-1.5 text-[11px] text-slate-200 hover:bg-black/70"
+                      >
+                        <ArrowLeft className="h-3 w-3" />
+                        Return to origin page
+                      </button>
+                    </>
+                  );
+                })()}
+              </div>
+            </TimeWarpTransition>
           </motion.div>
         )}
       </AnimatePresence>
