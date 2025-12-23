@@ -122,6 +122,16 @@ export default function AllComponentsPage() {
       showcaseFile: "page.tsx"
     },
     {
+      title: "Cyberpunk Data Slicer",
+      description: "Jagged cyberpunk search glyph that glitches the screen and reveals a scrambled CRT search bar",
+      icon: Zap,
+      href: "/showcase/cyberpunk-data-slicer",
+      color: "from-cyan-500 via-fuchsia-500 to-red-500",
+      category: "ui",
+      componentFile: "CyberpunkDataSlicerDemo.tsx",
+      showcaseFile: "page.tsx"
+    },
+    {
       title: "Semantic AI Command Center",
       description: "Command+K AI assistant with bio-luminescent glow, intent-aware borders, and streaming responses",
       icon: Zap,
