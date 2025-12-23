@@ -112,6 +112,16 @@ export default function AllComponentsPage() {
       showcaseFile: "page.tsx"
     },
     {
+      title: "Liquid Lens Search",
+      description: "Orb-based liquid search that morphs into a glassmorphism bar",
+      icon: Eye,
+      href: "/showcase/liquid-lens",
+      color: "from-cyan-500 to-indigo-500",
+      category: "ui",
+      componentFile: "LiquidLensDemo.tsx",
+      showcaseFile: "page.tsx"
+    },
+    {
       title: "Film Grain Overlay",
       description: "Subtle static grain texture that kills flat digital look for cinematic feel",
       icon: Film,
