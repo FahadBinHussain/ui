@@ -122,6 +122,16 @@ export default function AllComponentsPage() {
       showcaseFile: "page.tsx"
     },
     {
+      title: "Ferrofluid Magnetic Input",
+      description: "Search input made of magnetic particles that snap into ferrofluid text and react to typing",
+      icon: Search,
+      href: "/showcase/ferrofluid-magnetic-input",
+      color: "from-cyan-400 to-emerald-400",
+      category: "ui",
+      componentFile: "FerrofluidMagneticInputDemo.tsx",
+      showcaseFile: "page.tsx"
+    },
+    {
       title: "Liquid Lens Search",
       description: "Orb-based liquid search that morphs into a glassmorphism bar",
       icon: Eye,
