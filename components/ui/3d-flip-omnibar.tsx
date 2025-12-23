@@ -246,6 +246,7 @@ export function FlipOmnibar3D({ placeholder = "Search components, patterns, or d
           }))}
           cardHeight={460}
           gap={24}
+          enableScrollTrigger={false}
           className="max-w-4xl mx-auto"
         />
       </div>

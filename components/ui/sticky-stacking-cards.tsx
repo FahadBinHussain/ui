@@ -20,6 +20,7 @@ interface StickyStackingCardsProps {
   className?: string;
   cardHeight?: number;
   gap?: number;
+  enableScrollTrigger?: boolean;
 }
 
 export const StickyStackingCards: React.FC<StickyStackingCardsProps> = ({
@@ -27,6 +28,7 @@ export const StickyStackingCards: React.FC<StickyStackingCardsProps> = ({
   className = "",
   cardHeight = 500,
   gap = 20,
+  enableScrollTrigger = true,
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
@@ -35,10 +37,15 @@ export const StickyStackingCards: React.FC<StickyStackingCardsProps> = ({
   useEffect(() => {
     if (!containerRef.current) return;
 
-    // Kill any existing triggers created by this instance only
+    // Always clean up any triggers created by this instance
     if (triggersRef.current.length) {
       triggersRef.current.forEach((trigger) => trigger.kill());
       triggersRef.current = [];
+    }
+
+    // If ScrollTrigger behavior is disabled, just rely on CSS sticky stacking
+    if (!enableScrollTrigger) {
+      return;
     }
 
     const cardElements = cardsRef.current.filter(Boolean) as HTMLDivElement[];
@@ -81,7 +88,7 @@ export const StickyStackingCards: React.FC<StickyStackingCardsProps> = ({
       triggersRef.current.forEach((trigger) => trigger.kill());
       triggersRef.current = [];
     };
-  }, [cards.length, gap]);
+  }, [cards.length, gap, enableScrollTrigger]);
 
   return (
     <div ref={containerRef} className={`relative ${className}`}>
