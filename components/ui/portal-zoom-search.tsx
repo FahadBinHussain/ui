@@ -1,8 +1,9 @@
 "use client";
 
 import React, { FormEvent, useRef, useState, useCallback } from "react";
+import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { Search, ArrowLeft } from "lucide-react";
+import { Search, ArrowLeft, Zap } from "lucide-react";
 import { cn } from "@/lib/utils";
 import TimeWarpTransition, { useTimeWarpTransition } from "@/components/ui/time-warp-transition";
 
@@ -21,6 +22,58 @@ import TimeWarpTransition, { useTimeWarpTransition } from "@/components/ui/time-
 interface PortalZoomSearchProps {
   className?: string;
 }
+
+type PortalDestination = {
+  id: string;
+  title: string;
+  description: string;
+  href: string;
+  badge: string;
+  accent: string;
+};
+
+const PORTAL_DESTINATIONS: PortalDestination[] = [
+  {
+    id: "expanding-search",
+    title: "Expanding Search",
+    description: "Classic bar that grows, reveals filters, and feels like a control surface.",
+    href: "/showcase/search",
+    badge: "Surface",
+    accent: "from-indigo-500 to-purple-500",
+  },
+  {
+    id: "flip-omnibar",
+    title: "3D Flip-Card Omnibar",
+    description: "Isometric prism omnibar that flips 90° to reveal input and stacked results.",
+    href: "/showcase/3d-flip-omnibar",
+    badge: "3D",
+    accent: "from-sky-500 to-indigo-500",
+  },
+  {
+    id: "spotlight-void",
+    title: "Spotlight Void Search",
+    description: "Cursor torch that reveals category grid only inside the light cone.",
+    href: "/showcase/spotlight-void",
+    badge: "Exploration",
+    accent: "from-slate-500 to-cyan-500",
+  },
+  {
+    id: "cyberpunk-slicer",
+    title: "Cyberpunk Data Slicer",
+    description: "Jagged cyberpunk glyph with RGB glitch and CRT block cursor search.",
+    href: "/showcase/cyberpunk-data-slicer",
+    badge: "Glitch",
+    accent: "from-cyan-500 via-fuchsia-500 to-red-500",
+  },
+  {
+    id: "ai-command-center",
+    title: "Semantic AI Command Center",
+    description: "Command+K intent-aware AI surface with streaming responses and ghost typeahead.",
+    href: "/showcase/ai-command-center",
+    badge: "AI",
+    accent: "from-emerald-400 to-sky-500",
+  },
+];
 
 export function PortalZoomSearch({ className }: PortalZoomSearchProps) {
   const [query, setQuery] = useState("");
@@ -150,48 +203,83 @@ export function PortalZoomSearch({ className }: PortalZoomSearchProps) {
               {/* Time warp distortion + “results page” content */}
               <TimeWarpTransition isActive={warpActive} duration={1.6}>
                 <div className="pointer-events-auto flex h-screen w-screen flex-col items-center justify-center bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-white">
-                  <div className="max-w-3xl px-6 text-center space-y-4">
-                    <p className="text-xs uppercase tracking-[0.3em] text-cyan-300/80">
-                      Wormhole established
-                    </p>
-                    <h3 className="text-3xl md:text-4xl font-semibold">
-                      Results for{" "}
-                      <span className="bg-gradient-to-r from-cyan-400 via-sky-400 to-indigo-400 bg-clip-text text-transparent">
-                        {submittedQuery}
-                      </span>
-                    </h3>
-                    <p className="text-sm md:text-base text-slate-300">
-                      This is the “destination” page rendered inside the expanding circle. In a real
-                      multi-page setup, this view would be a separate Barba.js namespace loaded
-                      during the transition.
-                    </p>
-                  </div>
+                  {(() => {
+                    const normalized = submittedQuery.toLowerCase();
+                    const matches = PORTAL_DESTINATIONS.filter((dest) => {
+                      const haystack = (
+                        dest.title +
+                        " " +
+                        dest.description +
+                        " " +
+                        dest.badge
+                      ).toLowerCase();
+                      return haystack.includes(normalized);
+                    });
+                    const results = matches.length > 0 ? matches : PORTAL_DESTINATIONS;
 
-                  <div className="mt-10 grid w-full max-w-4xl gap-4 px-6 md:grid-cols-3">
-                    {["Overview", "Deep Dive", "Related"].map((section, index) => (
-                      <div
-                        key={section}
-                        className="rounded-2xl border border-cyan-500/30 bg-slate-900/80 px-4 py-4 text-left text-xs text-slate-200"
-                      >
-                        <p className="mb-2 text-[11px] font-semibold uppercase tracking-[0.2em] text-cyan-300">
-                          {section}
-                        </p>
-                        <p className="text-[11px] leading-relaxed text-slate-300/90">
-                          Sample content block {index + 1} that represents the results loaded inside
-                          the portal viewport.
-                        </p>
-                      </div>
-                    ))}
-                  </div>
+                    return (
+                      <>
+                        <div className="max-w-3xl px-6 text-center space-y-4">
+                          <p className="text-xs uppercase tracking-[0.3em] text-cyan-300/80">
+                            Wormhole established
+                          </p>
+                          <h3 className="text-3xl md:text-4xl font-semibold">
+                            Components for{" "}
+                            <span className="bg-gradient-to-r from-cyan-400 via-sky-400 to-indigo-400 bg-clip-text text-transparent">
+                              {submittedQuery}
+                            </span>
+                          </h3>
+                          <p className="text-sm md:text-base text-slate-300">
+                            You’ve tunneled into the search experiences library. Choose a destination
+                            and the portal will land on the corresponding showcase page.
+                          </p>
+                          <p className="text-[11px] uppercase tracking-[0.25em] text-cyan-300/70">
+                            Showing {results.length} portal-compatible surfaces
+                          </p>
+                        </div>
 
-                  <button
-                    type="button"
-                    onClick={handleReset}
-                    className="mt-10 inline-flex items-center gap-2 rounded-full border border-slate-600/80 bg-black/40 px-4 py-1.5 text-[11px] text-slate-200 hover:bg-black/70"
-                  >
-                    <ArrowLeft className="h-3 w-3" />
-                    Return to origin page
-                  </button>
+                        <div className="mt-10 grid w-full max-w-4xl gap-4 px-6 md:grid-cols-2 lg:grid-cols-3">
+                          {results.map((dest) => (
+                            <Link
+                              key={dest.id}
+                              href={dest.href}
+                              className="group block rounded-2xl border border-cyan-500/30 bg-slate-900/80 px-4 py-4 text-left text-xs text-slate-200 hover:border-cyan-400 hover:bg-slate-900 transition-colors"
+                            >
+                              <div className="mb-3 flex items-center justify-between gap-2">
+                                <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-cyan-300">
+                                  {dest.badge}
+                                </p>
+                                <span
+                                  className={cn(
+                                    "inline-flex items-center gap-1 rounded-full bg-gradient-to-r px-2 py-0.5 text-[10px] text-black",
+                                    dest.accent
+                                  )}
+                                >
+                                  <Zap className="h-3 w-3" />
+                                  <span>Open</span>
+                                </span>
+                              </div>
+                              <p className="mb-1 text-[13px] font-medium text-slate-50">
+                                {dest.title}
+                              </p>
+                              <p className="text-[11px] leading-relaxed text-slate-300/90">
+                                {dest.description}
+                              </p>
+                            </Link>
+                          ))}
+                        </div>
+
+                        <button
+                          type="button"
+                          onClick={handleReset}
+                          className="mt-10 inline-flex items-center gap-2 rounded-full border border-slate-600/80 bg-black/40 px-4 py-1.5 text-[11px] text-slate-200 hover:bg-black/70"
+                        >
+                          <ArrowLeft className="h-3 w-3" />
+                          Return to origin page
+                        </button>
+                      </>
+                    );
+                  })()}
                 </div>
               </TimeWarpTransition>
             </motion.div>
