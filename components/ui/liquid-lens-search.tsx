@@ -150,10 +150,7 @@ export function LiquidLensSearch({
           >
             <motion.div
               layoutId={SHELL_ID}
-              className="relative w-full max-w-5xl px-4"
-              initial={{ borderRadius: 9999 }}
-              animate={{ borderRadius: 24 }}
-              exit={{ borderRadius: 9999 }}
+              className="relative w-full max-w-5xl px-4 rounded-3xl"
               transition={{ type: "spring", stiffness: 260, damping: 24 }}
               onClick={(e) => e.stopPropagation()}
             >
