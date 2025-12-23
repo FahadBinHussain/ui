@@ -169,15 +169,18 @@ export function FlipOmnibar3D({ placeholder = "Search components, patterns, or d
             </div>
           </div>
 
-          {/* Top face: subtle highlight */}
-          <div
-            className="absolute left-0 right-0 h-8 rounded-t-2xl bg-gradient-to-br from-slate-800 to-slate-900"
-            style={{
-              transformOrigin: "bottom center",
-              transform: "rotateX(90deg) translateZ(84px)",
-              backfaceVisibility: "hidden",
-            }}
-          />
+          {/* Top face: subtle highlight (only when not focused so it doesn't cover the input face) */}
+          {!focused && (
+            <div
+              className="absolute left-0 right-0 h-8 rounded-t-2xl bg-gradient-to-br from-slate-800 to-slate-900"
+              style={{
+                transformOrigin: "bottom center",
+                transform: "rotateX(90deg) translateZ(84px)",
+                backfaceVisibility: "hidden",
+                pointerEvents: "none",
+              }}
+            />
+          )}
 
           {/* Back face / input face */}
           <div
