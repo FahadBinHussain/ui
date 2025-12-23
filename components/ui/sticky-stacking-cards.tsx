@@ -30,16 +30,23 @@ export const StickyStackingCards: React.FC<StickyStackingCardsProps> = ({
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const cardsRef = useRef<(HTMLDivElement | null)[]>([]);
+  const triggersRef = useRef<ScrollTrigger[]>([]);
 
   useEffect(() => {
     if (!containerRef.current) return;
+
+    // Kill any existing triggers created by this instance only
+    if (triggersRef.current.length) {
+      triggersRef.current.forEach((trigger) => trigger.kill());
+      triggersRef.current = [];
+    }
 
     const cardElements = cardsRef.current.filter(Boolean) as HTMLDivElement[];
 
     cardElements.forEach((card, index) => {
       const isLast = index === cardElements.length - 1;
 
-      ScrollTrigger.create({
+      const pinTrigger = ScrollTrigger.create({
         trigger: card,
         start: `top ${gap * index}px`,
         end: isLast ? "bottom bottom" : `bottom ${gap * index}px`,
@@ -48,9 +55,11 @@ export const StickyStackingCards: React.FC<StickyStackingCardsProps> = ({
         scrub: true,
       });
 
+      triggersRef.current.push(pinTrigger);
+
       // Scale down previous cards
       if (index > 0) {
-        gsap.to(card, {
+        const tween = gsap.to(card, {
           scale: 1 - index * 0.05,
           scrollTrigger: {
             trigger: card,
@@ -59,13 +68,20 @@ export const StickyStackingCards: React.FC<StickyStackingCardsProps> = ({
             scrub: true,
           },
         });
+
+        if (tween.scrollTrigger) {
+          triggersRef.current.push(tween.scrollTrigger as ScrollTrigger);
+        }
       }
     });
 
+    ScrollTrigger.refresh();
+
     return () => {
-      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+      triggersRef.current.forEach((trigger) => trigger.kill());
+      triggersRef.current = [];
     };
-  }, [cards, gap]);
+  }, [cards.length, gap]);
 
   return (
     <div ref={containerRef} className={`relative ${className}`}>
