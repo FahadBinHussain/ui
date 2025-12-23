@@ -112,6 +112,16 @@ export default function AllComponentsPage() {
       showcaseFile: "page.tsx"
     },
     {
+      title: "Semantic AI Command Center",
+      description: "Command+K AI assistant with bio-luminescent glow, intent-aware borders, and streaming responses",
+      icon: Zap,
+      href: "/showcase/ai-command-center",
+      color: "from-emerald-400 to-sky-500",
+      category: "ui",
+      componentFile: "AICommandCenterDemo.tsx",
+      showcaseFile: "page.tsx"
+    },
+    {
       title: "Liquid Lens Search",
       description: "Orb-based liquid search that morphs into a glassmorphism bar",
       icon: Eye,
