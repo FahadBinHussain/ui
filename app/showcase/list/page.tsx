@@ -71,6 +71,10 @@ export default function ComponentsListPage() {
       description: "Animated search bar that grows and reveals filters on focus",
     },
     {
+      title: "Liquid Lens Search",
+      description: "Orb-based liquid search that morphs into a glassmorphism bar",
+    },
+    {
       title: "Film Grain Overlay",
       description: "Subtle static grain texture using SVG feTurbulence that kills flat digital look for cinematic, retro feel",
     },
