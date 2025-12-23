@@ -154,6 +154,16 @@ export default function Home() {
       showcaseFile: "page.tsx"
     },
     {
+      title: "Spotlight Void Search",
+      description: "Torch-style search overlay that dims the page and reveals categories under a spotlight",
+      icon: Search,
+      href: "/showcase/spotlight-void",
+      color: "from-slate-500 to-cyan-500",
+      category: "ui",
+      componentFile: "SpotlightVoidDemo.tsx",
+      showcaseFile: "page.tsx"
+    },
+    {
       title: "Liquid Lens Search",
       description: "Orb-based liquid search that morphs into a glassmorphism bar",
       icon: Eye,
