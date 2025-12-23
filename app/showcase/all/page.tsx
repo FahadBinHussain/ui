@@ -122,6 +122,16 @@ export default function AllComponentsPage() {
       showcaseFile: "page.tsx"
     },
     {
+      title: "Portal Zoom Search",
+      description: "Circular search node that expands into a wormhole, revealing results while the origin blurs away",
+      icon: Search,
+      href: "/showcase/portal-zoom-search",
+      color: "from-cyan-400 via-sky-500 to-indigo-500",
+      category: "ui",
+      componentFile: "PortalZoomSearchDemo.tsx",
+      showcaseFile: "page.tsx"
+    },
+    {
       title: "Cyberpunk Data Slicer",
       description: "Jagged cyberpunk search glyph that glitches the screen and reveals a scrambled CRT search bar",
       icon: Zap,
