@@ -190,8 +190,8 @@ export function PortalZoomSearch({ className }: PortalZoomSearchProps) {
           <motion.div
             className="pointer-events-none fixed inset-0 z-30 overflow-hidden"
             initial={{ clipPath: "circle(4rem at 50% 50%)" }}
-            animate={{ clipPath: "circle(150% at 50% 50%)" }}
-            exit={{ clipPath: "circle(0rem at 50% 50%)", opacity: 0 }}
+            animate={{ clipPath: "circle(140vmax at 50% 50%)" }}
+            exit={{ clipPath: "circle(0vmax at 50% 50%)", opacity: 0 }}
             transition={{ duration: 0.9, ease: [0.22, 0.61, 0.36, 1] }}
           >
             {/* Time warp distortion + “results page” content */}
