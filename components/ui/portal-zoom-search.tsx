@@ -1,6 +1,6 @@
 "use client";
 
-import React, { FormEvent, useRef, useState } from "react";
+import React, { FormEvent, useRef, useState, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Search, ArrowLeft } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -30,16 +30,24 @@ export function PortalZoomSearch({ className }: PortalZoomSearchProps) {
 
   const { isActive: warpActive, triggerTransition } = useTimeWarpTransition();
 
-  const handleSubmit = (event: FormEvent) => {
-    event.preventDefault();
+  const runPortal = useCallback(() => {
     const trimmed = query.trim();
-    if (!trimmed) return;
+    if (!trimmed) {
+      // If empty, just focus the input so the user can start typing
+      inputRef.current?.focus();
+      return;
+    }
 
     setSubmittedQuery(trimmed);
     setPortalOpen(true);
 
     // Trigger time warp distortion while the portal expands
     triggerTransition();
+  }, [query, triggerTransition]);
+
+  const handleSubmit = (event: FormEvent) => {
+    event.preventDefault();
+    runPortal();
   };
 
   const handleReset = () => {
@@ -76,6 +84,7 @@ export function PortalZoomSearch({ className }: PortalZoomSearchProps) {
               className="relative flex h-24 w-24 items-center justify-center rounded-full border border-cyan-400/70 bg-slate-950/90 shadow-[0_0_40px_rgba(8,47,73,0.9)]"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.97 }}
+              onClick={() => runPortal()}
             >
               {/* Glowing ring */}
               <div className="absolute inset-0 rounded-full bg-[conic-gradient(from_140deg,rgba(34,211,238,0.3),transparent,rgba(94,234,212,0.4),transparent)] opacity-70 blur-sm" />
@@ -86,6 +95,12 @@ export function PortalZoomSearch({ className }: PortalZoomSearchProps) {
                 <div className="px-2 text-[9px] font-mono uppercase tracking-[0.3em] text-cyan-200/80">
                   {query ? "Press Enter" : "Portal Search"}
                 </div>
+                {/* Show a tiny preview of the query so typing feels responsive */}
+                {query && (
+                  <div className="mt-1 px-2 text-[9px] font-mono text-cyan-100/80 truncate max-w-[4.5rem]">
+                    {query}
+                  </div>
+                )}
               </div>
 
               {/* Invisible input overlaying the circle */}
