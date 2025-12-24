@@ -313,6 +313,14 @@ export const componentsDataFull: ComponentData[] = [
     color: "from-cyan-500 via-blue-500 to-purple-500",
   },
   {
+    title: "Holographic Glass Tabs",
+    description: "Tab switching with sliding refractive glass pane using transmission materials, chromatic aberration, and physics-based tilting",
+    href: "/showcase/holographic-glass-tabs",
+    category: "ui",
+    icon: "Boxes",
+    color: "from-purple-500 via-pink-500 to-cyan-500",
+  },
+  {
     title: "Kinetic Reveal Footer",
     description: "Massive footer fixed at bottom while page scrolls up curtain-style to reveal it, with huge typography reacting to scroll velocity",
     href: "/showcase/kinetic-reveal-footer",
