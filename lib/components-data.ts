@@ -353,6 +353,14 @@ export const componentsDataFull: ComponentData[] = [
     color: "from-cyan-500 to-indigo-500",
   },
   {
+    title: "Liquid Morphing Navigation",
+    description: "Navigation menu with mercury-like active state blob that morphs organically between items using SVG gooey effects",
+    href: "/showcase/liquid-morphing-navigation",
+    category: "navigation",
+    icon: "Menu",
+    color: "from-purple-500 via-pink-500 to-red-500",
+  },
+  {
     title: "Infinite Marquee",
     description: "Seamlessly looping marquee for logos, text, or images",
     href: "/showcase/marquee",
@@ -710,4 +718,8 @@ export const iconMap = {
   "Palette": "Palette",
   "Wand2": "Wand2",
   "Play": "Play",
+  "Flame": "Flame",
+  "Grid3x3": "Grid3x3",
+  "CircleDot": "CircleDot",
+  "Menu": "Menu",
 } as const;
