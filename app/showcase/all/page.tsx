@@ -572,6 +572,16 @@ export default function AllComponentsPage() {
       showcaseFile: "page.tsx"
     },
     {
+      title: "Voronoi Cell Grid",
+      description: "Interactive cellular structure with real-time Voronoi diagram and spring physics",
+      icon: Layout,
+      href: "/showcase/voronoi-grid",
+      color: "from-purple-500 to-pink-500",
+      category: "interactive",
+      componentFile: "page.tsx",
+      showcaseFile: "page.tsx"
+    },
+    {
       title: "Variable Font Interaction",
       description: "Typography that changes weight, width dynamically based on mouse proximity or scroll speed",
       icon: Type,

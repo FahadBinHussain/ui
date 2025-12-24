@@ -287,4 +287,8 @@ export const componentsData = [
     title: "Voxel Terrain Filter",
     description: "3D voxel landscape that transforms based on search keywords",
   },
+  {
+    title: "Voronoi Cell Grid",
+    description: "Interactive cellular structure with real-time Voronoi diagram and spring physics",
+  },
 ].sort((a, b) => a.title.localeCompare(b.title));
