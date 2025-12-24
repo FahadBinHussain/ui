@@ -31,12 +31,14 @@ function VoxelTerrain({ searchTerm }: VoxelTerrainProps) {
   const gridSize = 30;
   const voxelSize = 1;
   const [heights, setHeights] = useState<number[][]>([]);
+  const timeRef = useRef(0);
 
-  useEffect(() => {
-    const newHeights: number[][] = [];
-    const keyword = searchTerm.toLowerCase();
+  useFrame((state) => {
+    timeRef.current = state.clock.getElapsedTime();
     
-    // Different terrain patterns based on keywords
+    if (!meshRef.current) return;
+
+    const keyword = searchTerm.toLowerCase();
     let heightMultiplier = 1;
     let waveIntensity = 0;
     let peakIntensity = 0;
@@ -57,19 +59,19 @@ function VoxelTerrain({ searchTerm }: VoxelTerrainProps) {
       peakIntensity = 1;
     }
 
-    const time = Date.now() * 0.001;
-    
+    const dummy = new THREE.Object3D();
+    let idx = 0;
+
     for (let x = 0; x < gridSize; x++) {
-      newHeights[x] = [];
       for (let z = 0; z < gridSize; z++) {
         const nx = x / gridSize - 0.5;
         const nz = z / gridSize - 0.5;
         
         let height = smoothNoise(nx * 5, nz * 5, 42) * heightMultiplier;
         
-        // Add wave effect
+        // Add animated wave effect
         if (waveIntensity > 0) {
-          height += Math.sin(nx * 10 + time) * Math.cos(nz * 10 + time) * waveIntensity;
+          height += Math.sin(nx * 10 + timeRef.current * 2) * Math.cos(nz * 10 + timeRef.current * 2) * waveIntensity;
         }
         
         // Add peak effect
@@ -78,26 +80,11 @@ function VoxelTerrain({ searchTerm }: VoxelTerrainProps) {
           height += (1 - dist * 2) * peakIntensity;
         }
         
-        // Data cluster visualization - more results = higher terrain
+        // Data cluster visualization
         const resultCount = searchTerm.length * 10;
         height += (resultCount / 100) * 0.5;
         
-        newHeights[x][z] = Math.max(0.1, height + 2);
-      }
-    }
-    
-    setHeights(newHeights);
-  }, [searchTerm, gridSize]);
-
-  useFrame((state) => {
-    if (!meshRef.current || heights.length === 0) return;
-
-    const dummy = new THREE.Object3D();
-    let idx = 0;
-
-    for (let x = 0; x < gridSize; x++) {
-      for (let z = 0; z < gridSize; z++) {
-        const height = heights[x]?.[z] || 1;
+        height = Math.max(0.1, height + 2);
         
         for (let y = 0; y < Math.ceil(height); y++) {
           dummy.position.set(
