@@ -35,26 +35,27 @@ const fragmentShader = `
     // Global distortion based on progress
     float globalDistortion = uProgress * (1.0 - uProgress) * 4.0;
     
+    // Center-based radial distortion
+    vec2 center = vec2(0.5, 0.5);
+    float distFromCenter = distance(uv, center);
+    float radialDistortion = (1.0 - distFromCenter * 2.0) * globalDistortion * 0.2;
+    vec2 centerDirection = normalize(uv - center);
+    
     // Horizontal wave distortion across entire image
     float wave = sin(uv.y * 10.0 + uProgress * 6.28) * globalDistortion * 0.05;
-    vec2 distortedUV = vec2(uv.x + wave, uv.y);
+    vec2 distortedUV = vec2(
+      uv.x + wave + centerDirection.x * radialDistortion, 
+      uv.y + centerDirection.y * radialDistortion
+    );
     
     // Add vertical displacement based on progress
     float verticalDisplace = (uv.x - 0.5) * globalDistortion * 0.1;
     distortedUV.y += verticalDisplace;
     
-    // Localized cursor distortion
-    vec2 center = uMouse;
-    float dist = distance(uv, center);
-    float radius = 0.3;
-    float hump = smoothstep(radius, 0.0, dist) * globalDistortion * 0.3;
-    vec2 direction = normalize(uv - center);
-    distortedUV += direction * hump;
-    
-    // Chromatic aberration - stronger globally, extra strong near cursor
-    float globalAberration = globalDistortion * 0.015;
-    float localAberration = hump * uVelocity * 0.03;
-    float totalAberration = globalAberration + localAberration;
+    // Chromatic aberration - stronger at center
+    float centerAberration = (1.0 - distFromCenter) * globalDistortion * 0.025;
+    float velocityAberration = uVelocity * globalDistortion * 0.015;
+    float totalAberration = centerAberration + velocityAberration + globalDistortion * 0.01;
     
     // Sample RGB channels separately with offset
     float r1 = texture2D(uTexture1, distortedUV + vec2(totalAberration, 0.0)).r;
