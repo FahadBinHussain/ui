@@ -65,6 +65,14 @@ export const componentsDataFull: ComponentData[] = [
     color: "from-blue-600 to-indigo-600",
   },
   {
+    title: "Boid Flocking Cursor",
+    description: "Swarm of 50 intelligent agents following cursor using flocking algorithms: cohesion, alignment, and separation",
+    href: "/showcase/boid-flocking-cursor",
+    category: "interactive",
+    icon: "MousePointer2",
+    color: "from-cyan-400 via-blue-500 to-purple-500",
+  },
+  {
     title: "Bio-Luminescent Glow",
     description: "Organic pulsing glow effects mimicking deep-sea bioluminescence",
     href: "/showcase/bio-luminescent",
