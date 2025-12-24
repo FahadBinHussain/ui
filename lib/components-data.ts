@@ -185,6 +185,14 @@ export const componentsDataFull: ComponentData[] = [
     color: "from-cyan-500 via-fuchsia-500 to-red-500",
   },
   {
+    title: "Destructible Cookie Consent",
+    description: "Users smash the modal into physics debris using Matter.js, Voronoi tessellation, and html2canvas",
+    href: "/showcase/destructible-cookie-consent",
+    category: "interactive",
+    icon: "Cookie",
+    color: "from-orange-500 via-red-500 to-pink-500",
+  },
+  {
     title: "Direction-Aware Hover",
     description: "Card overlays that intelligently enter from the exact edge where mouse approached using Math.atan2() angle detection",
     href: "/showcase/direction-aware-hover",
@@ -707,6 +715,7 @@ export const iconMap = {
   "Terminal": "Terminal",
   "ArrowRightLeft": "ArrowRightLeft",
   "ArrowDown": "ArrowDown",
+  "Cookie": "Cookie",
   "Layers": "Layers",
   "Activity": "Activity",
   "Search": "Search",
