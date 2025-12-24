@@ -33,6 +33,14 @@ export const componentsDataFull: ComponentData[] = [
     color: "from-pink-500 to-rose-500",
   },
   {
+    title: "Anamorphic Typography Hero",
+    description: "Huge text that appears distorted at first, but aligns perfectly at a scroll 'sweet spot' using perspective projection",
+    href: "/showcase/anamorphic-typography",
+    category: "3d",
+    icon: "Type",
+    color: "from-purple-500 via-cyan-500 to-pink-500",
+  },
+  {
     title: "Animated Tooltip",
     description: "Interactive profile tooltips with elastic GSAP animations",
     href: "/showcase/animated-tooltip",
