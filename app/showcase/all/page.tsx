@@ -562,6 +562,16 @@ export default function AllComponentsPage() {
       showcaseFile: "page.tsx"
     },
     {
+      title: "Breathing Search",
+      description: "Variable font weight reacts to typing speed with fluid cursor trails - fast typing creates urgent bold text, slow typing creates exploratory thin text",
+      icon: Search,
+      href: "/showcase/breathing-search",
+      color: "from-violet-500 via-purple-500 to-pink-500",
+      category: "ui",
+      componentFile: "breathing-search.tsx",
+      showcaseFile: "page.tsx"
+    },
+    {
       title: "Voxel Terrain",
       description: "Isometric 3D landscape made of cubes with Perlin noise and interactive wave propagation",
       icon: Boxes,

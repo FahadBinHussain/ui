@@ -134,6 +134,16 @@ export default function Home() {
       showcaseFile: "page.tsx"
     },
     {
+      title: "Breathing Search",
+      description: "Variable font weight reacts to typing speed with fluid cursor trails",
+      icon: Search,
+      href: "/showcase/breathing-search",
+      color: "from-violet-500 via-purple-500 to-pink-500",
+      category: "ui",
+      componentFile: "breathing-search.tsx",
+      showcaseFile: "page.tsx"
+    },
+    {
       title: "3D Flip-Card Omnibar",
       description: "Isometric prism search bar that flips to reveal input and stacks results in Z-depth",
       icon: Box,
