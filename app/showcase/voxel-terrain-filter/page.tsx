@@ -42,6 +42,7 @@ function VoxelTerrain({ searchTerm }: VoxelTerrainProps) {
     let heightMultiplier = 1;
     let waveIntensity = 0;
     let peakIntensity = 0;
+    let hillEffect = false;
     
     if (keyword.includes('mountain') || keyword.includes('peak')) {
       peakIntensity = 3;
@@ -56,7 +57,7 @@ function VoxelTerrain({ searchTerm }: VoxelTerrainProps) {
       heightMultiplier = 0.8;
     } else if (keyword.includes('hill')) {
       heightMultiplier = 1.2;
-      peakIntensity = 1;
+      hillEffect = true;
     }
 
     const dummy = new THREE.Object3D();
@@ -72,6 +73,12 @@ function VoxelTerrain({ searchTerm }: VoxelTerrainProps) {
         // Add animated wave effect
         if (waveIntensity > 0) {
           height += Math.sin(nx * 10 + timeRef.current * 2) * Math.cos(nz * 10 + timeRef.current * 2) * waveIntensity;
+        }
+        
+        // Add hill effect - rolling hills
+        if (hillEffect) {
+          const dist = Math.sqrt(nx * nx + nz * nz);
+          height += Math.sin(dist * 8) * 1.5 + Math.cos(nx * 6) * 0.8 + Math.sin(nz * 6) * 0.8;
         }
         
         // Add peak effect
