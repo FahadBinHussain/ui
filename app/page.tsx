@@ -134,6 +134,66 @@ export default function Home() {
       showcaseFile: "page.tsx"
     },
     {
+      title: "3D Flip-Card Omnibar",
+      description: "Isometric prism search bar that flips to reveal input and stacks results in Z-depth",
+      icon: Box,
+      href: "/showcase/3d-flip-omnibar",
+      color: "from-sky-500 to-indigo-500",
+      category: "ui",
+      componentFile: "FlipOmnibar3DDemo.tsx",
+      showcaseFile: "page.tsx"
+    },
+    {
+      title: "Portal Zoom Search",
+      description: "Circular search node that expands into a wormhole, revealing results while the origin blurs away",
+      icon: Search,
+      href: "/showcase/portal-zoom-search",
+      color: "from-cyan-400 via-sky-500 to-indigo-500",
+      category: "ui",
+      componentFile: "PortalZoomSearchDemo.tsx",
+      showcaseFile: "page.tsx"
+    },
+    {
+      title: "Cyberpunk Data Slicer",
+      description: "Jagged cyberpunk search glyph that glitches the screen and reveals a scrambled CRT search bar",
+      icon: Zap,
+      href: "/showcase/cyberpunk-data-slicer",
+      color: "from-cyan-500 via-fuchsia-500 to-red-500",
+      category: "ui",
+      componentFile: "CyberpunkDataSlicerDemo.tsx",
+      showcaseFile: "page.tsx"
+    },
+    {
+      title: "Semantic AI Command Center",
+      description: "Command+K AI assistant with bio-luminescent glow, intent-aware borders, and streaming responses",
+      icon: Zap,
+      href: "/showcase/ai-command-center",
+      color: "from-emerald-400 to-sky-500",
+      category: "ui",
+      componentFile: "AICommandCenterDemo.tsx",
+      showcaseFile: "page.tsx"
+    },
+    {
+      title: "Ferrofluid Magnetic Input",
+      description: "Search input made of magnetic particles that snap into ferrofluid text and react to typing",
+      icon: Search,
+      href: "/showcase/ferrofluid-magnetic-input",
+      color: "from-cyan-400 to-emerald-400",
+      category: "ui",
+      componentFile: "FerrofluidMagneticInputDemo.tsx",
+      showcaseFile: "page.tsx"
+    },
+    {
+      title: "Spotlight Void Search",
+      description: "Torch-style search overlay that dims the page and reveals categories under a spotlight",
+      icon: Search,
+      href: "/showcase/spotlight-void",
+      color: "from-slate-500 to-cyan-500",
+      category: "ui",
+      componentFile: "SpotlightVoidDemo.tsx",
+      showcaseFile: "page.tsx"
+    },
+    {
       title: "Liquid Lens Search",
       description: "Orb-based liquid search that morphs into a glassmorphism bar",
       icon: Eye,
