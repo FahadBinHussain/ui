@@ -257,6 +257,14 @@ export const componentsDataFull: ComponentData[] = [
     color: "from-cyan-500 to-blue-500",
   },
   {
+    title: "Fluid Morphing Action Bar",
+    description: "Dynamic Island-style floating navigation that physically morphs its shape using spring physics to accommodate different content",
+    href: "/showcase/fluid-morphing-action-bar",
+    category: "navigation",
+    icon: "CircleDot",
+    color: "from-purple-500 to-pink-500",
+  },
+  {
     title: "Gaussian Splatting",
     description: "Photorealistic 3D rendering using real-world scans with hologram-like interaction",
     href: "/showcase/gaussian-splatting",
