@@ -562,6 +562,16 @@ export default function AllComponentsPage() {
       showcaseFile: "page.tsx"
     },
     {
+      title: "Voxel Terrain Filter",
+      description: "3D voxel landscape that transforms based on search keywords",
+      icon: Boxes,
+      href: "/showcase/voxel-terrain-filter",
+      color: "from-blue-500 to-cyan-500",
+      category: "3d",
+      componentFile: "page.tsx",
+      showcaseFile: "page.tsx"
+    },
+    {
       title: "Variable Font Interaction",
       description: "Typography that changes weight, width dynamically based on mouse proximity or scroll speed",
       icon: Type,

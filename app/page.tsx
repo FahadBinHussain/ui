@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { Box, Sparkles, Palette, Layers, MessageSquareQuote, Eye, Zap, MousePointer2, ImageIcon, ScrollText, Type, Users, Pencil, Palette as PaletteIcon, ArrowRightLeft, Diamond, Menu, Search, Layout, Activity, Code, Cloud, Cpu, Database, Flag, Globe, Atom, Star, Rocket, Wand2, Target, Play, ChevronRight, Github, ExternalLink } from "lucide-react";
+import { Box, Sparkles, Palette, Layers, MessageSquareQuote, Eye, Zap, MousePointer2, ImageIcon, ScrollText, Type, Users, Pencil, Palette as PaletteIcon, ArrowRightLeft, Diamond, Menu, Search, Layout, Activity, Code, Cloud, Cpu, Database, Flag, Globe, Atom, Star, Rocket, Wand2, Target, Play, ChevronRight, Github, ExternalLink, Boxes } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useEffect, useState } from "react";
@@ -430,6 +430,16 @@ export default function Home() {
       href: "/showcase/breathing-variable-search",
       color: "from-purple-500 to-pink-500",
       category: "ui",
+      componentFile: "page.tsx",
+      showcaseFile: "page.tsx"
+    },
+    {
+      title: "Voxel Terrain Filter",
+      description: "3D voxel landscape that transforms based on search keywords",
+      icon: Boxes,
+      href: "/showcase/voxel-terrain-filter",
+      color: "from-blue-500 to-cyan-500",
+      category: "3d",
       componentFile: "page.tsx",
       showcaseFile: "page.tsx"
     },
