@@ -2,45 +2,24 @@
 
 import React from "react";
 import { HolographicGlassTabs } from "@/components/ui/holographic-glass-tabs";
-import { Code, Palette, Zap, Sparkles, Box, Eye } from "lucide-react";
+import { Code, Palette, Zap, Box } from "lucide-react";
 
 export default function HolographicGlassTabsDemo() {
   const demoTabs = [
     {
       id: "features",
       label: "Features",
-      content: (
-        <div className="space-y-4">
-          <h3 className="text-2xl font-bold text-white">Amazing Features</h3>
-          <p className="text-white/70">
-            Real glass transmission material with chromatic aberration and realistic refraction
-          </p>
-        </div>
-      ),
+      content: <div className="h-20" />,
     },
     {
       id: "design",
       label: "Design",
-      content: (
-        <div className="space-y-4">
-          <h3 className="text-2xl font-bold text-white">Beautiful Design</h3>
-          <p className="text-white/70">
-            Glassmorphism effect with smooth spring-based transitions and tilting animation
-          </p>
-        </div>
-      ),
+      content: <div className="h-20" />,
     },
     {
       id: "performance",
       label: "Performance",
-      content: (
-        <div className="space-y-4">
-          <h3 className="text-2xl font-bold text-white">Optimized Performance</h3>
-          <p className="text-white/70">
-            GPU-accelerated WebGL rendering with react-three-fiber for smooth 60fps animations
-          </p>
-        </div>
-      ),
+      content: <div className="h-20" />,
     },
   ];
 
@@ -48,41 +27,17 @@ export default function HolographicGlassTabsDemo() {
     {
       id: "overview",
       label: "Overview",
-      content: (
-        <div className="space-y-3">
-          <Sparkles className="w-12 h-12 mx-auto text-purple-400" />
-          <h3 className="text-xl font-bold text-white">Product Overview</h3>
-          <p className="text-sm text-white/60">
-            Next-generation interface with holographic effects
-          </p>
-        </div>
-      ),
+      content: <div className="h-20" />,
     },
     {
       id: "specs",
       label: "Specifications",
-      content: (
-        <div className="space-y-3">
-          <Box className="w-12 h-12 mx-auto text-pink-400" />
-          <h3 className="text-xl font-bold text-white">Technical Specs</h3>
-          <p className="text-sm text-white/60">
-            React Three Fiber · MeshTransmissionMaterial · Spring Physics
-          </p>
-        </div>
-      ),
+      content: <div className="h-20" />,
     },
     {
       id: "preview",
       label: "Preview",
-      content: (
-        <div className="space-y-3">
-          <Eye className="w-12 h-12 mx-auto text-cyan-400" />
-          <h3 className="text-xl font-bold text-white">Live Preview</h3>
-          <p className="text-sm text-white/60">
-            Watch the glass pane slide and tilt with realistic physics
-          </p>
-        </div>
-      ),
+      content: <div className="h-20" />,
     },
   ];
 
