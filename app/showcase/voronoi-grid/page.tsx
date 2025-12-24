@@ -25,7 +25,7 @@ export default function VoronoiGrid() {
     if (!ctx) return;
 
     const initializePoints = () => {
-      const numPoints = 80;
+      const numPoints = 60; // Reduced from 80 for better performance
       pointsRef.current = [];
       
       // Generate initial random points
@@ -42,8 +42,8 @@ export default function VoronoiGrid() {
         });
       }
 
-      // Lloyd's relaxation for uniform distribution
-      for (let iteration = 0; iteration < 5; iteration++) {
+      // Lloyd's relaxation for uniform distribution - reduced iterations
+      for (let iteration = 0; iteration < 3; iteration++) {
         const voronoi = computeVoronoi(pointsRef.current, canvas.width, canvas.height);
         pointsRef.current = pointsRef.current.map((point, i) => {
           const cell = voronoi[i];
@@ -72,7 +72,7 @@ export default function VoronoiGrid() {
 
     const computeVoronoi = (points: Point[], width: number, height: number) => {
       const cells: { x: number; y: number }[][] = points.map(() => []);
-      const step = 5;
+      const step = 10; // Increased from 5 to 10 for better performance
 
       for (let x = 0; x < width; x += step) {
         for (let y = 0; y < height; y += step) {
@@ -100,16 +100,18 @@ export default function VoronoiGrid() {
       ctx.fillStyle = '#0a0a0a';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-      // Add grain noise
-      const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-      const data = imageData.data;
-      for (let i = 0; i < data.length; i += 4) {
-        const noise = (Math.random() - 0.5) * 10;
-        data[i] += noise;
-        data[i + 1] += noise;
-        data[i + 2] += noise;
+      // Simplified grain noise - only apply to small portion for performance
+      if (Math.random() > 0.9) {
+        const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+        const data = imageData.data;
+        for (let i = 0; i < data.length; i += 40) { // Skip more pixels
+          const noise = (Math.random() - 0.5) * 8;
+          data[i] += noise;
+          data[i + 1] += noise;
+          data[i + 2] += noise;
+        }
+        ctx.putImageData(imageData, 0, 0);
       }
-      ctx.putImageData(imageData, 0, 0);
 
       const points = pointsRef.current;
       const voronoi = computeVoronoi(points, canvas.width, canvas.height);
