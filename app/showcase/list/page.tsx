@@ -15,6 +15,10 @@ export default function ComponentsListPage() {
       description: "CSS 3D perspective cards with hover animations",
     },
     {
+      title: "3D Flip-Card Omnibar",
+      description: "Isometric prism search bar that flips to reveal input and stacks results in Z-depth",
+    },
+    {
       title: "Animated Testimonials",
       description: "Beautiful testimonial carousel with 3D stacking",
     },
@@ -55,6 +59,10 @@ export default function ComponentsListPage() {
       description: "Geometric crystal formations that grow and refract light dynamically",
     },
     {
+      title: "Cyberpunk Data Slicer",
+      description: "Jagged cyberpunk search glyph that glitches the screen and reveals a scrambled CRT search bar",
+    },
+    {
       title: "Direction-Aware Hover",
       description: "Card overlays that intelligently enter from the exact edge where mouse approached using Math.atan2() angle detection",
     },
@@ -71,8 +79,12 @@ export default function ComponentsListPage() {
       description: "Animated search bar that grows and reveals filters on focus",
     },
     {
-      title: "Liquid Lens Search",
-      description: "Orb-based liquid search that morphs into a glassmorphism bar",
+      title: "Ferrofluid Magnetic Input",
+      description: "Search input made of magnetic particles that snap into ferrofluid text and react to typing",
+    },
+    {
+      title: "Ferrofluid Typography",
+      description: "Magnetic liquid text with spikes that follow your cursor using GPGPU simulations",
     },
     {
       title: "Film Grain Overlay",
@@ -115,6 +127,10 @@ export default function ComponentsListPage() {
       description: "Images that liquefy and ripple like water on hover with WebGL shaders",
     },
     {
+      title: "Liquid Lens Search",
+      description: "Orb-based liquid search that morphs into a glassmorphism bar",
+    },
+    {
       title: "Magnetic Elements",
       description: "Tactile, physical 'pull' effect for buttons and objects",
     },
@@ -145,6 +161,10 @@ export default function ComponentsListPage() {
     {
       title: "Pixelated Transition",
       description: "Retro-futuristic WebGL transitions that pixelate images with chromatic aberration for gaming/tech aesthetics",
+    },
+    {
+      title: "Portal Zoom Search",
+      description: "Circular search node that expands into a wormhole, revealing results while the origin blurs away",
     },
     {
       title: "Prismatic Dispersion Glass",
@@ -179,8 +199,20 @@ export default function ComponentsListPage() {
       description: "Immersive narratives with sticky visuals that stay pinned while text scrolls alongside, triggering animations (Apple-style product pages)",
     },
     {
+      title: "Semantic AI Command Center",
+      description: "Command+K AI assistant with bio-luminescent glow, intent-aware borders, and streaming responses",
+    },
+    {
+      title: "Soft Body UI (Jelly Physics)",
+      description: "UI elements that squish, stretch, and deform like jelly with spring physics",
+    },
+    {
       title: "Spotlight Torch Reveal",
       description: "Flashlight effect that reveals hidden content as you move the mouse",
+    },
+    {
+      title: "Spotlight Void Search",
+      description: "Torch-style search overlay that dims the page and reveals categories under a spotlight",
     },
     {
       title: "Sticky Stacking Cards",
