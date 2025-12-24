@@ -174,7 +174,7 @@ export function SimpleCookieConsent({
   // Calculate modal position based on button position
   const modalStyle = buttonPosition ? {
     left: `${buttonPosition.x}px`,
-    top: `${buttonPosition.y + 100}px`,
+    top: `${Math.min(buttonPosition.y + 50, window.innerHeight - 300)}px`,
     transform: 'translateX(-50%)'
   } : {
     bottom: '2rem',
