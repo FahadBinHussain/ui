@@ -7,11 +7,13 @@ import { Cookie, X } from "lucide-react";
 interface SimpleCookieConsentProps {
   onAccept?: () => void;
   onDecline?: () => void;
+  buttonPosition?: { x: number; y: number };
 }
 
 export function SimpleCookieConsent({
   onAccept,
   onDecline,
+  buttonPosition,
 }: SimpleCookieConsentProps) {
   const [isVisible, setIsVisible] = useState(true);
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -169,11 +171,23 @@ export function SimpleCookieConsent({
 
   if (!isVisible) return null;
 
+  // Calculate modal position based on button position
+  const modalStyle = buttonPosition ? {
+    left: `${buttonPosition.x}px`,
+    top: `${buttonPosition.y + 100}px`,
+    transform: 'translateX(-50%)'
+  } : {
+    bottom: '2rem',
+    left: '50%',
+    transform: 'translateX(-50%)'
+  };
+
   return (
     <>
       <div
         ref={modalRef}
-        className="fixed bottom-8 left-1/2 -translate-x-1/2 z-50 w-full max-w-2xl mx-4"
+        className="fixed z-50 w-full max-w-2xl mx-4"
+        style={modalStyle}
       >
         <div className="bg-white rounded-2xl shadow-2xl border-2 border-gray-200 p-8">
           <div className="flex items-start gap-4">
@@ -190,9 +204,12 @@ export function SimpleCookieConsent({
               <div className="flex gap-3">
                 <button
                   onClick={handleAccept}
-                  className="px-8 py-3 bg-purple-600 hover:bg-purple-500 text-white font-semibold rounded-xl transition-all hover:scale-105 shadow-lg"
+                  className="px-8 py-3 bg-purple-600 hover:bg-purple-500 text-white font-semibold rounded-xl transition-all hover:scale-105 shadow-lg relative group"
+                  style={{ 
+                    cursor: 'url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'32\' height=\'32\' viewBox=\'0 0 32 32\'%3E%3Ccircle cx=\'16\' cy=\'16\' r=\'10\' fill=\'none\' stroke=\'red\' stroke-width=\'2\'/%3E%3Cline x1=\'16\' y1=\'0\' x2=\'16\' y2=\'12\' stroke=\'red\' stroke-width=\'2\'/%3E%3Cline x1=\'16\' y1=\'20\' x2=\'16\' y2=\'32\' stroke=\'red\' stroke-width=\'2\'/%3E%3Cline x1=\'0\' y1=\'16\' x2=\'12\' y2=\'16\' stroke=\'red\' stroke-width=\'2\'/%3E%3Cline x1=\'20\' y1=\'16\' x2=\'32\' y2=\'16\' stroke=\'red\' stroke-width=\'2\'/%3E%3Ccircle cx=\'16\' cy=\'16\' r=\'2\' fill=\'red\'/%3E%3C/svg%3E") 16 16, crosshair'
+                  }}
                 >
-                  Accept & Smash!
+                  🎯 Accept & Smash!
                 </button>
                 <button
                   onClick={handleDecline}

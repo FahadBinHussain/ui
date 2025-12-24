@@ -6,8 +6,23 @@ import { Sparkles, Zap, Cookie, Hammer } from "lucide-react";
 
 export default function DestructibleCookieConsentDemo() {
   const [showCookie, setShowCookie] = useState(false);
+  const [buttonPosition, setButtonPosition] = useState({ x: 0, y: 0 });
+  const [showFlash, setShowFlash] = useState(false);
+  const buttonRef = React.useRef<HTMLButtonElement>(null);
 
   const triggerDemo = () => {
+    if (buttonRef.current) {
+      const rect = buttonRef.current.getBoundingClientRect();
+      setButtonPosition({
+        x: rect.left + rect.width / 2,
+        y: rect.top + rect.height / 2
+      });
+    }
+    
+    // Muzzle flash effect
+    setShowFlash(true);
+    setTimeout(() => setShowFlash(false), 100);
+    
     setShowCookie(false);
     setTimeout(() => setShowCookie(true), 100);
   };
@@ -58,14 +73,27 @@ export default function DestructibleCookieConsentDemo() {
             <p className="text-gray-400">Click a button below to trigger the destructible cookie consent</p>
           </div>
 
-          <div className="grid md:grid-cols-1 gap-6 justify-center max-w-sm mx-auto">
+          <div className="grid md:grid-cols-1 gap-6 justify-center max-w-sm mx-auto relative">
+            {/* Muzzle Flash Effect */}
+            {showFlash && (
+              <div 
+                className="absolute inset-0 pointer-events-none flex items-center justify-center animate-pulse"
+              >
+                <div className="w-32 h-32 rounded-full bg-orange-500/50 blur-3xl" />
+              </div>
+            )}
+            
             <button
+              ref={buttonRef}
               onClick={triggerDemo}
-              className="group p-8 rounded-2xl bg-gradient-to-br from-white/5 to-white/[0.02] border border-white/10 hover:border-white/20 transition-all hover:scale-105"
+              className="group p-8 rounded-2xl bg-gradient-to-br from-white/5 to-white/[0.02] border border-white/10 hover:border-white/20 transition-all hover:scale-105 relative"
+              style={{ 
+                cursor: 'url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'32\' height=\'32\' viewBox=\'0 0 32 32\'%3E%3Ccircle cx=\'16\' cy=\'16\' r=\'10\' fill=\'none\' stroke=\'red\' stroke-width=\'2\'/%3E%3Cline x1=\'16\' y1=\'0\' x2=\'16\' y2=\'12\' stroke=\'red\' stroke-width=\'2\'/%3E%3Cline x1=\'16\' y1=\'20\' x2=\'16\' y2=\'32\' stroke=\'red\' stroke-width=\'2\'/%3E%3Cline x1=\'0\' y1=\'16\' x2=\'12\' y2=\'16\' stroke=\'red\' stroke-width=\'2\'/%3E%3Cline x1=\'20\' y1=\'16\' x2=\'32\' y2=\'16\' stroke=\'red\' stroke-width=\'2\'/%3E%3Ccircle cx=\'16\' cy=\'16\' r=\'2\' fill=\'red\'/%3E%3C/svg%3E") 16 16, crosshair'
+              }}
             >
               <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-purple-500 to-pink-500 mb-4 mx-auto group-hover:scale-110 transition-transform" />
-              <h3 className="text-2xl font-bold mb-2">Try It Now</h3>
-              <p className="text-sm text-gray-400">Click to trigger the destructible cookie consent</p>
+              <h3 className="text-2xl font-bold mb-2">🎯 Shoot It!</h3>
+              <p className="text-sm text-gray-400">Click to destroy the cookie consent</p>
             </button>
           </div>
         </div>
@@ -333,6 +361,7 @@ Matter.Composite.add(engine.world, walls);`,
         <SimpleCookieConsent
           onAccept={() => console.log("Accepted!")}
           onDecline={() => console.log("Declined")}
+          buttonPosition={buttonPosition}
         />
       )}
     </div>
