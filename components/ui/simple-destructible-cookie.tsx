@@ -68,20 +68,24 @@ export function SimpleCookieConsent({
     Matter.Composite.add(engine.world, walls);
 
     // Create shards
-    const shardCount = 12;
-    const shardWidth = modalRect.width / 4;
-    const shardHeight = modalRect.height / 3;
+    const shardCount = 120; // Way more shards!
+    const columns = 15; // Many more columns
+    const rows = 8; // Many more rows
+    const shardWidth = modalRect.width / columns;
+    const shardHeight = modalRect.height / rows;
     const shards: Matter.Body[] = [];
 
     for (let i = 0; i < shardCount; i++) {
-      const x = modalRect.left + (i % 4) * shardWidth + shardWidth / 2;
-      const y = modalRect.top + Math.floor(i / 4) * shardHeight + shardHeight / 2;
+      const col = i % columns;
+      const row = Math.floor(i / columns);
+      const x = modalRect.left + col * shardWidth + shardWidth / 2;
+      const y = modalRect.top + row * shardHeight + shardHeight / 2;
       
-      const shard = Matter.Bodies.rectangle(x, y, shardWidth - 4, shardHeight - 4, {
-        restitution: 0.4,
-        friction: 0.8,
+      const shard = Matter.Bodies.rectangle(x, y, shardWidth - 1, shardHeight - 1, {
+        restitution: 0.2,
+        friction: 0.95,
         render: {
-          fillStyle: i % 2 === 0 ? "#9333ea" : "#ec4899",
+          fillStyle: i % 4 === 0 ? "#9333ea" : i % 4 === 1 ? "#ec4899" : i % 4 === 2 ? "#8b5cf6" : "#d946ef",
         },
       });
 
