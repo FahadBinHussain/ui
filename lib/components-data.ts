@@ -44,6 +44,10 @@ export const componentsData = [
     description: "Bad TV look with aggressive RGB channel splitting triggered by scroll or mouse speed",
   },
   {
+    title: "Chromatic Liquid Slider",
+    description: "Image slider with liquid displacement and RGB channel separation based on drag velocity",
+  },
+  {
     title: "Cloth Simulation",
     description: "Realistic fabric physics using Verlet integration for draggable silk flags and curtains",
   },

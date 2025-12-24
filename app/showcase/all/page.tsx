@@ -332,6 +332,16 @@ export default function AllComponentsPage() {
       showcaseFile: "page.tsx"
     },
     {
+      title: "Chromatic Liquid Slider",
+      description: "Image slider with liquid displacement and RGB channel separation based on drag velocity",
+      icon: ImageIcon,
+      href: "/showcase/chromatic-liquid-slider",
+      color: "from-purple-500 via-pink-500 to-blue-500",
+      category: "interactive",
+      componentFile: "page.tsx",
+      showcaseFile: "page.tsx"
+    },
+    {
       title: "Prismatic Dispersion Glass",
       description: "Glassmorphism with chromatic aberration and RGB channel separation effects",
       icon: Diamond,
