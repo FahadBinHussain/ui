@@ -43,7 +43,7 @@ export default function FluidMorphingActionBar() {
   const dimensions = {
     idle: { width: 60, height: 60, borderRadius: 30 },
     menu: { width: 240, height: 70, borderRadius: 35 },
-    music: { width: 380, height: 120, borderRadius: 60 },
+    music: { width: 400, height: 160, borderRadius: 80 },
     cart: { width: 420, height: 380, borderRadius: 40 },
     loading: { width: 180, height: 70, borderRadius: 35 },
   };
@@ -147,11 +147,11 @@ export default function FluidMorphingActionBar() {
                 initial={{ opacity: 0, scaleY: 0.5 }}
                 animate={{ opacity: 1, scaleY: 1 }}
                 exit={{ opacity: 0, scaleY: 0.5, transition: { duration: 0.15 } }}
-                className="absolute inset-0 flex flex-col items-center justify-center p-6 text-white"
+                className="absolute inset-0 flex flex-col items-center justify-center px-8 py-8 text-white"
               >
                 <button
                   onClick={handleClose}
-                  className="absolute top-3 right-3 text-white/50 hover:text-white transition-colors"
+                  className="absolute top-5 right-5 text-white/50 hover:text-white transition-colors z-10"
                 >
                   <X className="w-5 h-5" />
                 </button>
@@ -160,9 +160,9 @@ export default function FluidMorphingActionBar() {
                   initial={{ scale: 0 }}
                   animate={{ scale: 1 }}
                   transition={{ delay: 0.1, ...springTransition }}
-                  className="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-500 rounded-2xl mb-3 flex items-center justify-center"
+                  className="w-14 h-14 bg-gradient-to-br from-purple-500 to-pink-500 rounded-2xl mb-2 flex items-center justify-center"
                 >
-                  <Music className="w-8 h-8" />
+                  <Music className="w-7 h-7" />
                 </motion.div>
 
                 <motion.h3
