@@ -3,14 +3,14 @@ import Link from "next/link";
 import { ArrowLeft, Copy, Check, Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useState, useMemo } from "react";
-import { componentsData } from "@/lib/components-data";
+import { componentsDataFull } from "@/lib/components-data";
 
 export default function ComponentsListPage() {
   const [copiedIndex, setCopiedIndex] = useState<number | null>(null);
   const [copiedAll, setCopiedAll] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
 
-  const allComponents = componentsData;
+  const allComponents = componentsDataFull;
 
   const filteredComponents = useMemo(() => {
     if (!searchQuery) return allComponents;
