@@ -529,6 +529,14 @@ export const componentsDataFull: ComponentData[] = [
     color: "from-emerald-400 to-sky-500",
   },
   {
+    title: "Soft Body Physics Grid",
+    description: "Grid of image cards that behave like jelly blocks, squishing and deforming on collision using Matter.js",
+    href: "/showcase/soft-body-physics-grid",
+    category: "interactive",
+    icon: "Grid3x3",
+    color: "from-purple-500 via-pink-500 to-red-500",
+  },
+  {
     title: "Soft Body UI (Jelly Physics)",
     description: "UI elements that squish, stretch, and deform like jelly with spring physics",
     href: "/showcase/soft-body-ui",
