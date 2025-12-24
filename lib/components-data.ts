@@ -313,6 +313,14 @@ export const componentsDataFull: ComponentData[] = [
     color: "from-cyan-500 via-blue-500 to-purple-500",
   },
   {
+    title: "Kinetic Reveal Footer",
+    description: "Massive footer fixed at bottom while page scrolls up curtain-style to reveal it, with huge typography reacting to scroll velocity",
+    href: "/showcase/kinetic-reveal-footer",
+    category: "effects",
+    icon: "ArrowDown",
+    color: "from-purple-600 via-indigo-600 to-blue-600",
+  },
+  {
     title: "Kinetic String Input",
     description: "Physics-based string where letters hang and fall with gravity",
     href: "/showcase/kinetic-string-input",
@@ -690,6 +698,7 @@ export const iconMap = {
   "Users": "Users",
   "Terminal": "Terminal",
   "ArrowRightLeft": "ArrowRightLeft",
+  "ArrowDown": "ArrowDown",
   "Layers": "Layers",
   "Activity": "Activity",
   "Search": "Search",
