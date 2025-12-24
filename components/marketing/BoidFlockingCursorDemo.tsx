@@ -216,7 +216,7 @@ export default function BoidFlockingCursorDemo() {
   const boidsRef = useRef<Boid[]>([]);
   const mouseRef = useRef({ x: 0, y: 0, moving: false });
   const mouseTimerRef = useRef<NodeJS.Timeout | null>(null);
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  const cursorRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -245,7 +245,11 @@ export default function BoidFlockingCursorDemo() {
       mouseRef.current.x = e.clientX;
       mouseRef.current.y = e.clientY;
       mouseRef.current.moving = true;
-      setMousePos({ x: e.clientX, y: e.clientY });
+
+      // Update cursor position with direct style manipulation for zero lag
+      if (cursorRef.current) {
+        cursorRef.current.style.transform = `translate(${e.clientX - 12}px, ${e.clientY - 12}px)`;
+      }
 
       // Clear previous timer
       if (mouseTimerRef.current) {
@@ -304,23 +308,15 @@ export default function BoidFlockingCursorDemo() {
       />
       
       {/* Custom cursor */}
-      <motion.div
-        className="fixed pointer-events-none z-50"
-        animate={{
-          x: mousePos.x - 12,
-          y: mousePos.y - 12,
-        }}
-        transition={{
-          type: "spring",
-          stiffness: 500,
-          damping: 28,
-          mass: 0.5,
-        }}
+      <div
+        ref={cursorRef}
+        className="fixed pointer-events-none z-50 transition-transform duration-0"
+        style={{ transform: "translate(-50vw, -50vh)" }}
       >
         <div className="w-6 h-6 rounded-full bg-cyan-400/60 blur-sm" />
         <div className="absolute inset-0 w-6 h-6 rounded-full border-2 border-cyan-400" />
         <div className="absolute inset-0 w-6 h-6 rounded-full bg-gradient-to-br from-cyan-300/40 to-transparent" />
-      </motion.div>
+      </div>
       
       {/* Info overlay */}
       <motion.div
