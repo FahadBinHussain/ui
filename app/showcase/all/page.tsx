@@ -602,6 +602,16 @@ export default function AllComponentsPage() {
       showcaseFile: "page.tsx"
     },
     {
+      title: "Kinetic String Input",
+      description: "Physics-based string where letters hang and fall with gravity",
+      icon: Type,
+      href: "/showcase/kinetic-string-input",
+      color: "from-purple-500 to-pink-500",
+      category: "interactive",
+      componentFile: "page.tsx",
+      showcaseFile: "page.tsx"
+    },
+    {
       title: "Cloth-Simulated Typography",
       description: "Text that acts like a hanging flag or cloth, reacting to wind and cursor with physics",
       icon: Type,
