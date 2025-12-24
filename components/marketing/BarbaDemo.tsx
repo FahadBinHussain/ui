@@ -1,10 +1,12 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 
 export default function BarbaDemo() {
   const [currentPage, setCurrentPage] = useState("home");
-  const [transitionType, setTransitionType] = useState<string>("default");
+  const [transitionType, setTransitionType] = useState<string>("fade");
+  const [isTransitioning, setIsTransitioning] = useState(false);
+  const contentRef = useRef<HTMLDivElement>(null);
 
   const pages = {
     home: {
@@ -35,16 +37,58 @@ export default function BarbaDemo() {
 
   const currentPageData = pages[currentPage as keyof typeof pages];
 
-  const handlePageChange = (page: string) => {
+  useEffect(() => {
+    // Scroll to top when page changes
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [currentPage]);
+
+  const handlePageChange = async (page: string) => {
+    if (isTransitioning || page === currentPage) return;
+
     // Determine transition type based on navigation
+    let transition = "fade";
     if (currentPage === "about" && page === "contact") {
-      setTransitionType("slide");
+      transition = "slide";
     } else if (currentPage === "services") {
-      setTransitionType("scale");
-    } else {
-      setTransitionType("fade");
+      transition = "scale";
     }
+    
+    setTransitionType(transition);
+    setIsTransitioning(true);
+
+    // Leave animation
+    if (contentRef.current) {
+      contentRef.current.classList.add('leaving');
+      contentRef.current.classList.add(`leaving-${transition}`);
+    }
+
+    // Wait for leave animation
+    await new Promise(resolve => setTimeout(resolve, 500));
+
+    // Change page
     setCurrentPage(page);
+
+    // Small delay before enter animation
+    await new Promise(resolve => setTimeout(resolve, 50));
+
+    // Enter animation
+    if (contentRef.current) {
+      contentRef.current.classList.remove('leaving');
+      contentRef.current.classList.remove(`leaving-${transition}`);
+      contentRef.current.classList.add('entering');
+      contentRef.current.classList.add(`entering-${transition}`);
+    }
+
+    // Wait for enter animation
+    await new Promise(resolve => setTimeout(resolve, 500));
+
+    // Clean up
+    if (contentRef.current) {
+      contentRef.current.classList.remove('entering');
+      contentRef.current.classList.remove(`entering-${transition}`);
+    }
+
+    setIsTransitioning(false);
   };
 
   return (
@@ -76,12 +120,8 @@ export default function BarbaDemo() {
 
       {/* Page Content with Dynamic Animation */}
       <div
-        key={currentPage}
-        className={`relative bg-gradient-to-br ${currentPageData.bg} rounded-2xl p-12 text-white shadow-2xl ${
-          transitionType === "fade" ? "animate-fadeIn" :
-          transitionType === "slide" ? "animate-slideIn" :
-          "animate-scaleIn"
-        }`}
+        ref={contentRef}
+        className={`relative bg-gradient-to-br ${currentPageData.bg} rounded-2xl p-12 text-white shadow-2xl transition-all duration-500`}
         data-barba-namespace={currentPageData.namespace}
       >
         <h1 className="text-5xl font-bold mb-6">{currentPageData.title}</h1>
@@ -127,43 +167,52 @@ export default function BarbaDemo() {
         </div>
       </div>
 
-      <style jsx>{`
+      <style jsx global>{`
+        /* Leave animations */
+        .leaving.leaving-fade {
+          opacity: 0;
+        }
+        .leaving.leaving-slide {
+          opacity: 0;
+          transform: translateX(-100px);
+        }
+        .leaving.leaving-scale {
+          opacity: 0;
+          transform: scale(0.9);
+        }
+
+        /* Enter animations */
+        .entering.entering-fade {
+          opacity: 0;
+          animation: fadeIn 0.5s ease-out forwards;
+        }
+        .entering.entering-slide {
+          opacity: 0;
+          transform: translateX(100px);
+          animation: slideIn 0.5s ease-out forwards;
+        }
+        .entering.entering-scale {
+          opacity: 0;
+          transform: scale(1.1);
+          animation: scaleIn 0.5s ease-out forwards;
+        }
+
         @keyframes fadeIn {
-          from {
-            opacity: 0;
-          }
           to {
             opacity: 1;
           }
         }
         @keyframes slideIn {
-          from {
-            opacity: 0;
-            transform: translateX(100px);
-          }
           to {
             opacity: 1;
             transform: translateX(0);
           }
         }
         @keyframes scaleIn {
-          from {
-            opacity: 0;
-            transform: scale(0.9);
-          }
           to {
             opacity: 1;
             transform: scale(1);
           }
-        }
-        .animate-fadeIn {
-          animation: fadeIn 0.5s ease-out;
-        }
-        .animate-slideIn {
-          animation: slideIn 0.5s ease-out;
-        }
-        .animate-scaleIn {
-          animation: scaleIn 0.5s ease-out;
         }
       `}</style>
     </div>
