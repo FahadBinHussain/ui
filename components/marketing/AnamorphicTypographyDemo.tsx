@@ -71,10 +71,10 @@ export default function AnamorphicTypographyDemo() {
       const segments: THREE.Mesh[] = [];
 
       // Each letter is made of multiple small cubes/segments
-      const segmentsPerLetter = 8;
+      const segmentsPerLetter = 12;
 
       for (let i = 0; i < segmentsPerLetter; i++) {
-        const geometry = new THREE.BoxGeometry(0.3, 0.3, 0.3);
+        const geometry = new THREE.BoxGeometry(0.25, 0.25, 0.25);
         const material = new THREE.MeshStandardMaterial({
           color: new THREE.Color().setHSL((letterIndex + i * 0.1) / segmentCount, 0.9, 0.6),
           metalness: 0.9,
@@ -85,32 +85,37 @@ export default function AnamorphicTypographyDemo() {
 
         const mesh = new THREE.Mesh(geometry, material);
 
-        // Position segments to roughly form a letter shape when aligned
-        const angle = (i / segmentsPerLetter) * Math.PI * 2;
-        const targetX = (letterIndex - segmentCount / 2) * 2.5;
-        const targetY = Math.cos(angle) * 0.8;
-        const targetZ = 0;
+        // Create a circular/spiral pattern as the final formation
+        const radius = 3;
+        const spiralTurns = 2;
+        const angle = ((letterIndex * segmentsPerLetter + i) / (segmentCount * segmentsPerLetter)) * Math.PI * 2 * spiralTurns;
+        const heightOffset = ((letterIndex * segmentsPerLetter + i) / (segmentCount * segmentsPerLetter)) * 4 - 2;
 
-        // Initial scattered/distorted positions (3D space all around)
-        const scatterRadius = 8;
-        const scatterAngle1 = (letterIndex * segmentCount + i) * 0.5;
-        const scatterAngle2 = (letterIndex + i) * 0.8;
+        const targetX = Math.cos(angle) * radius;
+        const targetY = heightOffset;
+        const targetZ = Math.sin(angle) * radius;
 
-        mesh.position.x = targetX + Math.cos(scatterAngle1) * scatterRadius;
-        mesh.position.y = targetY + Math.sin(scatterAngle2) * scatterRadius;
-        mesh.position.z = Math.sin(scatterAngle1) * scatterRadius + (i - segmentsPerLetter / 2) * 2;
+        // Initial scattered/distorted positions (explosive 3D scatter)
+        const scatterRadius = 15;
+        const scatterAngle1 = (letterIndex * segmentCount + i) * 0.7 + Math.random() * 0.5;
+        const scatterAngle2 = (letterIndex + i) * 1.2 + Math.random() * 0.5;
+        const scatterAngle3 = (letterIndex * i) * 0.3 + Math.random() * 0.5;
+
+        mesh.position.x = Math.cos(scatterAngle1) * Math.sin(scatterAngle2) * scatterRadius;
+        mesh.position.y = Math.sin(scatterAngle3) * scatterRadius;
+        mesh.position.z = Math.cos(scatterAngle2) * Math.sin(scatterAngle1) * scatterRadius;
 
         // Initial wild rotations
-        mesh.rotation.x = Math.random() * Math.PI * 2;
-        mesh.rotation.y = Math.random() * Math.PI * 2;
-        mesh.rotation.z = Math.random() * Math.PI * 2;
+        mesh.rotation.x = Math.random() * Math.PI * 4;
+        mesh.rotation.y = Math.random() * Math.PI * 4;
+        mesh.rotation.z = Math.random() * Math.PI * 4;
 
         // Store userData for animation
         (mesh as any).userData = {
           initialPosition: mesh.position.clone(),
           initialRotation: mesh.rotation.clone(),
           targetPosition: new THREE.Vector3(targetX, targetY, targetZ),
-          targetRotation: new THREE.Euler(0, 0, 0),
+          targetRotation: new THREE.Euler(angle, 0, 0), // Rotate to face outward from center
         };
 
         segments.push(mesh);
@@ -292,9 +297,9 @@ export default function AnamorphicTypographyDemo() {
               }}
               className="text-8xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500"
             >
-              ALIGNED
+              PERFECT
             </motion.div>
-            <p className="text-cyan-300 text-lg mt-4">Sweet spot reached!</p>
+            <p className="text-cyan-300 text-lg mt-4">Spiral formation complete!</p>
           </div>
         </motion.div>
       )}
@@ -311,9 +316,9 @@ export default function AnamorphicTypographyDemo() {
             Anamorphic Typography
           </h2>
           <p className="text-gray-300 text-sm leading-relaxed">
-            Scroll to reveal the hidden message. The text appears distorted until you reach the 
-            <span className="text-cyan-300 font-semibold"> sweet spot </span>
-            where perspective aligns perfectly.
+            Scroll to watch chaotic 3D particles coalesce into a beautiful 
+            <span className="text-cyan-300 font-semibold"> spiral formation</span>.
+            Perfect alignment occurs at the sweet spot!
           </p>
         </div>
       </motion.div>
