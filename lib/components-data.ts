@@ -664,6 +664,14 @@ export const componentsDataFull: ComponentData[] = [
     icon: "Layout",
     color: "from-purple-500 to-pink-500",
   },
+  {
+    title: "X-Ray Reveal Cursor",
+    description: "Cursor acts as an X-Ray lens revealing wireframe schematic version underneath the polished UI",
+    href: "/showcase/xray-reveal-cursor",
+    category: "cursor",
+    icon: "Eye",
+    color: "from-green-400 via-emerald-500 to-cyan-500",
+  },
 ].sort((a, b) => a.title.localeCompare(b.title));
 
 // Icon name to import mapping
