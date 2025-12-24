@@ -116,6 +116,13 @@ export default function AnamorphicTypographyDemo() {
           initialRotation: mesh.rotation.clone(),
           targetPosition: new THREE.Vector3(targetX, targetY, targetZ),
           targetRotation: new THREE.Euler(angle, 0, 0), // Rotate to face outward from center
+          // Final formation - sphere/galaxy
+          finalPosition: new THREE.Vector3(
+            Math.cos(angle) * Math.sin(heightOffset) * 5,
+            Math.sin(angle) * 5,
+            Math.cos(heightOffset) * Math.cos(angle) * 5
+          ),
+          finalRotation: new THREE.Euler(angle * 2, heightOffset, angle),
         };
 
         segments.push(mesh);
@@ -140,9 +147,48 @@ export default function AnamorphicTypographyDemo() {
       scrollProgressRef.current = progress;
       setScrollProgress(progress);
 
-      // Check if we're in the "sweet spot" (around 50%)
-      const sweetSpot = Math.abs(progress - 0.5) < 0.05;
+      // Multi-stage animation logic
+      let particleProgress = 0;
+      let isScattered = false;
+      let useSecondFormation = false;
+      let sweetSpot = false;
+      let cameraZ = 15;
+      
+      // Easing function for smooth transition
+      const easeInOutCubic = (t: number) => {
+        return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+      };
+
+      if (progress < 0.25) {
+        // Stage 1: Scatter → Spiral (0-25%)
+        particleProgress = progress / 0.25;
+        cameraZ = 15 - (7 * easeInOutCubic(particleProgress)); // 15 to 8
+      } else if (progress < 0.5) {
+        // Stage 2: Hold spiral + zoom in (25-50%)
+        particleProgress = 1; // Stay in spiral
+        sweetSpot = true;
+        const zoomProgress = (progress - 0.25) / 0.25;
+        cameraZ = 8 - (4 * easeInOutCubic(zoomProgress)); // 8 to 4
+      } else if (progress < 0.75) {
+        // Stage 3: Scatter again (50-75%)
+        const scatterProgress = (progress - 0.5) / 0.25;
+        particleProgress = 1 - scatterProgress; // Go back towards 0
+        isScattered = true;
+        cameraZ = 4 + (4 * easeInOutCubic(scatterProgress)); // 4 to 8
+      } else {
+        // Stage 4: Form sphere/galaxy (75-100%)
+        const finalProgress = (progress - 0.75) / 0.25;
+        particleProgress = finalProgress;
+        useSecondFormation = true;
+        cameraZ = 8 - (2 * easeInOutCubic(finalProgress)); // 8 to 6
+        if (finalProgress > 0.4 && finalProgress < 0.6) {
+          sweetSpot = true;
+        }
+      }
+
       setIsAligned(sweetSpot);
+
+      const easedProgress = easeInOutCubic(particleProgress);
 
       // Update text meshes based on scroll
       if (textGroup) {
@@ -151,36 +197,73 @@ export default function AnamorphicTypographyDemo() {
             const mesh = child as THREE.Mesh;
             const userData = (mesh as any).userData;
 
-            // Easing function for smooth transition
-            const easeInOutCubic = (t: number) => {
-              return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
-            };
-
-            const easedProgress = easeInOutCubic(progress);
-
-            // Interpolate position
-            mesh.position.lerpVectors(
-              userData.initialPosition,
-              userData.targetPosition,
-              easedProgress
-            );
-
-            // Interpolate rotation
-            mesh.rotation.x = THREE.MathUtils.lerp(
-              userData.initialRotation.x,
-              userData.targetRotation.x,
-              easedProgress
-            );
-            mesh.rotation.y = THREE.MathUtils.lerp(
-              userData.initialRotation.y,
-              userData.targetRotation.y,
-              easedProgress
-            );
-            mesh.rotation.z = THREE.MathUtils.lerp(
-              userData.initialRotation.z,
-              userData.targetRotation.z,
-              easedProgress
-            );
+            if (useSecondFormation) {
+              // Animate from spiral to final sphere
+              mesh.position.lerpVectors(
+                userData.targetPosition,
+                userData.finalPosition,
+                easedProgress
+              );
+              mesh.rotation.x = THREE.MathUtils.lerp(
+                userData.targetRotation.x,
+                userData.finalRotation.x,
+                easedProgress
+              );
+              mesh.rotation.y = THREE.MathUtils.lerp(
+                userData.targetRotation.y,
+                userData.finalRotation.y,
+                easedProgress
+              );
+              mesh.rotation.z = THREE.MathUtils.lerp(
+                userData.targetRotation.z,
+                userData.finalRotation.z,
+                easedProgress
+              );
+            } else if (isScattered) {
+              // Animate from spiral back to scatter
+              mesh.position.lerpVectors(
+                userData.targetPosition,
+                userData.initialPosition,
+                1 - easedProgress
+              );
+              mesh.rotation.x = THREE.MathUtils.lerp(
+                userData.targetRotation.x,
+                userData.initialRotation.x,
+                1 - easedProgress
+              );
+              mesh.rotation.y = THREE.MathUtils.lerp(
+                userData.targetRotation.y,
+                userData.initialRotation.y,
+                1 - easedProgress
+              );
+              mesh.rotation.z = THREE.MathUtils.lerp(
+                userData.targetRotation.z,
+                userData.initialRotation.z,
+                1 - easedProgress
+              );
+            } else {
+              // Animate from scatter to spiral
+              mesh.position.lerpVectors(
+                userData.initialPosition,
+                userData.targetPosition,
+                easedProgress
+              );
+              mesh.rotation.x = THREE.MathUtils.lerp(
+                userData.initialRotation.x,
+                userData.targetRotation.x,
+                easedProgress
+              );
+              mesh.rotation.y = THREE.MathUtils.lerp(
+                userData.initialRotation.y,
+                userData.targetRotation.y,
+                easedProgress
+              );
+              mesh.rotation.z = THREE.MathUtils.lerp(
+                userData.initialRotation.z,
+                userData.targetRotation.z,
+                easedProgress
+              );
+            }
 
             // Pulse effect at sweet spot
             if (sweetSpot) {
@@ -192,16 +275,10 @@ export default function AnamorphicTypographyDemo() {
           });
         });
 
-        // Camera movement along bezier curve
-        const cameraPath = new THREE.CubicBezierCurve3(
-          new THREE.Vector3(0, 5, 15),
-          new THREE.Vector3(-8, 2, 10),
-          new THREE.Vector3(8, -2, 10),
-          new THREE.Vector3(0, 0, 8)
-        );
-
-        const cameraPosition = cameraPath.getPoint(progress);
-        camera.position.copy(cameraPosition);
+        // Dynamic camera positioning based on stage
+        camera.position.x = Math.sin(progress * Math.PI * 2) * 1.5;
+        camera.position.y = Math.cos(progress * Math.PI) * 1;
+        camera.position.z = cameraZ;
         camera.lookAt(0, 0, 0);
       }
     };
