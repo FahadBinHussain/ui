@@ -423,6 +423,16 @@ export default function Home() {
       componentFile: "ButtonDemo.tsx",
       showcaseFile: "page.tsx"
     },
+    {
+      title: "Breathing Variable Search",
+      description: "Variable font weight reacts to typing speed with fluid cursor trail",
+      icon: Search,
+      href: "/showcase/breathing-variable-search",
+      color: "from-purple-500 to-pink-500",
+      category: "ui",
+      componentFile: "page.tsx",
+      showcaseFile: "page.tsx"
+    },
   ];
 
   const categoryGroups = {

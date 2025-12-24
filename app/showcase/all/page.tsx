@@ -552,6 +552,16 @@ export default function AllComponentsPage() {
       showcaseFile: "page.tsx"
     },
     {
+      title: "Breathing Variable Search",
+      description: "Variable font weight reacts to typing speed with fluid cursor trail",
+      icon: Search,
+      href: "/showcase/breathing-variable-search",
+      color: "from-purple-500 to-pink-500",
+      category: "ui",
+      componentFile: "page.tsx",
+      showcaseFile: "page.tsx"
+    },
+    {
       title: "Variable Font Interaction",
       description: "Typography that changes weight, width dynamically based on mouse proximity or scroll speed",
       icon: Type,
