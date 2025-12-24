@@ -259,6 +259,140 @@ gsap.set(element, {
           </div>
         </section>
 
+        {/* Beautiful Footer Design Examples */}
+        <section className="py-32 px-8 bg-white">
+          <div className="max-w-6xl mx-auto">
+            <h2 className="text-5xl font-black mb-6 text-center">Beautiful Footer Designs</h2>
+            <p className="text-xl text-gray-600 text-center mb-16">
+              Choose from these stunning pre-built layouts or create your own
+            </p>
+
+            <div className="space-y-8">
+              {/* Design 1: Minimalist Gradient */}
+              <div className="relative h-96 rounded-3xl overflow-hidden border-2 border-gray-200 group">
+                <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900">
+                  <div className="absolute inset-0 opacity-20" style={{
+                    backgroundImage: 'radial-gradient(circle at 2px 2px, rgba(255,255,255,0.15) 1px, transparent 0)',
+                    backgroundSize: '40px 40px'
+                  }} />
+                  <div className="h-full flex flex-col items-center justify-center px-8 text-center">
+                    <h3 className="text-7xl font-black mb-6 bg-gradient-to-r from-white via-purple-200 to-white bg-clip-text text-transparent">
+                      CREATE
+                    </h3>
+                    <p className="text-xl text-gray-300 mb-8">Minimalist gradient with dot pattern</p>
+                    <div className="flex gap-4">
+                      <div className="px-6 py-3 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white text-sm">
+                        Portfolio
+                      </div>
+                      <div className="px-6 py-3 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white text-sm">
+                        Agency
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Design 2: Neon Cyberpunk */}
+              <div className="relative h-96 rounded-3xl overflow-hidden border-2 border-gray-200 group">
+                <div className="absolute inset-0 bg-black">
+                  <div className="absolute inset-0 bg-gradient-to-t from-cyan-500/20 via-transparent to-purple-500/20" />
+                  <div className="absolute inset-0 opacity-30" style={{
+                    backgroundImage: `
+                      linear-gradient(rgba(0, 255, 255, 0.3) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(0, 255, 255, 0.3) 1px, transparent 1px)
+                    `,
+                    backgroundSize: '60px 60px',
+                  }} />
+                  <div className="h-full flex flex-col items-center justify-center px-8 text-center relative z-10">
+                    <h3 className="text-7xl font-black mb-6 text-transparent" style={{
+                      WebkitTextStroke: '2px cyan',
+                      textShadow: '0 0 20px cyan, 0 0 40px cyan, 0 0 60px cyan'
+                    }}>
+                      FUTURE
+                    </h3>
+                    <p className="text-xl text-cyan-300 mb-8 font-mono">Neon cyberpunk with glow effects</p>
+                    <div className="flex gap-4">
+                      {['Tech', 'Gaming', 'Crypto'].map((tag) => (
+                        <div key={tag} className="px-6 py-3 rounded-lg bg-cyan-500/10 border-2 border-cyan-500 text-cyan-300 text-sm font-mono">
+                          {tag}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Design 3: Elegant Glassmorphism */}
+              <div className="relative h-96 rounded-3xl overflow-hidden border-2 border-gray-200 group">
+                <div className="absolute inset-0 bg-gradient-to-br from-pink-100 via-purple-100 to-blue-100">
+                  <div className="absolute top-20 left-20 w-64 h-64 bg-purple-300 rounded-full blur-3xl opacity-40" />
+                  <div className="absolute bottom-20 right-20 w-64 h-64 bg-pink-300 rounded-full blur-3xl opacity-40" />
+                  <div className="h-full flex flex-col items-center justify-center px-8 text-center relative z-10">
+                    <div className="backdrop-blur-xl bg-white/30 border border-white/40 rounded-3xl px-12 py-8 shadow-2xl">
+                      <h3 className="text-6xl font-bold mb-4 bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+                        ELEGANT
+                      </h3>
+                      <p className="text-lg text-gray-700 mb-6">Glassmorphism with floating blobs</p>
+                      <div className="flex justify-center gap-3">
+                        {[
+                          { icon: <Twitter className="w-5 h-5" />, color: "hover:bg-sky-500" },
+                          { icon: <Github className="w-5 h-5" />, color: "hover:bg-gray-800" },
+                          { icon: <Linkedin className="w-5 h-5" />, color: "hover:bg-blue-600" },
+                        ].map((social, i) => (
+                          <button key={i} className={`p-3 rounded-xl bg-white/50 backdrop-blur-sm border border-white/60 ${social.color} hover:text-white transition-all`}>
+                            {social.icon}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Design 4: Bold Gradient Mesh */}
+              <div className="relative h-96 rounded-3xl overflow-hidden border-2 border-gray-200 group">
+                <div className="absolute inset-0 bg-gradient-to-br from-orange-500 via-red-500 to-pink-500">
+                  <div className="absolute inset-0 mix-blend-overlay opacity-50" style={{
+                    background: 'radial-gradient(circle at 30% 20%, rgba(255,255,255,0.4) 0%, transparent 50%), radial-gradient(circle at 70% 80%, rgba(0,0,0,0.3) 0%, transparent 50%)'
+                  }} />
+                  <div className="h-full flex flex-col items-center justify-center px-8 text-center">
+                    <h3 className="text-8xl font-black mb-6 text-white drop-shadow-2xl">
+                      BOLD
+                    </h3>
+                    <p className="text-2xl text-white/90 mb-8 font-semibold">Vibrant gradient mesh design</p>
+                    <button className="px-10 py-4 rounded-full bg-white text-red-600 font-bold text-lg hover:scale-105 transition-transform shadow-2xl">
+                      Get Started
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              {/* Design 5: Professional Dark */}
+              <div className="relative h-96 rounded-3xl overflow-hidden border-2 border-gray-200 group">
+                <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900">
+                  <div className="absolute inset-0" style={{
+                    backgroundImage: 'linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)',
+                    backgroundSize: '100px 100px'
+                  }} />
+                  <div className="h-full flex items-center justify-between px-16">
+                    <div>
+                      <h3 className="text-6xl font-bold mb-4 text-white">Let's Connect</h3>
+                      <p className="text-xl text-gray-400">Professional · Minimalist · Clean</p>
+                    </div>
+                    <div className="flex flex-col gap-4">
+                      {['Contact', 'Portfolio', 'About'].map((item) => (
+                        <a key={item} href="#" className="px-8 py-3 rounded-lg border border-gray-700 hover:border-gray-500 hover:bg-gray-800 text-gray-300 hover:text-white transition-all text-center font-medium">
+                          {item}
+                        </a>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Technical Details */}
         <section className="py-32 px-8 bg-gray-900 text-white">
           <div className="max-w-4xl mx-auto">
