@@ -212,9 +212,11 @@ export default function AnamorphicTypographyDemo() {
     const animate = () => {
       requestAnimationFrame(animate);
 
-      // Gentle rotation
+      // Continuous spiral rotation - more dramatic
       if (textGroup) {
-        textGroup.rotation.y = Math.sin(Date.now() * 0.0002) * 0.05;
+        textGroup.rotation.y += 0.005; // Constant rotation
+        textGroup.rotation.x = Math.sin(Date.now() * 0.0005) * 0.15; // Gentle tilt
+        textGroup.rotation.z = Math.cos(Date.now() * 0.0003) * 0.1; // Slight wobble
       }
 
       renderer.render(scene, camera);
