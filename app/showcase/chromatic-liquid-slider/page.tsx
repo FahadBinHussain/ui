@@ -31,30 +31,39 @@ const fragmentShader = `
   
   void main() {
     vec2 uv = vUv;
-    vec2 center = uMouse;
     
-    // Distance from cursor
+    // Global distortion based on progress
+    float globalDistortion = uProgress * (1.0 - uProgress) * 4.0;
+    
+    // Horizontal wave distortion across entire image
+    float wave = sin(uv.y * 10.0 + uProgress * 6.28) * globalDistortion * 0.05;
+    vec2 distortedUV = vec2(uv.x + wave, uv.y);
+    
+    // Add vertical displacement based on progress
+    float verticalDisplace = (uv.x - 0.5) * globalDistortion * 0.1;
+    distortedUV.y += verticalDisplace;
+    
+    // Localized cursor distortion
+    vec2 center = uMouse;
     float dist = distance(uv, center);
     float radius = 0.3;
-    
-    // Hump distortion based on progress and distance
-    float hump = smoothstep(radius, 0.0, dist) * uProgress * (1.0 - uProgress) * 4.0;
-    
-    // Distort UV based on velocity direction
+    float hump = smoothstep(radius, 0.0, dist) * globalDistortion * 0.3;
     vec2 direction = normalize(uv - center);
-    vec2 distortedUV = uv + direction * hump * 0.2;
+    distortedUV += direction * hump;
     
-    // Chromatic aberration intensity based on distortion
-    float aberration = hump * uVelocity * 0.02;
+    // Chromatic aberration - stronger globally, extra strong near cursor
+    float globalAberration = globalDistortion * 0.015;
+    float localAberration = hump * uVelocity * 0.03;
+    float totalAberration = globalAberration + localAberration;
     
-    // Sample RGB channels separately
-    float r1 = texture2D(uTexture1, distortedUV + vec2(aberration, 0.0)).r;
+    // Sample RGB channels separately with offset
+    float r1 = texture2D(uTexture1, distortedUV + vec2(totalAberration, 0.0)).r;
     float g1 = texture2D(uTexture1, distortedUV).g;
-    float b1 = texture2D(uTexture1, distortedUV - vec2(aberration, 0.0)).b;
+    float b1 = texture2D(uTexture1, distortedUV - vec2(totalAberration, 0.0)).b;
     
-    float r2 = texture2D(uTexture2, distortedUV + vec2(aberration, 0.0)).r;
+    float r2 = texture2D(uTexture2, distortedUV + vec2(totalAberration, 0.0)).r;
     float g2 = texture2D(uTexture2, distortedUV).g;
-    float b2 = texture2D(uTexture2, distortedUV - vec2(aberration, 0.0)).b;
+    float b2 = texture2D(uTexture2, distortedUV - vec2(totalAberration, 0.0)).b;
     
     vec3 color1 = vec3(r1, g1, b1);
     vec3 color2 = vec3(r2, g2, b2);
