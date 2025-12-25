@@ -593,6 +593,14 @@ export const componentsDataFull: ComponentData[] = [
     color: "from-emerald-400 to-sky-500",
   },
   {
+    title: "Slit-Scan Accordion",
+    description: "FAQ accordion with WebGL shader reveal—content materializes from infinitely stretched vertical lines",
+    href: "/showcase/slit-scan-accordion",
+    category: "ui",
+    icon: "ChevronDown",
+    color: "from-cyan-400 via-purple-500 to-pink-500",
+  },
+  {
     title: "Soft Body Physics Grid",
     description: "Grid of image cards that behave like jelly blocks, squishing and deforming on collision using Matter.js",
     href: "/showcase/soft-body-physics-grid",
