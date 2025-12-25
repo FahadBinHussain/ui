@@ -257,6 +257,14 @@ export const componentsDataFull: ComponentData[] = [
     color: "from-gray-600 via-gray-500 to-gray-400",
   },
   {
+    title: "Floating 3D Object Viewer",
+    description: "Interactive 3D objects with spring physics—rotate with mouse and watch them elastically return to center",
+    href: "/showcase/floating-object-viewer",
+    category: "3d",
+    icon: "Box",
+    color: "from-cyan-400 via-purple-500 to-pink-500",
+  },
+  {
     title: "Fluid Cursor",
     description: "Smooth spring-based cursor with trailing effects",
     href: "/showcase/fluid-cursor",
