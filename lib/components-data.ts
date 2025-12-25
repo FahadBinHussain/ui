@@ -721,6 +721,14 @@ export const componentsDataFull: ComponentData[] = [
     color: "from-blue-500 to-green-500",
   },
   {
+    title: "Animated Tree View",
+    description: "Expandable tree structure with smooth spring-based animations for nested content",
+    href: "/showcase/tree-view",
+    category: "ui",
+    icon: "TreeDeciduous",
+    color: "from-green-400 via-emerald-500 to-teal-500",
+  },
+  {
     title: "UI Components",
     description: "Basic building blocks - Buttons, Inputs, Cards, etc.",
     href: "/showcase/buttons",
