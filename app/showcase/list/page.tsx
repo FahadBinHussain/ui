@@ -2,6 +2,7 @@
 import Link from "next/link";
 import { ArrowLeft, Copy, Check, Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { BackToTop } from "@/components/ui/back-to-top";
 import { useState, useMemo } from "react";
 import { componentsDataFull } from "@/lib/components-data";
 
@@ -172,6 +173,9 @@ export default function ComponentsListPage() {
           <p>Click the copy button next to any component to copy its markdown format</p>
         </div>
       </div>
+
+      {/* Back to Top Button */}
+      <BackToTop />
     </div>
   );
 }

@@ -2,6 +2,7 @@
 import Link from "next/link";
 import { Box, Sparkles, Palette, Layers, MessageSquareQuote, Eye, Zap, MousePointer2, ImageIcon, ScrollText, Type, Users, Pencil, Palette as PaletteIcon, ArrowRightLeft, Diamond, Menu, Search, Layout, Activity, Code, Cloud, Cpu, Database, Flag, Globe, Atom, Star, Rocket, Wand2, Target, Play, ChevronRight, Github, ExternalLink, Boxes } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { BackToTop } from "@/components/ui/back-to-top";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useEffect, useState } from "react";
 
@@ -787,6 +788,9 @@ export default function Home() {
             </div>
           </section>
         </main>
+
+        {/* Back to Top Button */}
+        <BackToTop />
       </div>
     </>
   );

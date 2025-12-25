@@ -2,6 +2,7 @@
 import Link from "next/link";
 import { Box, Sparkles, Palette, Layers, MessageSquareQuote, Eye, Zap, MousePointer2, ImageIcon, ScrollText, Type, Users, Pencil, Palette as PaletteIcon, ArrowRightLeft, Diamond, Menu, Search, Layout, Activity, Code, Cloud, Cpu, Database, Flag, Globe, Atom, Star, Rocket, Wand2, Target, Play, ChevronRight, Github, ExternalLink, ArrowLeft, Filter, Grid3X3, List, Droplets, Terminal, Boxes, Move, Shirt, Compass, Film, BookOpen, Infinity } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { BackToTop } from "@/components/ui/back-to-top";
 import { motion } from "framer-motion";
 import { useState, useMemo } from "react";
 import { componentsDataFull } from "@/lib/components-data";
@@ -249,6 +250,9 @@ export default function AllComponentsPage() {
           </div>
         )}
       </div>
+
+      {/* Back to Top Button */}
+      <BackToTop />
     </div>
   );
 }
