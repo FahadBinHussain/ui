@@ -273,6 +273,14 @@ export const componentsDataFull: ComponentData[] = [
     color: "from-purple-500 to-pink-500",
   },
   {
+    title: "Fluid Scroll Progress",
+    description: "Liquid thermometer-style progress indicator that ripples, splashes, and bulges around section markers with surface tension physics",
+    href: "/showcase/fluid-scroll-progress",
+    category: "ui",
+    icon: "Droplets",
+    color: "from-cyan-400 via-blue-500 to-purple-500",
+  },
+  {
     title: "Gaussian Splatting",
     description: "Photorealistic 3D rendering using real-world scans with hologram-like interaction",
     href: "/showcase/gaussian-splatting",
