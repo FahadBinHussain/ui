@@ -417,6 +417,14 @@ export const componentsDataFull: ComponentData[] = [
     color: "from-red-500 to-blue-500",
   },
   {
+    title: "Magnetic Black Hole Pagination",
+    description: "Pagination numbers as gravity wells with orbiting ring that flies between pages using squash & stretch physics",
+    href: "/showcase/magnetic-pagination",
+    category: "ui",
+    icon: "CircleDot",
+    color: "from-cyan-400 via-purple-500 to-pink-500",
+  },
+  {
     title: "Metaballs / Goop",
     description: "Organic liquid mercury blobs that snap together when close, using CSS blur+contrast or SVG filters",
     href: "/showcase/metaballs",
