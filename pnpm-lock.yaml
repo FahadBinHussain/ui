@@ -14,6 +14,9 @@ importers:
       '@gsap/react':
         specifier: ^2.1.2
         version: 2.1.2(gsap@3.13.0)(react@19.2.0)
+      '@react-spring/parallax':
+        specifier: ^10.0.3
+        version: 10.0.3(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       '@react-spring/three':
         specifier: ^10.0.3
         version: 10.0.3(@react-three/fiber@9.4.2(@types/react@19.2.7)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(three@0.181.2))(react@19.2.0)(three@0.181.2)
@@ -525,6 +528,12 @@ packages:
     resolution: {integrity: sha512-D4DwNO68oohDf/0HG2G0Uragzb9IA1oXblxrd6MZAcBcUQG2EHUWXewjdECMPLNmQvlYVyyBRH6gPxXM5DX7DQ==}
     peerDependencies:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
+
+  '@react-spring/parallax@10.0.3':
+    resolution: {integrity: sha512-QfH2Effl2MOBTNkoyGYUhnek1c9o/oQhNVm4FuK4uaTUddUs/fBJh7GO6rEanMSvflRDnNQ0BqC+mzEvqiEDbg==}
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
+      react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
 
   '@react-spring/rafz@10.0.3':
     resolution: {integrity: sha512-Ri2/xqt8OnQ2iFKkxKMSF4Nqv0LSWnxXT4jXFzBDsHgeeH/cHxTLupAWUwmV9hAGgmEhBmh5aONtj3J6R/18wg==}
@@ -2819,6 +2828,13 @@ snapshots:
       '@react-spring/shared': 10.0.3(react@19.2.0)
       '@react-spring/types': 10.0.3
       react: 19.2.0
+
+  '@react-spring/parallax@10.0.3(react-dom@19.2.0(react@19.2.0))(react@19.2.0)':
+    dependencies:
+      '@react-spring/shared': 10.0.3(react@19.2.0)
+      '@react-spring/web': 10.0.3(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+      react: 19.2.0
+      react-dom: 19.2.0(react@19.2.0)
 
   '@react-spring/rafz@10.0.3': {}
 

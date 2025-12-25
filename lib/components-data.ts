@@ -489,6 +489,14 @@ export const componentsDataFull: ComponentData[] = [
     color: "from-pink-500 to-cyan-500",
   },
   {
+    title: "Parallax Scroll",
+    description: "Multi-layered parallax scrolling effect with space-themed graphics and interactive navigation",
+    href: "/showcase/parallax-scroll",
+    category: "animation",
+    icon: "Layers",
+    color: "from-indigo-500 via-purple-500 to-pink-500",
+  },
+  {
     title: "Perspective Skew Toasts",
     description: "3D toast notifications that enter like hanging signs, tilting and swinging based on mouse movement with glossy sheen effects",
     href: "/showcase/perspective-toast",
