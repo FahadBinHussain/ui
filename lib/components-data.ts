@@ -449,6 +449,14 @@ export const componentsDataFull: ComponentData[] = [
     color: "from-pink-500 to-cyan-500",
   },
   {
+    title: "Perspective Skew Toasts",
+    description: "3D toast notifications that enter like hanging signs, tilting and swinging based on mouse movement with glossy sheen effects",
+    href: "/showcase/perspective-toast",
+    category: "ui",
+    icon: "MessageSquareQuote",
+    color: "from-purple-500 via-pink-500 to-cyan-500",
+  },
+  {
     title: "Physics Gravity Sandbox",
     description: "UI elements that fall, stack, and bounce with realistic 2D physics",
     href: "/showcase/physics-sandbox",
