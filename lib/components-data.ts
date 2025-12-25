@@ -545,6 +545,14 @@ export const componentsDataFull: ComponentData[] = [
     color: "from-cyan-400 to-blue-400",
   },
   {
+    title: "Pure SVG Loaders",
+    description: "Collection of 10 lightweight loading animations built with pure SVG and CSS animations",
+    href: "/showcase/svg-loaders",
+    category: "ui",
+    icon: "Loader2",
+    color: "from-gray-400 via-gray-200 to-white",
+  },
+  {
     title: "Radar Mini-Map TOC",
     description: "Cyberpunk table of contents visualized as an interactive radar display with hyperspace warp navigation",
     href: "/showcase/radar-minimap-toc",
