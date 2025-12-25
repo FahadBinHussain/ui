@@ -31,11 +31,12 @@ export function FluidScrollProgress({
 }: FluidScrollProgressProps) {
   const svgRef = useRef<SVGSVGElement>(null);
   const [scrollProgress, setScrollProgress] = useState(0);
-  const [scrollVelocity, setScrollVelocity] = useState(0);
+  const scrollVelocityRef = useRef(0);
   const lastScrollRef = useRef(0);
   const animationFrameRef = useRef<number | undefined>(undefined);
   const surfaceRippleRef = useRef(0);
   const bulgeStatesRef = useRef<Map<number, number>>(new Map());
+  const [, forceUpdate] = useState({});
 
   // Track scroll progress
   useEffect(() => {
@@ -50,7 +51,7 @@ export function FluidScrollProgress({
 
       // Calculate velocity
       const velocity = (scrollTop - lastScrollRef.current) / 16; // Normalized per frame
-      setScrollVelocity(velocity);
+      scrollVelocityRef.current = velocity;
       lastScrollRef.current = scrollTop;
 
       setScrollProgress(progress);
@@ -70,10 +71,10 @@ export function FluidScrollProgress({
   useEffect(() => {
     const animate = () => {
       // Dampen velocity over time
-      setScrollVelocity((v) => v * 0.9);
+      scrollVelocityRef.current *= 0.9;
 
       // Calculate ripple based on velocity
-      surfaceRippleRef.current += scrollVelocity * 0.5;
+      surfaceRippleRef.current += scrollVelocityRef.current * 0.5;
       surfaceRippleRef.current *= 0.85; // Damping
 
       // Update bulge states (decay over time)
@@ -86,6 +87,9 @@ export function FluidScrollProgress({
         }
       });
 
+      // Force re-render for SVG updates
+      forceUpdate({});
+
       animationFrameRef.current = requestAnimationFrame(animate);
     };
 
@@ -96,7 +100,7 @@ export function FluidScrollProgress({
         cancelAnimationFrame(animationFrameRef.current);
       }
     };
-  }, [scrollVelocity]);
+  }, []);
 
   // Trigger bulge when passing section markers
   useEffect(() => {
@@ -179,7 +183,7 @@ export function FluidScrollProgress({
       const liquidDistance = Math.abs(y - liquidY);
       if (liquidDistance < 15) {
         const factor = 1 - liquidDistance / 15;
-        bulge += factor * Math.abs(scrollVelocity) * 2;
+        bulge += factor * Math.abs(scrollVelocityRef.current) * 2;
       }
 
       const leftX = centerX - tubeWidth / 2 - bulge;
