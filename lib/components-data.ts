@@ -9,6 +9,14 @@ export interface ComponentData {
 
 export const componentsDataFull: ComponentData[] = [
   {
+    title: "3D Animated Switch",
+    description: "Interactive 3D toggle switch with synchronized DOM and WebGL animations using React Three Fiber and React Spring",
+    href: "/showcase/3d-animated-switch",
+    category: "3d",
+    icon: "ToggleLeft",
+    color: "from-cyan-400 to-rose-500",
+  },
+  {
     title: "3D Card Effects",
     description: "CSS 3D perspective cards with hover animations",
     href: "/showcase/cards",
