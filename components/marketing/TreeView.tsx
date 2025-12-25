@@ -5,7 +5,7 @@ import { useSpring, a } from "@react-spring/web";
 import useMeasure from "react-use-measure";
 
 function usePrevious<T>(value: T) {
-  const ref = useRef<T | undefined>();
+  const ref = useRef<T | undefined>(undefined);
   useEffect(() => void (ref.current = value), [value]);
   return ref.current;
 }
