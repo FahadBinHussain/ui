@@ -585,6 +585,14 @@ export const componentsDataFull: ComponentData[] = [
     color: "from-rose-500 to-pink-500",
   },
   {
+    title: "Scratch-to-Reveal Card",
+    description: "Interactive scratch cards using Canvas—drag to erase and reveal hidden prizes, coupons, or messages",
+    href: "/showcase/scratch-card",
+    category: "interactive",
+    icon: "Hand",
+    color: "from-yellow-400 via-orange-500 to-pink-500",
+  },
+  {
     title: "Scrollytelling / Sticky Pinning",
     description: "Immersive narratives with sticky visuals that stay pinned while text scrolls alongside, triggering animations (Apple-style product pages)",
     href: "/showcase/scrollytelling",
