@@ -25,6 +25,14 @@ export const componentsDataFull: ComponentData[] = [
     color: "from-purple-500 to-pink-500",
   },
   {
+    title: "Futuristic Login Form",
+    description: "Cyberpunk-styled login form with animated glitch/noise effects on focus and hover",
+    href: "/showcase/futuristic-login",
+    category: "forms",
+    icon: "Lock",
+    color: "from-indigo-500 to-purple-600",
+  },
+  {
     title: "3D Flip-Card Omnibar",
     description: "Isometric prism search bar that flips to reveal input and stacks results in Z-depth",
     href: "/showcase/3d-flip-omnibar",
