@@ -201,6 +201,14 @@ export const componentsDataFull: ComponentData[] = [
     color: "from-orange-500 via-red-500 to-pink-500",
   },
   {
+    title: "Drag Viewpager",
+    description: "Gesture-based image carousel with smooth drag interactions and scale animations powered by React Spring",
+    href: "/showcase/drag-viewpager",
+    category: "animation",
+    icon: "Swipe",
+    color: "from-blue-400 to-purple-500",
+  },
+  {
     title: "Direction-Aware Hover",
     description: "Card overlays that intelligently enter from the exact edge where mouse approached using Math.atan2() angle detection",
     href: "/showcase/direction-aware-hover",
