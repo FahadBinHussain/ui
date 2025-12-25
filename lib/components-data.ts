@@ -489,6 +489,14 @@ export const componentsDataFull: ComponentData[] = [
     color: "from-cyan-400 to-blue-400",
   },
   {
+    title: "Radar Mini-Map TOC",
+    description: "Cyberpunk table of contents visualized as an interactive radar display with hyperspace warp navigation",
+    href: "/showcase/radar-minimap-toc",
+    category: "navigation",
+    icon: "Radar",
+    color: "from-cyan-400 via-purple-400 to-pink-400",
+  },
+  {
     title: "Raymarching / SDF",
     description: "Pure mathematical rendering with infinite resolution—no polygons, just raymarching through SDF equations for liquid morphing shapes",
     href: "/showcase/raymarch-sdf",
@@ -740,6 +748,7 @@ export const iconMap = {
   "Pencil": "Pencil",
   "Diamond": "Diamond",
   "Infinity": "Infinity",
+  "Radar": "Radar",
   "BookOpen": "BookOpen",
   "Palette": "Palette",
   "Wand2": "Wand2",
