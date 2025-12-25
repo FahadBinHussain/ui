@@ -285,7 +285,9 @@ export default function SoftBodyPhysicsGrid() {
         ctx.restore();
 
         // Draw particles (for debug)
-        if (false) {
+        // Commented out for production
+        /*
+        if (false && ctx) {
           bodies.forEach((body) => {
             ctx.beginPath();
             ctx.arc(body.position.x, body.position.y, 3, 0, Math.PI * 2);
@@ -293,6 +295,7 @@ export default function SoftBodyPhysicsGrid() {
             ctx.fill();
           });
         }
+        */
       });
 
       requestAnimationFrame(customRender);

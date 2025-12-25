@@ -2,12 +2,12 @@
 
 import React, { useRef, useState } from "react";
 import { gsap } from "gsap";
-import { Home, Briefcase, UserCircle, Mail, Settings } from "lucide-react";
+import { Home, Briefcase, UserCircle, Mail, Settings, LucideIcon } from "lucide-react";
 
 interface NavItem {
   id: string;
   label: string;
-  icon: React.ElementType;
+  icon: LucideIcon;
 }
 
 const navItems: NavItem[] = [
@@ -22,7 +22,7 @@ export default function LiquidMorphingNavigationBar() {
   const [activeId, setActiveId] = useState("home");
   const blobRef = useRef<HTMLDivElement>(null);
   const navRef = useRef<HTMLDivElement>(null);
-  const itemRefs = useRef<{ [key: string]: HTMLButtonElement }>({});
+  const itemRefs = useRef<Record<string, HTMLButtonElement | null>>({});
 
   const handleHover = (id: string) => {
     const targetElement = itemRefs.current[id];
@@ -90,7 +90,7 @@ export default function LiquidMorphingNavigationBar() {
 
           {/* Navigation Items */}
           {navItems.map((item) => {
-            const Icon = item.icon;
+            const IconComponent = item.icon;
             return (
               <button
                 key={item.id}
@@ -112,7 +112,7 @@ export default function LiquidMorphingNavigationBar() {
                   mixBlendMode: activeId === item.id ? "overlay" : "normal",
                 }}
               >
-                <Icon className="w-5 h-5" strokeWidth={2} />
+                <IconComponent className="w-5 h-5" />
                 <span>{item.label}</span>
               </button>
             );
