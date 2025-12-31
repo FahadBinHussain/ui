@@ -5,6 +5,7 @@ import { Canvas } from "@react-three/fiber";
 import { useGLTF, useTexture, Shadow, meshBounds } from "@react-three/drei";
 import { animated, SpringValue, useSpring } from "@react-spring/web";
 import { a } from "@react-spring/three";
+import "./AnimatedSwitch3D.css";
 
 function Switch({ x, set }: { set: React.Dispatch<React.SetStateAction<number>>; x: SpringValue<number> }) {
   const { nodes, materials } = useGLTF("/switch.glb") as any;

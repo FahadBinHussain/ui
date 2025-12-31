@@ -1,50 +1,85 @@
 "use client";
 import React from "react";
 import { AnimatedSwitch3D } from "@/components/marketing/AnimatedSwitch3D";
-import { motion } from "framer-motion";
 
 export default function AnimatedSwitch3DPage() {
   return (
-    <div className="min-h-screen bg-black py-20 px-4">
-      <motion.div
-        initial={{ opacity: 0, scale: 0.9 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.5 }}
-        className="text-center mb-12"
-      >
-        <h1 className="text-5xl md:text-7xl font-bold text-white mb-6">
+    <div className="switch-container" style={{
+      minHeight: '100vh',
+      backgroundColor: '#000000',
+      padding: '5rem 1rem',
+      color: '#ffffff'
+    }}>
+      <div className="switch-header" style={{
+        textAlign: 'center',
+        marginBottom: '3rem'
+      }}>
+        <h1 className="switch-title" style={{
+          fontSize: '4.5rem',
+          fontWeight: 700,
+          color: '#ffffff',
+          marginBottom: '1.5rem',
+          lineHeight: 1.2
+        }}>
           3D Animated Switch
         </h1>
-        <p className="text-neutral-400 max-w-2xl mx-auto text-lg">
+        <p className="switch-description" style={{
+          color: '#a3a3a3',
+          maxWidth: '42rem',
+          margin: '0 auto',
+          fontSize: '1.125rem',
+          lineHeight: 1.75
+        }}>
           An interactive 3D toggle switch powered by Three.js, React Three Fiber, and React Spring. 
           Click the sphere to toggle between states and watch the smooth animations blend DOM and WebGL.
         </p>
-      </motion.div>
+      </div>
 
-      <div className="w-full h-[600px] max-w-5xl mx-auto">
+      <div className="switch-canvas-wrapper" style={{
+        width: '100%',
+        height: '600px',
+        maxWidth: '80rem',
+        margin: '0 auto'
+      }}>
         <AnimatedSwitch3D />
       </div>
 
-      <div className="mt-16 text-center space-y-4">
-        <div className="text-neutral-500 text-sm">
-          <p className="mb-2">
-            ✨ Click the sphere to toggle • Synchronized DOM and Canvas animations
-          </p>
-          <p className="text-xs text-neutral-600">
-            Built with React Three Fiber • React Spring • Three.js • GLTF Models
-          </p>
-          <p className="text-xs text-neutral-600 mt-4">
-            Source:{" "}
-            <a
-              href="https://www.react-spring.dev/examples"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-blue-400 hover:text-blue-300 underline"
-            >
-              React Spring Examples
-            </a>
-          </p>
-        </div>
+      <div className="switch-footer" style={{
+        marginTop: '4rem',
+        textAlign: 'center'
+      }}>
+        <p className="switch-footer-text" style={{
+          color: '#737373',
+          fontSize: '0.875rem',
+          marginBottom: '0.5rem'
+        }}>
+          ✨ Click the sphere to toggle • Synchronized DOM and Canvas animations
+        </p>
+        <p className="switch-footer-subtext" style={{
+          color: '#525252',
+          fontSize: '0.75rem'
+        }}>
+          Built with React Three Fiber • React Spring • Three.js • GLTF Models
+        </p>
+        <p className="switch-footer-subtext" style={{
+          color: '#525252',
+          fontSize: '0.75rem',
+          marginTop: '1rem'
+        }}>
+          Source:{" "}
+          <a
+            href="https://www.react-spring.dev/examples"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="switch-footer-link"
+            style={{
+              color: '#60a5fa',
+              textDecoration: 'underline'
+            }}
+          >
+            React Spring Examples
+          </a>
+        </p>
       </div>
     </div>
   );

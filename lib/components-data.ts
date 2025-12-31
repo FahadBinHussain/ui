@@ -201,6 +201,14 @@ export const componentsDataFull: ComponentData[] = [
     color: "from-cyan-500 via-fuchsia-500 to-red-500",
   },
   {
+    title: "DaisyUI Theme Stress Test",
+    description: "Comprehensive React application to stress test and visualize all 33 built-in DaisyUI themes with dynamic theme switcher and component showcase",
+    href: "/showcase/daisyui-theme-stress-test",
+    category: "ui",
+    icon: "Palette",
+    color: "from-pink-500 via-purple-500 to-indigo-500",
+  },
+  {
     title: "Destructible Cookie Consent",
     description: "Users smash the modal into physics debris using Matter.js, Voronoi tessellation, and html2canvas",
     href: "/showcase/destructible-cookie-consent",
