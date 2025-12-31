@@ -5,6 +5,7 @@ import LiveIndicator from './components/LiveIndicator';
 import NewsItem from './components/NewsItem';
 import { fetchLiveNews } from './services/newsService';
 import { NewsEntry } from './types';
+import './styles.css';
 
 export default function LivePulseNewsFeed() {
   const [news, setNews] = useState<NewsEntry[]>([]);
