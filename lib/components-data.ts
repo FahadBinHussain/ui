@@ -249,6 +249,14 @@ export const componentsDataFull: ComponentData[] = [
     color: "from-yellow-500 to-orange-500",
   },
   {
+    title: "Event Horizon Modal",
+    description: "A WebGL-powered modal experience where the background website is distorted into a gravitational singularity using React Three Fiber and GLSL shaders",
+    href: "/showcase/event-horizon-modal",
+    category: "3d",
+    icon: "Atom",
+    color: "from-cyan-400 via-purple-500 to-pink-500",
+  },
+  {
     title: "Expanding Search",
     description: "Animated search bar that grows and reveals filters on focus",
     href: "/showcase/search",
