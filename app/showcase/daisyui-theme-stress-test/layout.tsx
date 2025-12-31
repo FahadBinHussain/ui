@@ -1,11 +1,15 @@
-import "./reset.css";
-import "./daisyui-styles.css";
-import "./daisyui-themes.css";
+import Script from 'next/script';
 
 export default function DaisyUILayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  return <div suppressHydrationWarning>{children}</div>;
+  return (
+    <>
+      <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" type="text/css" />
+      <Script src="https://cdn.tailwindcss.com" strategy="beforeInteractive" />
+      <div suppressHydrationWarning>{children}</div>
+    </>
+  );
 }
