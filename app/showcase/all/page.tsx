@@ -207,6 +207,11 @@ export default function AllComponentsPage() {
                 word.charAt(0).toUpperCase() + word.slice(1)
               ).join('');
               
+              // Force full page refresh for DaisyUI
+              const isDaisyUI = component.href.includes('daisyui');
+              const LinkComponent = isDaisyUI ? 'a' : Link;
+              const linkProps = isDaisyUI ? { href: component.href } : { href: component.href };
+              
               return (
                 <motion.div
                   key={component.title}
@@ -219,7 +224,7 @@ export default function AllComponentsPage() {
                   }}
                   className="h-full"
                 >
-                  <Link href={component.href} className="block h-full group relative">
+                  <LinkComponent {...linkProps} className="block h-full group relative">
                     {/* Glow Effect */}
                     <div className="absolute inset-0 bg-gradient-to-r from-purple-500/0 via-purple-500/20 to-blue-500/0 rounded-2xl blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
                     
@@ -278,7 +283,7 @@ export default function AllComponentsPage() {
                       {/* Bottom Glow Line */}
                       <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-purple-500/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
                     </div>
-                  </Link>
+                  </LinkComponent>
                 </motion.div>
               );
             })}
@@ -294,6 +299,11 @@ export default function AllComponentsPage() {
                 word.charAt(0).toUpperCase() + word.slice(1)
               ).join('');
               
+              // Force full page refresh for DaisyUI
+              const isDaisyUI = component.href.includes('daisyui');
+              const LinkComponent = isDaisyUI ? 'a' : Link;
+              const linkProps = isDaisyUI ? { href: component.href } : { href: component.href };
+              
               return (
                 <motion.div
                   key={component.title}
@@ -305,7 +315,7 @@ export default function AllComponentsPage() {
                     ease: [0.21, 0.45, 0.27, 0.9]
                   }}
                 >
-                  <Link href={component.href} className="block group">
+                  <LinkComponent {...linkProps} className="block group">
                     <div className="relative bg-gradient-to-r from-white/5 to-white/[0.02] backdrop-blur-sm rounded-2xl border border-white/10 group-hover:border-white/20 transition-all duration-500 overflow-hidden">
                       {/* Shine Effect */}
                       <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000 pointer-events-none" />
@@ -359,7 +369,7 @@ export default function AllComponentsPage() {
                       {/* Bottom Glow Line */}
                       <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-purple-500/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
                     </div>
-                  </Link>
+                  </LinkComponent>
                 </motion.div>
               );
             })}
