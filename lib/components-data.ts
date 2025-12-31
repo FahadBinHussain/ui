@@ -425,6 +425,14 @@ export const componentsDataFull: ComponentData[] = [
     color: "from-purple-500 via-pink-500 to-red-500",
   },
   {
+    title: "Live Pulse News Feed",
+    description: "Real-time breaking news feed with AI-generated headlines, UFO animations, and pulsing live indicator",
+    href: "/showcase/live-pulse-news-feed",
+    category: "interactive",
+    icon: "Activity",
+    color: "from-emerald-500 via-cyan-500 to-blue-500",
+  },
+  {
     title: "Infinite Marquee",
     description: "Seamlessly looping marquee for logos, text, or images",
     href: "/showcase/marquee",
