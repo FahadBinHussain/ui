@@ -47,7 +47,7 @@ export default function LivePulseNewsFeed() {
         const filteredNewItems = newItems.filter(newItem => !existingHeadlines.has(newItem.headline));
         
         if (filteredNewItems.length > 0) {
-          setNews(prev => [...filteredNewItems, ...prev].slice(0, 15));
+          setNews(prev => [...filteredNewItems, ...prev].slice(0, 3));
           triggerWaveEffect();
         }
         setIsRefreshing(false);
