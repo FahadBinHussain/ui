@@ -83,22 +83,6 @@ export const componentsDataFull: ComponentData[] = [
     category: "tooltips",
   },
   {
-    title: "ASCII Live Render",
-    description: "Real-time video, image, or webcam feed rendered entirely out of text characters",
-    href: "/showcase/ascii-render",
-    icon: "Terminal",
-    color: "from-green-500 to-emerald-500",
-    category: "media",
-  },
-  {
-    title: "Barba.js Transitions",
-    description: "Smooth page transitions with Barba.js for SPA-like experience",
-    href: "/showcase/barba",
-    icon: "ArrowRightLeft",
-    color: "from-blue-600 to-purple-600",
-    category: "transitions",
-  },
-  {
     title: "Bento Grid",
     description: "Modern, versatile grid layout for feature showcases",
     href: "/showcase/bento-grid",

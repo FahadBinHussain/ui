@@ -72,15 +72,6 @@ export default function Home() {
       showcaseFile: "page.tsx"
     },
     {
-      title: "Barba.js Transitions",
-      description: "Smooth page transitions with Barba.js for SPA-like experience",
-      icon: ArrowRightLeft,
-      href: "/showcase/barba",
-      color: "from-blue-600 to-purple-600",
-      componentFile: "BarbaDemo.tsx",
-      showcaseFile: "page.tsx"
-    },
-    {
       title: "Bento Grid",
       description: "Modern, versatile grid layout for feature showcases",
       icon: Layers,
