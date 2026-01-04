@@ -54,10 +54,11 @@ export function AnimatedSwitch3D() {
   const color = x.to([0, 1], ["#7fffd4", "#c72f46"]);
 
   return (
-    <animated.div className="container" style={{ backgroundColor: x.to([0, 1], ["#c9ffed", "#ff2558"]), color: x.to([0, 1], ["#7fffd4", "#c70f46"]) }}>
-      <h1 className="open" children="<h1>" />
-      <h1 className="close" children="</h1>" />
-      <animated.h1>{x.to((x) => (x + 8).toFixed(2))}</animated.h1>
+    <div className="animated-switch-3d" style={{ width: '100%', height: '100%' }}>
+      <animated.div className="container" style={{ backgroundColor: x.to([0, 1], ["#c9ffed", "#ff2558"]), color: x.to([0, 1], ["#7fffd4", "#c70f46"]) }}>
+        <h1 className="open" children="<h1>" />
+        <h1 className="close" children="</h1>" />
+        <animated.h1>{x.to((x) => (x + 8).toFixed(2))}</animated.h1>
       <Canvas orthographic shadows dpr={[1, 2]} camera={{ zoom: 60, position: [-10, 10, 10], fov: 35 }}>
         <ambientLight intensity={3} />
         <directionalLight position={[-20, 20, 20]} intensity={1} />
@@ -73,5 +74,6 @@ export function AnimatedSwitch3D() {
         </mesh>
       </Canvas>
     </animated.div>
+    </div>
   );
 }

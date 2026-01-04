@@ -1,5 +1,5 @@
-/* AnimatedSwitch3D Component Styles */
-.container {
+/* AnimatedSwitch3D Component Styles - Scoped */
+.animated-switch-3d .container {
   position: relative !important;
   width: 100% !important;
   height: 100% !important;
@@ -8,7 +8,7 @@
   perspective-origin: 50% 50% !important;
 }
 
-.container h1 {
+.animated-switch-3d .container h1 {
   display: inline-block !important;
   position: absolute !important;
   top: 50% !important;
@@ -24,13 +24,13 @@
   color: inherit !important;
 }
 
-.container > .close,
-.container > .open {
+.animated-switch-3d .container > .close,
+.animated-switch-3d .container > .open {
   margin-top: -270px !important;
   letter-spacing: -10px !important;
   font-size: 250px !important;
 }
 
-.container > .close {
+.animated-switch-3d .container > .close {
   margin-top: 300px !important;
 }
