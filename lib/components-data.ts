@@ -83,14 +83,6 @@ export const componentsDataFull: ComponentData[] = [
     category: "tooltips",
   },
   {
-    title: "Breathing Variable Search",
-    description: "Variable font weight reacts to typing speed with fluid cursor trail",
-    href: "/showcase/breathing-variable-search",
-    icon: "Search",
-    color: "from-purple-500 to-pink-500",
-    category: "inputs",
-  },
-  {
     title: "Chromatic Aberration",
     description: "Bad TV look with aggressive RGB channel splitting triggered by scroll or mouse speed",
     href: "/showcase/chromatic-aberration",
