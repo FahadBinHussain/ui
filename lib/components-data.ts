@@ -83,14 +83,6 @@ export const componentsDataFull: ComponentData[] = [
     category: "tooltips",
   },
   {
-    title: "Chromatic Aberration",
-    description: "Bad TV look with aggressive RGB channel splitting triggered by scroll or mouse speed",
-    href: "/showcase/chromatic-aberration",
-    icon: "Zap",
-    color: "from-red-500 via-purple-500 to-cyan-500",
-    category: "materials",
-  },
-  {
     title: "Chromatic Liquid Slider",
     description: "Image slider with liquid displacement and RGB channel separation based on drag velocity",
     href: "/showcase/chromatic-liquid-slider",
