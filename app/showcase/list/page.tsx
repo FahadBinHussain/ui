@@ -25,10 +25,7 @@ export default function ComponentsListPage() {
 
   const markdownList = filteredComponents
     .map(component => {
-      const tags = component.tags && component.tags.length > 0 
-        ? ` [${component.tags.join(', ')}]` 
-        : '';
-      return `- **${component.title}**: ${component.description}${tags}`;
+      return `- **${component.title}**: ${component.description}`;
     })
     .join('\n');
 
@@ -44,10 +41,7 @@ export default function ComponentsListPage() {
 
   const copyComponentToClipboard = async (component: typeof allComponents[0], index: number) => {
     try {
-      const tags = component.tags && component.tags.length > 0 
-        ? ` [${component.tags.join(', ')}]` 
-        : '';
-      const componentText = `- **${component.title}**: ${component.description}${tags}`;
+      const componentText = `- **${component.title}**: ${component.description}`;
       await navigator.clipboard.writeText(componentText);
       setCopiedIndex(index);
       setTimeout(() => setCopiedIndex(null), 2000);
@@ -146,21 +140,9 @@ export default function ComponentsListPage() {
                     <h3 className="text-white font-semibold text-lg mb-1 group-hover:text-blue-300 transition-colors">
                       {component.title}
                     </h3>
-                    <p className="text-gray-400 text-sm leading-relaxed mb-2">
+                    <p className="text-gray-400 text-sm leading-relaxed">
                       {component.description}
                     </p>
-                    {component.tags && component.tags.length > 0 && (
-                      <div className="flex flex-wrap gap-1.5">
-                        {component.tags.map((tag) => (
-                          <span
-                            key={tag}
-                            className="px-2 py-0.5 text-xs rounded bg-cyan-500/10 border border-cyan-500/30 text-cyan-300"
-                          >
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
-                    )}
                   </div>
 
                   {/* Copy Button */}

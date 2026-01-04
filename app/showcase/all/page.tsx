@@ -10,7 +10,6 @@ import { componentsDataFull } from "@/lib/components-data";
 export default function AllComponentsPage() {
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
   const [searchTerm, setSearchTerm] = useState('');
-  const [selectedTags, setSelectedTags] = useState<string[]>([]);
   const containerRef = useRef<HTMLDivElement>(null);
 
   // Map icon names to actual icon components
@@ -27,43 +26,15 @@ export default function AllComponentsPage() {
 
   const allComponents = componentsDataFull;
 
-  // Collect all unique tags (excluding categories)
-  const allCategories = new Set(['ui', 'animation', 'interactive', '3d', 'effects', 'scientific', 'background', 'layout', 'text', 'navigation', 'search', 'forms']);
-  
-  const allTags = useMemo(() => {
-    const tagsSet = new Set<string>();
-    allComponents.forEach(component => {
-      // Only add explicit tags, not categories
-      if (component.tags) {
-        component.tags.forEach(tag => {
-          // Don't add if it's a category
-          if (!allCategories.has(tag)) {
-            tagsSet.add(tag);
-          }
-        });
-      }
-    });
-    return Array.from(tagsSet).sort();
-  }, [allComponents]);
-
-  // Get tag counts
-  const getTagCount = (tag: string) => {
-    return allComponents.filter(c => 
-      c.tags && c.tags.includes(tag)
-    ).length;
-  };
-
   const filteredComponents = useMemo(() => {
     return allComponents
       .filter(component => {
         const matchesSearch = component.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
                              component.description.toLowerCase().includes(searchTerm.toLowerCase());
-        const matchesTags = selectedTags.length === 0 || 
-                           (component.tags && selectedTags.every(tag => component.tags?.includes(tag)));
-        return matchesSearch && matchesTags;
+        return matchesSearch;
       })
       .sort((a, b) => a.title.localeCompare(b.title));
-  }, [allComponents, searchTerm, selectedTags]);
+  }, [allComponents, searchTerm]);
 
   return (
     <div className="min-h-screen bg-black text-white relative overflow-hidden" ref={containerRef}>
@@ -148,63 +119,6 @@ export default function AllComponentsPage() {
               </div>
             </div>
           </div>
-
-          {/* Tags Filter */}
-          {allTags.length > 0 && (
-            <div className="mt-6">
-              <div className="flex items-center gap-3 mb-3">
-                <span className="text-sm font-medium text-gray-400">Filter by tags:</span>
-                {selectedTags.length > 0 && (
-                  <span className="text-xs text-gray-500">
-                    {selectedTags.length} selected
-                  </span>
-                )}
-              </div>
-              <div className="flex flex-wrap gap-2">
-                {allTags.map(tag => {
-                  const isSelected = selectedTags.includes(tag);
-                  const count = getTagCount(tag);
-                  const toggleTag = () => {
-                    if (isSelected) {
-                      setSelectedTags(selectedTags.filter(t => t !== tag));
-                    } else {
-                      setSelectedTags([...selectedTags, tag]);
-                    }
-                  };
-                  
-                  return (
-                    <motion.button
-                      key={tag}
-                      onClick={toggleTag}
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                      className={`relative px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
-                        isSelected
-                          ? 'bg-gradient-to-r from-cyan-500 to-blue-500 text-white shadow-lg shadow-cyan-500/50'
-                          : 'text-gray-400 hover:text-white bg-white/5 hover:bg-white/10 border border-white/10'
-                      }`}
-                    >
-                      <span className="relative z-10 flex items-center gap-1.5 capitalize">
-                        {isSelected && <span>✓</span>}
-                        {tag}
-                        <span className={`text-xs ${isSelected ? 'text-white/70' : 'text-gray-600'}`}>
-                          {count}
-                        </span>
-                      </span>
-                    </motion.button>
-                  );
-                })}
-                {selectedTags.length > 0 && (
-                  <button
-                    onClick={() => setSelectedTags([])}
-                    className="px-3 py-1.5 rounded-lg text-xs font-medium text-red-400 hover:text-red-300 bg-red-500/10 hover:bg-red-500/20 border border-red-500/30 transition-all"
-                  >
-                    Clear Tags
-                  </button>
-                )}
-              </div>
-            </div>
-          )}
         </div>
       </div>
 
@@ -218,7 +132,7 @@ export default function AllComponentsPage() {
                 {filteredComponents.length} {filteredComponents.length === 1 ? 'Component' : 'Components'}
               </p>
               <p className="text-sm text-gray-400">
-                {selectedTags.length > 0 ? `Filtered by ${selectedTags.length} tag${selectedTags.length > 1 ? 's' : ''}` : 'All components'}
+                All components
               </p>
             </div>
           </div>
@@ -298,22 +212,6 @@ export default function AllComponentsPage() {
                               <span className="text-gray-300">{componentName}</span>
                             </div>
                           </div>
-
-                          {/* Tags */}
-                          <div className="flex items-center justify-start flex-wrap gap-2">
-                            {component.tags && component.tags.length > 0 ? (
-                              component.tags.map(tag => (
-                                <span 
-                                  key={tag}
-                                  className="inline-flex items-center px-2 py-1 bg-cyan-500/10 border border-cyan-500/30 rounded-md text-xs font-medium text-cyan-400"
-                                >
-                                  {tag}
-                                </span>
-                              ))
-                            ) : (
-                              <span className="text-xs text-gray-500 italic">No tags</span>
-                            )}
-                          </div>
                         </div>
                       </div>
 
@@ -388,21 +286,6 @@ export default function AllComponentsPage() {
                                   <span className="text-gray-300">{componentName}</span>
                                 </div>
                               </div>
-                              
-                              {component.tags && component.tags.length > 0 ? (
-                                <>
-                                  {component.tags.map(tag => (
-                                    <span 
-                                      key={tag}
-                                      className="inline-flex items-center px-2 py-1 bg-cyan-500/10 border border-cyan-500/30 rounded-md text-xs font-medium text-cyan-400"
-                                    >
-                                      {tag}
-                                    </span>
-                                  ))}
-                                </>
-                              ) : (
-                                <span className="text-xs text-gray-500 italic">No tags</span>
-                              )}
                             </div>
                           </div>
 
@@ -443,7 +326,6 @@ export default function AllComponentsPage() {
             <button
               onClick={() => {
                 setSearchTerm('');
-                setSelectedTags([]);
               }}
               className="px-6 py-3 bg-gradient-to-r from-purple-500 to-blue-500 text-white rounded-xl font-medium hover:shadow-lg hover:shadow-purple-500/50 transition-all duration-300"
             >
