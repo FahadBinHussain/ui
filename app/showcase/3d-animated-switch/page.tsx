@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { AnimatedSwitch3D } from "@/components/marketing/AnimatedSwitch3D";
+import { AnimatedSwitch3D } from "./AnimatedSwitch3D";
 
 export default function AnimatedSwitch3DPage() {
   return (

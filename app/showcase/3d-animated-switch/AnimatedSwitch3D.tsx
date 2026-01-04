@@ -8,8 +8,8 @@ import { a } from "@react-spring/three";
 import "./AnimatedSwitch3D.css";
 
 function Switch({ x, set }: { set: React.Dispatch<React.SetStateAction<number>>; x: SpringValue<number> }) {
-  const { nodes, materials } = useGLTF("/switch.glb") as any;
-  const texture = useTexture("/cross.jpg");
+  const { nodes, materials } = useGLTF("/showcase/3d-animated-switch/assets?file=switch.glb") as any;
+  const texture = useTexture("/showcase/3d-animated-switch/assets?file=cross.jpg");
   
   // Fix color space for newer Three.js versions
   useEffect(() => {
