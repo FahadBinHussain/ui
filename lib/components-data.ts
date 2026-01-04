@@ -83,14 +83,6 @@ export const componentsDataFull: ComponentData[] = [
     category: "tooltips",
   },
   {
-    title: "Chromatic Liquid Slider",
-    description: "Image slider with liquid displacement and RGB channel separation based on drag velocity",
-    href: "/showcase/chromatic-liquid-slider",
-    icon: "ImageIcon",
-    color: "from-purple-500 via-pink-500 to-blue-500",
-    category: "carousels",
-  },
-  {
     title: "Cloth Simulation",
     description: "Realistic fabric physics using Verlet integration for draggable silk flags and curtains",
     href: "/showcase/cloth-simulation",
