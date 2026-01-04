@@ -75,14 +75,6 @@ export const componentsDataFull: ComponentData[] = [
     category: "carousels",
   },
   {
-    title: "Anamorphic Typography Hero",
-    description: "Huge text that appears distorted at first, but aligns perfectly at a scroll 'sweet spot' using perspective projection",
-    href: "/showcase/anamorphic-typography",
-    icon: "Type",
-    color: "from-purple-500 via-cyan-500 to-pink-500",
-    category: "text-effects",
-  },
-  {
     title: "Animated Tooltip",
     description: "Interactive profile tooltips with elastic GSAP animations",
     href: "/showcase/animated-tooltip",
