@@ -83,28 +83,12 @@ export const componentsDataFull: ComponentData[] = [
     category: "tooltips",
   },
   {
-    title: "Bento Grid",
-    description: "Modern, versatile grid layout for feature showcases",
-    href: "/showcase/bento-grid",
-    icon: "Layers",
-    color: "from-blue-600 to-indigo-600",
-    category: "layout",
-  },
-  {
     title: "Boid Flocking Cursor",
     description: "Swarm of 50 intelligent agents following cursor using flocking algorithms: cohesion, alignment, and separation",
     href: "/showcase/boid-flocking-cursor",
     icon: "MousePointer2",
     color: "from-cyan-400 via-blue-500 to-purple-500",
     category: "cursors",
-  },
-  {
-    title: "Bio-Luminescent Glow",
-    description: "Organic pulsing glow effects mimicking deep-sea bioluminescence",
-    href: "/showcase/bio-luminescent",
-    icon: "Sparkles",
-    color: "from-cyan-400 to-blue-400",
-    category: "materials",
   },
   {
     title: "Bio-Organic Growth Loaders",

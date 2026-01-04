@@ -72,15 +72,6 @@ export default function Home() {
       showcaseFile: "page.tsx"
     },
     {
-      title: "Bento Grid",
-      description: "Modern, versatile grid layout for feature showcases",
-      icon: Layers,
-      href: "/showcase/bento-grid",
-      color: "from-blue-600 to-indigo-600",
-      componentFile: "BentoGridDemo.tsx",
-      showcaseFile: "page.tsx"
-    },
-    {
       title: "Cloud Background",
       description: "Floating animated clouds with backdrop blur effects",
       icon: Cloud,
@@ -285,15 +276,6 @@ export default function Home() {
       href: "/showcase/crt",
       color: "from-green-600 to-green-900",
       componentFile: "crt.tsx",
-      showcaseFile: "page.tsx"
-    },
-    {
-      title: "Bio-Luminescent Glow",
-      description: "Organic pulsing glow effects mimicking deep-sea bioluminescence",
-      icon: Sparkles,
-      href: "/showcase/bio-luminescent",
-      color: "from-cyan-400 to-blue-400",
-      componentFile: "BioLuminescentDemo.tsx",
       showcaseFile: "page.tsx"
     },
     {
