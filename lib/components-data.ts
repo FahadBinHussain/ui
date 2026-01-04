@@ -91,14 +91,6 @@ export const componentsDataFull: ComponentData[] = [
     category: "cursors",
   },
   {
-    title: "Bio-Organic Growth Loaders",
-    description: "SVG-based organic shapes growing like vines using differential growth algorithms",
-    href: "/showcase/bio-organic-growth-loader",
-    icon: "Activity",
-    color: "from-emerald-400 to-cyan-400",
-    category: "loaders",
-  },
-  {
     title: "Breathing Variable Search",
     description: "Variable font weight reacts to typing speed with fluid cursor trail",
     href: "/showcase/breathing-variable-search",
