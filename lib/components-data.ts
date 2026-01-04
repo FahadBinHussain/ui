@@ -83,14 +83,6 @@ export const componentsDataFull: ComponentData[] = [
     category: "tooltips",
   },
   {
-    title: "Boid Flocking Cursor",
-    description: "Swarm of 50 intelligent agents following cursor using flocking algorithms: cohesion, alignment, and separation",
-    href: "/showcase/boid-flocking-cursor",
-    icon: "MousePointer2",
-    color: "from-cyan-400 via-blue-500 to-purple-500",
-    category: "cursors",
-  },
-  {
     title: "Breathing Variable Search",
     description: "Variable font weight reacts to typing speed with fluid cursor trail",
     href: "/showcase/breathing-variable-search",
