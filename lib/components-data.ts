@@ -4,7 +4,42 @@ export interface ComponentData {
   href: string;
   icon: string;
   color: string;
+  category?: string;
 }
+
+export const componentCategories = [
+  { slug: "accordions", label: "Accordions" },
+  { slug: "ai-ui", label: "AI UI" },
+  { slug: "avatars", label: "Avatars" },
+  { slug: "backgrounds", label: "Backgrounds" },
+  { slug: "badges", label: "Badges" },
+  { slug: "buttons", label: "Buttons" },
+  { slug: "cards", label: "Cards" },
+  { slug: "carousels", label: "Carousels" },
+  { slug: "cursors", label: "Cursors" },
+  { slug: "data-display", label: "Data Display" },
+  { slug: "dropdowns", label: "Dropdowns" },
+  { slug: "feedback", label: "Feedback" },
+  { slug: "forms", label: "Forms" },
+  { slug: "icons", label: "Icons" },
+  { slug: "inputs", label: "Inputs" },
+  { slug: "layout", label: "Layout" },
+  { slug: "loaders", label: "Loaders" },
+  { slug: "materials", label: "Materials" },
+  { slug: "media", label: "Media" },
+  { slug: "mockups", label: "Mockups" },
+  { slug: "modals", label: "Modals" },
+  { slug: "navigation", label: "Navigation" },
+  { slug: "pagination", label: "Pagination" },
+  { slug: "scroll", label: "Scroll" },
+  { slug: "sections", label: "Sections" },
+  { slug: "switches", label: "Switches" },
+  { slug: "tabs", label: "Tabs" },
+  { slug: "text-effects", label: "Text Effects" },
+  { slug: "tooltips", label: "Tooltips" },
+  { slug: "transitions", label: "Transitions" },
+  { slug: "typography", label: "Typography" }
+];
 
 export const componentsDataFull: ComponentData[] = [
   {
