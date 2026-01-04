@@ -42,14 +42,6 @@ const PORTAL_DESTINATIONS: PortalDestination[] = [
     accent: "from-indigo-500 to-purple-500",
   },
   {
-    id: "flip-omnibar",
-    title: "3D Flip-Card Omnibar",
-    description: "Isometric prism omnibar that flips 90° to reveal input and stacked results.",
-    href: "/showcase/3d-flip-omnibar",
-    badge: "3D",
-    accent: "from-sky-500 to-indigo-500",
-  },
-  {
     id: "spotlight-void",
     title: "Spotlight Void Search",
     description: "Cursor torch that reveals category grid only inside the light cone.",

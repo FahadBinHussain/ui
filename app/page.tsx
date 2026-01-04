@@ -126,15 +126,6 @@ export default function Home() {
       showcaseFile: "page.tsx"
     },
     {
-      title: "3D Flip-Card Omnibar",
-      description: "Isometric prism search bar that flips to reveal input and stacks results in Z-depth",
-      icon: Box,
-      href: "/showcase/3d-flip-omnibar",
-      color: "from-sky-500 to-indigo-500",
-      componentFile: "FlipOmnibar3DDemo.tsx",
-      showcaseFile: "page.tsx"
-    },
-    {
       title: "Portal Zoom Search",
       description: "Circular search node that expands into a wormhole, revealing results while the origin blurs away",
       icon: Search,

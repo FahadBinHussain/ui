@@ -5,11 +5,12 @@ import { Button } from "@/components/ui/button";
 import { BackToTop } from "@/components/ui/back-to-top";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useState, useMemo, useRef } from "react";
-import { componentsDataFull } from "@/lib/components-data";
+import { componentsDataFull, componentCategories } from "@/lib/components-data";
 
 export default function AllComponentsPage() {
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
   const [searchTerm, setSearchTerm] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
   // Map icon names to actual icon components
@@ -31,10 +32,11 @@ export default function AllComponentsPage() {
       .filter(component => {
         const matchesSearch = component.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
                              component.description.toLowerCase().includes(searchTerm.toLowerCase());
-        return matchesSearch;
+        const matchesCategory = !selectedCategory || component.category === selectedCategory;
+        return matchesSearch && matchesCategory;
       })
       .sort((a, b) => a.title.localeCompare(b.title));
-  }, [allComponents, searchTerm]);
+  }, [allComponents, searchTerm, selectedCategory]);
 
   return (
     <div className="min-h-screen bg-black text-white relative overflow-hidden" ref={containerRef}>
@@ -119,6 +121,59 @@ export default function AllComponentsPage() {
               </div>
             </div>
           </div>
+
+          {/* Category Filter */}
+          <div className="mt-6">
+            <div className="flex items-center gap-3 mb-3">
+              <span className="text-sm font-medium text-gray-400">Filter by category:</span>
+              {selectedCategory && (
+                <span className="text-xs text-gray-500">
+                  {componentCategories.find(c => c.slug === selectedCategory)?.label}
+                </span>
+              )}
+            </div>
+            <div className="flex flex-wrap gap-2">
+              <motion.button
+                onClick={() => setSelectedCategory(null)}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className={`relative px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
+                  !selectedCategory
+                    ? 'bg-gradient-to-r from-cyan-500 to-blue-500 text-white shadow-lg shadow-cyan-500/50'
+                    : 'text-gray-400 hover:text-white bg-white/5 hover:bg-white/10 border border-white/10'
+                }`}
+              >
+                All
+              </motion.button>
+              {componentCategories.map(category => {
+                const isSelected = selectedCategory === category.slug;
+                const count = allComponents.filter(c => c.category === category.slug).length;
+                
+                if (count === 0) return null;
+                
+                return (
+                  <motion.button
+                    key={category.slug}
+                    onClick={() => setSelectedCategory(category.slug)}
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className={`relative px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
+                      isSelected
+                        ? 'bg-gradient-to-r from-cyan-500 to-blue-500 text-white shadow-lg shadow-cyan-500/50'
+                        : 'text-gray-400 hover:text-white bg-white/5 hover:bg-white/10 border border-white/10'
+                    }`}
+                  >
+                    <span className="relative z-10 flex items-center gap-1.5">
+                      {category.label}
+                      <span className={`text-xs ${isSelected ? 'text-white/70' : 'text-gray-600'}`}>
+                        {count}
+                      </span>
+                    </span>
+                  </motion.button>
+                );
+              })}
+            </div>
+          </div>
         </div>
       </div>
 
@@ -132,7 +187,10 @@ export default function AllComponentsPage() {
                 {filteredComponents.length} {filteredComponents.length === 1 ? 'Component' : 'Components'}
               </p>
               <p className="text-sm text-gray-400">
-                All components
+                {selectedCategory 
+                  ? `${componentCategories.find(c => c.slug === selectedCategory)?.label} category`
+                  : 'All components'
+                }
               </p>
             </div>
           </div>
@@ -202,6 +260,14 @@ export default function AllComponentsPage() {
 
                         {/* File Names */}
                         <div className="space-y-3 mt-auto">
+                          {/* Category Badge */}
+                          {component.category && (
+                            <div className="flex items-center gap-2">
+                              <span className="px-2 py-1 bg-cyan-500/10 border border-cyan-500/30 rounded-md text-xs font-medium text-cyan-400 capitalize">
+                                {componentCategories.find(c => c.slug === component.category)?.label || component.category}
+                              </span>
+                            </div>
+                          )}
                           <div className="flex items-center gap-2 text-xs">
                             <div className="flex items-center gap-1.5 px-2.5 py-1.5 bg-white/5 rounded-lg border border-white/10 group-hover:border-purple-500/50 transition-colors font-mono">
                               <Terminal className="w-3 h-3 text-purple-400" />
@@ -276,6 +342,12 @@ export default function AllComponentsPage() {
                             
                             {/* File Names and Category */}
                             <div className="flex flex-wrap items-center gap-3">
+                              {/* Category Badge */}
+                              {component.category && (
+                                <span className="px-2 py-1 bg-cyan-500/10 border border-cyan-500/30 rounded-md text-xs font-medium text-cyan-400 capitalize">
+                                  {componentCategories.find(c => c.slug === component.category)?.label || component.category}
+                                </span>
+                              )}
                               <div className="flex items-center gap-2 text-xs">
                                 <div className="flex items-center gap-1.5 px-2.5 py-1.5 bg-white/5 rounded-lg border border-white/10 group-hover:border-purple-500/50 transition-colors font-mono">
                                   <Terminal className="w-3 h-3 text-purple-400" />
@@ -326,6 +398,7 @@ export default function AllComponentsPage() {
             <button
               onClick={() => {
                 setSearchTerm('');
+                setSelectedCategory(null);
               }}
               className="px-6 py-3 bg-gradient-to-r from-purple-500 to-blue-500 text-white rounded-xl font-medium hover:shadow-lg hover:shadow-purple-500/50 transition-all duration-300"
             >

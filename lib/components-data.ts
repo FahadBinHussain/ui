@@ -48,6 +48,7 @@ export const componentsDataFull: ComponentData[] = [
     href: "/showcase/3d-animated-switch",
     icon: "ToggleLeft",
     color: "from-cyan-400 to-rose-500",
+    category: "switches",
   },
   {
     title: "3D Card Effects",
@@ -55,6 +56,7 @@ export const componentsDataFull: ComponentData[] = [
     href: "/showcase/cards",
     icon: "Sparkles",
     color: "from-purple-500 to-pink-500",
+    category: "cards",
   },
   {
     title: "Futuristic Login Form",
@@ -62,13 +64,7 @@ export const componentsDataFull: ComponentData[] = [
     href: "/showcase/futuristic-login",
     icon: "Lock",
     color: "from-indigo-500 to-purple-600",
-  },
-  {
-    title: "3D Flip-Card Omnibar",
-    description: "Isometric prism search bar that flips to reveal input and stacks results in Z-depth",
-    href: "/showcase/3d-flip-omnibar",
-    icon: "Box",
-    color: "from-sky-500 to-indigo-500",
+    category: "forms",
   },
   {
     title: "Animated Testimonials",
@@ -76,6 +72,7 @@ export const componentsDataFull: ComponentData[] = [
     href: "/showcase/testimonials",
     icon: "MessageSquareQuote",
     color: "from-pink-500 to-rose-500",
+    category: "carousels",
   },
   {
     title: "Anamorphic Typography Hero",
@@ -83,6 +80,7 @@ export const componentsDataFull: ComponentData[] = [
     href: "/showcase/anamorphic-typography",
     icon: "Type",
     color: "from-purple-500 via-cyan-500 to-pink-500",
+    category: "text-effects",
   },
   {
     title: "Animated Tooltip",
@@ -90,6 +88,7 @@ export const componentsDataFull: ComponentData[] = [
     href: "/showcase/animated-tooltip",
     icon: "Users",
     color: "from-emerald-500 to-sky-500",
+    category: "tooltips",
   },
   {
     title: "ASCII Live Render",
@@ -97,6 +96,7 @@ export const componentsDataFull: ComponentData[] = [
     href: "/showcase/ascii-render",
     icon: "Terminal",
     color: "from-green-500 to-emerald-500",
+    category: "media",
   },
   {
     title: "Barba.js Transitions",
@@ -104,6 +104,7 @@ export const componentsDataFull: ComponentData[] = [
     href: "/showcase/barba",
     icon: "ArrowRightLeft",
     color: "from-blue-600 to-purple-600",
+    category: "transitions",
   },
   {
     title: "Bento Grid",
@@ -111,6 +112,7 @@ export const componentsDataFull: ComponentData[] = [
     href: "/showcase/bento-grid",
     icon: "Layers",
     color: "from-blue-600 to-indigo-600",
+    category: "layout",
   },
   {
     title: "Boid Flocking Cursor",
@@ -118,6 +120,7 @@ export const componentsDataFull: ComponentData[] = [
     href: "/showcase/boid-flocking-cursor",
     icon: "MousePointer2",
     color: "from-cyan-400 via-blue-500 to-purple-500",
+    category: "cursors",
   },
   {
     title: "Bio-Luminescent Glow",
@@ -125,6 +128,7 @@ export const componentsDataFull: ComponentData[] = [
     href: "/showcase/bio-luminescent",
     icon: "Sparkles",
     color: "from-cyan-400 to-blue-400",
+    category: "materials",
   },
   {
     title: "Bio-Organic Growth Loaders",
@@ -132,6 +136,7 @@ export const componentsDataFull: ComponentData[] = [
     href: "/showcase/bio-organic-growth-loader",
     icon: "Activity",
     color: "from-emerald-400 to-cyan-400",
+    category: "loaders",
   },
   {
     title: "Breathing Variable Search",
@@ -139,6 +144,7 @@ export const componentsDataFull: ComponentData[] = [
     href: "/showcase/breathing-variable-search",
     icon: "Search",
     color: "from-purple-500 to-pink-500",
+    category: "inputs",
   },
   {
     title: "Chromatic Aberration",
@@ -146,6 +152,7 @@ export const componentsDataFull: ComponentData[] = [
     href: "/showcase/chromatic-aberration",
     icon: "Zap",
     color: "from-red-500 via-purple-500 to-cyan-500",
+    category: "materials",
   },
   {
     title: "Chromatic Liquid Slider",
@@ -153,6 +160,7 @@ export const componentsDataFull: ComponentData[] = [
     href: "/showcase/chromatic-liquid-slider",
     icon: "ImageIcon",
     color: "from-purple-500 via-pink-500 to-blue-500",
+    category: "carousels",
   },
   {
     title: "Cloth Simulation",
@@ -160,6 +168,7 @@ export const componentsDataFull: ComponentData[] = [
     href: "/showcase/cloth-simulation",
     icon: "Shirt",
     color: "from-teal-600 via-cyan-500 to-blue-500",
+    category: "materials",
   },
   {
     title: "Cloth-Simulated Typography",
@@ -167,6 +176,7 @@ export const componentsDataFull: ComponentData[] = [
     href: "/showcase/cloth-typography",
     icon: "Type",
     color: "from-cyan-600 via-blue-500 to-purple-600",
+    category: "text-effects",
   },
   {
     title: "Cloud Background",
@@ -174,6 +184,7 @@ export const componentsDataFull: ComponentData[] = [
     href: "/showcase/cloud",
     icon: "Cloud",
     color: "from-sky-400 to-blue-500",
+    category: "backgrounds",
   },
   {
     title: "Crystal Fractal Backgrounds",
@@ -181,6 +192,7 @@ export const componentsDataFull: ComponentData[] = [
     href: "/showcase/crystal-fractal",
     icon: "Sparkles",
     color: "from-cyan-400 via-blue-400 to-purple-400",
+    category: "backgrounds",
   },
   {
     title: "Curved World",
@@ -188,6 +200,7 @@ export const componentsDataFull: ComponentData[] = [
     href: "/showcase/curved-world",
     icon: "Globe",
     color: "from-cyan-500 to-blue-500",
+    category: "scroll",
   },
   {
     title: "Curved World Scroll",
@@ -195,6 +208,7 @@ export const componentsDataFull: ComponentData[] = [
     href: "/showcase/curved-world-scroll",
     icon: "ScrollText",
     color: "from-blue-500 to-purple-500",
+    category: "scroll",
   },
   {
     title: "Custom Cursor",
@@ -202,6 +216,7 @@ export const componentsDataFull: ComponentData[] = [
     href: "/showcase/custom-cursor",
     icon: "MousePointer2",
     color: "from-pink-500 to-purple-500",
+    category: "cursors",
   },
   {
     title: "Cyberpunk Data Slicer",
@@ -209,6 +224,7 @@ export const componentsDataFull: ComponentData[] = [
     href: "/showcase/cyberpunk-data-slicer",
     icon: "Zap",
     color: "from-cyan-500 via-fuchsia-500 to-red-500",
+    category: "inputs",
   },
   {
     title: "DaisyUI Theme Stress Test",
@@ -216,6 +232,7 @@ export const componentsDataFull: ComponentData[] = [
     href: "/showcase/daisyui-theme-stress-test",
     icon: "Palette",
     color: "from-pink-500 via-purple-500 to-indigo-500",
+    category: "layout",
   },
   {
     title: "Destructible Cookie Consent",
@@ -223,6 +240,7 @@ export const componentsDataFull: ComponentData[] = [
     href: "/showcase/destructible-cookie-consent",
     icon: "Cookie",
     color: "from-orange-500 via-red-500 to-pink-500",
+    category: "modals",
   },
   {
     title: "Drag Viewpager",
@@ -230,6 +248,7 @@ export const componentsDataFull: ComponentData[] = [
     href: "/showcase/drag-viewpager",
     icon: "Swipe",
     color: "from-blue-400 to-purple-500",
+    category: "carousels",
   },
   {
     title: "Direction-Aware Hover",
@@ -237,6 +256,7 @@ export const componentsDataFull: ComponentData[] = [
     href: "/showcase/direction-aware-hover",
     icon: "Compass",
     color: "from-purple-500 via-pink-500 to-rose-500",
+    category: "cards",
   },
   {
     title: "Displacement Hover",
@@ -244,6 +264,7 @@ export const componentsDataFull: ComponentData[] = [
     href: "/showcase/displacement-hover",
     icon: "ImageIcon",
     color: "from-purple-600 via-blue-500 to-indigo-600",
+    category: "cards",
   },
   {
     title: "Dithering & Halftone",
@@ -251,6 +272,7 @@ export const componentsDataFull: ComponentData[] = [
     href: "/showcase/dithering",
     icon: "Grid3X3",
     color: "from-green-500 via-cyan-500 to-blue-500",
+    category: "materials",
   },
   {
     title: "Electric Border",
@@ -258,6 +280,7 @@ export const componentsDataFull: ComponentData[] = [
     href: "/showcase/electric-border",
     icon: "Zap",
     color: "from-yellow-500 to-orange-500",
+    category: "materials",
   },
   {
     title: "Event Horizon Modal",
@@ -265,6 +288,7 @@ export const componentsDataFull: ComponentData[] = [
     href: "/showcase/event-horizon-modal",
     icon: "Atom",
     color: "from-cyan-400 via-purple-500 to-pink-500",
+    category: "modals",
   },
   {
     title: "Expanding Search",
@@ -272,6 +296,7 @@ export const componentsDataFull: ComponentData[] = [
     href: "/showcase/search",
     icon: "Search",
     color: "from-indigo-500 to-purple-500",
+    category: "inputs",
   },
   {
     title: "Ferrofluid Magnetic Input",
@@ -279,6 +304,7 @@ export const componentsDataFull: ComponentData[] = [
     href: "/showcase/ferrofluid-magnetic-input",
     icon: "Search",
     color: "from-cyan-400 to-emerald-400",
+    category: "inputs",
   },
   {
     title: "Ferrofluid Typography",
@@ -286,6 +312,7 @@ export const componentsDataFull: ComponentData[] = [
     href: "/showcase/ferrofluid-typography",
     icon: "Droplets",
     color: "from-blue-500 via-purple-600 to-pink-600",
+    category: "text-effects",
   },
   {
     title: "Film Grain Overlay",
@@ -293,6 +320,7 @@ export const componentsDataFull: ComponentData[] = [
     href: "/showcase/film-grain",
     icon: "Film",
     color: "from-gray-600 via-gray-500 to-gray-400",
+    category: "materials",
   },
   {
     title: "Floating 3D Object Viewer",
@@ -300,6 +328,7 @@ export const componentsDataFull: ComponentData[] = [
     href: "/showcase/floating-object-viewer",
     icon: "Box",
     color: "from-cyan-400 via-purple-500 to-pink-500",
+    category: "media",
   },
   {
     title: "Fluid Cursor",
@@ -307,6 +336,7 @@ export const componentsDataFull: ComponentData[] = [
     href: "/showcase/fluid-cursor",
     icon: "MousePointer2",
     color: "from-cyan-500 to-blue-500",
+    category: "cursors",
   },
   {
     title: "Fluid Morphing Action Bar",
@@ -314,6 +344,7 @@ export const componentsDataFull: ComponentData[] = [
     href: "/showcase/fluid-morphing-action-bar",
     icon: "CircleDot",
     color: "from-purple-500 to-pink-500",
+    category: "navigation",
   },
   {
     title: "Fluid Scroll Progress",
@@ -321,6 +352,7 @@ export const componentsDataFull: ComponentData[] = [
     href: "/showcase/fluid-scroll-progress",
     icon: "Droplets",
     color: "from-cyan-400 via-blue-500 to-purple-500",
+    category: "scroll",
   },
   {
     title: "Gaussian Splatting",
@@ -328,6 +360,7 @@ export const componentsDataFull: ComponentData[] = [
     href: "/showcase/gaussian-splatting",
     icon: "Atom",
     color: "from-cyan-400 via-indigo-500 to-purple-600",
+    category: "cards",
   },
   {
     title: "Glassmorphism Refraction",
@@ -335,6 +368,7 @@ export const componentsDataFull: ComponentData[] = [
     href: "/showcase/glassmorphism-refraction",
     icon: "Boxes",
     color: "from-cyan-400 via-blue-500 to-purple-500",
+    category: "materials",
   },
   {
     title: "RGB / Cyberpunk Glitch",
@@ -342,6 +376,7 @@ export const componentsDataFull: ComponentData[] = [
     href: "/showcase/glitch-effects",
     icon: "Zap",
     color: "from-cyan-500 via-purple-500 to-magenta-500",
+    category: "transitions",
   },
   {
     title: "Global Stats",
@@ -349,6 +384,7 @@ export const componentsDataFull: ComponentData[] = [
     href: "/showcase/globe",
     icon: "Globe",
     color: "from-blue-600 to-indigo-600",
+    category: "data-display",
   },
   {
     title: "Interactive Grid",
@@ -356,6 +392,7 @@ export const componentsDataFull: ComponentData[] = [
     href: "/showcase/grid",
     icon: "Layout",
     color: "from-gray-500 to-gray-800",
+    category: "backgrounds",
   },
   {
     title: "Holographic Depth-Map Parallax",
@@ -363,6 +400,7 @@ export const componentsDataFull: ComponentData[] = [
     href: "/showcase/holographic-depth-parallax",
     icon: "Eye",
     color: "from-cyan-500 via-blue-500 to-purple-500",
+    category: "cards",
   },
   {
     title: "Holographic Glass Tabs",
@@ -370,6 +408,7 @@ export const componentsDataFull: ComponentData[] = [
     href: "/showcase/holographic-glass-tabs",
     icon: "Boxes",
     color: "from-purple-500 via-pink-500 to-cyan-500",
+    category: "tabs",
   },
   {
     title: "Kinetic Reveal Footer",
@@ -377,6 +416,7 @@ export const componentsDataFull: ComponentData[] = [
     href: "/showcase/kinetic-reveal-footer",
     icon: "ArrowDown",
     color: "from-purple-600 via-indigo-600 to-blue-600",
+    category: "sections",
   },
   {
     title: "Kinetic String Input",
@@ -384,6 +424,7 @@ export const componentsDataFull: ComponentData[] = [
     href: "/showcase/kinetic-string-input",
     icon: "Type",
     color: "from-purple-500 to-pink-500",
+    category: "inputs",
   },
   {
     title: "Kinetic Typography",
@@ -391,6 +432,7 @@ export const componentsDataFull: ComponentData[] = [
     href: "/showcase/kinetic-typography",
     icon: "Move",
     color: "from-purple-600 via-fuchsia-500 to-pink-500",
+    category: "text-effects",
   },
   {
     title: "Lens Effect",
@@ -398,6 +440,7 @@ export const componentsDataFull: ComponentData[] = [
     href: "/showcase/lens",
     icon: "Eye",
     color: "from-indigo-500 to-purple-500",
+    category: "materials",
   },
   {
     title: "Liquid Image Distortion",
@@ -405,6 +448,7 @@ export const componentsDataFull: ComponentData[] = [
     href: "/showcase/liquid-image",
     icon: "Droplets",
     color: "from-cyan-400 to-blue-500",
+    category: "media",
   },
   {
     title: "Liquid Lens Search",
@@ -412,6 +456,7 @@ export const componentsDataFull: ComponentData[] = [
     href: "/showcase/liquid-lens",
     icon: "Eye",
     color: "from-cyan-500 to-indigo-500",
+    category: "inputs",
   },
   {
     title: "Liquid Morphing Navigation",
@@ -419,6 +464,7 @@ export const componentsDataFull: ComponentData[] = [
     href: "/showcase/liquid-morphing-navigation",
     icon: "Menu",
     color: "from-purple-500 via-pink-500 to-red-500",
+    category: "navigation",
   },
   {
     title: "Live Pulse News Feed",
@@ -426,6 +472,7 @@ export const componentsDataFull: ComponentData[] = [
     href: "/showcase/live-pulse-news-feed",
     icon: "Activity",
     color: "from-emerald-500 via-cyan-500 to-blue-500",
+    category: "data-display",
   },
   {
     title: "Infinite Marquee",
@@ -433,6 +480,7 @@ export const componentsDataFull: ComponentData[] = [
     href: "/showcase/marquee",
     icon: "ArrowRightLeft",
     color: "from-yellow-400 to-orange-500",
+    category: "carousels",
   },
   {
     title: "Magnetic Elements",
@@ -440,6 +488,7 @@ export const componentsDataFull: ComponentData[] = [
     href: "/showcase/magnetic",
     icon: "MousePointer2",
     color: "from-amber-500 to-yellow-500",
+    category: "buttons",
   },
   {
     title: "Magnetic Field Interactions",
@@ -447,6 +496,7 @@ export const componentsDataFull: ComponentData[] = [
     href: "/showcase/magnetic-field",
     icon: "Zap",
     color: "from-red-500 to-blue-500",
+    category: "cursors",
   },
   {
     title: "Magnetic Black Hole Pagination",
@@ -454,6 +504,7 @@ export const componentsDataFull: ComponentData[] = [
     href: "/showcase/magnetic-pagination",
     icon: "CircleDot",
     color: "from-cyan-400 via-purple-500 to-pink-500",
+    category: "pagination",
   },
   {
     title: "Metaballs / Goop",
@@ -461,6 +512,7 @@ export const componentsDataFull: ComponentData[] = [
     href: "/showcase/metaballs",
     icon: "Droplets",
     color: "from-purple-600 via-pink-500 to-purple-600",
+    category: "materials",
   },
   {
     title: "Neural Network Visualizer",
@@ -468,6 +520,7 @@ export const componentsDataFull: ComponentData[] = [
     href: "/showcase/neural-network",
     icon: "Cpu",
     color: "from-purple-400 to-pink-400",
+    category: "backgrounds",
   },
   {
     title: "Neumorphic Card",
@@ -475,6 +528,7 @@ export const componentsDataFull: ComponentData[] = [
     href: "/showcase/neumorphic",
     icon: "Layers",
     color: "from-gray-400 to-gray-200",
+    category: "cards",
   },
   {
     title: "Particle Wave Interactions",
@@ -482,6 +536,7 @@ export const componentsDataFull: ComponentData[] = [
     href: "/showcase/wave-particles",
     icon: "Zap",
     color: "from-blue-400 to-purple-400",
+    category: "backgrounds",
   },
   {
     title: "SVG Path Drawing",
@@ -489,6 +544,7 @@ export const componentsDataFull: ComponentData[] = [
     href: "/showcase/path-drawing",
     icon: "Pencil",
     color: "from-pink-500 to-cyan-500",
+    category: "media",
   },
   {
     title: "Parallax Scroll",
@@ -496,6 +552,7 @@ export const componentsDataFull: ComponentData[] = [
     href: "/showcase/parallax-scroll",
     icon: "Layers",
     color: "from-indigo-500 via-purple-500 to-pink-500",
+    category: "scroll",
   },
   {
     title: "Perspective Skew Toasts",
@@ -503,6 +560,7 @@ export const componentsDataFull: ComponentData[] = [
     href: "/showcase/perspective-toast",
     icon: "MessageSquareQuote",
     color: "from-purple-500 via-pink-500 to-cyan-500",
+    category: "feedback",
   },
   {
     title: "Physics Gravity Sandbox",
@@ -510,6 +568,7 @@ export const componentsDataFull: ComponentData[] = [
     href: "/showcase/physics-sandbox",
     icon: "Box",
     color: "from-indigo-500 to-purple-500",
+    category: "layout",
   },
   {
     title: "Pixelated Transition",
@@ -517,6 +576,7 @@ export const componentsDataFull: ComponentData[] = [
     href: "/showcase/pixelated-transition",
     icon: "Boxes",
     color: "from-indigo-600 via-purple-500 to-pink-500",
+    category: "transitions",
   },
   {
     title: "Portal Zoom Search",
@@ -524,6 +584,7 @@ export const componentsDataFull: ComponentData[] = [
     href: "/showcase/portal-zoom-search",
     icon: "Search",
     color: "from-cyan-400 via-sky-500 to-indigo-500",
+    category: "inputs",
   },
   {
     title: "Prismatic Dispersion Glass",
@@ -531,6 +592,7 @@ export const componentsDataFull: ComponentData[] = [
     href: "/showcase/prismatic-glass",
     icon: "Diamond",
     color: "from-pink-400 via-purple-400 to-cyan-400",
+    category: "materials",
   },
   {
     title: "Quantum Loading States",
@@ -538,6 +600,7 @@ export const componentsDataFull: ComponentData[] = [
     href: "/showcase/quantum-loading",
     icon: "Atom",
     color: "from-cyan-400 to-blue-400",
+    category: "loaders",
   },
   {
     title: "Pure SVG Loaders",
@@ -545,6 +608,7 @@ export const componentsDataFull: ComponentData[] = [
     href: "/showcase/svg-loaders",
     icon: "Loader2",
     color: "from-gray-400 via-gray-200 to-white",
+    category: "loaders",
   },
   {
     title: "Radar Mini-Map TOC",
@@ -552,6 +616,7 @@ export const componentsDataFull: ComponentData[] = [
     href: "/showcase/radar-minimap-toc",
     icon: "Radar",
     color: "from-cyan-400 via-purple-400 to-pink-400",
+    category: "navigation",
   },
   {
     title: "Raymarching / SDF",
@@ -559,6 +624,7 @@ export const componentsDataFull: ComponentData[] = [
     href: "/showcase/raymarch-sdf",
     icon: "Infinity",
     color: "from-purple-500 via-pink-500 to-blue-500",
+    category: "backgrounds",
   },
   {
     title: "Reaction-Diffusion Patterns",
@@ -566,6 +632,7 @@ export const componentsDataFull: ComponentData[] = [
     href: "/showcase/reaction-diffusion",
     icon: "Activity",
     color: "from-cyan-400 via-purple-400 to-pink-400",
+    category: "backgrounds",
   },
   {
     title: "Retro CRT",
@@ -573,6 +640,7 @@ export const componentsDataFull: ComponentData[] = [
     href: "/showcase/crt",
     icon: "Cpu",
     color: "from-green-600 to-green-900",
+    category: "materials",
   },
   {
     title: "Reveal Text",
@@ -580,6 +648,7 @@ export const componentsDataFull: ComponentData[] = [
     href: "/showcase/reveal-text",
     icon: "ImageIcon",
     color: "from-emerald-500 to-green-500",
+    category: "text-effects",
   },
   {
     title: "Rutt-Etra Video Synthesis",
@@ -587,6 +656,7 @@ export const componentsDataFull: ComponentData[] = [
     href: "/showcase/rutt-etra",
     icon: "Activity",
     color: "from-cyan-500 via-pink-500 to-purple-500",
+    category: "media",
   },
   {
     title: "Image Sequence Scroll",
@@ -594,6 +664,7 @@ export const componentsDataFull: ComponentData[] = [
     href: "/showcase/scroll-effects",
     icon: "ScrollText",
     color: "from-cyan-600 via-blue-500 to-purple-500",
+    category: "scroll",
   },
   {
     title: "Scroll Text Flow",
@@ -601,6 +672,7 @@ export const componentsDataFull: ComponentData[] = [
     href: "/showcase/scroll-text-flow",
     icon: "ScrollText",
     color: "from-rose-500 to-pink-500",
+    category: "text-effects",
   },
   {
     title: "Scratch-to-Reveal Card",
@@ -608,6 +680,7 @@ export const componentsDataFull: ComponentData[] = [
     href: "/showcase/scratch-card",
     icon: "Hand",
     color: "from-yellow-400 via-orange-500 to-pink-500",
+    category: "cards",
   },
   {
     title: "Scrollytelling / Sticky Pinning",
@@ -615,6 +688,7 @@ export const componentsDataFull: ComponentData[] = [
     href: "/showcase/scrollytelling",
     icon: "BookOpen",
     color: "from-purple-500 via-pink-500 to-blue-500",
+    category: "scroll",
   },
   {
     title: "Semantic AI Command Center",
@@ -622,6 +696,7 @@ export const componentsDataFull: ComponentData[] = [
     href: "/showcase/ai-command-center",
     icon: "Zap",
     color: "from-emerald-400 to-sky-500",
+    category: "modals",
   },
   {
     title: "Slit-Scan Accordion",
@@ -629,6 +704,7 @@ export const componentsDataFull: ComponentData[] = [
     href: "/showcase/slit-scan-accordion",
     icon: "ChevronDown",
     color: "from-cyan-400 via-purple-500 to-pink-500",
+    category: "accordions",
   },
   {
     title: "Soft Body Physics Grid",
@@ -636,6 +712,7 @@ export const componentsDataFull: ComponentData[] = [
     href: "/showcase/soft-body-physics-grid",
     icon: "Grid3x3",
     color: "from-purple-500 via-pink-500 to-red-500",
+    category: "layout",
   },
   {
     title: "Soft Body UI (Jelly Physics)",
@@ -643,6 +720,7 @@ export const componentsDataFull: ComponentData[] = [
     href: "/showcase/soft-body-ui",
     icon: "Droplets",
     color: "from-cyan-400 via-blue-500 to-purple-500",
+    category: "materials",
   },
   {
     title: "Spotlight Torch Reveal",
@@ -650,6 +728,7 @@ export const componentsDataFull: ComponentData[] = [
     href: "/showcase/spotlight-reveal",
     icon: "Wand2",
     color: "from-yellow-400 to-orange-500",
+    category: "materials",
   },
   {
     title: "Spotlight Void Search",
@@ -657,6 +736,7 @@ export const componentsDataFull: ComponentData[] = [
     href: "/showcase/spotlight-void",
     icon: "Search",
     color: "from-slate-500 to-cyan-500",
+    category: "inputs",
   },
   {
     title: "Sticky Stacking Cards",
@@ -664,6 +744,7 @@ export const componentsDataFull: ComponentData[] = [
     href: "/showcase/sticky-stacking-cards",
     icon: "Layers",
     color: "from-purple-600 to-blue-500",
+    category: "cards",
   },
   {
     title: "Text Animations",
@@ -671,6 +752,7 @@ export const componentsDataFull: ComponentData[] = [
     href: "/showcase/text-animations",
     icon: "Palette",
     color: "from-green-500 to-teal-500",
+    category: "text-effects",
   },
   {
     title: "Text Scramble",
@@ -678,6 +760,7 @@ export const componentsDataFull: ComponentData[] = [
     href: "/showcase/text-scramble",
     icon: "Type",
     color: "from-indigo-400 to-blue-400",
+    category: "text-effects",
   },
   {
     title: "Theme Dropdown",
@@ -685,6 +768,7 @@ export const componentsDataFull: ComponentData[] = [
     href: "/showcase/theme-dropdown",
     icon: "Palette",
     color: "from-indigo-500 to-purple-500",
+    category: "switches",
   },
   {
     title: "Time Warp Transitions",
@@ -692,6 +776,7 @@ export const componentsDataFull: ComponentData[] = [
     href: "/showcase/time-warp",
     icon: "Zap",
     color: "from-cyan-400 via-purple-400 to-pink-400",
+    category: "transitions",
   },
   {
     title: "TypeWriter Effect",
@@ -699,6 +784,7 @@ export const componentsDataFull: ComponentData[] = [
     href: "/showcase/typewriter",
     icon: "Type",
     color: "from-blue-500 to-green-500",
+    category: "text-effects",
   },
   {
     title: "Animated Tree View",
@@ -706,6 +792,7 @@ export const componentsDataFull: ComponentData[] = [
     href: "/showcase/tree-view",
     icon: "TreeDeciduous",
     color: "from-green-400 via-emerald-500 to-teal-500",
+    category: "accordions",
   },
   {
     title: "UI Components",
@@ -713,6 +800,7 @@ export const componentsDataFull: ComponentData[] = [
     href: "/showcase/buttons",
     icon: "Layers",
     color: "from-blue-500 to-cyan-500",
+    category: "layout",
   },
   {
     title: "Variable Font Interaction",
@@ -720,6 +808,7 @@ export const componentsDataFull: ComponentData[] = [
     href: "/showcase/variable-font",
     icon: "Type",
     color: "from-purple-600 via-pink-500 to-orange-500",
+    category: "text-effects",
   },
   {
     title: "Velocity-Based Scroll Skew",
@@ -727,6 +816,7 @@ export const componentsDataFull: ComponentData[] = [
     href: "/showcase/velocity-scroll-skew",
     icon: "Activity",
     color: "from-cyan-500 via-blue-500 to-purple-500",
+    category: "scroll",
   },
   {
     title: "Video Text Masking",
@@ -734,6 +824,7 @@ export const componentsDataFull: ComponentData[] = [
     href: "/showcase/video-text-masking",
     icon: "Play",
     color: "from-pink-600 via-rose-500 to-red-500",
+    category: "text-effects",
   },
   {
     title: "Voxel Terrain",
@@ -741,6 +832,7 @@ export const componentsDataFull: ComponentData[] = [
     href: "/showcase/voxel-terrain",
     icon: "Boxes",
     color: "from-green-600 via-teal-500 to-cyan-500",
+    category: "backgrounds",
   },
   {
     title: "Voxel Terrain Filter",
@@ -748,6 +840,7 @@ export const componentsDataFull: ComponentData[] = [
     href: "/showcase/voxel-terrain-filter",
     icon: "Boxes",
     color: "from-blue-500 to-cyan-500",
+    category: "inputs",
   },
   {
     title: "Voronoi Cell Grid",
@@ -755,6 +848,7 @@ export const componentsDataFull: ComponentData[] = [
     href: "/showcase/voronoi-grid",
     icon: "Layout",
     color: "from-purple-500 to-pink-500",
+    category: "backgrounds",
   },
   {
     title: "X-Ray Reveal Cursor",
@@ -762,6 +856,7 @@ export const componentsDataFull: ComponentData[] = [
     href: "/showcase/xray-reveal-cursor",
     icon: "Eye",
     color: "from-green-400 via-emerald-500 to-cyan-500",
+    category: "cursors",
   },
 ].sort((a, b) => a.title.localeCompare(b.title));
 
