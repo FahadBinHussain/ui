@@ -83,22 +83,6 @@ export const componentsDataFull: ComponentData[] = [
     category: "tooltips",
   },
   {
-    title: "Curved World",
-    description: "3D spherical world distortion effect on scroll",
-    href: "/showcase/curved-world",
-    icon: "Globe",
-    color: "from-cyan-500 to-blue-500",
-    category: "scroll",
-  },
-  {
-    title: "Curved World Scroll",
-    description: "Advanced curved world with scroll-driven animations",
-    href: "/showcase/curved-world-scroll",
-    icon: "ScrollText",
-    color: "from-blue-500 to-purple-500",
-    category: "scroll",
-  },
-  {
     title: "Custom Cursor",
     description: "Animated custom cursor with trail effects",
     href: "/showcase/custom-cursor",
