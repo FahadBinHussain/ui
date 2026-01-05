@@ -83,22 +83,6 @@ export const componentsDataFull: ComponentData[] = [
     category: "tooltips",
   },
   {
-    title: "Cloth Simulation",
-    description: "Realistic fabric physics using Verlet integration for draggable silk flags and curtains",
-    href: "/showcase/cloth-simulation",
-    icon: "Shirt",
-    color: "from-teal-600 via-cyan-500 to-blue-500",
-    category: "materials",
-  },
-  {
-    title: "Cloth-Simulated Typography",
-    description: "Text that acts like a hanging flag or cloth, reacting to wind and cursor with physics",
-    href: "/showcase/cloth-typography",
-    icon: "Type",
-    color: "from-cyan-600 via-blue-500 to-purple-600",
-    category: "text-effects",
-  },
-  {
     title: "Cloud Background",
     description: "Floating animated clouds with backdrop blur effects",
     href: "/showcase/cloud",
