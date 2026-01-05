@@ -91,14 +91,6 @@ export const componentsDataFull: ComponentData[] = [
     category: "cursors",
   },
   {
-    title: "Cyberpunk Data Slicer",
-    description: "Jagged cyberpunk search glyph that glitches the screen and reveals a scrambled CRT search bar",
-    href: "/showcase/cyberpunk-data-slicer",
-    icon: "Zap",
-    color: "from-cyan-500 via-fuchsia-500 to-red-500",
-    category: "inputs",
-  },
-  {
     title: "DaisyUI Theme Stress Test",
     description: "Comprehensive React application to stress test and visualize all 33 built-in DaisyUI themes with dynamic theme switcher and component showcase",
     href: "/showcase/daisyui-theme-stress-test",
@@ -121,14 +113,6 @@ export const componentsDataFull: ComponentData[] = [
     icon: "Swipe",
     color: "from-blue-400 to-purple-500",
     category: "carousels",
-  },
-  {
-    title: "Direction-Aware Hover",
-    description: "Card overlays that intelligently enter from the exact edge where mouse approached using Math.atan2() angle detection",
-    href: "/showcase/direction-aware-hover",
-    icon: "Compass",
-    color: "from-purple-500 via-pink-500 to-rose-500",
-    category: "cards",
   },
   {
     title: "Displacement Hover",
