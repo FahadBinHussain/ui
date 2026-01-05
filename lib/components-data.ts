@@ -83,22 +83,6 @@ export const componentsDataFull: ComponentData[] = [
     category: "tooltips",
   },
   {
-    title: "Cloud Background",
-    description: "Floating animated clouds with backdrop blur effects",
-    href: "/showcase/cloud",
-    icon: "Cloud",
-    color: "from-sky-400 to-blue-500",
-    category: "backgrounds",
-  },
-  {
-    title: "Crystal Fractal Backgrounds",
-    description: "Geometric crystal formations that grow and refract light dynamically",
-    href: "/showcase/crystal-fractal",
-    icon: "Sparkles",
-    color: "from-cyan-400 via-blue-400 to-purple-400",
-    category: "backgrounds",
-  },
-  {
     title: "Curved World",
     description: "3D spherical world distortion effect on scroll",
     href: "/showcase/curved-world",
