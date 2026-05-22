@@ -1,893 +1,290 @@
 "use client";
 import Link from "next/link";
-import { Box, Sparkles, Palette, Layers, MessageSquareQuote, Eye, Zap, MousePointer2, ImageIcon, ScrollText, Type, Users, Pencil, Palette as PaletteIcon, ArrowRightLeft, Diamond, Menu, Search, Layout, Activity, Code, Cloud, Cpu, Database, Flag, Globe, Atom, Star, Rocket, Wand2, Target, Play, ChevronRight, Github, ExternalLink, ArrowLeft, Filter, Grid3X3, List, Droplets, Terminal, Boxes, Move, Shirt, Compass, Film, BookOpen, Infinity } from "lucide-react";
+import { Box, Sparkles, Palette, Layers, MessageSquareQuote, Eye, Zap, MousePointer2, ImageIcon, ScrollText, Type, Users, Pencil, Palette as PaletteIcon, ArrowRightLeft, Diamond, Menu, Search, Layout, Activity, Code, Cloud, Cpu, Database, Flag, Globe, Atom, Star, Rocket, Wand2, Target, Play, ChevronRight, Github, ExternalLink, ArrowLeft, Filter, Grid3X3, List, Droplets, Terminal, Boxes, Move, Shirt, Compass, Film, BookOpen, Infinity, Sparkle } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { motion } from "framer-motion";
-import { useState, useMemo } from "react";
+import { BackToTop } from "@/components/ui/back-to-top";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useState, useMemo, useRef } from "react";
+import { componentsDataFull, componentCategories } from "@/lib/components-data";
 
 export default function AllComponentsPage() {
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
   const [searchTerm, setSearchTerm] = useState('');
-  const [selectedCategory, setSelectedCategory] = useState<string>('all');
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
 
-  const allComponents = [
-    {
-      title: "3D Card Effects",
-      description: "CSS 3D perspective cards with hover animations",
-      icon: Sparkles,
-      href: "/showcase/cards",
-      color: "from-purple-500 to-pink-500",
-      category: "3d",
-      componentFile: "ThreeDCardDemo.tsx",
-      showcaseFile: "page.tsx"
-    },
-    {
-      title: "Animated Testimonials",
-      description: "Beautiful testimonial carousel with 3D stacking",
-      icon: MessageSquareQuote,
-      href: "/showcase/testimonials",
-      color: "from-pink-500 to-rose-500",
-      category: "animation",
-      componentFile: "AnimatedTestimonialsDemo.tsx",
-      showcaseFile: "page.tsx"
-    },
-    {
-      title: "Animated Tooltip",
-      description: "Interactive profile tooltips with elastic GSAP animations",
-      icon: Users,
-      href: "/showcase/animated-tooltip",
-      color: "from-emerald-500 to-sky-500",
-      category: "ui",
-      componentFile: "AnimatedTooltipDemo.tsx",
-      showcaseFile: "page.tsx"
-    },
-    {
-      title: "ASCII Live Render",
-      description: "Real-time video, image, or webcam feed rendered entirely out of text characters",
-      icon: Terminal,
-      href: "/showcase/ascii-render",
-      color: "from-green-500 to-emerald-500",
-      category: "effects",
-      componentFile: "AsciiRenderDemo.tsx",
-      showcaseFile: "page.tsx"
-    },
-    {
-      title: "Barba.js Transitions",
-      description: "Smooth page transitions with Barba.js for SPA-like experience",
-      icon: ArrowRightLeft,
-      href: "/showcase/barba",
-      color: "from-blue-600 to-purple-600",
-      category: "animation",
-      componentFile: "BarbaDemo.tsx",
-      showcaseFile: "page.tsx"
-    },
-    {
-      title: "Bento Grid",
-      description: "Modern, versatile grid layout for feature showcases",
-      icon: Layers,
-      href: "/showcase/bento-grid",
-      color: "from-blue-600 to-indigo-600",
-      category: "layout",
-      componentFile: "BentoGridDemo.tsx",
-      showcaseFile: "page.tsx"
-    },
-    {
-      title: "Cloud Background",
-      description: "Floating animated clouds with backdrop blur effects",
-      icon: Cloud,
-      href: "/showcase/cloud",
-      color: "from-sky-400 to-blue-500",
-      category: "background",
-      componentFile: "cloud-background.tsx",
-      showcaseFile: "page.tsx"
-    },
-    {
-      title: "Crystal Fractal Backgrounds",
-      description: "Geometric crystal formations that grow and refract light dynamically",
-      icon: Sparkles,
-      href: "/showcase/crystal-fractal",
-      color: "from-cyan-400 via-blue-400 to-purple-400",
-      category: "scientific",
-      componentFile: "CrystalFractalDemo.tsx",
-      showcaseFile: "page.tsx"
-    },
-    {
-      title: "Electric Border",
-      description: "Animated electric glow border with SVG filters",
-      icon: Zap,
-      href: "/showcase/electric-border",
-      color: "from-yellow-500 to-orange-500",
-      category: "effects",
-      componentFile: "ElectricBorderDemo.tsx",
-      showcaseFile: "page.tsx"
-    },
-    {
-      title: "Expanding Search",
-      description: "Animated search bar that grows and reveals filters on focus",
-      icon: Search,
-      href: "/showcase/search",
-      color: "from-indigo-500 to-purple-500",
-      category: "ui",
-      componentFile: "search-interface.tsx",
-      showcaseFile: "page.tsx"
-    },
-    {
-      title: "3D Flip-Card Omnibar",
-      description: "Isometric prism search bar that flips to reveal input and stacks results in Z-depth",
-      icon: Box,
-      href: "/showcase/3d-flip-omnibar",
-      color: "from-sky-500 to-indigo-500",
-      category: "ui",
-      componentFile: "FlipOmnibar3DDemo.tsx",
-      showcaseFile: "page.tsx"
-    },
-    {
-      title: "Portal Zoom Search",
-      description: "Circular search node that expands into a wormhole, revealing results while the origin blurs away",
-      icon: Search,
-      href: "/showcase/portal-zoom-search",
-      color: "from-cyan-400 via-sky-500 to-indigo-500",
-      category: "ui",
-      componentFile: "PortalZoomSearchDemo.tsx",
-      showcaseFile: "page.tsx"
-    },
-    {
-      title: "Cyberpunk Data Slicer",
-      description: "Jagged cyberpunk search glyph that glitches the screen and reveals a scrambled CRT search bar",
-      icon: Zap,
-      href: "/showcase/cyberpunk-data-slicer",
-      color: "from-cyan-500 via-fuchsia-500 to-red-500",
-      category: "ui",
-      componentFile: "CyberpunkDataSlicerDemo.tsx",
-      showcaseFile: "page.tsx"
-    },
-    {
-      title: "Semantic AI Command Center",
-      description: "Command+K AI assistant with bio-luminescent glow, intent-aware borders, and streaming responses",
-      icon: Zap,
-      href: "/showcase/ai-command-center",
-      color: "from-emerald-400 to-sky-500",
-      category: "ui",
-      componentFile: "AICommandCenterDemo.tsx",
-      showcaseFile: "page.tsx"
-    },
-    {
-      title: "Ferrofluid Magnetic Input",
-      description: "Search input made of magnetic particles that snap into ferrofluid text and react to typing",
-      icon: Search,
-      href: "/showcase/ferrofluid-magnetic-input",
-      color: "from-cyan-400 to-emerald-400",
-      category: "ui",
-      componentFile: "FerrofluidMagneticInputDemo.tsx",
-      showcaseFile: "page.tsx"
-    },
-    {
-      title: "Spotlight Void Search",
-      description: "Torch-style search overlay that dims the page and reveals categories under a spotlight",
-      icon: Search,
-      href: "/showcase/spotlight-void",
-      color: "from-slate-500 to-cyan-500",
-      category: "ui",
-      componentFile: "SpotlightVoidDemo.tsx",
-      showcaseFile: "page.tsx"
-    },
-    {
-      title: "Liquid Lens Search",
-      description: "Orb-based liquid search that morphs into a glassmorphism bar",
-      icon: Eye,
-      href: "/showcase/liquid-lens",
-      color: "from-cyan-500 to-indigo-500",
-      category: "ui",
-      componentFile: "LiquidLensDemo.tsx",
-      showcaseFile: "page.tsx"
-    },
-    {
-      title: "Film Grain Overlay",
-      description: "Subtle static grain texture that kills flat digital look for cinematic feel",
-      icon: Film,
-      href: "/showcase/film-grain",
-      color: "from-gray-600 via-gray-500 to-gray-400",
-      category: "effects",
-      componentFile: "FilmGrainDemo.tsx",
-      showcaseFile: "page.tsx"
-    },
-    {
-      title: "Fluid Cursor",
-      description: "Smooth spring-based cursor with trailing effects",
-      icon: MousePointer2,
-      href: "/showcase/fluid-cursor",
-      color: "from-cyan-500 to-blue-500",
-      category: "interactive",
-      componentFile: "fluid-cursor.tsx",
-      showcaseFile: "page.tsx"
-    },
-    {
-      title: "Global Stats",
-      description: "Interactive 3D globe showing real-time data points",
-      icon: Globe,
-      href: "/showcase/globe",
-      color: "from-blue-600 to-indigo-600",
-      category: "3d",
-      componentFile: "ThreeScene.tsx",
-      showcaseFile: "page.tsx"
-    },
-    {
-      title: "Holographic Depth-Map Parallax",
-      description: "Realistic depth-based parallax effect using static images and depth maps",
-      icon: Eye,
-      href: "/showcase/holographic-depth-parallax",
-      color: "from-cyan-500 via-blue-500 to-purple-500",
-      category: "3d",
-      componentFile: "HolographicDepthParallaxDemo.tsx",
-      showcaseFile: "page.tsx"
-    },
-    {
-      title: "Infinite Marquee",
-      description: "Seamlessly looping marquee for logos, text, or images",
-      icon: ArrowRightLeft,
-      href: "/showcase/marquee",
-      color: "from-yellow-400 to-orange-500",
-      category: "animation",
-      componentFile: "marquee.tsx",
-      showcaseFile: "page.tsx"
-    },
-    {
-      title: "Interactive Grid",
-      description: "A grid of dots that react and pulsate as the mouse moves over them",
-      icon: Layout,
-      href: "/showcase/grid",
-      color: "from-gray-500 to-gray-800",
-      category: "interactive",
-      componentFile: "interactive-grid.tsx",
-      showcaseFile: "page.tsx"
-    },
-    {
-      title: "Lens Effect",
-      description: "Magnifying glass lens effect with smooth zoom",
-      icon: Eye,
-      href: "/showcase/lens",
-      color: "from-indigo-500 to-purple-500",
-      category: "interactive",
-      componentFile: "LensDemo.tsx",
-      showcaseFile: "page.tsx"
-    },
-    {
-      title: "Liquid Image Distortion",
-      description: "Images that liquefy and ripple like water on hover with WebGL shaders",
-      icon: Droplets,
-      href: "/showcase/liquid-image",
-      color: "from-cyan-400 to-blue-500",
-      category: "interactive",
-      componentFile: "LiquidImageDemo.tsx",
-      showcaseFile: "page.tsx"
-    },
-    {
-      title: "Magnetic Elements",
-      description: "Tactile, physical 'pull' effect for buttons and objects",
-      icon: MousePointer2,
-      href: "/showcase/magnetic",
-      color: "from-amber-500 to-yellow-500",
-      category: "interactive",
-      componentFile: "MagneticDemo.tsx",
-      showcaseFile: "page.tsx"
-    },
-    {
-      title: "Magnetic Field Interactions",
-      description: "Elements that behave like magnets, attracting and repelling each other",
-      icon: Zap,
-      href: "/showcase/magnetic-field",
-      color: "from-red-500 to-blue-500",
-      category: "scientific",
-      componentFile: "MagneticFieldDemo.tsx",
-      showcaseFile: "page.tsx"
-    },
-    {
-      title: "Neural Network Visualizer",
-      description: "Animated neural networks showing data flow and activations",
-      icon: Cpu,
-      href: "/showcase/neural-network",
-      color: "from-purple-400 to-pink-400",
-      category: "scientific",
-      componentFile: "NeuralNetworkDemo.tsx",
-      showcaseFile: "page.tsx"
-    },
-    {
-      title: "Neumorphic Card",
-      description: "Soft UI design with realistic shadows and highlights",
-      icon: Layers,
-      href: "/showcase/neumorphic",
-      color: "from-gray-300 to-gray-100",
-      category: "ui",
-      componentFile: "neumorphic.tsx",
-      showcaseFile: "page.tsx"
-    },
-    {
-      title: "Particle Wave Interactions",
-      description: "Interactive particle systems with wave-like mouse responses",
-      icon: Zap,
-      href: "/showcase/wave-particles",
-      color: "from-blue-400 to-purple-400",
-      category: "interactive",
-      componentFile: "WaveParticlesDemo.tsx",
-      showcaseFile: "page.tsx"
-    },
-    {
-      title: "Physics Gravity Sandbox",
-      description: "UI elements that fall, stack, and bounce with realistic 2D physics",
-      icon: Box,
-      href: "/showcase/physics-sandbox",
-      color: "from-indigo-500 to-purple-500",
-      category: "interactive",
-      componentFile: "PhysicsSandboxDemo.tsx",
-      showcaseFile: "page.tsx"
-    },
-    {
-      title: "Chromatic Aberration",
-      description: "Bad TV look with aggressive RGB channel splitting triggered by scroll or mouse speed",
-      icon: Zap,
-      href: "/showcase/chromatic-aberration",
-      color: "from-red-500 via-purple-500 to-cyan-500",
-      category: "effects",
-      componentFile: "ChromaticAberrationDemo.tsx",
-      showcaseFile: "page.tsx"
-    },
-    {
-      title: "Prismatic Dispersion Glass",
-      description: "Glassmorphism with chromatic aberration and RGB channel separation effects",
-      icon: Diamond,
-      href: "/showcase/prismatic-glass",
-      color: "from-pink-400 via-purple-400 to-cyan-400",
-      category: "effects",
-      componentFile: "PrismaticGlassDemo.tsx",
-      showcaseFile: "page.tsx"
-    },
-    {
-      title: "Quantum Loading States",
-      description: "Electron orbital animations with quantum physics-inspired loading spinners",
-      icon: Atom,
-      href: "/showcase/quantum-loading",
-      color: "from-cyan-400 to-blue-400",
-      category: "scientific",
-      componentFile: "QuantumLoadingDemo.tsx",
-      showcaseFile: "page.tsx"
-    },
-    {
-      title: "Reaction-Diffusion Patterns",
-      description: "Biological growth patterns like zebra stripes and coral that evolve in real-time",
-      icon: Activity,
-      href: "/showcase/reaction-diffusion",
-      color: "from-cyan-400 via-purple-400 to-pink-400",
-      category: "scientific",
-      componentFile: "ReactionDiffusionDemo.tsx",
-      showcaseFile: "page.tsx"
-    },
-    {
-      title: "Raymarching / SDF",
-      description: "Pure mathematical rendering with infinite resolution and liquid morphing",
-      icon: Infinity,
-      href: "/showcase/raymarch-sdf",
-      color: "from-purple-500 via-pink-500 to-blue-500",
-      category: "3d",
-      componentFile: "RaymarchSDFDemo.tsx",
-      showcaseFile: "page.tsx"
-    },
-    {
-      title: "Rutt-Etra Video Synthesis",
-      description: "Retro 70s video art where brightness becomes 3D height in scanline topology",
-      icon: Activity,
-      href: "/showcase/rutt-etra",
-      color: "from-cyan-500 via-pink-500 to-purple-500",
-      category: "3d",
-      componentFile: "RuttEtraDemo.tsx",
-      showcaseFile: "page.tsx"
-    },
-    {
-      title: "Bio-Organic Growth Loaders",
-      description: "SVG-based organic shapes growing like vines using differential growth algorithms",
-      icon: Activity,
-      href: "/showcase/bio-organic-growth-loader",
-      color: "from-emerald-400 to-cyan-400",
-      category: "scientific",
-      componentFile: "BioOrganicGrowthLoaderDemo.tsx",
-      showcaseFile: "page.tsx"
-    },
-    {
-      title: "Retro CRT",
-      description: "Old school monitor effect with scanlines and curvature",
-      icon: Cpu,
-      href: "/showcase/crt",
-      color: "from-green-600 to-green-900",
-      category: "effects",
-      componentFile: "crt.tsx",
-      showcaseFile: "page.tsx"
-    },
-    {
-      title: "Dithering & Halftone",
-      description: "Bayer matrix dithering on 3D objects for Game Boy Camera or magazine print look",
-      icon: Grid3X3,
-      href: "/showcase/dithering",
-      color: "from-green-500 via-cyan-500 to-blue-500",
-      category: "effects",
-      componentFile: "DitheringDemo.tsx",
-      showcaseFile: "page.tsx"
-    },
-    {
-      title: "Glassmorphism Refraction",
-      description: "Real-time refraction with FBO rendering that actually magnifies and distorts content",
-      icon: Boxes,
-      href: "/showcase/glassmorphism-refraction",
-      color: "from-cyan-400 via-blue-500 to-purple-500",
-      category: "3d",
-      componentFile: "GlassmorphismRefractionDemo.tsx",
-      showcaseFile: "page.tsx"
-    },
-    {
-      title: "Gaussian Splatting",
-      description: "Photorealistic 3D rendering using real-world scans with hologram-like interaction",
-      icon: Atom,
-      href: "/showcase/gaussian-splatting",
-      color: "from-cyan-400 via-indigo-500 to-purple-600",
-      category: "3d",
-      componentFile: "GaussianSplattingDemo.tsx",
-      showcaseFile: "page.tsx"
-    },
-    {
-      title: "Ferrofluid Typography",
-      description: "Magnetic liquid text with spikes that follow your cursor using GPGPU simulations",
-      icon: Droplets,
-      href: "/showcase/ferrofluid-typography",
-      color: "from-blue-500 via-purple-600 to-pink-600",
-      category: "text",
-      componentFile: "FerrofluidTypographyDemo.tsx",
-      showcaseFile: "page.tsx"
-    },
-    {
-      title: "Bio-Luminescent Glow",
-      description: "Organic pulsing glow effects mimicking deep-sea bioluminescence",
-      icon: Sparkles,
-      href: "/showcase/bio-luminescent",
-      color: "from-cyan-400 to-blue-400",
-      category: "effects",
-      componentFile: "BioLuminescentDemo.tsx",
-      showcaseFile: "page.tsx"
-    },
-    {
-      title: "Reveal Text",
-      description: "Text with hover image reveals and gradient effects",
-      icon: ImageIcon,
-      href: "/showcase/reveal-text",
-      color: "from-emerald-500 to-green-500",
-      category: "animation",
-      componentFile: "RevealTextDemo.tsx",
-      showcaseFile: "page.tsx"
-    },
-    {
-      title: "SVG Path Drawing",
-      description: "Animated SVG path drawing with spring-based transitions",
-      icon: Pencil,
-      href: "/showcase/path-drawing",
-      color: "from-pink-500 to-cyan-500",
-      category: "animation",
-      componentFile: "PathDrawingDemo.tsx",
-      showcaseFile: "page.tsx"
-    },
-    {
-      title: "Spotlight Torch Reveal",
-      description: "Flashlight effect that reveals hidden content as you move the mouse",
-      icon: Wand2,
-      href: "/showcase/spotlight-reveal",
-      color: "from-yellow-400 to-orange-500",
-      category: "interactive",
-      componentFile: "SpotlightRevealDemo.tsx",
-      showcaseFile: "page.tsx"
-    },
-    {
-      title: "Scroll Text Flow",
-      description: "Scroll-triggered animated text with floating badges",
-      icon: ScrollText,
-      href: "/showcase/scroll-text-flow",
-      color: "from-rose-500 to-pink-500",
-      category: "animation",
-      componentFile: "ScrollTextFlowDemo.tsx",
-      showcaseFile: "page.tsx"
-    },
-    {
-      title: "Scrollytelling / Sticky Pinning",
-      description: "Immersive narratives with sticky visuals and scroll-triggered animations",
-      icon: BookOpen,
-      href: "/showcase/scrollytelling",
-      color: "from-purple-500 via-pink-500 to-blue-500",
-      category: "animation",
-      componentFile: "ScrollytellingDemo.tsx",
-      showcaseFile: "page.tsx"
-    },
-    {
-      title: "Text Animations",
-      description: "Dynamic text effects with Framer Motion",
-      icon: Palette,
-      href: "/showcase/text-animations",
-      color: "from-green-500 to-teal-500",
-      category: "animation",
-      componentFile: "ContainerTextFlipDemo.tsx",
-      showcaseFile: "page.tsx"
-    },
-    {
-      title: "Text Scramble",
-      description: "High-energy text transition with scrambling characters",
-      icon: Type,
-      href: "/showcase/text-scramble",
-      color: "from-indigo-400 to-blue-400",
-      category: "animation",
-      componentFile: "TextScrambleDemo.tsx",
-      showcaseFile: "page.tsx"
-    },
-    {
-      title: "Time Warp Transitions",
-      description: "Page transitions with time dilation effects, speed lines, and color shifts",
-      icon: Zap,
-      href: "/showcase/time-warp",
-      color: "from-cyan-400 via-purple-400 to-pink-400",
-      category: "animation",
-      componentFile: "TimeWarpDemo.tsx",
-      showcaseFile: "page.tsx"
-    },
-    {
-      title: "TypeWriter Effect",
-      description: "GSAP-powered typewriter with rotating text animation",
-      icon: Type,
-      href: "/showcase/typewriter",
-      color: "from-blue-500 to-green-500",
-      category: "animation",
-      componentFile: "TypeWriterDemo.tsx",
-      showcaseFile: "page.tsx"
-    },
-    {
-      title: "UI Components",
-      description: "Basic building blocks - Buttons, Inputs, Cards, etc.",
-      icon: Layers,
-      href: "/showcase/buttons",
-      color: "from-blue-500 to-cyan-500",
-      category: "ui",
-      componentFile: "ButtonDemo.tsx",
-      showcaseFile: "page.tsx"
-    },
-    {
-      title: "Variable Font Interaction",
-      description: "Typography that changes weight, width dynamically based on mouse proximity or scroll speed",
-      icon: Type,
-      href: "/showcase/variable-font",
-      color: "from-purple-600 via-pink-500 to-orange-500",
-      category: "interactive",
-      componentFile: "VariableFontDemo.tsx",
-      showcaseFile: "page.tsx"
-    },
-    {
-      title: "Breathing Search",
-      description: "Variable font weight reacts to typing speed with fluid cursor trails - fast typing creates urgent bold text, slow typing creates exploratory thin text",
-      icon: Search,
-      href: "/showcase/breathing-search",
-      color: "from-violet-500 via-purple-500 to-pink-500",
-      category: "ui",
-      componentFile: "breathing-search.tsx",
-      showcaseFile: "page.tsx"
-    },
-    {
-      title: "Voxel Terrain",
-      description: "Isometric 3D landscape made of cubes with Perlin noise and interactive wave propagation",
-      icon: Boxes,
-      href: "/showcase/voxel-terrain",
-      color: "from-green-600 via-teal-500 to-cyan-500",
-      category: "3d",
-      componentFile: "VoxelTerrainDemo.tsx",
-      showcaseFile: "page.tsx"
-    },
-    {
-      title: "Kinetic Typography",
-      description: "Interactive text where letters are connected by elastic physics strings with chain reaction",
-      icon: Move,
-      href: "/showcase/kinetic-typography",
-      color: "from-purple-600 via-fuchsia-500 to-pink-500",
-      category: "interactive",
-      componentFile: "KineticTypographyDemo.tsx",
-      showcaseFile: "page.tsx"
-    },
-    {
-      title: "Cloth-Simulated Typography",
-      description: "Text that acts like a hanging flag or cloth, reacting to wind and cursor with physics",
-      icon: Type,
-      href: "/showcase/cloth-typography",
-      color: "from-cyan-600 via-blue-500 to-purple-600",
-      category: "interactive",
-      componentFile: "ClothTypographyDemo.tsx",
-      showcaseFile: "page.tsx"
-    },
-    {
-      title: "Cloth Simulation",
-      description: "Realistic fabric physics using Verlet integration for draggable silk flags and curtains",
-      icon: Shirt,
-      href: "/showcase/cloth-simulation",
-      color: "from-teal-600 via-cyan-500 to-blue-500",
-      category: "interactive",
-      componentFile: "ClothSimulationDemo.tsx",
-      showcaseFile: "page.tsx"
-    },
-    {
-      title: "Soft Body UI (Jelly Physics)",
-      description: "UI elements that squish, stretch, and deform like jelly with spring physics",
-      icon: Droplets,
-      href: "/showcase/soft-body-ui",
-      color: "from-cyan-400 via-blue-500 to-purple-500",
-      category: "interactive",
-      componentFile: "SoftBodyUIDemo.tsx",
-      showcaseFile: "page.tsx"
-    },
-    {
-      title: "Image Sequence Scroll",
-      description: "Apple-style 3D product rotation controlled through scroll with canvas rendering",
-      icon: ScrollText,
-      href: "/showcase/scroll-effects",
-      color: "from-cyan-600 via-blue-500 to-purple-500",
-      category: "interactive",
-      componentFile: "image-sequence-scroll.tsx",
-      showcaseFile: "page.tsx"
-    },
-    {
-      title: "Sticky Stacking Cards",
-      description: "Cards enter from bottom and stack on top, staying fixed until section ends",
-      icon: Layers,
-      href: "/showcase/sticky-stacking-cards",
-      color: "from-purple-600 via-pink-500 to-orange-500",
-      category: "interactive",
-      componentFile: "StickyStackingCardsDemo.tsx",
-      showcaseFile: "page.tsx"
-    },
-    {
-      title: "Video Text Masking",
-      description: "Bold typography with playing video as the text fill for high-impact hero sections",
-      icon: Play,
-      href: "/showcase/video-text-masking",
-      color: "from-pink-600 via-rose-500 to-red-500",
-      category: "effects",
-      componentFile: "VideoTextMaskingDemo.tsx",
-      showcaseFile: "page.tsx"
-    },
-    {
-      title: "Velocity-Based Scroll Skew",
-      description: "Content skews based on scroll speed for feeling of weight and momentum",
-      icon: Activity,
-      href: "/showcase/velocity-scroll-skew",
-      color: "from-cyan-500 via-blue-500 to-purple-500",
-      category: "effects",
-      componentFile: "VelocityScrollSkewDemo.tsx",
-      showcaseFile: "page.tsx"
-    },
-    {
-      title: "Pixelated Transition",
-      description: "Retro-futuristic WebGL image transitions with chromatic aberration effects",
-      icon: Boxes,
-      href: "/showcase/pixelated-transition",
-      color: "from-indigo-600 via-purple-500 to-pink-500",
-      category: "effects",
-      componentFile: "PixelatedTransitionDemo.tsx",
-      showcaseFile: "page.tsx"
-    },
-    {
-      title: "Metaballs / Goop",
-      description: "Organic liquid mercury blobs that merge together using CSS or SVG filters",
-      icon: Droplets,
-      href: "/showcase/metaballs",
-      color: "from-purple-600 via-pink-500 to-purple-600",
-      category: "effects",
-      componentFile: "MetaballsDemo.tsx",
-      showcaseFile: "page.tsx"
-    },
-    {
-      title: "RGB / Cyberpunk Glitch",
-      description: "Digital chaos with RGB channel splitting and horizontal slicing",
-      icon: Zap,
-      href: "/showcase/glitch-effects",
-      color: "from-cyan-500 via-purple-500 to-magenta-500",
-      category: "effects",
-      componentFile: "GlitchEffectsDemo.tsx",
-      showcaseFile: "page.tsx"
-    },
-    {
-      title: "Displacement Hover",
-      description: "Awwwards-standard image warping with displacement maps",
-      icon: ImageIcon,
-      href: "/showcase/displacement-hover",
-      color: "from-purple-600 via-blue-500 to-indigo-600",
-      category: "effects",
-      componentFile: "DisplacementHoverDemo.tsx",
-      showcaseFile: "page.tsx"
-    },
-    {
-      title: "Direction-Aware Hover",
-      description: "Overlays that enter from the edge where mouse approached",
-      icon: Compass,
-      href: "/showcase/direction-aware-hover",
-      color: "from-purple-500 via-pink-500 to-rose-500",
-      category: "effects",
-      componentFile: "DirectionAwareHoverDemo.tsx",
-      showcaseFile: "page.tsx"
-    },
-  ];
+  // Map icon names to actual icon components
+  const getIcon = (iconName: string) => {
+    const icons: Record<string, any> = {
+      Sparkles, Box, MessageSquareQuote, Users, Terminal, ArrowRightLeft,
+      Layers, Activity, Search, Zap, ImageIcon, Shirt, Type, Cloud, Globe,
+      ScrollText, Compass, Grid3X3, Droplets, Film, MousePointer2, Atom,
+      Boxes, Layout, Eye, Move, Cpu, Pencil, Diamond, Infinity, BookOpen,
+      Palette, Wand2, Play
+    };
+    return icons[iconName] || Box;
+  };
 
-  const categories = [
-    { id: 'all', name: 'All Components', count: allComponents.length },
-    { id: 'ui', name: 'UI Components', count: allComponents.filter(c => c.category === 'ui').length },
-    { id: 'animation', name: 'Animations', count: allComponents.filter(c => c.category === 'animation').length },
-    { id: 'interactive', name: 'Interactive', count: allComponents.filter(c => c.category === 'interactive').length },
-    { id: '3d', name: '3D Effects', count: allComponents.filter(c => c.category === '3d').length },
-    { id: 'effects', name: 'Visual Effects', count: allComponents.filter(c => c.category === 'effects').length },
-    { id: 'scientific', name: 'Scientific', count: allComponents.filter(c => c.category === 'scientific').length },
-    { id: 'background', name: 'Backgrounds', count: allComponents.filter(c => c.category === 'background').length },
-    { id: 'layout', name: 'Layout', count: allComponents.filter(c => c.category === 'layout').length },
-    { id: 'text', name: 'Text Effects', count: allComponents.filter(c => c.category === 'text').length },
-  ];
+  const allComponents = componentsDataFull;
 
   const filteredComponents = useMemo(() => {
     return allComponents
       .filter(component => {
         const matchesSearch = component.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
                              component.description.toLowerCase().includes(searchTerm.toLowerCase());
-        const matchesCategory = selectedCategory === 'all' || component.category === selectedCategory;
+        const matchesCategory = !selectedCategory || component.category === selectedCategory;
         return matchesSearch && matchesCategory;
       })
       .sort((a, b) => a.title.localeCompare(b.title));
   }, [allComponents, searchTerm, selectedCategory]);
 
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="min-h-screen bg-black text-white relative overflow-hidden" ref={containerRef}>
+      {/* Animated Background Grid */}
+      <div className="fixed inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(120,119,198,0.03),transparent_50%)]" />
+      <div className="fixed inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:64px_64px]" />
+
+      {/* Gradient Orbs */}
+      <div className="fixed top-0 left-1/4 w-96 h-96 bg-purple-500/20 rounded-full blur-[120px] animate-pulse" />
+      <div className="fixed bottom-0 right-1/4 w-96 h-96 bg-blue-500/20 rounded-full blur-[120px] animate-pulse" style={{ animationDelay: '1s' }} />
+
       {/* Header */}
-      <div className="border-b border-gray-800 bg-gray-900/50 backdrop-blur-sm sticky top-0 z-40">
-        <div className="max-w-7xl mx-auto px-4 py-4">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-4">
+      <div className="sticky top-0 z-50 backdrop-blur-xl bg-black/40 border-b border-white/10">
+        <div className="max-w-[1600px] mx-auto px-6 py-6">
+          <div className="flex items-center justify-between mb-6">
+            <div className="flex items-center gap-6">
               <Link
                 href="/"
-                className="inline-flex items-center gap-2 text-purple-300 hover:text-purple-100 transition-colors"
+                className="group inline-flex items-center gap-2 text-gray-400 hover:text-white transition-colors"
               >
-                <ArrowLeft size={20} />
-                Back to Home
+                <div className="p-2 rounded-lg bg-white/5 group-hover:bg-white/10 transition-all">
+                  <ArrowLeft size={18} />
+                </div>
+                <span className="text-sm font-medium">Back</span>
               </Link>
-              <div className="h-6 w-px bg-gray-600" />
-              <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-                All Components
-              </h1>
-              <Link
-                href="/showcase/list"
-                className="text-sm text-gray-400 hover:text-blue-400 transition-colors"
-              >
-                View as List
-              </Link>
+              <div className="h-8 w-px bg-white/10" />
+              <div>
+                <h1 className="text-3xl font-bold bg-gradient-to-r from-white via-purple-200 to-blue-200 bg-clip-text text-transparent">
+                  Component Library
+                </h1>
+                <p className="text-sm text-gray-400 mt-1">
+                  Explore {allComponents.length} cutting-edge UI components
+                </p>
+              </div>
             </div>
 
-            <div className="flex items-center gap-4">
-              {/* View Mode Toggle */}
-              <div className="flex items-center gap-2 bg-gray-800 rounded-lg p-1">
+            <div className="flex items-center gap-3">
+              <Link
+                href="/showcase/list"
+                className="px-4 py-2 text-sm text-gray-400 hover:text-white hover:bg-white/5 rounded-lg transition-all border border-white/5"
+              >
+                List View
+              </Link>
+              <div className="flex items-center gap-1 bg-white/5 rounded-lg p-1 border border-white/10">
                 <button
                   onClick={() => setViewMode('grid')}
-                  className={`p-2 rounded-md transition-colors ${
-                    viewMode === 'grid' ? 'bg-purple-600 text-white' : 'text-gray-400 hover:text-white'
+                  className={`p-2 rounded-md transition-all ${
+                    viewMode === 'grid'
+                      ? 'bg-gradient-to-r from-purple-500 to-blue-500 text-white shadow-lg'
+                      : 'text-gray-400 hover:text-white hover:bg-white/5'
                   }`}
                 >
-                  <Grid3X3 size={16} />
+                  <Grid3X3 size={18} />
                 </button>
                 <button
                   onClick={() => setViewMode('list')}
-                  className={`p-2 rounded-md transition-colors ${
-                    viewMode === 'list' ? 'bg-purple-600 text-white' : 'text-gray-400 hover:text-white'
+                  className={`p-2 rounded-md transition-all ${
+                    viewMode === 'list'
+                      ? 'bg-gradient-to-r from-purple-500 to-blue-500 text-white shadow-lg'
+                      : 'text-gray-400 hover:text-white hover:bg-white/5'
                   }`}
                 >
-                  <List size={16} />
+                  <List size={18} />
                 </button>
               </div>
+            </div>
+          </div>
+
+          {/* Search Bar - Enhanced */}
+          <div className="relative mb-6">
+            <div className="absolute inset-0 bg-gradient-to-r from-purple-500/20 to-blue-500/20 rounded-2xl blur-xl" />
+            <div className="relative flex items-center gap-4 bg-white/5 backdrop-blur-xl rounded-2xl p-2 border border-white/10">
+              <div className="flex-1 relative">
+                <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
+                <input
+                  type="text"
+                  placeholder="Search components by name, description, or category..."
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  className="w-full pl-12 pr-4 py-4 bg-transparent text-white placeholder-gray-400 focus:outline-none text-sm"
+                />
+              </div>
+            </div>
+          </div>
+
+          {/* Category Filter */}
+          <div className="mt-6">
+            <div className="flex items-center gap-3 mb-3">
+              <span className="text-sm font-medium text-gray-400">Filter by category:</span>
+              {selectedCategory && (
+                <span className="text-xs text-gray-500">
+                  {componentCategories.find(c => c.slug === selectedCategory)?.label}
+                </span>
+              )}
+            </div>
+            <div className="flex flex-wrap gap-2">
+              <motion.button
+                onClick={() => setSelectedCategory(null)}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className={`relative px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
+                  !selectedCategory
+                    ? 'bg-gradient-to-r from-cyan-500 to-blue-500 text-white shadow-lg shadow-cyan-500/50'
+                    : 'text-gray-400 hover:text-white bg-white/5 hover:bg-white/10 border border-white/10'
+                }`}
+              >
+                All
+              </motion.button>
+              {componentCategories.map(category => {
+                const isSelected = selectedCategory === category.slug;
+                const count = allComponents.filter(c => c.category === category.slug).length;
+
+                if (count === 0) return null;
+
+                return (
+                  <motion.button
+                    key={category.slug}
+                    onClick={() => setSelectedCategory(category.slug)}
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    className={`relative px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
+                      isSelected
+                        ? 'bg-gradient-to-r from-cyan-500 to-blue-500 text-white shadow-lg shadow-cyan-500/50'
+                        : 'text-gray-400 hover:text-white bg-white/5 hover:bg-white/10 border border-white/10'
+                    }`}
+                  >
+                    <span className="relative z-10 flex items-center gap-1.5">
+                      {category.label}
+                      <span className={`text-xs ${isSelected ? 'text-white/70' : 'text-gray-600'}`}>
+                        {count}
+                      </span>
+                    </span>
+                  </motion.button>
+                );
+              })}
             </div>
           </div>
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 py-8">
-        {/* Search and Filters */}
-        <div className="mb-8">
-          <div className="flex flex-col lg:flex-row gap-4 mb-6">
-            {/* Search */}
-            <div className="flex-1">
-              <div className="relative">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
-                <input
-                  type="text"
-                  placeholder="Search components..."
-                  value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
-                  className="w-full pl-10 pr-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-400 focus:ring-2 focus:ring-purple-500 focus:border-transparent"
-                />
-              </div>
-            </div>
-
-            {/* Category Filter */}
-            <div className="lg:w-64">
-              <select
-                value={selectedCategory}
-                onChange={(e) => setSelectedCategory(e.target.value)}
-                className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white focus:ring-2 focus:ring-purple-500 focus:border-transparent"
-              >
-                {categories.map(category => (
-                  <option key={category.id} value={category.id}>
-                    {category.name} ({category.count})
-                  </option>
-                ))}
-              </select>
-            </div>
-          </div>
-
-          {/* Category Pills */}
-          <div className="flex flex-wrap gap-2">
-            {categories.map(category => (
-              <button
-                key={category.id}
-                onClick={() => setSelectedCategory(category.id)}
-                className={`px-3 py-1 rounded-full text-sm transition-colors ${
-                  selectedCategory === category.id
-                    ? 'bg-purple-600 text-white'
-                    : 'bg-gray-800 text-gray-300 hover:bg-gray-700'
-                }`}
-              >
-                {category.name} ({category.count})
-              </button>
-            ))}
-          </div>
-        </div>
-
+      <div className="max-w-[1600px] mx-auto px-6 py-12 relative z-10">
         {/* Results Count */}
-        <div className="mb-6">
-          <p className="text-gray-400">
-            Showing {filteredComponents.length} of {allComponents.length} components
-          </p>
+        <div className="mb-8 flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <div className="h-8 w-1 bg-gradient-to-b from-purple-500 to-blue-500 rounded-full" />
+            <div>
+              <p className="text-white font-medium">
+                {filteredComponents.length} {filteredComponents.length === 1 ? 'Component' : 'Components'}
+              </p>
+              <p className="text-sm text-gray-400">
+                {selectedCategory
+                  ? `${componentCategories.find(c => c.slug === selectedCategory)?.label} category`
+                  : 'All components'
+                }
+              </p>
+            </div>
+          </div>
         </div>
 
         {/* Components Grid/List */}
         {viewMode === 'grid' ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             {filteredComponents.map((component, index) => {
-              const Icon = component.icon;
+              const Icon = getIcon(component.icon);
+              // Extract demo file name and component name from href
+              const pathParts = component.href.split('/');
+              const demoFileName = pathParts[pathParts.length - 1] || 'page';
+              const componentName = demoFileName.split('-').map(word =>
+                word.charAt(0).toUpperCase() + word.slice(1)
+              ).join('');
+
+              // Force full page refresh for DaisyUI
+              const isDaisyUI = component.href.includes('daisyui');
+              const LinkComponent = isDaisyUI ? 'a' : Link;
+              const linkProps = isDaisyUI ? { href: component.href } : { href: component.href };
+
               return (
                 <motion.div
                   key={component.title}
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.3, delay: index * 0.05 }}
+                  transition={{
+                    duration: 0.5,
+                    delay: index * 0.03,
+                    ease: [0.21, 0.45, 0.27, 0.9]
+                  }}
+                  className="h-full"
                 >
-                  <Link href={component.href} className="block group">
-                    <div className="relative p-[1px] rounded-xl bg-gradient-to-r from-white/20 to-white/5 group-hover:from-white/30 group-hover:to-white/10 transition-all duration-300">
-                      <div className="bg-gradient-to-br from-gray-900/90 to-black/90 backdrop-blur-sm p-6 rounded-xl h-full group-hover:from-gray-800/90 group-hover:to-gray-900/90 transition-all duration-300">
+                  <LinkComponent {...linkProps} className="block h-full group relative">
+                    {/* Glow Effect */}
+                    <div className="absolute inset-0 bg-gradient-to-r from-purple-500/0 via-purple-500/20 to-blue-500/0 rounded-2xl blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+
+                    <div className="relative h-full bg-gradient-to-br from-white/5 to-white/[0.02] backdrop-blur-sm rounded-2xl border border-white/10 group-hover:border-white/20 transition-all duration-500 overflow-hidden">
+                      {/* Shine Effect */}
+                      <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+
+                      {/* Content */}
+                      <div className="relative p-6 h-full flex flex-col">
+                        {/* Header with Icon */}
                         <div className="flex items-start justify-between mb-4">
-                          <div className={`rounded-xl bg-gradient-to-br ${component.color} p-3 group-hover:scale-110 transition-transform duration-300`}>
-                            <Icon className="h-6 w-6 text-white" />
+                          <div className="relative">
+                            <div className={`absolute inset-0 bg-gradient-to-br ${component.color} blur-xl opacity-50 group-hover:opacity-75 transition-opacity`} />
+                            <div className={`relative rounded-xl bg-gradient-to-br ${component.color} p-3 group-hover:scale-110 transition-transform duration-500`}>
+                              <Icon className="h-6 w-6 text-white drop-shadow-lg" />
+                            </div>
                           </div>
-                          <ChevronRight className="w-5 h-5 text-gray-400 group-hover:text-white group-hover:translate-x-1 transition-all duration-300" />
+                          <div className="p-2 rounded-lg bg-white/5 group-hover:bg-white/10 group-hover:translate-x-1 transition-all duration-300">
+                            <ChevronRight className="w-4 h-4 text-gray-400 group-hover:text-white" />
+                          </div>
                         </div>
-                        <h3 className="text-lg font-semibold text-white mb-2 group-hover:text-blue-300 transition-colors">
+
+                        {/* Title */}
+                        <h3 className="text-lg font-bold text-white mb-3 group-hover:bg-gradient-to-r group-hover:from-white group-hover:to-purple-200 group-hover:bg-clip-text group-hover:text-transparent transition-all duration-300">
                           {component.title}
                         </h3>
-                        <p className="text-gray-400 group-hover:text-gray-300 transition-colors text-sm leading-relaxed mb-3">
+
+                        {/* Description */}
+                        <p className="text-sm text-gray-400 leading-relaxed mb-4 flex-grow group-hover:text-gray-300 transition-colors">
                           {component.description}
                         </p>
-                        {component.componentFile && component.showcaseFile && (
-                          <div className="text-xs text-gray-500 space-y-1 mb-3">
-                            <div>Component: <code className="bg-gray-800 px-1 py-0.5 rounded text-gray-400">{component.componentFile}</code></div>
-                            <div>Showcase: <code className="bg-gray-800 px-1 py-0.5 rounded text-gray-400">{component.showcaseFile}</code></div>
+
+                        {/* File Names */}
+                        <div className="space-y-3 mt-auto">
+                          {/* Category Badge */}
+                          {component.category && (
+                            <div className="flex items-center gap-2">
+                              <span className="px-2 py-1 bg-cyan-500/10 border border-cyan-500/30 rounded-md text-xs font-medium text-cyan-400 capitalize">
+                                {componentCategories.find(c => c.slug === component.category)?.label || component.category}
+                              </span>
+                            </div>
+                          )}
+                          <div className="flex items-center gap-2 text-xs">
+                            <div className="flex items-center gap-1.5 px-2.5 py-1.5 bg-white/5 rounded-lg border border-white/10 group-hover:border-purple-500/50 transition-colors font-mono">
+                              <Terminal className="w-3 h-3 text-purple-400" />
+                              <span className="text-gray-300">{demoFileName}.tsx</span>
+                            </div>
+                            <div className="text-gray-600">→</div>
+                            <div className="px-2.5 py-1.5 bg-white/5 rounded-lg border border-white/10 group-hover:border-blue-500/50 transition-colors font-mono">
+                              <span className="text-gray-300">{componentName}</span>
+                            </div>
                           </div>
-                        )}
-                        <div>
-                          <span className="inline-block px-2 py-1 text-xs bg-gray-800 text-gray-300 rounded-full capitalize">
-                            {component.category}
-                          </span>
                         </div>
                       </div>
+
+                      {/* Bottom Glow Line */}
+                      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-purple-500/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
                     </div>
-                  </Link>
+                  </LinkComponent>
                 </motion.div>
               );
             })}
@@ -895,43 +292,86 @@ export default function AllComponentsPage() {
         ) : (
           <div className="space-y-4">
             {filteredComponents.map((component, index) => {
-              const Icon = component.icon;
+              const Icon = getIcon(component.icon);
+              // Extract demo file name and component name from href
+              const pathParts = component.href.split('/');
+              const demoFileName = pathParts[pathParts.length - 1] || 'page';
+              const componentName = demoFileName.split('-').map(word =>
+                word.charAt(0).toUpperCase() + word.slice(1)
+              ).join('');
+
+              // Force full page refresh for DaisyUI
+              const isDaisyUI = component.href.includes('daisyui');
+              const LinkComponent = isDaisyUI ? 'a' : Link;
+              const linkProps = isDaisyUI ? { href: component.href } : { href: component.href };
+
               return (
                 <motion.div
                   key={component.title}
-                  initial={{ opacity: 0, x: -20 }}
+                  initial={{ opacity: 0, x: -30 }}
                   animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.3, delay: index * 0.05 }}
+                  transition={{
+                    duration: 0.5,
+                    delay: index * 0.02,
+                    ease: [0.21, 0.45, 0.27, 0.9]
+                  }}
                 >
-                  <Link href={component.href} className="block group">
-                    <div className="bg-gray-800/50 backdrop-blur-sm rounded-lg p-6 border border-gray-700/50 group-hover:border-purple-500/50 transition-all duration-300">
-                      <div className="flex items-center gap-4">
-                        <div className={`rounded-lg bg-gradient-to-br ${component.color} p-3 group-hover:scale-110 transition-transform duration-300`}>
-                          <Icon className="h-6 w-6 text-white" />
-                        </div>
-                        <div className="flex-1">
-                          <h3 className="text-lg font-semibold text-white mb-1 group-hover:text-blue-300 transition-colors">
-                            {component.title}
-                          </h3>
-                          <p className="text-gray-400 group-hover:text-gray-300 transition-colors text-sm mb-2">
-                            {component.description}
-                          </p>
-                          {component.componentFile && component.showcaseFile && (
-                            <div className="text-xs text-gray-500 space-y-1 mb-2">
-                              <div>Component: <code className="bg-gray-800 px-1 py-0.5 rounded text-gray-400">{component.componentFile}</code></div>
-                              <div>Showcase: <code className="bg-gray-800 px-1 py-0.5 rounded text-gray-400">{component.showcaseFile}</code></div>
+                  <LinkComponent {...linkProps} className="block group">
+                    <div className="relative bg-gradient-to-r from-white/5 to-white/[0.02] backdrop-blur-sm rounded-2xl border border-white/10 group-hover:border-white/20 transition-all duration-500 overflow-hidden">
+                      {/* Shine Effect */}
+                      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000 pointer-events-none" />
+
+                      <div className="relative p-6">
+                        <div className="flex items-center gap-6">
+                          {/* Icon */}
+                          <div className="relative flex-shrink-0">
+                            <div className={`absolute inset-0 bg-gradient-to-br ${component.color} blur-xl opacity-50 group-hover:opacity-75 transition-opacity`} />
+                            <div className={`relative rounded-xl bg-gradient-to-br ${component.color} p-4 group-hover:scale-110 transition-transform duration-500`}>
+                              <Icon className="h-7 w-7 text-white drop-shadow-lg" />
                             </div>
-                          )}
-                          <div>
-                            <span className="inline-block px-2 py-1 text-xs bg-gray-700 text-gray-300 rounded-full capitalize">
-                              {component.category}
-                            </span>
+                          </div>
+
+                          {/* Content */}
+                          <div className="flex-1 min-w-0">
+                            <h3 className="text-xl font-bold text-white mb-2 group-hover:bg-gradient-to-r group-hover:from-white group-hover:to-purple-200 group-hover:bg-clip-text group-hover:text-transparent transition-all">
+                              {component.title}
+                            </h3>
+                            <p className="text-sm text-gray-400 leading-relaxed mb-3 group-hover:text-gray-300 transition-colors">
+                              {component.description}
+                            </p>
+
+                            {/* File Names and Category */}
+                            <div className="flex flex-wrap items-center gap-3">
+                              {/* Category Badge */}
+                              {component.category && (
+                                <span className="px-2 py-1 bg-cyan-500/10 border border-cyan-500/30 rounded-md text-xs font-medium text-cyan-400 capitalize">
+                                  {componentCategories.find(c => c.slug === component.category)?.label || component.category}
+                                </span>
+                              )}
+                              <div className="flex items-center gap-2 text-xs">
+                                <div className="flex items-center gap-1.5 px-2.5 py-1.5 bg-white/5 rounded-lg border border-white/10 group-hover:border-purple-500/50 transition-colors font-mono">
+                                  <Terminal className="w-3 h-3 text-purple-400" />
+                                  <span className="text-gray-300">{demoFileName}.tsx</span>
+                                </div>
+                                <div className="text-gray-600">→</div>
+                                <div className="px-2.5 py-1.5 bg-white/5 rounded-lg border border-white/10 group-hover:border-blue-500/50 transition-colors font-mono">
+                                  <span className="text-gray-300">{componentName}</span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                          {/* Arrow */}
+                          <div className="flex-shrink-0 p-3 rounded-xl bg-white/5 group-hover:bg-white/10 group-hover:translate-x-2 transition-all duration-300">
+                            <ChevronRight className="w-5 h-5 text-gray-400 group-hover:text-white" />
                           </div>
                         </div>
-                        <ChevronRight className="w-5 h-5 text-gray-400 group-hover:text-white group-hover:translate-x-1 transition-all duration-300" />
                       </div>
+
+                      {/* Bottom Glow Line */}
+                      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-purple-500/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
                     </div>
-                  </Link>
+                  </LinkComponent>
                 </motion.div>
               );
             })}
@@ -940,15 +380,36 @@ export default function AllComponentsPage() {
 
         {/* Empty State */}
         {filteredComponents.length === 0 && (
-          <div className="text-center py-12">
-            <div className="text-gray-400 mb-4">
-              <Search size={48} className="mx-auto mb-4 opacity-50" />
-              <h3 className="text-xl font-semibold mb-2">No components found</h3>
-              <p>Try adjusting your search or filter criteria</p>
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            className="text-center py-24"
+          >
+            <div className="relative inline-block mb-6">
+              <div className="absolute inset-0 bg-purple-500/20 blur-3xl rounded-full" />
+              <div className="relative bg-white/5 backdrop-blur-xl p-8 rounded-3xl border border-white/10">
+                <Search size={64} className="text-gray-400" />
+              </div>
             </div>
-          </div>
+            <h3 className="text-2xl font-bold text-white mb-3">No components found</h3>
+            <p className="text-gray-400 mb-6 max-w-md mx-auto">
+              We couldn't find any components matching your search. Try adjusting your filters or search terms.
+            </p>
+            <button
+              onClick={() => {
+                setSearchTerm('');
+                setSelectedCategory(null);
+              }}
+              className="px-6 py-3 bg-gradient-to-r from-purple-500 to-blue-500 text-white rounded-xl font-medium hover:shadow-lg hover:shadow-purple-500/50 transition-all duration-300"
+            >
+              Clear Filters
+            </button>
+          </motion.div>
         )}
       </div>
+
+      {/* Back to Top Button */}
+      <BackToTop />
     </div>
   );
 }

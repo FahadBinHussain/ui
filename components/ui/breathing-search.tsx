@@ -28,94 +28,112 @@ export const BreathingSearch: React.FC<BreathingSearchProps> = ({
   const [typingSpeed, setTypingSpeed] = useState(0);
   const [caretPosition, setCaretPosition] = useState({ x: 0, y: 0 });
   const [fluidTrail, setFluidTrail] = useState<Array<{ x: number; y: number; id: number }>>([]);
-  
+
   const inputRef = useRef<HTMLInputElement>(null);
   const lastKeyTime = useRef(Date.now());
   const trailIdCounter = useRef(0);
 
   // Track typing speed
   useEffect(() => {
+    const decayTimers = new Set<number>();
+
     const handleKeyPress = () => {
       const currentTime = Date.now();
       const timeDiff = currentTime - lastKeyTime.current;
-      
+
       // Calculate typing speed (lower timeDiff = faster typing)
       const speed = Math.max(0, 1 - timeDiff / 500); // Normalize to 0-1
       setTypingSpeed(speed);
-      
+
       // Map speed to font weight
       // Fast typing (speed close to 1) = bold/italic (urgent)
       // Slow typing (speed close to 0) = thin (exploratory)
       const weight = minWeight + speed * (maxWeight - minWeight);
       setFontWeight(weight);
-      
+
       // Set italic for fast typing (>0.6 speed)
       setFontStyle(speed > 0.6 ? "italic" : "normal");
-      
+
       lastKeyTime.current = currentTime;
-      
+
       // Decay speed over time
-      setTimeout(() => {
+      const decayTimer = window.setTimeout(() => {
         setTypingSpeed((prev) => Math.max(0, prev - 0.1));
         setFontWeight((prev) => Math.max(minWeight, prev - 50));
         setFontStyle("normal");
+        decayTimers.delete(decayTimer);
       }, 300);
+      decayTimers.add(decayTimer);
     };
-    
+
     window.addEventListener("keydown", handleKeyPress);
-    return () => window.removeEventListener("keydown", handleKeyPress);
+    return () => {
+      window.removeEventListener("keydown", handleKeyPress);
+      decayTimers.forEach(clearTimeout);
+    };
   }, [minWeight, maxWeight]);
 
   // Track caret position and create fluid trail
   useEffect(() => {
     if (!inputRef.current) return;
+    const trailTimers = new Set<number>();
 
     const updateCaretPosition = () => {
       const input = inputRef.current;
       if (!input) return;
+      let span: HTMLSpanElement | null = null;
 
       // Create a temporary span to measure text width
-      const span = document.createElement("span");
-      span.style.font = window.getComputedStyle(input).font;
-      span.style.fontSize = window.getComputedStyle(input).fontSize;
-      span.style.fontWeight = String(fontWeight);
-      span.style.visibility = "hidden";
-      span.style.position = "absolute";
-      span.textContent = value.substring(0, input.selectionStart || 0);
-      document.body.appendChild(span);
+      try {
+        span = document.createElement("span");
+        span.style.font = window.getComputedStyle(input).font;
+        span.style.fontSize = window.getComputedStyle(input).fontSize;
+        span.style.fontWeight = String(fontWeight);
+        span.style.visibility = "hidden";
+        span.style.position = "absolute";
+        span.textContent = value.substring(0, input.selectionStart || 0);
+        document.body.appendChild(span);
 
-      const rect = input.getBoundingClientRect();
-      const textWidth = span.offsetWidth;
-      document.body.removeChild(span);
+        const rect = input.getBoundingClientRect();
+        const textWidth = span.offsetWidth;
 
-      // Calculate caret position
-      const x = rect.left + textWidth + 20; // 20px padding
-      const y = rect.top + rect.height / 2;
+        // Calculate caret position
+        const x = rect.left + textWidth + 20; // 20px padding
+        const y = rect.top + rect.height / 2;
 
-      setCaretPosition({ x, y });
+        setCaretPosition({ x, y });
 
-      // Add to fluid trail
-      if (value.length > 0) {
-        const newTrail = {
-          x,
-          y,
-          id: trailIdCounter.current++,
-        };
-        
-        setFluidTrail((prev) => {
-          const updated = [...prev, newTrail];
-          // Keep only last 15 positions
-          return updated.slice(-15);
-        });
+        // Add to fluid trail
+        if (value.length > 0) {
+          const newTrail = {
+            x,
+            y,
+            id: trailIdCounter.current++,
+          };
 
-        // Remove trail after animation
-        setTimeout(() => {
-          setFluidTrail((prev) => prev.filter((t) => t.id !== newTrail.id));
-        }, 1000);
+          setFluidTrail((prev) => {
+            const updated = [...prev, newTrail];
+            // Keep only last 15 positions
+            return updated.slice(-15);
+          });
+
+          // Remove trail after animation
+          const trailTimer = window.setTimeout(() => {
+            setFluidTrail((prev) => prev.filter((t) => t.id !== newTrail.id));
+            trailTimers.delete(trailTimer);
+          }, 1000);
+          trailTimers.add(trailTimer);
+        }
+      } finally {
+        span?.remove();
       }
     };
 
     updateCaretPosition();
+
+    return () => {
+      trailTimers.forEach(clearTimeout);
+    };
   }, [value, fontWeight]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -147,9 +165,9 @@ export const BreathingSearch: React.FC<BreathingSearchProps> = ({
           <div
             className="w-full h-full rounded-full"
             style={{
-              background: `radial-gradient(circle, 
-                rgba(139, 92, 246, ${0.6 - index * 0.04}) 0%, 
-                rgba(59, 130, 246, ${0.4 - index * 0.03}) 50%, 
+              background: `radial-gradient(circle,
+                rgba(139, 92, 246, ${0.6 - index * 0.04}) 0%,
+                rgba(59, 130, 246, ${0.4 - index * 0.03}) 50%,
                 transparent 100%)`,
               filter: "blur(8px)",
             }}

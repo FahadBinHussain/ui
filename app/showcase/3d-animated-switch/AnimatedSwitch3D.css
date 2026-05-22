@@ -1,0 +1,36 @@
+/* AnimatedSwitch3D Component Styles - Scoped */
+.animated-switch-3d .container {
+  position: relative !important;
+  width: 100% !important;
+  height: 100% !important;
+  overflow: hidden !important;
+  perspective: 3000px !important;
+  perspective-origin: 50% 50% !important;
+}
+
+.animated-switch-3d .container h1 {
+  display: inline-block !important;
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate3d(-50%, -50%, 0) rotate3d(1, 0, 0, 55deg) rotate3d(0, 0, 1, 45deg) !important;
+  font-family: "Roboto", sans-serif !important;
+  font-style: normal !important;
+  font-weight: 800 !important;
+  margin: 0 !important;
+  margin-bottom: 0.5rem !important;
+  font-size: 600px !important;
+  letter-spacing: -40px !important;
+  color: inherit !important;
+}
+
+.animated-switch-3d .container > .close,
+.animated-switch-3d .container > .open {
+  margin-top: -270px !important;
+  letter-spacing: -10px !important;
+  font-size: 250px !important;
+}
+
+.animated-switch-3d .container > .close {
+  margin-top: 300px !important;
+}

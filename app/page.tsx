@@ -1,7 +1,8 @@
 "use client";
 import Link from "next/link";
-import { Box, Sparkles, Palette, Layers, MessageSquareQuote, Eye, Zap, MousePointer2, ImageIcon, ScrollText, Type, Users, Pencil, Palette as PaletteIcon, ArrowRightLeft, Diamond, Menu, Search, Layout, Activity, Code, Cloud, Cpu, Database, Flag, Globe, Atom, Star, Rocket, Wand2, Target, Play, ChevronRight, Github, ExternalLink } from "lucide-react";
+import { Box, Sparkles, Palette, Layers, MessageSquareQuote, Eye, Zap, MousePointer2, ImageIcon, ScrollText, Type, Users, Pencil, Palette as PaletteIcon, ArrowRightLeft, Diamond, Menu, Search, Layout, Activity, Code, Cloud, Cpu, Database, Flag, Globe, Atom, Star, Rocket, Wand2, Target, Play, ChevronRight, Github, ExternalLink, Boxes } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { BackToTop } from "@/components/ui/back-to-top";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useEffect, useState } from "react";
 
@@ -42,14 +43,13 @@ export default function Home() {
     setParticles(generatedParticles);
   }, []);
 
-  const categories = [
+  const featuredComponents = [
     {
       title: "3D Card Effects",
       description: "CSS 3D perspective cards with hover animations",
       icon: Sparkles,
       href: "/showcase/cards",
       color: "from-purple-500 to-pink-500",
-      category: "3d",
       componentFile: "ThreeDCardDemo.tsx",
       showcaseFile: "page.tsx"
     },
@@ -59,7 +59,6 @@ export default function Home() {
       icon: MessageSquareQuote,
       href: "/showcase/testimonials",
       color: "from-pink-500 to-rose-500",
-      category: "animation",
       componentFile: "AnimatedTestimonialsDemo.tsx",
       showcaseFile: "page.tsx"
     },
@@ -69,28 +68,7 @@ export default function Home() {
       icon: Users,
       href: "/showcase/animated-tooltip",
       color: "from-emerald-500 to-sky-500",
-      category: "ui",
       componentFile: "AnimatedTooltipDemo.tsx",
-      showcaseFile: "page.tsx"
-    },
-    {
-      title: "Barba.js Transitions",
-      description: "Smooth page transitions with Barba.js for SPA-like experience",
-      icon: ArrowRightLeft,
-      href: "/showcase/barba",
-      color: "from-blue-600 to-purple-600",
-      category: "animation",
-      componentFile: "BarbaDemo.tsx",
-      showcaseFile: "page.tsx"
-    },
-    {
-      title: "Bento Grid",
-      description: "Modern, versatile grid layout for feature showcases",
-      icon: Layers,
-      href: "/showcase/bento-grid",
-      color: "from-blue-600 to-indigo-600",
-      category: "layout",
-      componentFile: "BentoGridDemo.tsx",
       showcaseFile: "page.tsx"
     },
     {
@@ -99,7 +77,6 @@ export default function Home() {
       icon: Cloud,
       href: "/showcase/cloud",
       color: "from-sky-400 to-blue-500",
-      category: "background",
       componentFile: "cloud-background.tsx",
       showcaseFile: "page.tsx"
     },
@@ -109,7 +86,6 @@ export default function Home() {
       icon: MousePointer2,
       href: "/showcase/custom-cursor",
       color: "from-violet-500 to-fuchsia-500",
-      category: "interactive",
       componentFile: "CustomCursorDemo.tsx",
       showcaseFile: "page.tsx"
     },
@@ -119,7 +95,6 @@ export default function Home() {
       icon: Zap,
       href: "/showcase/electric-border",
       color: "from-yellow-500 to-orange-500",
-      category: "effects",
       componentFile: "ElectricBorderDemo.tsx",
       showcaseFile: "page.tsx"
     },
@@ -129,7 +104,6 @@ export default function Home() {
       icon: Search,
       href: "/showcase/search",
       color: "from-indigo-500 to-purple-500",
-      category: "ui",
       componentFile: "search-interface.tsx",
       showcaseFile: "page.tsx"
     },
@@ -144,33 +118,12 @@ export default function Home() {
       showcaseFile: "page.tsx"
     },
     {
-      title: "3D Flip-Card Omnibar",
-      description: "Isometric prism search bar that flips to reveal input and stacks results in Z-depth",
-      icon: Box,
-      href: "/showcase/3d-flip-omnibar",
-      color: "from-sky-500 to-indigo-500",
-      category: "ui",
-      componentFile: "FlipOmnibar3DDemo.tsx",
-      showcaseFile: "page.tsx"
-    },
-    {
       title: "Portal Zoom Search",
       description: "Circular search node that expands into a wormhole, revealing results while the origin blurs away",
       icon: Search,
       href: "/showcase/portal-zoom-search",
       color: "from-cyan-400 via-sky-500 to-indigo-500",
-      category: "ui",
       componentFile: "PortalZoomSearchDemo.tsx",
-      showcaseFile: "page.tsx"
-    },
-    {
-      title: "Cyberpunk Data Slicer",
-      description: "Jagged cyberpunk search glyph that glitches the screen and reveals a scrambled CRT search bar",
-      icon: Zap,
-      href: "/showcase/cyberpunk-data-slicer",
-      color: "from-cyan-500 via-fuchsia-500 to-red-500",
-      category: "ui",
-      componentFile: "CyberpunkDataSlicerDemo.tsx",
       showcaseFile: "page.tsx"
     },
     {
@@ -179,7 +132,6 @@ export default function Home() {
       icon: Zap,
       href: "/showcase/ai-command-center",
       color: "from-emerald-400 to-sky-500",
-      category: "ui",
       componentFile: "AICommandCenterDemo.tsx",
       showcaseFile: "page.tsx"
     },
@@ -189,7 +141,6 @@ export default function Home() {
       icon: Search,
       href: "/showcase/ferrofluid-magnetic-input",
       color: "from-cyan-400 to-emerald-400",
-      category: "ui",
       componentFile: "FerrofluidMagneticInputDemo.tsx",
       showcaseFile: "page.tsx"
     },
@@ -199,7 +150,6 @@ export default function Home() {
       icon: Search,
       href: "/showcase/spotlight-void",
       color: "from-slate-500 to-cyan-500",
-      category: "ui",
       componentFile: "SpotlightVoidDemo.tsx",
       showcaseFile: "page.tsx"
     },
@@ -209,7 +159,6 @@ export default function Home() {
       icon: Eye,
       href: "/showcase/liquid-lens",
       color: "from-cyan-500 to-indigo-500",
-      category: "ui",
       componentFile: "LiquidLensDemo.tsx",
       showcaseFile: "page.tsx"
     },
@@ -219,7 +168,6 @@ export default function Home() {
       icon: MousePointer2,
       href: "/showcase/fluid-cursor",
       color: "from-cyan-500 to-blue-500",
-      category: "interactive",
       componentFile: "fluid-cursor.tsx",
       showcaseFile: "page.tsx"
     },
@@ -229,7 +177,6 @@ export default function Home() {
       icon: Globe,
       href: "/showcase/globe",
       color: "from-blue-600 to-indigo-600",
-      category: "3d",
       componentFile: "ThreeScene.tsx",
       showcaseFile: "page.tsx"
     },
@@ -239,7 +186,6 @@ export default function Home() {
       icon: Sparkles,
       href: "/showcase/crystal-fractal",
       color: "from-cyan-400 via-blue-400 to-purple-400",
-      category: "scientific",
       componentFile: "CrystalFractalDemo.tsx",
       showcaseFile: "page.tsx"
     },
@@ -249,7 +195,6 @@ export default function Home() {
       icon: ArrowRightLeft,
       href: "/showcase/marquee",
       color: "from-yellow-400 to-orange-500",
-      category: "animation",
       componentFile: "marquee.tsx",
       showcaseFile: "page.tsx"
     },
@@ -259,7 +204,6 @@ export default function Home() {
       icon: Layout,
       href: "/showcase/grid",
       color: "from-gray-500 to-gray-800",
-      category: "interactive",
       componentFile: "interactive-grid.tsx",
       showcaseFile: "page.tsx"
     },
@@ -269,7 +213,6 @@ export default function Home() {
       icon: Eye,
       href: "/showcase/lens",
       color: "from-indigo-500 to-purple-500",
-      category: "interactive",
       componentFile: "LensDemo.tsx",
       showcaseFile: "page.tsx"
     },
@@ -279,7 +222,6 @@ export default function Home() {
       icon: MousePointer2,
       href: "/showcase/magnetic",
       color: "from-amber-500 to-yellow-500",
-      category: "interactive",
       componentFile: "MagneticDemo.tsx",
       showcaseFile: "page.tsx"
     },
@@ -289,7 +231,6 @@ export default function Home() {
       icon: Zap,
       href: "/showcase/magnetic-field",
       color: "from-red-500 to-blue-500",
-      category: "scientific",
       componentFile: "MagneticFieldDemo.tsx",
       showcaseFile: "page.tsx"
     },
@@ -299,7 +240,6 @@ export default function Home() {
       icon: Cpu,
       href: "/showcase/neural-network",
       color: "from-purple-400 to-pink-400",
-      category: "scientific",
       componentFile: "NeuralNetworkDemo.tsx",
       showcaseFile: "page.tsx"
     },
@@ -309,7 +249,6 @@ export default function Home() {
       icon: Layers,
       href: "/showcase/neumorphic",
       color: "from-gray-300 to-gray-100",
-      category: "ui",
       componentFile: "neumorphic.tsx",
       showcaseFile: "page.tsx"
     },
@@ -319,7 +258,6 @@ export default function Home() {
       icon: Zap,
       href: "/showcase/wave-particles",
       color: "from-blue-400 to-purple-400",
-      category: "interactive",
       componentFile: "WaveParticlesDemo.tsx",
       showcaseFile: "page.tsx"
     },
@@ -329,7 +267,6 @@ export default function Home() {
       icon: Atom,
       href: "/showcase/quantum-loading",
       color: "from-cyan-400 to-blue-400",
-      category: "scientific",
       componentFile: "QuantumLoadingDemo.tsx",
       showcaseFile: "page.tsx"
     },
@@ -339,18 +276,7 @@ export default function Home() {
       icon: Cpu,
       href: "/showcase/crt",
       color: "from-green-600 to-green-900",
-      category: "effects",
       componentFile: "crt.tsx",
-      showcaseFile: "page.tsx"
-    },
-    {
-      title: "Bio-Luminescent Glow",
-      description: "Organic pulsing glow effects mimicking deep-sea bioluminescence",
-      icon: Sparkles,
-      href: "/showcase/bio-luminescent",
-      color: "from-cyan-400 to-blue-400",
-      category: "effects",
-      componentFile: "BioLuminescentDemo.tsx",
       showcaseFile: "page.tsx"
     },
     {
@@ -359,7 +285,6 @@ export default function Home() {
       icon: ImageIcon,
       href: "/showcase/reveal-text",
       color: "from-emerald-500 to-green-500",
-      category: "animation",
       componentFile: "RevealTextDemo.tsx",
       showcaseFile: "page.tsx"
     },
@@ -369,7 +294,6 @@ export default function Home() {
       icon: Pencil,
       href: "/showcase/path-drawing",
       color: "from-pink-500 to-cyan-500",
-      category: "animation",
       componentFile: "PathDrawingDemo.tsx",
       showcaseFile: "page.tsx"
     },
@@ -379,7 +303,6 @@ export default function Home() {
       icon: ScrollText,
       href: "/showcase/scroll-text-flow",
       color: "from-rose-500 to-pink-500",
-      category: "animation",
       componentFile: "ScrollTextFlowDemo.tsx",
       showcaseFile: "page.tsx"
     },
@@ -389,7 +312,6 @@ export default function Home() {
       icon: Palette,
       href: "/showcase/text-animations",
       color: "from-green-500 to-teal-500",
-      category: "animation",
       componentFile: "ContainerTextFlipDemo.tsx",
       showcaseFile: "page.tsx"
     },
@@ -399,7 +321,6 @@ export default function Home() {
       icon: Type,
       href: "/showcase/text-scramble",
       color: "from-indigo-400 to-blue-400",
-      category: "animation",
       componentFile: "TextScrambleDemo.tsx",
       showcaseFile: "page.tsx"
     },
@@ -409,7 +330,6 @@ export default function Home() {
       icon: PaletteIcon,
       href: "/showcase/theme-dropdown",
       color: "from-purple-500 to-pink-500",
-      category: "ui",
       componentFile: "theme-dropdown.tsx",
       showcaseFile: "page.tsx"
     },
@@ -419,7 +339,6 @@ export default function Home() {
       icon: Zap,
       href: "/showcase/time-warp",
       color: "from-cyan-400 via-purple-400 to-pink-400",
-      category: "animation",
       componentFile: "TimeWarpDemo.tsx",
       showcaseFile: "page.tsx"
     },
@@ -429,17 +348,26 @@ export default function Home() {
       icon: Layers,
       href: "/showcase/buttons",
       color: "from-blue-500 to-cyan-500",
-      category: "ui",
       componentFile: "ButtonDemo.tsx",
+      showcaseFile: "page.tsx"
+    },
+    {
+      title: "Voxel Terrain Filter",
+      description: "3D voxel landscape that transforms based on search keywords",
+      icon: Boxes,
+      href: "/showcase/voxel-terrain-filter",
+      color: "from-blue-500 to-cyan-500",
+      componentFile: "page.tsx",
       showcaseFile: "page.tsx"
     },
   ];
 
-  const categoryGroups = {
-    featured: categories.filter(cat => ['3d', 'animation', 'interactive'].includes(cat.category)).slice(0, 6),
-    ui: categories.filter(cat => cat.category === 'ui').slice(0, 8),
-    effects: categories.filter(cat => cat.category === 'effects').slice(0, 6),
-    scientific: categories.filter(cat => cat.category === 'scientific'),
+  // Group components for homepage sections
+  const componentGroups = {
+    featured: featuredComponents.slice(0, 6),
+    ui: featuredComponents.slice(6, 14),
+    effects: featuredComponents.slice(14, 20),
+    scientific: featuredComponents.slice(20),
   };
 
   return (
@@ -578,35 +506,35 @@ export default function Home() {
               </motion.div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {categoryGroups.featured.map((category, index) => {
-                  const Icon = category.icon;
+                {componentGroups.featured.map((component, index) => {
+                  const Icon = component.icon;
                   return (
                     <motion.div
-                      key={category.title}
+                      key={component.title}
                       initial={{ opacity: 0, y: 20 }}
                       whileInView={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.5, delay: index * 0.1 }}
                       viewport={{ once: true }}
                       className="group"
                     >
-                      <Link href={category.href} className="block">
+                      <Link href={component.href} className="block">
                         <div className="relative p-[1px] rounded-2xl bg-gradient-to-r from-white/20 to-white/5 group-hover:from-white/30 group-hover:to-white/10 transition-all duration-300">
                           <div className="bg-gradient-to-br from-gray-900/90 to-black/90 backdrop-blur-sm p-6 rounded-2xl h-full group-hover:from-gray-800/90 group-hover:to-gray-900/90 transition-all duration-300">
                             <div className="flex items-start justify-between mb-4">
-                              <div className={`rounded-xl bg-gradient-to-br ${category.color} p-3 group-hover:scale-110 transition-transform duration-300`}>
+                              <div className={`rounded-xl bg-gradient-to-br ${component.color} p-3 group-hover:scale-110 transition-transform duration-300`}>
                                 <Icon className="h-6 w-6 text-white" />
                               </div>
                               <ChevronRight className="w-5 h-5 text-gray-400 group-hover:text-white group-hover:translate-x-1 transition-all duration-300" />
                             </div>
                             <h3 className="text-xl font-semibold text-white mb-2 group-hover:text-blue-300 transition-colors">
-                              {category.title}
+                              {component.title}
                             </h3>
                             <p className="text-gray-400 group-hover:text-gray-300 transition-colors text-sm leading-relaxed mb-3">
-                              {category.description}
+                              {component.description}
                             </p>
                             <div className="text-xs text-gray-500 space-y-1">
-                              <div>Component: <code className="bg-gray-800 px-1 py-0.5 rounded text-gray-400">{category.componentFile}</code></div>
-                              <div>Showcase: <code className="bg-gray-800 px-1 py-0.5 rounded text-gray-400">{category.showcaseFile}</code></div>
+                              <div>Component: <code className="bg-gray-800 px-1 py-0.5 rounded text-gray-400">{component.componentFile}</code></div>
+                              <div>Showcase: <code className="bg-gray-800 px-1 py-0.5 rounded text-gray-400">{component.showcaseFile}</code></div>
                             </div>
                           </div>
                         </div>
@@ -618,7 +546,7 @@ export default function Home() {
             </div>
           </section>
 
-          {/* Categories Overview */}
+          {/* Components Overview */}
           <section className="py-20 px-4 bg-gradient-to-b from-transparent to-gray-950/50">
             <div className="max-w-7xl mx-auto">
               <motion.div
@@ -630,11 +558,11 @@ export default function Home() {
               >
                 <h2 className="text-4xl md:text-5xl font-bold mb-6">
                   <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
-                    Component Categories
+                    Component Library
                   </span>
                 </h2>
                 <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-                  Organized by functionality for easy discovery and implementation
+                  Organized by type and functionality for easy discovery and implementation
                 </p>
               </motion.div>
 
@@ -655,7 +583,7 @@ export default function Home() {
                   </div>
                   <p className="text-gray-400 mb-6">Essential building blocks for modern interfaces</p>
                   <div className="grid grid-cols-2 gap-3">
-                    {categoryGroups.ui.slice(0, 6).map((component) => (
+                    {componentGroups.ui.slice(0, 6).map((component) => (
                       <Link key={component.title} href={component.href} className="text-sm text-gray-300 hover:text-blue-400 transition-colors">
                         {component.title}
                       </Link>
@@ -683,7 +611,7 @@ export default function Home() {
                   </div>
                   <p className="text-gray-400 mb-6">Stunning visual effects and smooth animations</p>
                   <div className="grid grid-cols-2 gap-3">
-                    {categoryGroups.effects.map((component) => (
+                    {componentGroups.effects.map((component) => (
                       <Link key={component.title} href={component.href} className="text-sm text-gray-300 hover:text-purple-400 transition-colors">
                         {component.title}
                       </Link>
@@ -777,6 +705,9 @@ export default function Home() {
             </div>
           </section>
         </main>
+
+        {/* Back to Top Button */}
+        <BackToTop />
       </div>
     </>
   );
