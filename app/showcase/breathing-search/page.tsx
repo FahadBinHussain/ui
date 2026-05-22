@@ -25,7 +25,7 @@ export default function BreathingSearchPage() {
   return (
     <div className="min-h-screen bg-black text-white">
       {/* Hero Section with Breathing Search */}
-      <div className="h-screen flex flex-col items-center justify-center p-8">
+      <div className="min-h-screen flex flex-col items-center p-6 py-12 md:p-8 md:py-16">
         <div className="w-full max-w-6xl space-y-8">
           {/* Title */}
           <div className="text-center space-y-4 mb-12">
@@ -40,7 +40,7 @@ export default function BreathingSearchPage() {
           </div>
 
           {/* Main Search Input - 50% of screen height */}
-          <div className="w-full" style={{ height: "50vh" }}>
+          <div className="w-full h-[min(42vh,360px)] min-h-[240px]">
             <BreathingSearch
               placeholder="Start typing..."
               onSearch={handleSearch}

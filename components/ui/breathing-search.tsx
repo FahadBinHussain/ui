@@ -253,7 +253,7 @@ export const BreathingSearch: React.FC<BreathingSearchProps> = ({
           placeholder={placeholder}
           className="w-full h-full bg-transparent border-none outline-none text-white px-24 text-center transition-all duration-200"
           style={{
-            fontSize: "clamp(2rem, 8vw, 6rem)",
+            fontSize: "clamp(2rem, 7vw, 5rem)",
             fontWeight: fontWeight,
             fontStyle: fontStyle,
             letterSpacing: typingSpeed > 0.5 ? "-0.02em" : "0.02em",
@@ -264,50 +264,7 @@ export const BreathingSearch: React.FC<BreathingSearchProps> = ({
                 : "none",
           }}
         />
-
-        {/* Placeholder hint */}
-        {!value && (
-          <div className="absolute bottom-16 text-center text-gray-600 text-sm font-mono animate-pulse">
-            <p>Type fast for urgent • Type slow for exploratory</p>
-          </div>
-        )}
       </div>
-
-      {/* Global Styles */}
-      <style jsx global>{`
-        @keyframes fluidPulse {
-          0% {
-            transform: translate(-50%, -50%) scale(0);
-            opacity: 1;
-          }
-          50% {
-            transform: translate(-50%, -50%) scale(1);
-            opacity: 0.8;
-          }
-          100% {
-            transform: translate(-50%, -50%) scale(2);
-            opacity: 0;
-          }
-        }
-
-        @keyframes gridPulse {
-          0%, 100% {
-            opacity: 0.1;
-          }
-          50% {
-            opacity: 0.3;
-          }
-        }
-
-        @keyframes slideUp {
-          from {
-            transform: translateY(100%);
-          }
-          to {
-            transform: translateY(0);
-          }
-        }
-      `}</style>
     </div>
   );
 };
