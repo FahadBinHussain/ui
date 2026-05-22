@@ -183,3 +183,9 @@ Or check out the [Next.js deployment documentation](https://nextjs.org/docs/app/
 ---
 
 **Built with ❤️ using the God Tier Stack 2026**
+
+## Contributors
+
+<a href="https://github.com/FahadBinHussain/ui/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=FahadBinHussain/ui" alt="Contributors" />
+</a>
