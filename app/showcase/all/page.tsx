@@ -43,7 +43,7 @@ export default function AllComponentsPage() {
       {/* Animated Background Grid */}
       <div className="fixed inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(120,119,198,0.03),transparent_50%)]" />
       <div className="fixed inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:64px_64px]" />
-      
+
       {/* Gradient Orbs */}
       <div className="fixed top-0 left-1/4 w-96 h-96 bg-purple-500/20 rounded-full blur-[120px] animate-pulse" />
       <div className="fixed bottom-0 right-1/4 w-96 h-96 bg-blue-500/20 rounded-full blur-[120px] animate-pulse" style={{ animationDelay: '1s' }} />
@@ -84,8 +84,8 @@ export default function AllComponentsPage() {
                 <button
                   onClick={() => setViewMode('grid')}
                   className={`p-2 rounded-md transition-all ${
-                    viewMode === 'grid' 
-                      ? 'bg-gradient-to-r from-purple-500 to-blue-500 text-white shadow-lg' 
+                    viewMode === 'grid'
+                      ? 'bg-gradient-to-r from-purple-500 to-blue-500 text-white shadow-lg'
                       : 'text-gray-400 hover:text-white hover:bg-white/5'
                   }`}
                 >
@@ -94,8 +94,8 @@ export default function AllComponentsPage() {
                 <button
                   onClick={() => setViewMode('list')}
                   className={`p-2 rounded-md transition-all ${
-                    viewMode === 'list' 
-                      ? 'bg-gradient-to-r from-purple-500 to-blue-500 text-white shadow-lg' 
+                    viewMode === 'list'
+                      ? 'bg-gradient-to-r from-purple-500 to-blue-500 text-white shadow-lg'
                       : 'text-gray-400 hover:text-white hover:bg-white/5'
                   }`}
                 >
@@ -148,9 +148,9 @@ export default function AllComponentsPage() {
               {componentCategories.map(category => {
                 const isSelected = selectedCategory === category.slug;
                 const count = allComponents.filter(c => c.category === category.slug).length;
-                
+
                 if (count === 0) return null;
-                
+
                 return (
                   <motion.button
                     key={category.slug}
@@ -187,7 +187,7 @@ export default function AllComponentsPage() {
                 {filteredComponents.length} {filteredComponents.length === 1 ? 'Component' : 'Components'}
               </p>
               <p className="text-sm text-gray-400">
-                {selectedCategory 
+                {selectedCategory
                   ? `${componentCategories.find(c => c.slug === selectedCategory)?.label} category`
                   : 'All components'
                 }
@@ -204,22 +204,22 @@ export default function AllComponentsPage() {
               // Extract demo file name and component name from href
               const pathParts = component.href.split('/');
               const demoFileName = pathParts[pathParts.length - 1] || 'page';
-              const componentName = demoFileName.split('-').map(word => 
+              const componentName = demoFileName.split('-').map(word =>
                 word.charAt(0).toUpperCase() + word.slice(1)
               ).join('');
-              
+
               // Force full page refresh for DaisyUI
               const isDaisyUI = component.href.includes('daisyui');
               const LinkComponent = isDaisyUI ? 'a' : Link;
               const linkProps = isDaisyUI ? { href: component.href } : { href: component.href };
-              
+
               return (
                 <motion.div
                   key={component.title}
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ 
-                    duration: 0.5, 
+                  transition={{
+                    duration: 0.5,
                     delay: index * 0.03,
                     ease: [0.21, 0.45, 0.27, 0.9]
                   }}
@@ -228,11 +228,11 @@ export default function AllComponentsPage() {
                   <LinkComponent {...linkProps} className="block h-full group relative">
                     {/* Glow Effect */}
                     <div className="absolute inset-0 bg-gradient-to-r from-purple-500/0 via-purple-500/20 to-blue-500/0 rounded-2xl blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
-                    
+
                     <div className="relative h-full bg-gradient-to-br from-white/5 to-white/[0.02] backdrop-blur-sm rounded-2xl border border-white/10 group-hover:border-white/20 transition-all duration-500 overflow-hidden">
                       {/* Shine Effect */}
                       <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
-                      
+
                       {/* Content */}
                       <div className="relative p-6 h-full flex flex-col">
                         {/* Header with Icon */}
@@ -296,22 +296,22 @@ export default function AllComponentsPage() {
               // Extract demo file name and component name from href
               const pathParts = component.href.split('/');
               const demoFileName = pathParts[pathParts.length - 1] || 'page';
-              const componentName = demoFileName.split('-').map(word => 
+              const componentName = demoFileName.split('-').map(word =>
                 word.charAt(0).toUpperCase() + word.slice(1)
               ).join('');
-              
+
               // Force full page refresh for DaisyUI
               const isDaisyUI = component.href.includes('daisyui');
               const LinkComponent = isDaisyUI ? 'a' : Link;
               const linkProps = isDaisyUI ? { href: component.href } : { href: component.href };
-              
+
               return (
                 <motion.div
                   key={component.title}
                   initial={{ opacity: 0, x: -30 }}
                   animate={{ opacity: 1, x: 0 }}
-                  transition={{ 
-                    duration: 0.5, 
+                  transition={{
+                    duration: 0.5,
                     delay: index * 0.02,
                     ease: [0.21, 0.45, 0.27, 0.9]
                   }}
@@ -320,7 +320,7 @@ export default function AllComponentsPage() {
                     <div className="relative bg-gradient-to-r from-white/5 to-white/[0.02] backdrop-blur-sm rounded-2xl border border-white/10 group-hover:border-white/20 transition-all duration-500 overflow-hidden">
                       {/* Shine Effect */}
                       <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000 pointer-events-none" />
-                      
+
                       <div className="relative p-6">
                         <div className="flex items-center gap-6">
                           {/* Icon */}
@@ -339,7 +339,7 @@ export default function AllComponentsPage() {
                             <p className="text-sm text-gray-400 leading-relaxed mb-3 group-hover:text-gray-300 transition-colors">
                               {component.description}
                             </p>
-                            
+
                             {/* File Names and Category */}
                             <div className="flex flex-wrap items-center gap-3">
                               {/* Category Badge */}
@@ -380,7 +380,7 @@ export default function AllComponentsPage() {
 
         {/* Empty State */}
         {filteredComponents.length === 0 && (
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             className="text-center py-24"

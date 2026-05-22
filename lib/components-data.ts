@@ -155,6 +155,14 @@ export const componentsDataFull: ComponentData[] = [
     category: "inputs",
   },
   {
+    title: "Breathing Search",
+    description: "Variable font weight reacts to typing speed with fluid cursor trails",
+    href: "/showcase/breathing-search",
+    icon: "Search",
+    color: "from-violet-500 via-purple-500 to-pink-500",
+    category: "inputs",
+  },
+  {
     title: "Ferrofluid Magnetic Input",
     description: "Search input made of magnetic particles that snap into ferrofluid text and react to typing",
     href: "/showcase/ferrofluid-magnetic-input",

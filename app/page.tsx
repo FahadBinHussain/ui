@@ -108,6 +108,16 @@ export default function Home() {
       showcaseFile: "page.tsx"
     },
     {
+      title: "Breathing Search",
+      description: "Variable font weight reacts to typing speed with fluid cursor trails",
+      icon: Search,
+      href: "/showcase/breathing-search",
+      color: "from-violet-500 via-purple-500 to-pink-500",
+      category: "ui",
+      componentFile: "breathing-search.tsx",
+      showcaseFile: "page.tsx"
+    },
+    {
       title: "Portal Zoom Search",
       description: "Circular search node that expands into a wormhole, revealing results while the origin blurs away",
       icon: Search,
@@ -352,7 +362,7 @@ export default function Home() {
     },
   ];
 
-  // Group components for homepage sections  
+  // Group components for homepage sections
   const componentGroups = {
     featured: featuredComponents.slice(0, 6),
     ui: featuredComponents.slice(6, 14),
